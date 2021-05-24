@@ -20,5 +20,9 @@ public class Calculator {
 		// 인스턴스 생성-> 클래스의 정의가 필요하다. 
 		// 클래스 이름 참조변수 = new 클래스 이름
 		Calculator calc = new Calculator();
+		calc.add(1, 2); //3
+		calc.subtract(5, 3); //2
+		calc.multiply(4, 5); //20
+		calc.devide(10, 3); //3
 	}
 }
