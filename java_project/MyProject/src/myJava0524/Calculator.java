@@ -35,7 +35,7 @@ public class Calculator {
 		calc.multiply(4, 5); //20
 		calc.devide(10, 3); //3
 		
-		System.out.print("반지름을 입력세요 > ");
+		System.out.print("반지름을 입력하세요 > ");
 		int r = scanner.nextInt();
 		System.out.println("원의 둘레는 : "+calc.circle(r));
 		System.out.println("원의 넓이는 : "+calc.circleArea(r));
