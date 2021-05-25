@@ -22,11 +22,11 @@ public class Member {
 			}else {
 				System.out.println("홀수해에 태어난 사람은 홀수년에 검사대상이 됩니다. ");
 			}
+			if(age>= 40) {
+				System.out.println("암검사도 무료로 받을 수 있습니다.");
+			}
 		}else {
 			System.out.println("건강검진 대상자가 아닙니다.");
-		}
-		if(age>= 40) {
-			System.out.println("암검사도 무료로 받을 수 있습니다.");
 		}
 	}
 
