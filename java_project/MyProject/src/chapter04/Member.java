@@ -17,14 +17,16 @@ public class Member {
 		int age = 2021 -year+1;
 		if(age >= 20) {
 			System.out.println("무료로 2년마다 건강검진을 받을 수 있습니다.");
-		}
-		if( year%2 ==0) {
-			System.out.println("짝수해에 태어난 사람은 짝수년에 검사대상이 됩니다.");
+			if( year%2 ==0) {
+				System.out.println("짝수해에 태어난 사람은 짝수년에 검사대상이 됩니다.");
+			}else {
+				System.out.println("홀수해에 태어난 사람은 홀수년에 검사대상이 됩니다. ");
+			}
 		}else {
-			System.out.println("홀수해에 태어난 사람은 홀수년에 검사대상이 됩니다. ");
+			System.out.println("건강검진 대상자가 아닙니다.");
 		}
 		if(age>= 40) {
-			System.out.println("암검사를 무료로 받을 수 있습니다.");
+			System.out.println("암검사도 무료로 받을 수 있습니다.");
 		}
 	}
 
