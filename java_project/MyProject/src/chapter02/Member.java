@@ -1,4 +1,4 @@
-package chapter2;
+package chapter02;
 
 //2021.05.25
 //chapter2.Member

@@ -1,4 +1,4 @@
-package chapter1;
+package chapter01;
 
 public class Member {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package chapter2;
+package chapter02;
 
 public class Person {
 	// 클래스의 구성 -> 인스턴스 변수, 메소드
