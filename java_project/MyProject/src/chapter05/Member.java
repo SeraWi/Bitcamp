@@ -31,12 +31,12 @@ public class Member {
 		System.out.println("email: "+email);
 		System.out.println("생일: "+birthday);
 		System.out.println("주소: "+address);
+		System.out.println();
 	}
 	
 	public static void main(String[] args) {
 		Member mem1 = new Member("Emma", "012345678","Computer",2,"emma123","May 13","America");
 		mem1.memberPrint();
-		System.out.println();
 		
 		Member mem2 = new Member("Sam","987654321","Music",4,"sam123");
 		mem2.memberPrint();
