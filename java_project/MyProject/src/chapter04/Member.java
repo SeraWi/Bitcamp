@@ -5,16 +5,16 @@ import java.util.Scanner;
 public class Member {
 
 	static void fluCheck(int year) {
-		int age = 2021 - year + 1;
+		int age = 2021 -year+1;
 		if( age < 15 || age >= 65) {
 			System.out.println("무료 예방 접종이 가능합니다.");
 		}else {
 			System.out.println("무료 접종 대상이 아닙니다. ");
 		}
 	}
-	
+
 	static void medicalCheck(int year) {
-		int age = 2021 - year + 1;
+		int age = 2021 -year+1;
 		if(age >= 20) {
 			System.out.println("무료로 2년마다 건강검진을 받을 수 있습니다.");
 		}
@@ -27,18 +27,15 @@ public class Member {
 			System.out.println("암검사를 무료로 받을 수 있습니다.");
 		}
 	}
-	
-	
-	
-	
+
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		
+
 		System.out.println("========메뉴========");
 		System.out.println("1. 독감예방 접종 여부 확인");
 		System.out.println("2. 건강검진 대상 여부 확인");
 		System.out.print("번호를 입력하세요 >");
-		
+
 		int inputNum = Integer.parseInt(scanner.nextLine());
 		int year =0;
 		switch(inputNum) {
@@ -53,7 +50,5 @@ public class Member {
 			medicalCheck(year);
 			break;
 		}
-		
 	}
-
 }
