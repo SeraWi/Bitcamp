@@ -30,25 +30,26 @@ public class Member {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
+		for(;;) {
+			System.out.println("========메뉴========");
+			System.out.println("1. 독감예방 접종 여부 확인");
+			System.out.println("2. 건강검진 대상 여부 확인");
+			System.out.print("번호를 입력하세요 >");
 
-		System.out.println("========메뉴========");
-		System.out.println("1. 독감예방 접종 여부 확인");
-		System.out.println("2. 건강검진 대상 여부 확인");
-		System.out.print("번호를 입력하세요 >");
-
-		int inputNum = Integer.parseInt(scanner.nextLine());
-		int year =0;
-		switch(inputNum) {
-		case 1:
-			System.out.print("태어난 해를 입력하세요 >");
-			year = Integer.parseInt(scanner.nextLine());
-			fluCheck(year);
-			break;
-		case 2:
-			System.out.print("태어난 해를 입력하세요 >");
-			year = Integer.parseInt(scanner.nextLine());
-			medicalCheck(year);
-			break;
+			int inputNum = Integer.parseInt(scanner.nextLine());
+			int year =0;
+			switch(inputNum) {
+			case 1:
+				System.out.print("태어난 해를 입력하세요 >");
+				year = Integer.parseInt(scanner.nextLine());
+				fluCheck(year);
+				break;
+			case 2:
+				System.out.print("태어난 해를 입력하세요 >");
+				year = Integer.parseInt(scanner.nextLine());
+				medicalCheck(year);
+				break;
+			}
 		}
 	}
 }
