@@ -22,6 +22,7 @@ public class Member {
 		this.address = address;
 		
 	}
+	
 	void memberPrint() {
 		System.out.println("이름: "+name);
 		System.out.println("전화번호: "+phoneNum);
@@ -33,8 +34,12 @@ public class Member {
 	}
 	
 	public static void main(String[] args) {
-		Member mem1 = new Member("지현", "01012349876","Computer",2,"jj123","5월25일","종로구");
+		Member mem1 = new Member("Emma", "012345678","Computer",2,"emma123","May 13","America");
 		mem1.memberPrint();
+		System.out.println();
+		
+		Member mem2 = new Member("Sam","987654321","Music",4,"sam123");
+		mem2.memberPrint();
 	}
 
 }
