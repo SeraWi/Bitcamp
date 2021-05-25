@@ -46,7 +46,7 @@ public class Calculator2 {
 		System.out.println("숫자2를 입력해주세요.");
 		int num2 = scanner.nextInt();
 		System.out.println(num1 +" + "+ num2 + " = " + cal.plus(num1, num2));
-		
+		System.out.println("==============================");
 		System.out.println("반지름을 입력해주세요.");
 		float r = scanner.nextFloat();
 		System.out.println("입력 받은 반지름의 길이:" + r);
