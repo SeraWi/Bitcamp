@@ -1,4 +1,4 @@
-package chapter06_try;
+package chapter06_2;
 
 public class StudentManager {
 
