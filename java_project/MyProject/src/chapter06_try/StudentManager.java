@@ -20,6 +20,5 @@ public class StudentManager {
 		for( Student s : students) {
 			s.studentInfo();
 		}
-
 	}
 }
