@@ -1,7 +1,7 @@
 package chapter06_try;
 
 public class StudentManager {
-	
+
 	Student [] students;
 	public StudentManager(){
 		students = new Student[10];
@@ -17,9 +17,9 @@ public class StudentManager {
 		students[9] = new Student("Lea",34,79,65);
 	}
 	void studentInfo() {
-	for( Student s : students) {
-		s.studentInfo();
-	}
+		for( Student s : students) {
+			s.studentInfo();
+		}
 
-}
+	}
 }
