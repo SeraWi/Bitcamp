@@ -5,8 +5,8 @@ public class Female extends Person{
 	String major;
 	String phoneNum;
 
-	Female(String name, int birthYear, String gender,String major,String phoneNum){
-		super(name, birthYear);
+	Female(String name, String id, String gender,String major,String phoneNum){
+		super(name, id);
 		this.gender = gender;
 		this.major = major;
 		this.phoneNum = phoneNum;
