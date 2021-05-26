@@ -3,7 +3,7 @@ package chapter07;
 public class PersonMain {
 
 	public static void main(String[] args) {
-		Male m = new Male("Tom", "920504-1000000", "남성", "computer", "010-1234-5678");
+		Male m = new Male("Tom", "020504-1000000", "남성", "computer", "010-1234-5678");
 		m.hello();
 		m.studying();
 		

@@ -15,8 +15,13 @@ public class Person {
 	}
 
 	int ageCal(String id) {
-		int yy = 1900+Integer.parseInt(id.substring(0, 2));
-		int age = Calendar.getInstance().get(Calendar.YEAR)- yy -1;
+		int yy = Integer.parseInt(id.substring(0, 2));
+		int age = 0;
+		if( yy >= 0 && yy <= 21) {
+			age = Calendar.getInstance().get(Calendar.YEAR)- (2000+yy) -1;
+		}else {
+			age = Calendar.getInstance().get(Calendar.YEAR)-(1900+ yy) -1;
+		}
 		return age;
 	}
 }
