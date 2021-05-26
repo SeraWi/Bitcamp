@@ -7,7 +7,7 @@ public class PersonMain {
 		m.hello();
 		m.studying();
 		
-		Female f = new Female("Kate", "780707-2000000", "여성", "Music", "010-9876-5432");
+		Female f = new Female("Kate", "880707-2000000", "여성", "Music", "010-9876-5432");
 		f.hello();
 		f.studying();
 	}
