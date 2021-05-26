@@ -47,7 +47,7 @@ public class Student {
 	}
 	
 	void studentInfo() {
-		System.out.println("학생 이름: "+ getName());
+		System.out.println("학생 이름: "+ name);
 		System.out.println("총점: "+ totalScore());
 		System.out.println("평균: "+ avgScore());
 		System.out.println("===========================");
