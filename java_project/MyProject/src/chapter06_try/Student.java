@@ -40,10 +40,10 @@ public class Student {
 	}
 
 	double totalScore() {
-		return korScore + engScore +mathScore;
+		return (double)korScore + engScore +mathScore;
 	}
 	double avgScore() {
-		return (korScore + engScore +mathScore)/3;
+		return (double)(korScore + engScore +mathScore)/3;
 	}
 	
 	void studentInfo() {
