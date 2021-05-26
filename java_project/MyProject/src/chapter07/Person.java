@@ -10,7 +10,7 @@ public class Person {
 		this.name = name;
 		this.birthYear = birthYear;
 	}
-	void personInfo(){
+	void hello(){
 		System.out.println("안녕하세요. 저는 "+name+"입니다." + ageCal(birthYear)+"살 입니다.");
 	}
 
