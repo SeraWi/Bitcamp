@@ -10,7 +10,7 @@ public class Member2 {
 	
 	private String name; // 클래스의 영역에서 정의 -> 인스턴스 변수 , 인스턴스가 생성될 때 변수의 메모리 공간이 생성된다. 
 				// 초기화 생략 가능, 보통 생략한다.
-	private String phoneNumber; // 참조형 변수의 기본 값-> null
+	final String phoneNumber; // 참조형 변수의 기본 값-> null
 	private String major;
 	private int grade;
 	private String email;
@@ -65,6 +65,9 @@ public class Member2 {
 			){
 		this(name,phoneNumber,major,0,null,null,null);
 	}
+	Member2(){
+		this.phoneNumber ="000-0000-0000";
+	}
 //	② 위에서 정의한 정보를 출력하는 메소드 정의
 	// 기능-> 메소드
 	
@@ -101,6 +104,7 @@ public class Member2 {
 		Member2 member1 = new Member2("철수","010-0000-000","음악",4,"ch@gmail.com","2000-10-01","서울");
 		member1.name ="영희";
 		member1.showInfo();
+		//member1.phoneNumber = "000000000";값 변경할 수 없다.
 		
 		System.out.println("==================================");
 		
