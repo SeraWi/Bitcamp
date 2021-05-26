@@ -39,8 +39,8 @@ public class Student {
 		this.mathScore = mathScore;
 	}
 
-	double totalScore() {
-		return (double)korScore + engScore +mathScore;
+	int totalScore() {
+		return korScore + engScore +mathScore;
 	}
 	double avgScore() {
 		return (double)(korScore + engScore +mathScore)/3;
