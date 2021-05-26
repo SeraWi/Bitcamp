@@ -12,7 +12,7 @@ public class Member2Main {
 				"서울");
 		//member.name = "영희"; 에러 not visible
 		member1.setName("영희");
-		member1.showInfo(); // default메서드:같은 패키지 안에서 접근 가능
+		member1.showInfo(); // default메서드:같은 패키지 안에서 접근 가능, 이 경로를 통해서만 수정할 수 있다.
 		
 		//System.out.println(member1.name); //가져와서 읽고 싶은데 에러
 		System.out.println(member1.getName()); //데이터 가져오기 가능
