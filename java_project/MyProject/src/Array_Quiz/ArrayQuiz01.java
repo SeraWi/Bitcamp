@@ -27,7 +27,7 @@ public class ArrayQuiz01 {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
-		int[] numbers = new int[5]; // 5개 숫자 저장 배열 
+		int[] numbers = new int[5]; 
 		for( int i= 0; i< numbers.length ; i++) { // 사용자에게 숫자 5개 받기
 			System.out.print("숫자를 입력하세요 >");
 			numbers[i]= Integer.parseInt(scanner.nextLine());
