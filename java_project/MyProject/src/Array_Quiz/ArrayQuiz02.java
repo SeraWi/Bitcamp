@@ -21,14 +21,6 @@ public class ArrayQuiz02 {
 			{21,22,23,24,25}
 		};
 		
-//		for(int i = 0; i< arr.length ; i++) {
-//			for( int j =0; j< arr[i].length; j++) {
-//				System.out.print(arr[i][j]+" ");
-//			}
-//			System.out.println();
-//		}
-//		System.out.println();
-		
 		for( int[] tmp: arr) {
 			for(int i: tmp) {
 				System.out.print(i+" ");
@@ -39,9 +31,9 @@ public class ArrayQuiz02 {
 		System.out.println("==================");
 		addOneDArr(arr, 10); // 10증가 시키기
 		
-		for(int i = 0; i< arr.length ; i++) {
-			for( int j =0; j< arr[i].length; j++) {
-				System.out.print(arr[i][j]+" ");
+		for( int[]tmp : arr) {
+			for(int i : tmp) {
+				System.out.print(i+" ");
 			}
 			System.out.println();
 		}
