@@ -32,6 +32,7 @@ public class ArrayQuiz01 {
 			System.out.print("숫자를 입력하세요 >");
 			numbers[i]= Integer.parseInt(scanner.nextLine());
 		}
+		
 		System.out.println("최대값: " +maxValue(numbers));
 		System.out.println("최소값: " +minValue(numbers));
 	}
