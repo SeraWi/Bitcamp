@@ -1,4 +1,4 @@
-package Ex;
+package Exercise_inclass;
 
 public class Car {
 	int gasolinegauge;
