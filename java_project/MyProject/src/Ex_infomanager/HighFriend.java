@@ -1,4 +1,4 @@
-package Ex.infomanager;
+package Ex_infomanager;
 
 public class HighFriend extends Friend {
 	
