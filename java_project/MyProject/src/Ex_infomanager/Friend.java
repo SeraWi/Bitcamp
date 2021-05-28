@@ -15,7 +15,7 @@ public class Friend {
 	}
 	public void showData() {
 		System.out.println("이     름: " + name);
-		System.out.println("전화번호: " + name);
+		System.out.println("전화번호: " + phoneNumber);
 		System.out.println("주     소: " + address);
 	}
 	public void showBasicInfo() {
