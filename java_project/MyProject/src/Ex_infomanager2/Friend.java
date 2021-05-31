@@ -1,7 +1,7 @@
 package Ex_infomanager2;
 
 //상속을 목적으로 하는 클래스
-public abstract class Friend { //추상클래스
+public abstract class Friend implements ShowData{ //추상클래스
 
 	//이름, 전화번호, 주소
 	String name;
@@ -21,5 +21,5 @@ public abstract class Friend { //추상클래스
 //	public void showBasicInfo() {
 //
 //	}
-	public abstract void showBasicInfo();
+	//public abstract void showBasicInfo();
 }
