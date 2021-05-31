@@ -21,5 +21,5 @@ public abstract class Friend implements ShowData{ //추상클래스
 //	public void showBasicInfo() {
 //
 //	}
-	//public abstract void showBasicInfo();
+	public abstract void showBasicInfo();
 }
