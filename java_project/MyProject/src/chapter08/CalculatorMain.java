@@ -4,7 +4,7 @@ public class CalculatorMain {
 
 	public static void main(String[] args) {
 		
-		Calculator calc =  new Calculatable();
+		Calculator calc =  new Calculate();
 		
 		System.out.println(calc.add(2480,896));
 		System.out.println(calc.substract(2480,896));

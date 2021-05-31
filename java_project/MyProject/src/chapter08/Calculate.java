@@ -1,11 +1,11 @@
 package chapter08;
 
-public class Calculatable implements Calculator {
+public class Calculate implements Calculator {
 	
 	long n1;
 	long n2;
-	Calculatable(){}
-	Calculatable(long n1, long n2){
+	Calculate(){}
+	Calculate(long n1, long n2){
 		this.n1 = n1;
 		this.n2 = n2;
 	}
