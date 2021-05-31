@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class FriendBook {
 
 	public static void main(String[] args) {
-
+		//Friend friend = new Friend();//Cannot instantiate the type Friend
+		//추상클래스이기때문에 인스턴스 생성할 수 없다.
 		FriendInfoHandler handler = new FriendInfoHandler(10);
 
 		Scanner s = new Scanner(System.in);
