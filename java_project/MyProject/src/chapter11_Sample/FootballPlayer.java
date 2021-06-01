@@ -108,6 +108,20 @@ public class FootballPlayer implements Comparable<FootballPlayer>{
 		while(itr.hasNext()) {
 			System.out.println(itr.next());
 		}
+		
+		//Map<K,V> 인스턴스 이용
+		System.out.println("----------------------------------------------");
+		HashMap<Integer,FootballPlayer> players2 = new HashMap<>();
+		players2.put(7,new FootballPlayer("Son1",7,"Tot", 27));
+		players2.put(10,new FootballPlayer("Kane",10,"Tot", 26));
+		players2.put(20,new FootballPlayer("Kane2",20,"Tot", 16));
+		
+		Set<Integer>  set = players2.keySet();
+		Iterator<Integer> itr2 = set.iterator();
+		
+		while(itr2.hasNext()) {
+			System.out.println(players2.get(itr2.next()));//itr.next():key값
+		}
 	}
 }
 
