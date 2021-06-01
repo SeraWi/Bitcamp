@@ -12,7 +12,7 @@ public class NameTest {
 
 		if(name.isEmpty()) { 
 			System.out.println("이름을 입력하지 않았습니다.");
-		}else if(name.replace(" ","") != name ) {
+		}else if(name.replace(" ","") != name) {
 			System.out.println("공백이 입력되었습니다.");
 		}else {
 			System.out.println("이름이 정확히 입력되었습니다.");

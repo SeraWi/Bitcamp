@@ -41,7 +41,6 @@ public class FootballPlayer implements Comparable<FootballPlayer>{
 		return age % 10;
 	}
 
-
 	@Override
 	public int compareTo(FootballPlayer o) {
 		int result = this.team.compareTo(o.getTeam()); //result 결과: 양수, 음수 , 0
