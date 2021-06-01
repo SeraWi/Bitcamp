@@ -46,23 +46,21 @@ public class FootballPlayer implements Comparable<FootballPlayer>{
 		// 같은 팀의 선수들은 이름순으로 정렬, 
 		// 같은 이름의 선수는 번호순으로 저장
 
-		int result = team.compareTo(f.team); // 팀이름 비교
-		int nameresult = name.compareTo(f.name); // 선수 이름 비교
+		int result = this.team.compareTo(f.team); // 팀이름 비교
+		int nameresult = this.name.compareTo(f.name); // 선수 이름 비교
 
 
 		if(result == 0) {//팀이름이 같다. 
 			if(nameresult == 0) {//선수 이름이 같다
-				if(number > f.number) {
+				if(this.number > f.number) {
 					return 1;
-				}else if(number < f.number) {
+				}else  {
 					return -1;
-				} else {
-					return 1;
 				}
 			}else if(result > 0) {
-				return -1;
-			}else {
 				return 1;
+			}else {
+				return -1;
 			}
 		}else if(result > 0) {
 			return 1;
