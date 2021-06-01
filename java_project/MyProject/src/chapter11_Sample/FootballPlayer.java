@@ -54,8 +54,6 @@ public class FootballPlayer implements Comparable<FootballPlayer>{
 		return result;
 	}
 
-
-
 	//getter setter
 	public String getName() {
 		return name;

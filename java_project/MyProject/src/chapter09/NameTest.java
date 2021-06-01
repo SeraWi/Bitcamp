@@ -18,7 +18,6 @@ public class NameTest {
 			System.out.println("이름이 정확히 입력되었습니다.");
 			System.out.println("이름은 "+ name+" 입니다.");
 		}
-		
 	}
 }
 
