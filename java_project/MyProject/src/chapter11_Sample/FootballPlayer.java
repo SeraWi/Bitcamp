@@ -88,8 +88,8 @@ public class FootballPlayer implements Comparable<FootballPlayer>{
 
 	public static void main(String[] args) {
 		//List<FootballPlayer> players = new ArrayList<>();
-		//Set<FootballPlayer> players = new HashSet<>();
-		TreeSet<FootballPlayer> players = new TreeSet<>();
+		Set<FootballPlayer> players = new HashSet<>();
+		//TreeSet<FootballPlayer> players = new TreeSet<>();
 
 		//데이터 저장
 		players.add(new FootballPlayer("Son1",7,"Tot", 27));

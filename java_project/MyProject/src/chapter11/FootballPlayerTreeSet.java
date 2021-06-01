@@ -24,7 +24,5 @@ public class FootballPlayerTreeSet {
 			itr.next().showData();
 			System.out.println("=================");
 		}
-		
-		
 	}
 }
