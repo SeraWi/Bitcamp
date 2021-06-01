@@ -23,5 +23,17 @@ public class HashSetTest {
 		while(itr.hasNext()) {
 			System.out.println(itr.next());
 		}
+		
+		HashSet<Integer> hashSet2 = new HashSet<>();
+		
+		hashSet2.add(1); //auto boxing
+		hashSet2.add(2);
+		hashSet2.add(1);
+		hashSet2.add(2);
+		hashSet2.add(3);
+		Iterator<Integer> itr2 = hashSet2.iterator();
+		while(itr2.hasNext()) {
+			System.out.println(itr2.next());
+		}
 	}
 }
