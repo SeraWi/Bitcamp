@@ -6,9 +6,9 @@ import java.util.Scanner;
 public class BirthdayCount {
 
 	public static void main(String[] args) {
-		//생일을 입력하세요. yy.mm.dd
+		//사용자 생일 입력받기->yy.mm.dd
 		//생일을 date1으로 set
-		//오늘 날짜를 date2로 set
+		//오늘 날짜를 date2
 		//두개의 차이를 구해서 몇일 살았는지 출력
 		
 		Calendar birthDay = Calendar.getInstance();

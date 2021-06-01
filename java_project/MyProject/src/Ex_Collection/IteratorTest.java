@@ -1,4 +1,4 @@
-package Ex_Iterator;
+package Ex_Collection;
 
 import java.util.*;
 
