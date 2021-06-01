@@ -32,7 +32,7 @@ public class FootballPlayer implements Comparable<FootballPlayer>{
 
 		if(obj != null && obj instanceof FootballPlayer) {
 			FootballPlayer p =(FootballPlayer)obj;
-			if(this.name == p.name && this.team == p.team
+			if(this.name.equals( p.name) && this.team.equals(p.team)
 					&& this. age == p.age) {
 				return true;
 			}
