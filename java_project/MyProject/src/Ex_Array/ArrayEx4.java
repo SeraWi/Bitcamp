@@ -1,4 +1,4 @@
-package Array_Exercise;
+package Ex_Array;
 
 public class ArrayEx4 {
 

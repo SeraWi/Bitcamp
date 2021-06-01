@@ -1,4 +1,4 @@
-package Array_Exercise;
+package Ex_Array;
 
 public class ArrayAndMethods {
 	public static int[] addAllArray(int[] ar, int addVal) {

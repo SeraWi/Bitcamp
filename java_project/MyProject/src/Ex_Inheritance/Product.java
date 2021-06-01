@@ -1,4 +1,4 @@
-package Exercise_inclass;
+package Ex_Inheritance;
 
 public class Product {
 	final int price; //가격 변하지 않도록 final로 고정

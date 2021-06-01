@@ -1,4 +1,4 @@
-package Exercise_inclass;
+package Ex_Inheritance;
 
 public class Buyer {
 	int money; 
