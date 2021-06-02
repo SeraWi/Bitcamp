@@ -63,7 +63,7 @@ class Circle implements Serializable{
 	//implements Serializable:직렬화 대상임을 의미, 마킹
 	int x;
 	int y;
-	double r;
+	transient double r; // transient: 저장 대상이 되지 않는다 ->0으로 들어감
 	
 	
 	public Circle(int x, int y, double r) {
