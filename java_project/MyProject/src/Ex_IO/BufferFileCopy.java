@@ -7,32 +7,36 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class ByteFileCopy {
-	public static void main(String[] args) {
+public class BufferFileCopy {
+	public static void main(String[] args) {// Bytefilecopy보다 빠르게 처리한다.
 		
 		try {
 			//1. 파일을 바이너리 데이터를 읽어올 스트림 생성: FileInputStream
 			//FileInputStream in= new FileInputStream("origin.pdf");
-			InputStream in= new FileInputStream("origin.pdf");//다형성
+			InputStream in= new FileInputStream("origin.pdf");//다형성, 원본파일
 			//2. 파일을 쓰기위한 스트림 생성: FileOutputStream
 			//FileOutputStream out = new FileOutputStream("copy.pdf");
-			OutputStream out = new FileOutputStream("copy.pdf");
+			OutputStream out = new FileOutputStream("copy2.pdf");// 복사 파일
 			
 			// 카피한 데이터의 크기
 			int copyByte = 0;
 			
-			// 파일에서 읽어올 바이트 데이터
-			int bData = -1; //초기화
-			while(true) {// 무한반복, bData != -1 로도 가능
-				bData = in.read();
+			// 파일에서 읽어올 바이트 데이터 배열
+			byte[] buf = new byte[1024]; //1kb 사이즈의 배열
+			
+			// 읽어온 데이터 배열의 개수
+			int readLen = 0;
+			
+			while(true) {
+				readLen = in.read(buf); //완료시점에는 -> -1반환한다
 				
 				//탈출의 조건: 파일의 모든 데이터를 읽은 경우
-				if(bData == -1) {
+				if(readLen == -1) {
 					break;
 				}
 				// 출력: 파일에 데이터를 쓴다!
-				out.write(bData);
-				copyByte++;
+				out.write(buf, 0, readLen);
+				copyByte += readLen;
 			}
 			//스트림 닫기
 			in.close();
