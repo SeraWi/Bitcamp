@@ -1,5 +1,5 @@
 package Ex_IO;
-
+// 6월 2일
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
