@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ObjectSerializable {
+public class ObjectSerializable08 {
 
 	public static void main(String[] args) {
 		

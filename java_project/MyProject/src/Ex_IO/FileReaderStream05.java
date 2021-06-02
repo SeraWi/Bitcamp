@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
-public class FileReaderStream {
+public class FileReaderStream05 {
 
 	public static void main(String[] args) {
 		

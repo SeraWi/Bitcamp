@@ -2,7 +2,7 @@ package Ex_IO;
 
 import java.io.File;
 
-public class FileMove {
+public class FileMove09 {
 	public static void main(String[] args) {
 		//File myFile = new File("C:\\MyJava", "origin.pdf");
 		File myFile = new File("C:"+File.separator+ "MyJava"+File.separator+"origin.pdf");
@@ -29,7 +29,7 @@ public class FileMove {
 		System.out.println(myFile.getName());
 		//이동할 경로와 파일 이름
 		File newFile = new File(newDir,myFile.getName());
-		//이동하자
+		//이동
 		myFile. renameTo(newFile);
 		
 		if(!newFile.exists()) {
