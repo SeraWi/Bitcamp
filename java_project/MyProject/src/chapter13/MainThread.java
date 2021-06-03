@@ -9,13 +9,18 @@ public class MainThread {
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.print("복사할 대상(원본파일)의 파일 경로를 입력해주세요 > ");
-		String originFile = scanner.nextLine();// 원본파일
+		String originPath = scanner.nextLine();// 원본파일
 		
-		System.out.println("복사해올 위치 경로를 입력해주세요 > ");
-		String copyPath = scanner.nextLine(); //위치
+		System.out.print("복사할 대상(원본파일)의 파일명(확장자 포함)을 입력해주세요 >");
+		String originFile = scanner.nextLine();
 		
+		File oFile = new File(originPath+File.separator+originFile);
 		
-		DataCopyThread t = new DataCopyThread(originFile, copyPath); // 원본파일 경로와 복사해올 위치 경로 인자로 넣기
+		System.out.print("복사해올 위치 경로를 입력해주세요 > ");
+		String copyPath = scanner.nextLine(); 
+		File cFile = new File(copyPath);
+		
+		DataCopyThread t = new DataCopyThread( oFile.getName(), cFile.getPath()); //원본파일 이름, 복사할 경로
 		t.start();
 		
 	}

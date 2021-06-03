@@ -2,6 +2,7 @@ package chapter13;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -23,7 +24,7 @@ public class DataCopyThread extends Thread{
 
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(originFile));
-			BufferedWriter out = new BufferedWriter(new FileWriter(copyPath+"copied"+originFile));// 원본파일에 copied붙여서 파일 이름
+			BufferedWriter out = new BufferedWriter(new FileWriter(copyPath+File.separator+originFile));// 복사할 경로+ 파일 이름
 
 			//원본 데이터
 			int data = 0;
@@ -52,8 +53,5 @@ public class DataCopyThread extends Thread{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
-
-
 }
