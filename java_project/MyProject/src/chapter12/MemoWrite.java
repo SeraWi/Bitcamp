@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.Scanner;
 
-public class Memowrite {
+public class MemoWrite {
 
 	// File클래스 이용해서 저장 폴더 생성
 	// 문자기반 스트림을 이용해서 날짜와 제목, 메모를 파일에 저장-> Writer,FileWirter, out.write()
