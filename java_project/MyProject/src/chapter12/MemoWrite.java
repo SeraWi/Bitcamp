@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class MemoWrite {
 
 	// File클래스 이용해서 저장 폴더 생성
-	// 문자기반 스트림을 이용해서 날짜와 제목, 메모를 파일에 저장-> Writer,FileWirter, out.write()
+	// 문자기반 스트림을 이용해서 날짜와 제목, 메모를 파일에 저장
 	// 파일의 이름은 날짜와 메모의 제목을 이용해서 생성
 	
 
