@@ -24,7 +24,6 @@ class InputThread extends Thread{
 }
 
 
-
 class CountDownThread extends Thread{
 
 	@Override
@@ -41,7 +40,6 @@ class CountDownThread extends Thread{
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} 
-
 		}
 		System.out.println("입력시간이 지나 프로그램을 종료합니다.");
 		System.exit(0);
