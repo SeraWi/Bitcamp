@@ -72,11 +72,3 @@ class CountDownThread extends Thread{ // 카운트 다운하기
 	}
 }
 
-
-
-
-
-
-
-
-
