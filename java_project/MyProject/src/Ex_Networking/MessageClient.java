@@ -34,12 +34,9 @@ public class MessageClient {
 				
 				str1 = din.readUTF();
 				System.out.println("Server Messager : " + str1 );
-			
 			}
 			
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+		}  catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			Util.close(socket);

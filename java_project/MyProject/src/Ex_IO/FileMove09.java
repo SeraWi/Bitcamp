@@ -32,7 +32,7 @@ public class FileMove09 {
 		//이동
 		myFile. renameTo(newFile);
 		
-		if(!newFile.exists()) {
+		if(newFile.exists()) {
 			System.out.println("파일 이동 성공");
 		}else {
 			System.out.println("파일 이동 실패");

@@ -24,16 +24,16 @@ public class MessageServer {
 			System.out.println("Client 접속");
 			System.out.println("--------------------------");
 			
-			
 			din = new DataInputStream(s.getInputStream());
 			dout = new DataOutputStream(s.getOutputStream());
 
 			Scanner sc = new Scanner(System.in);
+			
 			String str1 = null; // 받는 메시지
 			String str2 = ""; // 보내는 메시지
 
 
-			while(str2 .equals("exit")) {
+			while(!str2 .equals("exit")) {
 				str1 = din.readUTF();
 				System.out.println("client Message: "+ str1);
 				
