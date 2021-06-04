@@ -14,7 +14,7 @@ public class URLConnectionTest {
 			
 			//URLConnection : url.openConnection()
 			URLConnection con = url.openConnection(); //연결!
-			InputStream in = con.getInputStream(); //html 가져온다. 
+			InputStream in = con.getInputStream(); // 데이터를 가져온다. 
 			
 			int i = 0; //받을 데이터
 			while(true) {
