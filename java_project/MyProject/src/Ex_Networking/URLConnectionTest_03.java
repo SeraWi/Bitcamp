@@ -6,7 +6,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class URLConnectionTest {
+public class URLConnectionTest_03 {
 	public static void main(String[] args) {
 		
 		try {

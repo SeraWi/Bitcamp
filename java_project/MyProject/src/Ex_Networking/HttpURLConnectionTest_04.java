@@ -5,7 +5,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class HttpURLConnectionTest {
+public class HttpURLConnectionTest_04 {
 	public static void main(String[] args) {
 		String urlStr ="https://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=102&oid=011&aid=0003919023";
 	

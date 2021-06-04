@@ -3,7 +3,7 @@ package Ex_Networking;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class InetAddressTest {// 특정 호스트에서 IP얻어온다
+public class InetAddressTest_01 {// 특정 호스트에서 IP얻어온다
 	public static void main(String[] args) {
 		
 		

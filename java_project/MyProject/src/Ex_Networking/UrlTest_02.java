@@ -3,7 +3,7 @@ package Ex_Networking;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class UrlTest {
+public class UrlTest_02 {
 
 	public static void main(String[] args) {
 		
