@@ -17,7 +17,7 @@ class Person{
 		return result;
 	}
 }
-public class PersonNumberTest {
+public class PersonNumberCheck {
 	public static void main(String[] args) {
 		Person p1 = new Person("Sam","0000-0000");
 		Person p2 = new Person("Sam","0000-0000");
