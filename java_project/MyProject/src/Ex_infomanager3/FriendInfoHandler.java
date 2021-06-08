@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FriendInfoHandler {
-
-	// 저장 데이터(객체)를 배열로 저장하고 관리하는 기능을 가지는 클래스
-	// 2021-05-21
-	// 배열 -> 컬렉션
 	ArrayList<Friend> friends;
 
 	//생성자
@@ -32,22 +28,10 @@ public class FriendInfoHandler {
 		if(choice == 1) {//1. 고교 친구
 			System.out.println("직업을 입력해주세요 >>");
 			String work = s.nextLine();
-			//인스턴스 생성
-			//HighFriend hFriend = new HighFriend(name, phoneNumber, address, work);
-			// 배열에 요소 추가
-			//			friends[numOfFriend] = hFriend;
-			//			numOfFriend++;
-			//addFriendInfo(hFriend);
 			addFriendInfo(new HighFriend(name, phoneNumber, address, work));
 		}else {// 2.대학친구
 			System.out.println("전공을 입력해주세요 >>");
 			String major = s.nextLine();
-			//인스턴스 추가
-			//UnivFriend uFriend = new UnivFriend(name, phoneNumber, address, major);
-			//배열에 요소 추가
-			//			friends[numOfFriend] = uFriend;
-			//			numOfFriend++;
-			//addFriendInfo(uFriend);
 			addFriendInfo(new UnivFriend(name, phoneNumber, address, major)); 
 		}
 	}
