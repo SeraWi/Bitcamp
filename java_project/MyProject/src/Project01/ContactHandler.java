@@ -52,12 +52,12 @@ public class ContactHandler {
 	
 	//3. 간략 보기 [1] 위세라  010 3524 8600 형식의 리스트 ( 연락처 저장 없는 경우 에러 메시지)
 	public void showBasicInfo() {
-		System.out.println("연락처 전체 간략보기--------------------------------");
+		System.out.println("연락처 간략 간략보기--------------------------------");
 		if(contacts.size() > 0 ) {
 			for(int i = 0; i< contacts.size(); i++) {
 				int listNum = i+1;
 				System.out.println("["+listNum+"]"+contacts.get(i).getName()+
-						"/"+ contacts.get(i).getPhoneNum());
+						", "+ contacts.get(i).getPhoneNum());
 			}
 		}else {
 			System.out.println("연락처에 저장된 정보가 없습니다.");
