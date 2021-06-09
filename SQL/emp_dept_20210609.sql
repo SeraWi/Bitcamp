@@ -1,6 +1,7 @@
---주석
---Oracle Ex
---emp, dept DDL ->DML 
+-- 주석
+-- 2021.06.09
+-- Oracle Ex
+-- emp, dept DDL ->DML 
 -- Table 생성 -> 테이블에 데이터를 저장(insert)
 
 drop table emp; 
@@ -52,3 +53,8 @@ insert into emp values( 7934, 'MILLER', 'CLERK', 7782, to_date('2003-1-23','yyyy
 select * from emp;
 
 commit;
+ -- 검색 : 질의 -> select
+ 
+ select * from dept;
+ select * from emp;
+
