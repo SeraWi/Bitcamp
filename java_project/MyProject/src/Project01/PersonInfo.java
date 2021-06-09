@@ -23,14 +23,6 @@ public class PersonInfo {
 		this.group = group;
 	}
 	
-	// 변수 값을 반환하는 각각의 메소드
-	public void showEachInfo(String name) {
-		this.name = name;
-		System.out.println("이   름: "+ name);
-	}
-	
-	
-	
 	// 전체 데이터를 출력하는 기능
 	public void showAllInfo() {
 		System.out.println("연락처 정보 입니다.-------------");
