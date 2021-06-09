@@ -42,8 +42,10 @@ public class AppMain {
 				handler.showAllInfo();
 				break;
 			case Menu.EDIT:
+				handler.editInfo();
 				break;
 			case Menu.EXIT:
+				System.exit(0);
 				break;
 			}
 		}
