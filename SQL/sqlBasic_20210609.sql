@@ -35,3 +35,17 @@ select ename, job, sal, nvl(comm,0), sal*12 as ysal1, sal*12+ nvl(comm,0) as ysa
 -- sql 에서 문자열 표현 ->' 작은 따옴표 이용'
 select ename || 'is a '|| job from emp;
 
+-- 결과 리스트에서 중복된 값을 제거 : distinct
+select distinct deptno from emp;
+
+select distinct deptno, job from emp order by deptno; -- order by : 행의 정렬
+
+-- 특정 데이터를 검색하기 위해서는 
+-- select ~from ~ 구문에 where 절을 이용
+-- where 뒤에는 조건식이 정의 -> where 컬럼명 비교연산자 값
+-- where sal >= 3000
+-- 사원이름, 사원 번호, 급여
+
+select ename, empno, sal from emp where sal >= 3000;
+
+
