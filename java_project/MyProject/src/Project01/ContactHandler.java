@@ -134,7 +134,7 @@ public class ContactHandler {
 			contacts.get(sel-1).setGroup(group);
 			System.out.println("변경되었습니다.");
 			break;
-		
+		 
 		}
 	}
 }
