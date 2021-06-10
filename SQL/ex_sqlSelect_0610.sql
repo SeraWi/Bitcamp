@@ -41,7 +41,7 @@ and ( deptno = 20 or deptno = 30) order by ename asc;
 select ename, hiredate from emp where hiredate like '81%';
 
 --10. 관리자가 없는 사원의 이름과 담당 업무를 출력하시오.
-select ename, job from emp where not job = 'MANAGER';
+select ename, job from emp where MGR is null;
 
 -- 11.커미션을 받을 수 있는 자격이 되는 사원의 이름, 급여, 커미션을 출력하되 
 --급여 및 커미션을 기준으로 내림차순 정렬하여 표시하시오.
