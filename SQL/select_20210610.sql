@@ -36,7 +36,12 @@ select empno, ename, job from emp where deptno = 10 and job ='MANAGER';
 -- 2000 이상 3000 이하의 급여를 받는 직원의 리스트 
 select ename, sal, job from emp where sal >= 2000 and sal <= 3000;
 select ename, sal, job from emp where sal between 2000 and 3000;
+select ename, job, sal, sal*1.1 as upsal from emp;
 
+-- between 연산자는 날짤의 연산도 가능
+-- 1981년 입사한 사원들의 리스트를 출력
+select * from emp where hiredate >= '81/01/01' and hiredate <= '81/12/31'order by hiredate;
+select * from emp where hiredate between '81/01/01' and '81/12/31' order by hiredate;
 
 
 
