@@ -85,7 +85,7 @@ select ename, sal from emp order by sal asc;
 -- 급여가 큰 사원부터 출력
 select ename, sal from emp order by sal desc;
 --급여가 큰 사원부터 출력하고 급여가 같은 사원은 이름을 기준으로 오름차순
-select ename, sal from emp order by sal desc, ename asc;
+select ename, sal from emp order by sal desc, ename asc; 
 
 
 
