@@ -1,4 +1,4 @@
-package Project01;
+package ContactApplication;
 
 public class PersonInfo {
 	//	변수들은 직접 참조를 막아 캡슐화 처리를 하도록 해봅시다. 

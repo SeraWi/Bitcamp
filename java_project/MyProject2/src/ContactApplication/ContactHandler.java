@@ -1,4 +1,4 @@
-package Project01;
+package ContactApplication;
 
 import java.util.ArrayList;
 import java.util.Scanner;
