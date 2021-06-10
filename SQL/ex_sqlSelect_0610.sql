@@ -1,5 +1,5 @@
 --2021.06.10
--- select 문을 이요해서 요구하는 sql문을 작성해주세요.
+-- select 문을 이용해서 요구하는 sql문을 작성해주세요.
 
 --1.덧셈연산자를 이용하여 모든 사원에 대해서 
 --  $300의 급여 인상을 계산한 후 사원의 이름, 급여, 인상된 급여를 출력하시오.
@@ -18,8 +18,6 @@ select ename, sal from emp where sal > 2000 order by sal desc;
 --4. 사원번호가 7788인 사원의 이름과 부서번호를 출력하시오.
 
 select ename, deptno from emp where empno = 7788 ;
-
-select * from emp;
 
 -- 5. 급여가 2000에서 3000 사이에 포함되지 않는 사원의 이름과 급여를 출력하시오.
 select ename, sal from emp where sal not between 2000 and 3000;
