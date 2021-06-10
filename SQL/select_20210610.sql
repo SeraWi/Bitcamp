@@ -78,7 +78,14 @@ select * from emp where comm is not null order by comm;
 -- 결과 행의 정렬: order by 컬럼 [asc|desc] asc 오름 차순 desc 내림 차순
 -- 오름차순: 작-> 큰, a->z
 -- 내림차순: 큰-> 작, z->a
+--급여가 적은 사원부터 출력
+select ename, sal from emp order by sal; --디폴트는 오름차순
+select ename, sal from emp order by sal asc;
 
+-- 급여가 큰 사원부터 출력
+select ename, sal from emp order by sal desc;
+--급여가 큰 사원부터 출력하고 급여가 같은 사원은 이름을 기준으로 오름차순
+select ename, sal from emp order by sal desc, ename asc;
 
 
 
