@@ -68,6 +68,17 @@ select ename from emp where ename like '%LA%';
 -- 이름에 두번째 문자에 A를 포함하는 사원의 리스트
 select * from emp where ename like '_A%'; --Martin, james, ward
 select * from emp where ename like'__A%'; --세번째 문자가 A인 이름 -- Blake,clark,adams
+select * from emp where ename not like '__A%'; -- 위의 반대 결과
+
+-- null 값을 확인하는 연산자 -> is null, is not null
+-- 커미션이 등록되어 있지 않은 사원의 리스트
+select * from emp where comm is null;
+select * from emp where comm is not null order by comm;
+
+-- 결과 행의 정렬: order by 컬럼 [asc|desc] asc 오름 차순 desc 내림 차순
+-- 오름차순: 작-> 큰, a->z
+-- 내림차순: 큰-> 작, z->a
+
 
 
 
