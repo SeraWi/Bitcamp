@@ -64,6 +64,10 @@ select ename from emp where ename like '%S%';
 select ename from emp where ename like '%A%';
 select ename from emp where ename like '%LA%';
 
+-- 자리수 패턴 : 컬럼의 값이 자리수가 정해져 있고 값에 패턴이 있는 경우
+-- 이름에 두번째 문자에 A를 포함하는 사원의 리스트
+select * from emp where ename like '_A%'; --Martin, james, ward
+select * from emp where ename like'__A%'; --세번째 문자가 A인 이름 -- Blake,clark,adams
 
 
 
