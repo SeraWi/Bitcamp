@@ -43,6 +43,30 @@ select ename, job, sal, sal*1.1 as upsal from emp;
 select * from emp where hiredate >= '81/01/01' and hiredate <= '81/12/31'order by hiredate;
 select * from emp where hiredate between '81/01/01' and '81/12/31' order by hiredate;
 
+-- 연산자 IN -> 여러개의 or 연산자 사용시 대체 할 수 있다.
+-- 커미션이 300 또는 500 또는 1400
+select * from emp where comm = 300 or comm = 500 or comm = 1400;
+select * from emp where comm in(300,500,1400);
+
+--패턴 검색: 키워드 검색 많이 사용( 게시판 )
+-- 컬럼 like '%'
+-- ename like 'F%' -> F로 시작하는 문자열 
+-- ename like '%F' -> F로 끝나는 문자열 
+-- ename like '%F%' -> F를 포함하는 문자열
+-- 'java' 단어를 포함하는지 - title like '%java%';
+
+-- F로 시작하는 이름을 가진 사원을 검색 
+select ename from emp where ename like 'F%';
+select ename from emp where ename like 'SC%';
+select ename from emp where ename like '%S';
+select ename from emp where ename like '%ES';
+select ename from emp where ename like '%S%';
+select ename from emp where ename like '%A%';
+select ename from emp where ename like '%LA%';
+
+
+
+
 
 
 
