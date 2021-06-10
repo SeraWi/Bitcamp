@@ -59,4 +59,4 @@ where name like '김%';
 --(7) 성이 ‘김’씨이고 이름이 ‘아’로 끝나는 고객의 이름과 주소
 select name, address 
 from customer 
-where name like '김%' and name like '%아';
+where name like '김%아';
