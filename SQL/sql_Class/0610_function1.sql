@@ -44,5 +44,12 @@ from dual;
 select substr('apple',-3)
 from dual;
 
+-- replace : 특정 문자열(패턴) 다른 문자열(패턴)으로 변경
+select REPLACE('JACK and JUE','J','BL')
+from dual;
+select REPLACE('JACK and JUE','J','**')
+from dual;
 
-
+--오늘 날짜!
+select sysdate
+from dual;
