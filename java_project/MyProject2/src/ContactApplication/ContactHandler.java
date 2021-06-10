@@ -97,9 +97,7 @@ public class ContactHandler {
 		case 1:
 			System.out.print("이름을 입력해주세요.");
 			String name = scanner.nextLine();
-			
 			contacts.get(sel-1).setName(name);
-			
 			System.out.println("변경되었습니다.");
 			break;
 		case 2:

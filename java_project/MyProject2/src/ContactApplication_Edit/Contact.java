@@ -4,14 +4,17 @@ import java.util.Scanner;
 /*
  * 프로젝트 -1
  */
-public class Contact {
+public class Contact implements ShowData{ 
+	// 추상클래스, show data 인터페이스 상속
+	// 추상 메서드 가지고  있어 추상클래스가 되는 형태로 정의
+	
 	private String name;
 	private String phoneNum;
 	private String email;
 	private String address;
 	private String birthday;
 	private String group;
-	
+
 	//생성자, 데이터 초기화
 	public Contact(String name, String phoneNum, String email, String address, String birthday, String group) {
 		this.name = name;
@@ -21,10 +24,10 @@ public class Contact {
 		this.birthday = birthday;
 		this.group = group;
 	}
-	
+
 
 	// 데이터를 출력하는 기능
-	public void showInfo() {
+	public void showData() {
 		System.out.println("이름:" + name);
 		System.out.println("전화번호:"+phoneNum);
 		System.out.println("이메일:"+email);
@@ -32,29 +35,29 @@ public class Contact {
 		System.out.println("생일:"+birthday);
 		System.out.println("그룹:"+group);
 	}
-	
-	
+
+
 	// 캡슐화
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getPhoneNum() {
 		return phoneNum;
 	}
-	
+
 	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -83,21 +86,4 @@ public class Contact {
 		this.group = group;
 	}
 
-
-	//main 메소드 정의
-	public static void main(String[] args) {
-		
-		Scanner scanner = new Scanner(System.in);
-		
-		Contact contact = new Contact("Lea","1111","lea1@google.com","America","970107","friend");
-		
-		//데이터를 수정
-		contact.setName("지현");
-		contact.setPhoneNum("010-1234-5678");
-		
-		//출력메소드를 다시 실행합니다.
-		contact.showInfo();
-		
-	}
-	
 }
