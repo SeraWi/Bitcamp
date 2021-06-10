@@ -35,6 +35,7 @@ from book;
 
 --(2) 마당서점에 도서를 출고하는 출판사의 총개수
 --
+
 --(3) 모든고객의 이름, 주소
 select name, address 
 from customer;
