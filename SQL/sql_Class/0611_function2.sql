@@ -72,4 +72,16 @@ select ename,sal,
         ) as upsal
 from emp;
 
+-- case 함수도 분기할 때 사용
+-- case when 조건식 then 참일 때 값
+
+select ename, deptno,
+        case when deptno = 10 then 'ACCOUTING'
+            when deptno = 20 then 'RESEARCH'
+            when deptno = 30 then  'SALES'
+            when deptno = 40 then 'OPERATION'
+        END as deptname
+from emp 
+order by deptname desc;
+
 
