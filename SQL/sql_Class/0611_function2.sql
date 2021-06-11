@@ -11,6 +11,9 @@ from dual;
 select ename, hiredate, to_char(hiredate,'YYYY.MM.DD.')
 from emp;
 
+select * from orders;
+select orderid, orderdate, to_char(orderdate, 'YYYY.MM.DD.')
+from orders;
 
 
 
