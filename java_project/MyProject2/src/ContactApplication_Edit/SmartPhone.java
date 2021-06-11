@@ -162,6 +162,8 @@ public class SmartPhone {
 			break;
 		}		
 	}
+	
+	
 	public void deleteContact() {// 4. 연락처 삭제
 		
 	}
