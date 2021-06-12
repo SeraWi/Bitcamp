@@ -42,7 +42,7 @@ order by e.empno desc;
 
 --40. SELF JOIN을 사용하여
 --지정한 사원의 이름, 부서번호, 지정한 사원과 동일한 부서에서 근무하는 사원을 출력하시오. ( SCOTT )
--- SCOTT의 부서번호 20에서 일하는 사원은?
+
 select e.ename, e.deptno
 from emp e, emp m
 where m.ename ='SCOTT' and e.deptno = m.deptno;
