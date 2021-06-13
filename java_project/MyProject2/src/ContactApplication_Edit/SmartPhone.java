@@ -51,9 +51,29 @@ public class SmartPhone {
 		}
 	}
 	
+	public static boolean nameTest2(String name) {
+		// 방법 2. 이름 검사후 boolean 타입으로 반환
+		 boolean result = true;
+		 
+		 for(int i= 0; i< name.length(); i++) {
+			 char c = name.charAt(i);
+			 if(!(c >='a' && c <= 'z' ||
+			      c >='A' && c <='Z')) {
+				 result = false;
+			 }
+		 }
+		 return result;
+	}
+	
 	public static void phoneNumTest(String phoneNum) {
 		// 전화번호 형식에 맞지 않을 때 예외처리
 		// 전화번호가 동일할 경우 예외처리-> 입력되지 않도록 처리
+		
+		try {
+			
+		}catch(PhoneNumException ex) {
+			System.out.println(ex.getMessage());
+		}
 
 	}
 	
@@ -65,7 +85,9 @@ public class SmartPhone {
 		String name = scanner.nextLine();
 		// 연락처에 이름 입력시 공백에 대한 예외처리 -> 다시 입력받기
 		// 영문자와 한글만 허용하는 예외처리
-		nameTest(name);//예외처리 하는 메서드 호출-> NameNotFindException
+		//nameTest(name);//예외처리 하는 메서드 호출-> NameNotFindException
+		
+		
 
 		System.out.print("전화번호를 입력해주세요>");
 		String phoneNum = scanner.nextLine();
