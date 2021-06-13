@@ -2,6 +2,7 @@ package ContactApplication_Edit;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 
 //연락처 정보 관리 클래스
@@ -50,9 +51,17 @@ public class SmartPhone {
 			System.out.println(ex.getMessage());
 		}
 	}
-
+	
+	public static boolean getType(String name) {
+		//문자의 영문, 한글 여부를 리턴한다.
+		//단어에 영문, 한글이 들어갈 경우 true리턴한다. 
+		return Pattern.matches("^[a-zA-Z가-힣]*$", name);
+	}
+	
 	public static boolean nameTest2(String name) {
 		// 방법 2. 이름 검사후 boolean 타입으로 반환
+		//이름에 한글 입력도 추가해야함
+		
 		boolean result = true;
 
 		for(int i= 0; i< name.length(); i++) {
@@ -88,8 +97,18 @@ public class SmartPhone {
 			// 영문자와 한글만 허용하는 예외처리
 			//nameTest(name);//예외처리 하는 메서드 호출-> NameNotFindException
 			
+//			if(name != null && !name.trim().isEmpty()) {
+//				if(nameTest2(name)) {
+//					//true ->이름 제대로 입력됨
+//				}else {//이름 제대로 입력되지 않음
+//					throw new NameNotFindException("이름에 한글과 영어 이외의 글자가 입력되었습니다.");
+//				}
+//			}else {
+//				System.out.println("이름이 입력되지 않았습니다.");
+//			}
+			
 			if(name != null && !name.trim().isEmpty()) {
-				if(nameTest2(name)) {
+				if(getType(name)) {
 					//true ->이름 제대로 입력됨
 				}else {//이름 제대로 입력되지 않음
 					throw new NameNotFindException("이름에 한글과 영어 이외의 글자가 입력되었습니다.");
