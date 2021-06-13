@@ -1,5 +1,6 @@
 package ContactApplication_Edit;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -15,12 +16,12 @@ import java.util.Scanner;
 //8. 종료
 
 public class SmartPhone {
-	Contact[] contacts ;
+	ArrayList<Contact> contacts ; // ArrayList에 contact저장하기
 	Scanner scanner;
 	int numOfContact;
 
 	SmartPhone() {
-		this.contacts = new Contact[10];
+		contacts = new ArrayList<>();
 		scanner = new Scanner(System.in);
 		this.numOfContact = 0;
 	}
@@ -49,7 +50,7 @@ public class SmartPhone {
 			System.out.println("직급을 입력해주세요 > ");
 			String position = scanner.nextLine();
 		
-			contacts[numOfContact++] = new CompanyContact(name,phoneNum,email,address,birthday,group,comName,deptName,position);
+			contacts.add(new CompanyContact(name,phoneNum,email,address,birthday,group,comName,deptName,position));
 			System.out.println("------------저장 완료 되었습니다.-----------");
 			
 		}else {// 고객 일때
@@ -59,13 +60,9 @@ public class SmartPhone {
 			String product = scanner.nextLine();
 			System.out.println("직급을 입력해주세요 > ");
 			String position = scanner.nextLine();
-			contacts[numOfContact++] = new CustomerContact(name,phoneNum,email,address,birthday,group,comName,product,position);
+			contacts.add(new CustomerContact(name,phoneNum,email,address,birthday,group,comName,product,position));
 			System.out.println("------------저장 완료 되었습니다.-----------");
 		}
-		
-		
-		System.out.println("------------저장 완료 되었습니다.-----------");
-		contacts[numOfContact++] = new Contact(name,phoneNum,email,address,birthday,group);
 	}
 
 
@@ -77,9 +74,9 @@ public class SmartPhone {
 		
 		//equals
 		
-		for(int i = 0; i< contacts.length; i++) {
-			if(searchName.equals(contacts[i].getName())) { //검색 이름과 비교!
-				System.out.println(contacts[i].getName());
+		for(int i = 0; i< contacts.size(); i++) {
+			if(searchName.equals(contacts.get(i).getName())) { //검색 이름과 비교!
+				System.out.println(contacts.get(i).getName());
 				break;
 			}else {
 				System.out.println("찾으시는 이름이 없습니다.");
@@ -92,11 +89,11 @@ public class SmartPhone {
 	public void showList() {//5. 연락처 전체 리스트 보기 (간략보기)
 		// [1] 위세라 010 3524 8600 의 형식
 
-		if(contacts.length >0 ) {
-			for( int i = 0; i< contacts.length; i++ ) {
+		if(contacts.size() >0 ) {
+			for( int i = 0; i< contacts.size(); i++ ) {
 				int listNum = i+1;
-				System.out.println("["+ listNum +"]"+contacts[i].getName()
-						+contacts[i].getPhoneNum());
+				System.out.println("["+ listNum +"]"+contacts.get(i).getName()
+						+contacts.get(i).getPhoneNum());
 			}
 
 		}else {
@@ -112,8 +109,8 @@ public class SmartPhone {
 		int selNum = Integer.parseInt(scanner.nextLine());
 
 		System.out.println("수정할 연락처의 상세 보기 입니다.");
-		contacts[selNum-1].showData();
-
+		contacts.get(selNum-1).showData();
+		
 		System.out.println("==========================");
 		System.out.println("수정할 정보의 번호를 입력하세요.");
 		System.out.println("1. 이름  2. 전화번호 3. 이메일");
@@ -125,39 +122,39 @@ public class SmartPhone {
 		case 1:
 			System.out.print("이름을 입력해주세요.");
 			String name = scanner.nextLine();
-			contacts[selNum-1].setName(name);
+			contacts.get(selNum-1).setName(name);
 			System.out.println("변경되었습니다.");
 			break;
 		case 2:
 			System.out.print("전화번호를 입력해주세요.");
 			String phoneNum = scanner.nextLine();
-			contacts[selNum-1].setPhoneNum(phoneNum);
+			contacts.get(selNum-1).setPhoneNum(phoneNum);
 			System.out.println("변경되었습니다.");
 			break;
 
 		case 3:
 			System.out.print("이메일을 입력해주세요.");
 			String email = scanner.nextLine();
-			contacts[selNum-1].setEmail(email);
+			contacts.get(selNum-1).setEmail(email);
 			System.out.println("변경되었습니다.");
 			break;
 
 		case 4:
 			System.out.print("주소를 입력해주세요.");
 			String address = scanner.nextLine();
-			contacts[selNum-1].setAddress(address);
+			contacts.get(selNum-1).setAddress(address);
 			System.out.println("변경되었습니다.");
 			break;	
 		case 5:
 			System.out.print("생일을 입력해주세요.");
 			String birthday = scanner.nextLine();
-			contacts[selNum-1].setBirthday(birthday);
+			contacts.get(selNum-1).setBirthday(birthday);
 			System.out.println("변경되었습니다.");
 			break;	
 		case 6:
 			System.out.print("그룹을 입력해주세요.");
 			String group = scanner.nextLine();
-			contacts[selNum-1].setGroup(group);
+			contacts.get(selNum-1).setGroup(group);
 			System.out.println("변경되었습니다.");
 			break;
 		}		
@@ -167,8 +164,6 @@ public class SmartPhone {
 	public void deleteContact() {// 4. 연락처 삭제
 		
 	}
-
-
 
 
 
