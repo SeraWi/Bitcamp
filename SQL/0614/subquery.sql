@@ -116,12 +116,23 @@ select orderid, saleprice
 from orders
 where saleprice >(select max(saleprice) from orders where custid = 3);
 
+--ALL
 select *
 from orders 
 where saleprice >all(select saleprice from orders where custid= 3);
 
 
+--EXISTS 연산자로 대한민국에 거주하는 고객에게 
+--판매한 도서의 총 판매액을 구하시오. 
+select sum(saleprice)
+from orders o
+where exists(
+                select *
+                from customer c 
+                where o.custid = c.custid
+                        and c.address like '%대한민국%'
+                );
 
-
-
+select * from customer c where 1 = c.custid
+and c.address like '%대한민국%'
 
