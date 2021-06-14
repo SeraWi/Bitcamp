@@ -53,11 +53,34 @@ from emp
 where sal > (select avg(sal)from emp)
 order by sal;
 
+--평균 주문금액 이하의 주문에 대해서 주문번호와 금액을 보이시오
+-- 주문번호와 금액 -> orders
 
+select *
+from orders
+where saleprice <= (select avg(saleprice) from orders)
+order by saleprice;
 
+--– 각 고객의 평균 주문금액보다 큰 금액의 주문 내역에 대해서 
+--주문번호, 고객번호, 금액을 보이시오
 
+-- 다중행 연산자 IN
 
+--3000 이상 받는 사원이 소속된 부서(10번, 20번)와 동일한 부서에서 근무하는 사원 리스트 출력
 
+select distinct deptno
+from emp
+where sal >= 3000;
+
+select *
+from emp
+where deptno in(10,20);
+
+select * 
+from emp
+where deptno in(select distinct deptno from emp where sal >= 3000);
+
+--대한민국에 거주하는 고객에게 판매한 도서의 총 판매액을 구하시오.
 
 
 
