@@ -61,8 +61,16 @@ from orders
 where saleprice <= (select avg(saleprice) from orders)
 order by saleprice;
 
---– 각 고객의 평균 주문금액보다 큰 금액의 주문 내역에 대해서 
+-- 각 고객의 평균 주문금액보다 
+--큰 금액의 주문 내역에 대해서 
 --주문번호, 고객번호, 금액을 보이시오
+
+select *
+from orders o1
+where saleprice > (select avg(saleprice) from orders o2 where o2.custid = o1.custid);
+
+select avg(saleprice) from orders where custid = 4;
+
 
 -- 다중행 연산자 IN
 
@@ -81,6 +89,37 @@ from emp
 where deptno in(select distinct deptno from emp where sal >= 3000);
 
 --대한민국에 거주하는 고객에게 판매한 도서의 총 판매액을 구하시오.
+
+select sum(saleprice)
+from orders
+where custid in(2,3,5);
+
+select * from customer where address like'%대한민국%';
+
+select sum(saleprice)
+from orders
+where custid in (select custid from customer where address like '%대한민국%');
+
+
+--3번 고객이 주문한 도서의 최고 금액보다
+--더 비싼 도서를 구입한 주문의 주문번호와 금액을 보이시오.
+
+select orderid, saleprice
+from orders;
+where saleprice > ();
+
+select max(saleprice)
+from orders 
+where custid = 3;
+
+select orderid, saleprice
+from orders
+where saleprice >(select max(saleprice) from orders where custid = 3);
+
+select *
+from orders 
+where saleprice >all(select saleprice from orders where custid= 3);
+
 
 
 
