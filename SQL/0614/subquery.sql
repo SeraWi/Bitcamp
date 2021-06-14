@@ -27,6 +27,38 @@ from orders o, customer c
 where o.custid = c.custid
 group by c.custid,c.name;
 
+--sub QUERY
+select custid, (select name from customer c where o.custid = c.custid) as "이름",
+                sum(o.saleprice)as "구매액"
+from orders o
+group by custid;
+
+-- 인라인 뷰 : from 절 뒤에 사용되는 부속질의, 가상  테이블 처럼 사용
+-- 고객번호가 2이하인 고객의 판매액을 보이시오(결과는 고객이름과 고객별 판매액 출력)
+-- 고객번호: customer, 판매액: orders
+
+select o.custid, c.name, sum(o.saleprice)
+from (select * from customer where custid<=2) c, orders o
+where c.custid = o.custid
+group by o.custid, c.name;
+
+
+-- 중첩질의 : where 절 뒤에 사용하는 부속질의
+-- 비교연산자를 이용할 때는 단일행 단일열의 결과를 같는 부속질의를 사용
+-- ><= != >= <=
+-- 평균 급여보다 더 많은 급여를 받는 사원을 검색
+
+select *
+from emp
+where sal > (select avg(sal)from emp)
+order by sal;
+
+
+
+
+
+
+
 
 
 
