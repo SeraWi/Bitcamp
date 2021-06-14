@@ -23,7 +23,9 @@ select e.empno,e.ename,e.mgr, m.ename
 from emp e, emp m
 where e.mgr = m.empno;
 
-
+select *
+from emp e, emp m
+where e.mgr = m.empno;
 
 
 
