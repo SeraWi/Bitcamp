@@ -52,10 +52,16 @@ public class SmartPhone {
 		}
 	}
 	
-	public static boolean getType(String name) {
+	public static boolean nameTypeCheck(String name) {
 		//문자의 영문, 한글 여부를 리턴한다.
 		//단어에 영문, 한글이 들어갈 경우 true리턴한다. 
 		return Pattern.matches("^[a-zA-Z가-힣]*$", name);
+	}
+	
+	public static boolean phoneNumTypeCheck(String phoneNum) {
+		//핸드폰 번호가 형식에 맞지 않으면 false린턴한다.
+		//핸드폰 번호는 : 000-0000-0000형식
+		return Pattern.matches("^01(?:0|1|[6-9]) - (?:\\d{3}|\\d{4}) - \\d{4}$" , phoneNum);
 	}
 	
 	public static boolean nameTest2(String name) {
@@ -74,17 +80,17 @@ public class SmartPhone {
 		return result;
 	}
 
-//	public static void phoneNumTest(String phoneNum) {
-//		// 전화번호 형식에 맞지 않을 때 예외처리
-//		// 전화번호가 동일할 경우 예외처리-> 입력되지 않도록 처리
-//
-//		try {
-//
-//		}catch(PhoneNumException ex) {
-//			System.out.println(ex.getMessage());
-//		}
-//
-//	}
+	public static void phoneNumTest(String phoneNum) {
+		// 전화번호가 형식에 맞지 않을 때 예외처리
+		// 전화번호가 동일할 경우 예외처리-> 입력되지 않도록 처리
+
+		try {
+
+		}catch(PhoneNumException ex) {
+			System.out.println(ex.getMessage());
+		}
+
+	}
 
 
 	public void saveContact() throws NameNotFindException {////1. 연락처 입력
@@ -108,7 +114,7 @@ public class SmartPhone {
 //			}
 			
 			if(name != null && !name.trim().isEmpty()) {
-				if(getType(name)) {
+				if(nameTypeCheck(name)) {
 					//true ->이름 제대로 입력됨
 				}else {//이름 제대로 입력되지 않음
 					throw new NameNotFindException("이름에 한글과 영어 이외의 글자가 입력되었습니다.");
@@ -118,11 +124,23 @@ public class SmartPhone {
 			}
 
 
-			System.out.print("전화번호를 입력해주세요>");
+			System.out.print("전화번호를 입력해주세요(형식: 010-0000-0000) >");
 			String phoneNum = scanner.nextLine();
 			// 전화번호 형식에 맞지 않을 때 예외처리
 			// 전화번호가 동일할 경우 예외처리-> 입력되지 않도록 처리
-
+			
+			if(phoneNum != null ) {
+				if(phoneNumTypeCheck(phoneNum)) {
+					//true ->제대로 입력됨
+				}else {
+					throw new PhoneNumException("전화번호 입력이 형식에 맞지않습니다.");
+				}
+			}else {
+				System.out.println("전화번호가 입력되지 않았습니다.");
+			}
+			
+			
+			
 
 			System.out.print("이메일을 입력해주세요>");
 			String email = scanner.nextLine();
@@ -158,6 +176,8 @@ public class SmartPhone {
 				contacts.add(new Contact(name, phoneNum,email,address,birthday,group));
 			}
 		}catch(NameNotFindException ex) {
+			System.out.println(ex.getMessage());
+		} catch (PhoneNumException ex) {
 			System.out.println(ex.getMessage());
 		}
 	}
