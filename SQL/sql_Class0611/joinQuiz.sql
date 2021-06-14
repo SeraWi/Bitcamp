@@ -34,10 +34,10 @@ where e.mgr = m.empno;
 ​
 --39. OUTER JOIN, SELF JOIN을 사용하여 관리자가 없는 사원을 포함하여 
 --사원번호를 기준으로 내림차순 정렬하여 출력하시오.
----self join
+
 select e.ename
 from emp e, emp m
-where e.mgr = m.empno or (e.mgr is null and e.empno = m.empno)
+where e.mgr = m.empno(+)
 order by e.empno desc;
 
 --40. SELF JOIN을 사용하여
