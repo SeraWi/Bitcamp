@@ -7,6 +7,11 @@ select e.ename, e.deptno, d.dname
 from emp e, dept d
 where e.deptno = d.deptno and e.ename = 'SCOTT';
 
+--natural join
+select e.ename,deptno, d.dname
+from emp e natural join dept d
+where e.ename = 'SCOTT';
+
 --33. INNER JOIN과 ON 연산자를 사용하여 사원 이름과 함께 
 --그 사원이 소속된 부서이름과 지역 명을 출력하시오.
 
@@ -24,6 +29,12 @@ on e.deptno = d.deptno;
 select e.ename, d.dname
 from emp e, dept d
 where e.deptno = d.deptno and e.ename like '%A%';
+
+--ansi
+select e.ename, d.dname
+from emp e inner join dept d
+on e.deptno = d.deptno
+where e.ename like '%A%';
 
 --37. JOIN을 이용하여 NEW YORK에 근무하는 모든 사원의 이름, 업무, 부서번호 및 부서명을 출력하시오.
 
