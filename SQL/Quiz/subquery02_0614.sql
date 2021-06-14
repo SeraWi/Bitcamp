@@ -131,7 +131,7 @@ group by custid;
 select c.name
 from orders o, customer c
 where o.custid = c.custid
-having avg(saleprice) > (select avg(saleprice) from orders) -- 11800
+having avg(o.saleprice) > (select avg(saleprice) from orders) -- 11800
 group by c.name;
 
 
