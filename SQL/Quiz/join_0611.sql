@@ -22,7 +22,7 @@ where e.deptno =d.deptno ;
 --inner join,on 
 select e.ename, d.dname,d.loc
 from emp e inner join dept d
-on e.deptno = d.deptno;
+on e.deptno = d.deptno; -- 조인의 조건
 
 
 --36. 조인과 WildCARD를 사용하여 이름에 ‘A’가 포함된 모든 사원의 이름과 부서명을 출력하시오.
@@ -67,6 +67,15 @@ on e.mgr = m.empno;
 select e.ename, e.deptno
 from emp e, emp m
 where m.ename ='SCOTT' and e.deptno = m.deptno;
+
+
+select s.ename, e.deptno
+from emp e, emp s
+where e.ename ='SCOTT'
+and e.deptno= s.deptno
+and s.ename != 'SCOTT'; -- SCOTT제외해주기!!
+
+select * from emp;
 
 --41. SELF JOIN을 사용하여 WARD 사원보다 늦게 입사한 사원의 이름과 입사일을 출력하시오.
 
