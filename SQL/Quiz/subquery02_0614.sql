@@ -115,11 +115,11 @@ from orders o
 group by custid;
 
 -- 고객의 구매액 평균 > 도서의 판매액 평균
-select c.name, avg(saleprice)
-from orders o, customer c
-where o.custid = c.custid
-having avg(saleprice) > (select avg(saleprice) from orders) -- 11800
-group by c.name;
+--select c.name, avg(saleprice)
+--from orders o, customer c
+--where o.custid = c.custid
+--having avg(saleprice) > (select avg(saleprice) from orders) -- 11800
+--group by c.name;
 
 --select c.name, avg(saleprice)
 --from orders o, customer c
