@@ -80,23 +80,24 @@ public class SmartPhone {
 		return result;
 	}
 
-	public static void phoneNumTest(String phoneNum) {
-		// 전화번호가 형식에 맞지 않을 때 예외처리
-		// 전화번호가 동일할 경우 예외처리-> 입력되지 않도록 처리
-
-		try {
-
-		}catch(PhoneNumException ex) {
-			System.out.println(ex.getMessage());
-		}
-
-	}
+//	public static void phoneNumTest(String phoneNum) {
+//		// 전화번호가 형식에 맞지 않을 때 예외처리
+//		// 전화번호가 동일할 경우 예외처리-> 입력되지 않도록 처리
+//
+//		try {
+//
+//		}catch(PhoneNumException ex) {
+//			System.out.println(ex.getMessage());
+//		}
+//
+//	}
 
 
 	public void saveContact() throws NameNotFindException {////1. 연락처 입력
 
 		try {
 			System.out.println("-----------연락처를 저장합니다.-----------");
+			
 			System.out.print("이름을 입력해주세요 >");
 			String name = scanner.nextLine();
 			// 연락처에 이름 입력시 공백에 대한 예외처리 -> 다시 입력받기
@@ -116,13 +117,14 @@ public class SmartPhone {
 			if(name != null && !name.trim().isEmpty()) {
 				if(nameTypeCheck(name)) {
 					//true ->이름 제대로 입력됨
+				
 				}else {//이름 제대로 입력되지 않음
 					throw new NameNotFindException("이름에 한글과 영어 이외의 글자가 입력되었습니다.");
 				}
 			}else {
 				System.out.println("이름이 입력되지 않았습니다.");
 			}
-
+			
 
 			System.out.print("전화번호를 입력해주세요(형식: 010-0000-0000) >");
 			String phoneNum = scanner.nextLine();
