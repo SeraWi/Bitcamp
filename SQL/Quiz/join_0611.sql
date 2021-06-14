@@ -10,10 +10,14 @@ where e.deptno = d.deptno and e.ename = 'SCOTT';
 --33. INNER JOIN과 ON 연산자를 사용하여 사원 이름과 함께 
 --그 사원이 소속된 부서이름과 지역 명을 출력하시오.
 
-select e.ename, d.loc
+--equi join
+select e.ename, d.dname,d.loc
 from emp e, dept d
 where e.deptno =d.deptno ;
---inner join,on 연산자 사용해서 다시 풀어보기
+--inner join,on 
+select e.ename, d.dname,d.loc
+from emp e inner join dept d
+on e.deptno = d.deptno;
 
 --36. 조인과 WildCARD를 사용하여 이름에 ‘A’가 포함된 모든 사원의 이름과 부서명을 출력하시오.
 select e.ename, d.dname
