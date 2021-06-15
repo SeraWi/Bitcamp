@@ -28,13 +28,14 @@ where sal <= all(select sal from emp);
 
 --46. 평균급여가 가장 적은 직급의 직급 이름과 직급의 평균을 구하시오.
 
+--내풀이
 select job, avg(sal)
 from emp 
 group by job
 having avg(sal) <= ALL(select avg(sal) 
                        from emp 
                        group by job);
--- 참고 풀이(인라인 뷰)
+-- 참고 풀이(인라인 뷰)확인할것
 
 
 
@@ -77,10 +78,15 @@ select *
 from emp e
 where e.empno not in( 매니저 명단 );
 
---답:
+--내 풀이
 select ename
 from emp
 where empno not in ( select distinct nvl(mgr,0) from emp);
+
+--참고풀이
+select ename
+from emp
+where empno not in( select distinct mgr from emp where mgr is not null);
 
 
 --50. 부하직원이 있는 사원의 이름을 표시하시오.
