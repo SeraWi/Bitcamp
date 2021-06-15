@@ -163,12 +163,19 @@ group by custid;
 --group by c.name;
 
 
--- 답
+-- 풀이1:
 select c.name
 from orders o, customer c
 where o.custid = c.custid
 having avg(o.saleprice) > (select avg(saleprice) from orders) -- 11800
 group by c.name;
+
+--풀이2,NATURAL JOIN
+select name, avg(saleprice)
+from orders natural join customer
+having avg(saleprice) > (select avg(saleprice) from orders)
+group by name;
+
 
 
 --3. 마당서점에서 다음의 심화된 질문에 대해 SQL 문을 작성하시오.
