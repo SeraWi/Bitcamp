@@ -116,13 +116,22 @@ select  max(abs(o.saleprice- b.price))
 from orders o, book b
 where b.bookid = o.bookid;
 
---답
+--풀이1:
 select *
 from orders o, book b 
 where b.bookid = o.bookid
 and abs(o.saleprice - b.price) =  (select max(abs(o2.saleprice- b2.price))
                                    from orders o2, book b2
                                    where o2.bookid = b2.bookid);
+
+--풀이2, NATURAL JOIN
+select *
+from orders natural join book
+where abs(saleprice - price) = (select max(abs(saleprice - price))
+                                from orders natural join book);
+                               
+
+
 
 
 --(13) 도서의 판매액 평균보다 자신의 구매액 평균이 더 높은 고객의 이름
