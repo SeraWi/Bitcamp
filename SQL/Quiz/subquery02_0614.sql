@@ -20,9 +20,7 @@ order by publisher;
 --풀이2 ,natural join
 select count(publisher)
 from orders natural join customer natural join book
-where name ='박지성'
-
-
+where name ='박지성';
 
 --6) 박지성이구매한도서의이름, 가격, 정가와판매가격의차이
 -- 박지성: customer
