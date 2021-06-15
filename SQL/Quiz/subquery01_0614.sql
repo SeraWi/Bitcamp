@@ -35,7 +35,14 @@ group by job
 having avg(sal) <= ALL(select avg(sal) 
                        from emp 
                        group by job);
--- 참고 풀이(인라인 뷰)확인할것
+                       
+-- 참고 풀이(인라인 뷰)
+
+select min(avg)
+from (select job, avg(sal) as avg
+      from emp
+      group by job);
+
 
 
 
@@ -50,13 +57,7 @@ from emp e
 where sal in(select min(sal) 
                 from emp m 
                 where e.deptno= m.deptno --상관관계 처리해야 한다.
-                group by deptno
-);
-
-
---참고풀이
-
-
+                group by deptno);
 
 
 --48. 담당업무가 ANALYST 인 사원보다 급여가 적으면서 
