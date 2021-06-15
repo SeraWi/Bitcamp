@@ -95,13 +95,19 @@ from orders;
 --고객의 이름: customer table
 --구매액:sum(saleprice), orders table
 
-
+--내풀이
 select (select name 
         from customer c 
         where c.custid = o.custid)as "NAME",
         sum(saleprice)
 from orders o
 group by custid; 
+
+--참고풀이
+select name, sum(saleprice)
+from orders natural join customer
+group by name;
+
 
 
 --(11) 고객의 이름과 고객이 구매한 도서목록
