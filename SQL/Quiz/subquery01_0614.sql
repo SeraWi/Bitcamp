@@ -160,8 +160,8 @@ from emp
 where deptno =(select deptno from dept where dname ='RESEARCH');
 
 --57. 평균 월급보다 많은 급여를 받고 
---이름에 M이 포함된 사원과 같은 부서에서 근무하는 사원의 
---사원 번호, 이름, 급여를 표시하시오.
+--    이름에 M이 포함된 사원과 같은 부서에서 근무하는 사원의 
+--    사원 번호, 이름, 급여를 표시하시오.
 
 select empno, ename, sal
 from emp
