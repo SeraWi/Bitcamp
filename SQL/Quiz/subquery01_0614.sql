@@ -34,6 +34,8 @@ group by job
 having avg(sal) <= ALL(select avg(sal) 
                        from emp 
                        group by job);
+-- 참고 풀이(인라인 뷰)
+
 
 
 --47. 각 부서의 최소 급여를 받는 사원의 이름, 급여, 부서번호를 표시하시오.
@@ -41,14 +43,20 @@ having avg(sal) <= ALL(select avg(sal)
 -- 각부서에서 가장 적은 sal 
 select deptno, min(sal) from emp group by deptno;
 
--- 답
+-- 내풀이
 select ename, sal, deptno
 from emp e
 where sal in(select min(sal) 
                 from emp m 
-                where e.deptno= m.deptno
+                where e.deptno= m.deptno --상관관계 처리해야 한다.
                 group by deptno
 );
+
+
+--참고풀이
+
+
+
 
 --48. 담당업무가 ANALYST 인 사원보다 급여가 적으면서 
 --업무가 ANALYST가 아닌 사원들을 표시(사원번호, 이름, 담당 업무, 급여)하시오.
