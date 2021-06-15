@@ -34,9 +34,10 @@ select deptno, min(sal) from emp group by deptno;
 
 -- 답
 select ename, sal, deptno
-from emp 
+from emp e
 where sal in(select min(sal) 
-                from emp 
+                from emp m 
+                where e.deptno= m.deptno
                 group by deptno
 );
 
