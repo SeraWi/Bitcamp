@@ -182,7 +182,7 @@ CREATE TABLE EMP03(
     EMPNO NUMBER(4),--constraint emp02_empno_pk primary key, 
     ENAME VARCHAR2(20)  constraint emp03_ename_nn NOT NULL,--NOT NULL 제약은 컬럼레벨에서만 정의 가능
     SAL NUMBER(6,2) constraint emp03_sal_ck check( sal > 500 and sal <5000),
-    JOB VARCHAR(20),-- default '미지정',
+    JOB VARCHAR(20) default '미지정',
     deptno number,-- constraint emp02_deptno_fk references dept(deptno),
     -------------------------------------------------------------------
     --제약 정의
@@ -190,3 +190,4 @@ CREATE TABLE EMP03(
     constraint emp03_deptno_fk foreign key(deptno) references dept(deptno)
  );
  
+drop table emp03;
