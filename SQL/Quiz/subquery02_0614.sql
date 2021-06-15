@@ -33,6 +33,7 @@ from customer c, orders o, book b
 where c.custid = o.custid and o.bookid = b.bookid 
       and c.name= '박지성';
       
+      
 -- 풀이 2, NATURAL JOIN
 select name, price, price - saleprice as pricegap
 from customer natural join orders natural join book
@@ -74,7 +75,7 @@ where bookid not in(select distinct bookid
 select distinct custid
 from orders;
 
---답
+--풀이
 select name
 from customer
 where custid  not in(select distinct custid from orders);
