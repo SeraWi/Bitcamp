@@ -57,7 +57,7 @@ from emp;
 
 select *
 from emp e
-where e.empno not in( 7839,7782,7698,7902,7566,7788 );
+where e.empno not in( 매니저 명단 );
 
 --답:
 select ename
