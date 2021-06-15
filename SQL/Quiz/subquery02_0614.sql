@@ -51,7 +51,7 @@ where custid = (select custid
                 from customer
                 where name = '박지성');
 
---답:
+--풀이:
 select bookname
 from book
 where bookid not in(select distinct bookid
