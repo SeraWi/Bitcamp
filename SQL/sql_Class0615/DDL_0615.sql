@@ -103,6 +103,7 @@ select * from emp02;
 
 
 ----------------------NEW-------------------------------------------------------
+--NOT NULL
 CREATE TABLE EMP02(
     EMPNO NUMBER(4) NOT NULL, --null값 넣으면 오류발생함(not null제약)
     ENAME VARCHAR2(20) NOT NULL,
@@ -115,6 +116,7 @@ SELECT * FROM EMP02;
 --drop table emp02;
 
 --------------------------------------------------------------------------------
+--UNIQUE
 CREATE TABLE EMP02(
     EMPNO NUMBER(4) NOT NULL unique, --중복된 데이터 들어오면 오류 발생
     ENAME VARCHAR2(20) NOT NULL,
@@ -124,6 +126,22 @@ CREATE TABLE EMP02(
 insert into emp02(empno, ename, sal, job) values (1000,'SON',1000,'MANAGER');
 
 
+--------------------------------------------------------------------------------
+--primary key
+CREATE TABLE EMP02(
+    EMPNO NUMBER(4) primary key, -- 기본키: not Null_+ unique
+    ENAME VARCHAR2(20) NOT NULL,
+    SAL NUMBER(6,2),
+    JOB VARCHAR(20));
 
-
-
+desc emp02;
+-------------------------------------------------------------------------------------
+-- check
+CREATE TABLE EMP02(
+    EMPNO NUMBER(4) primary key,
+    ENAME VARCHAR2(20) NOT NULL,
+    SAL NUMBER(6,2) check( sal > 500 and sal <5000), -- check
+    JOB VARCHAR(20));
+    
+    
+    
