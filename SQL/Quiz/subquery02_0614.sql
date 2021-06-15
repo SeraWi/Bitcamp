@@ -43,7 +43,7 @@ where bookid not in(select distinct bookid
                     from orders
                     where custid = 1);
 
---2 마당서점의 운영자와 경영자가 요구하는 다음 질문에 대해S QL 문을 작성하시오.
+--2 마당서점의 운영자와 경영자가 요구하는 다음 질문에 대해 SQL 문을 작성하시오.
 
 --(8) 주문하지 않은 고객의 이름(부속질의사용)
 -- 주문하지 않은 : not in( 주문한 고객 아이디)
@@ -77,7 +77,7 @@ group by custid;
 
 
 --(11) 고객의 이름과 고객이 구매한 도서목록
--- 고객 이름:custid, customer
+-- 고객 이름: name, customer
 -- 도서 목록: bookname, book 
 -- 구매: order
 
@@ -88,7 +88,7 @@ order by c.name;
 
 --(12) 도서의 가격(Book 테이블)과 판매 가격(Orders 테이블)의 차이가 가장 많은 주문
 
--- 최대 가격의 차이(절대값)
+-- 최대 가격 차이(절대값)
 select  max(abs(o.saleprice- b.price))
 from orders o, book b
 where b.bookid = o.bookid;
@@ -151,11 +151,11 @@ from book
 where bookid in (select bookid from orders where custid = 1);
 
 
-select *
-from book b, customer c, orders o
-where publisher in ('나무수', '대한미디어','굿스포츠')
-and  b.bookid = o.bookid and c.custid = o.custid
-and c.name != '박지성';
+--select *
+--from book b, customer c, orders o
+--where publisher in ('나무수', '대한미디어','굿스포츠')
+--and  b.bookid = o.bookid and c.custid = o.custid
+--and c.name != '박지성';
 
 --답
 select name
