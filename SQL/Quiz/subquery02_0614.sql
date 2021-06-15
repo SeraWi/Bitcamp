@@ -262,8 +262,9 @@ where 출판사수 >= 2;
 --풀이2: 더 간략하게
 select name
 from customer natural join orders natural join book
-having count(distinct publisher) >=2
-group by name;
+group by name
+having count(distinct publisher) >=2;
+
 
 
 
