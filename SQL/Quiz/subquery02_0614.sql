@@ -17,15 +17,22 @@ where bookid in ( select bookid
 order by publisher;
 
 
+
 --6) 박지성이구매한도서의이름, 가격, 정가와판매가격의차이
 -- 박지성: customer
 -- 도서이름, 가격-> book
 -- 판매가격 -> orders
 
+--풀이1
 select c.name, b.price, b.price-o.saleprice as pricegap
 from customer c, orders o, book b
 where c.custid = o.custid and o.bookid = b.bookid 
       and c.name= '박지성';
+      
+-- 풀이 2, NATURAL JOIN
+select name, price, price - saleprice as pricegap
+from customer natural join orders natural join book
+where name = '박지성';
 
 --(7) 박지성이 구매하지 않은 도서의 이름
 --박지성이 구매한거->orders에서 custid = 1인거 /bookid 1,3,2
