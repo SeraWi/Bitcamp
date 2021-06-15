@@ -136,12 +136,32 @@ CREATE TABLE EMP02(
 
 desc emp02;
 -------------------------------------------------------------------------------------
--- check
+-- check/ default
 CREATE TABLE EMP02(
     EMPNO NUMBER(4) primary key,
     ENAME VARCHAR2(20) NOT NULL,
-    SAL NUMBER(6,2) check( sal > 500 and sal <5000), -- check
-    JOB VARCHAR(20));
+    SAL NUMBER(6,2) check( sal > 500 and sal <5000), -- check: 범위 지정-> 오류 발생
+    JOB VARCHAR(20) default '미지정' -- job을 입력하지 않으면 미지정으로 입력된다.
+    );
     
-    
-    
+insert into emp02(empno, ename, sal, job) values (1000,'SON',3000,'MANAGER');
+insert into emp02(empno, ename, sal) values (2000,'S',3000); -- 미지정으로 입력된다.
+
+-------------------------------------------------------------------------------
+-- 외래키
+CREATE TABLE EMP02(
+    EMPNO NUMBER(4) primary key,
+    ENAME VARCHAR2(20) NOT NULL,
+    SAL NUMBER(6,2) check( sal > 500 and sal <5000),
+    JOB VARCHAR(20) default '미지정',
+    deptno number references dept(deptno) -- dept를 참조: references 참조테이블이름(컬럼=pk)
+    );
+desc dept; 
+
+insert into emp02(empno, ename, sal, job, deptno)
+values (2000,'SON',3000,'MANAGER',50); -- 에러  parent key not found
+
+insert into emp02(empno, ename, sal, job, deptno)
+         values (2000,'SON',3000,'MANAGER',40);
+
+select * from emp02;
