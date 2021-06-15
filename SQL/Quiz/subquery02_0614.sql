@@ -80,6 +80,11 @@ select name
 from customer
 where custid  not in(select distinct custid from orders);
 
+--참고풀이,OUTER JOIN
+select *
+from orders o, customer c
+where o.custid(+) = c.custid  and o.orderid is null;
+
 
 --(9) 주문 금액의 총액과 주문의 평균금액
 
