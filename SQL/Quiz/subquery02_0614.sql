@@ -85,6 +85,7 @@ from orders;
 --고객의 이름: customer table
 --구매액:sum(saleprice), orders table
 
+
 select (select name 
         from customer c 
         where c.custid = o.custid)as "NAME",
