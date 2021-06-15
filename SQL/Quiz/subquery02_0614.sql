@@ -38,17 +38,27 @@ where name = '박지성';
 --박지성이 구매한거->orders에서 custid = 1인거 /bookid 1,3,2
 --구매하지 않은거-> not in(1,2,3)
 
+
+--박지성 검색
+select custid
+from customer
+where name ='박지성';
+
 --박지성이 구매한 book id
 select distinct bookid
 from orders
-where custid = 1;
+where custid = (select custid
+                from customer
+                where name = '박지성');
 
 --답:
 select bookname
 from book
 where bookid not in(select distinct bookid
                     from orders
-                    where custid = 1);
+                    where custid = (select custid
+                                    from customer
+                                    where name ='박지성'));
 
 --2 마당서점의 운영자와 경영자가 요구하는 다음 질문에 대해 SQL 문을 작성하시오.
 
