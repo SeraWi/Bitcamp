@@ -174,8 +174,8 @@ group by c.name;
 
 --박지성이 구매한 도서 book id = 1,2,3
 select bookid
-from orders
-where custid = 1;
+from orders natural join customer
+where name ='박지성';
 
 --박지성이 구매한 도서의 출판사(3군데)
 select distinct publisher
@@ -195,8 +195,10 @@ from book b, customer c, orders o
 where b.bookid = o.bookid and c.custid = o.custid AND c.name != '박지성'
      and publisher in ( select distinct publisher
                         from book
-                        where bookid in(select bookid from orders where custid = 1));
-                        -- 박지성(custid=1)이 산 책의 출판사 
+                        where bookid in(select bookid 
+                                        from orders natural join customer
+                                        where name ='박지성'));
+                        
 
 
 --(2) 두 개 이상의 서로 다른 출판사에서 도서를 구매한 고객의 이름 
