@@ -12,11 +12,13 @@ select e.ename,deptno, d.dname
 from emp e natural join dept d
 where e.ename = 'SCOTT';
 
---ANSI
-select e.ename, e.deptno, d.dname
-from emp e join dept d
-on e.deptno = d.deptno
-where e.ename ='SCOTT';
+--on e.deptno = d.deptno  ===  using(deptno)
+--ANSI, using
+select ename, deptno, dname
+from emp  join dept 
+--on e.deptno = d.deptno
+using(deptno)
+where ename ='SCOTT';
 
 --33. INNER JOIN과 ON 연산자를 사용하여 사원 이름과 함께 
 --그 사원이 소속된 부서이름과 지역 명을 출력하시오.
@@ -30,6 +32,7 @@ where e.deptno =d.deptno ;
 select e.ename, d.dname,d.loc
 from emp e inner join dept d
 on e.deptno = d.deptno; -- 조인의 조건
+-- using(deptno)
 
 --natural join
 select ename, deptno, loc
@@ -40,10 +43,10 @@ select e.ename, d.dname
 from emp e, dept d
 where e.deptno = d.deptno and e.ename like '%A%';
 
---ANSI
+--ANSI/using
 select e.ename, d.dname
 from emp e inner join dept d
-on e.deptno = d.deptno
+using(deptno)
 where e.ename like '%A%';
 
 --NATURAL JOIN
@@ -57,11 +60,28 @@ select e.ename,e.job,e.deptno, d.dname
 from emp e, dept d
 where e.deptno= d.deptno and d.loc ='NEW YORK';
 
+--ANSI
+select e.ename, e.job, e.deptno, d.dname, d.loc
+from emp e inner join dept d
+on e.deptno = d.deptno
+where d.loc = 'NEW YORK';
+
+--NATURAL JOIN
+select ename, job, deptno, dname, loc
+from emp natural join dept
+where loc = 'NEW YORK';
+
 --38. SELF JOIN을 사용하여 사원의 이름 및 사원번호, 관리자 이름을 출력하시오.
 
 select e.ename, e.empno, m.ename
 from emp e, emp m
 where e.mgr = m.empno;
+
+--ANSI
+select e.ename, e.empno,m.ename
+from emp e inner join emp m
+on e.mgr = m.empno;
+
 ​
 --39. OUTER JOIN, SELF JOIN을 사용하여 관리자가 없는 사원을 포함하여 
 --사원번호를 기준으로 내림차순 정렬하여 출력하시오.
@@ -90,7 +110,12 @@ where e.ename ='SCOTT'
 and e.deptno= s.deptno
 and s.ename != 'SCOTT'; -- SCOTT제외해주기!!
 
-select * from emp;
+--ANSI
+select e.ename, e.deptno
+from emp e inner join emp m
+on m.ename ='SCOTT' and e.deptno = m.deptno;
+
+
 
 --41. SELF JOIN을 사용하여 WARD 사원보다 늦게 입사한 사원의 이름과 입사일을 출력하시오.
 
