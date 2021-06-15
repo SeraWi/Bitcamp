@@ -99,10 +99,15 @@ group by custid;
 -- 도서 목록: bookname, book 
 -- 구매: order
 
+--풀이1:
 select c.name, b.bookname
 from customer c, orders o, book b
 where c.custid = o.custid  and o.bookid = b.bookid
 order by c.name;
+
+--풀이2,NATURAL JOIN
+select name, bookname
+from customer natural join orders natural join book;
 
 --(12) 도서의 가격(Book 테이블)과 판매 가격(Orders 테이블)의 차이가 가장 많은 주문
 
