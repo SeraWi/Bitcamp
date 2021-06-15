@@ -88,6 +88,10 @@ select ename
 from emp
 where empno not in( select distinct mgr from emp where mgr is not null);
 
+--참고풀이(exists 사용)
+select ename
+from emp e
+where not exists(select * from emp m where e.empno = m.mgr);
 
 --50. 부하직원이 있는 사원의 이름을 표시하시오.
 --부하직원이 있다 =mgr에 자신의empno가 있다.
@@ -95,6 +99,11 @@ where empno not in( select distinct mgr from emp where mgr is not null);
 select ename
 from emp
 where empno in ( select distinct nvl(mgr,0) from emp);
+
+--참고풀이(exists 사용)
+select ename
+from emp e
+where exists(select * from emp m where e.empno = m.mgr);
 
 
 --51. BLAKE와 동일한 부서에 속한 사원의 이름과 입사일을 표시하는 질의를 작성하시오. 
