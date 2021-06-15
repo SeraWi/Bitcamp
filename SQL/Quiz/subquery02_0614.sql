@@ -95,7 +95,7 @@ from orders;
 --고객의 이름: customer table
 --구매액:sum(saleprice), orders table
 
---내풀이
+--내 풀이
 select (select name 
         from customer c 
         where c.custid = o.custid)as "NAME",
@@ -147,6 +147,9 @@ where abs(saleprice - price) = (select max(abs(saleprice - price))
                                 from orders natural join book);
                                
 
+--참고풀이
+select max(price - saleprice)
+from orders natural join book;
 
 
 --(13) 도서의 판매액 평균보다 자신의 구매액 평균이 더 높은 고객의 이름
@@ -165,8 +168,8 @@ group by custid;
 select c.name
 from orders o, customer c
 where o.custid = c.custid
-having avg(o.saleprice) > (select avg(saleprice) from orders) -- 11800
-group by c.name;
+group by c.name
+having avg(o.saleprice) > (select avg(saleprice) from orders); -- 11800;
 
 --풀이2,NATURAL JOIN
 select name, avg(saleprice)
