@@ -185,11 +185,11 @@ where bookid in (select bookid from orders where custid = 1);
 
 --select *
 --from book b, customer c, orders o
---where publisher in ('나무수', '대한미디어','굿스포츠')
+--where publisher in (박지성 구매 출판사)
 --and  b.bookid = o.bookid and c.custid = o.custid
 --and c.name != '박지성';
 
---답
+--풀이1
 select name
 from book b, customer c, orders o
 where b.bookid = o.bookid and c.custid = o.custid AND c.name != '박지성'
@@ -199,6 +199,16 @@ where b.bookid = o.bookid and c.custid = o.custid AND c.name != '박지성'
                                         from orders natural join customer
                                         where name ='박지성'));
                         
+--풀이2 NATURAL JOIN
+select name
+from book natural join customer natural join orders
+where name != '박지성'
+      and publisher in( select distinct publisher
+                    from book
+                    where bookid in(select bookid 
+                                     from orders natural join customer
+                                     where name ='박지성'));
+
 
 
 --(2) 두 개 이상의 서로 다른 출판사에서 도서를 구매한 고객의 이름 
