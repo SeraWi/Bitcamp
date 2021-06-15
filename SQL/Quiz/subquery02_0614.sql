@@ -9,6 +9,7 @@
 
 --(5) 박지성이 구매한도서의 출판사수
 
+--풀이1
 select count(publisher)
 from book
 where bookid in ( select bookid
@@ -16,6 +17,9 @@ where bookid in ( select bookid
                   where c.custid= o.custid and c.name = '박지성')
 order by publisher;
 
+--풀이2 ,natural join
+select 
+from orders natural join customer natural
 
 
 --6) 박지성이구매한도서의이름, 가격, 정가와판매가격의차이
@@ -239,7 +243,7 @@ from (select name, count(distinct publisher) as "출판사수"
       group by name)
 where 출판사수 >= 2;
 
---풀이2: 간략하게
+--풀이2: 더 간략하게
 select name
 from customer natural join orders natural join book
 having count(distinct publisher) >=2
