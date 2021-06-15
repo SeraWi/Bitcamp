@@ -26,7 +26,8 @@ create table phoneInfo_univ(
     fr_u_major varchar2(20)  default 'N'
     constraint univ_major_nn not null,
    
-    fr_u_year number(1)  default 1 not null
+    fr_u_year number(1)  default 1 
+    constraint univ_year_nn not null
     constraint univ_year_ck check( 0< fr_u_year  and fr_u_year <5),
     
     fr_ref Number(6)
@@ -44,8 +45,7 @@ create table phoneInfo_com(
     constraint com_ref_fk references phoneInfo_basic(idx)
 );
 
-
-drop table phoneInfo_univ;
+drop table phoneInfo_basic;
 
 
 
