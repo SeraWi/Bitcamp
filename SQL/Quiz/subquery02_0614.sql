@@ -177,7 +177,8 @@ from orders natural join customer
 having avg(saleprice) > (select avg(saleprice) from orders)
 group by name;
 
-
+ 
+                   
 
 --3. 마당서점에서 다음의 심화된 질문에 대해 SQL 문을 작성하시오.
 
@@ -220,6 +221,14 @@ where name != '박지성'
                     where bookid in(select bookid 
                                      from orders natural join customer
                                      where name ='박지성'));
+
+
+--참고풀이(더 간략하게)
+select name
+from orders natural join customer natural join book
+where publisher in(select distinct publisher
+                   from orders natural join customer natural join book
+                   where name = '박지성') and name != '박지성';
 
 
 --(2) 두 개 이상의 서로 다른 출판사에서 도서를 구매한 고객의 이름 
