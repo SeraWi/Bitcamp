@@ -218,9 +218,13 @@ select c.name, count(distinct b.publisher)as "출판사수"
 from customer c, orders o, book b
 where c.custid = o.custid and b.bookid  = o.bookid
 group by c.name;
+--natural join
+select name, count(distinct publisher)
+from customer natural join orders natural join book
+group by name;
 
 
--- 답(inline view이용)
+-- 풀이1(inline view이용)
 select name
 from (select c.name, count(distinct b.publisher)as "출판사수"
       from customer c, orders o, book b
@@ -228,6 +232,13 @@ from (select c.name, count(distinct b.publisher)as "출판사수"
       group by c.name)
 where 출판사수 >= 2;
 
+--풀이1- natral join으로 
+select name
+from (select name, count(distinct publisher) as "출판사수"
+      from customer natural join orders natural join book
+      group by name)
+where 출판사수 >= 2;
 
+--풀이2: 
 
 
