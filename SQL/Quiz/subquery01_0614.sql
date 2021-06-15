@@ -171,8 +171,8 @@ and sal >(select avg(sal)from emp);
 --58. 평균급여가 가장 적은 업무를 찾으시오.
 select job, avg(sal)
 from emp
-group by job;
-having avg(sal) <= All(select avg(sal) from emp group by job)
+group by job
+having avg(sal) <= All(select avg(sal) from emp group by job);
 
 
 --59. 담당업무가 MANAGER 인 사원이 소속된 부서와 동일한 부서의 사원을 표시하시오.
