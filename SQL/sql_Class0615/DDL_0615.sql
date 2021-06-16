@@ -191,3 +191,19 @@ CREATE TABLE EMP03(
  );
  
 drop table emp03;
+
+--------------------------------------------------------------------------------
+--폰 북 테이블 정의서
+create table phoneinfo_univ(
+idx number(6),
+fr_u_major varchar2(20) default 'N',
+fr_u_year number(1) default 1,
+fr_ref number(6) not null,
+-----제약조건----
+constraint pi_univ_idx_pk primary key(idx),
+constraint chk check (fr_u_year between 1 and 4),
+constraint pi_univ_ref_FK foreign key (fr_ref) references phoneInfo_basic(idx)
+);
+
+
+
