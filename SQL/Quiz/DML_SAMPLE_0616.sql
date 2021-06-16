@@ -68,6 +68,7 @@ drop table phoneinfo_univ;
 delete from phoneinfo_basic;
 drop TABLE PHONEINFO_COM;
 DROP TABLE PHONEINFO_BASIC;
+--------------------------------------------------------------------------------
 
 
 
