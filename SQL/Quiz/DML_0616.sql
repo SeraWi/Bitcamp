@@ -39,14 +39,9 @@ delete from phoneInfo_basic
 where fr_name = 'LEE' and idx = 3333;
 
 --SELECT
---이름과 전화번호만 볼 수 있는 table 만들어서 보기
+--이름과 전화번호만 보기
+SELECT fr_name, FR_PHONENUMBER from phoneinfo_basic;
 
-create table Basic_Info
-as
-select  fr_name, FR_PHONENUMBER from phoneInfo_basic;
-
-select * from Basic_Info;
-drop table Basic_Info;
 ---------------------------------------------------------------------------------
 -- 2. phoneInfo_univ 테이블의 select, update, delete, insert하는 sql
 
@@ -56,7 +51,7 @@ desc phoneInfo_univ;
 insert into  phoneInfo_univ (idx, FR_U_MAJOR,FR_U_YEAR,FR_REF )
                   values    (1, 'English', 2 , 1111);
 insert into  phoneInfo_univ (idx, FR_U_MAJOR,FR_U_YEAR,FR_REF )
-                  values    (2, 'Business', 4 , 2222;
+                  values    (2, 'Business', 4 , 2222);
 insert into  phoneInfo_univ (idx, FR_U_MAJOR,FR_U_YEAR,FR_REF )
                   values    (3, 'Music', 3 , 3333); --에러: parent key not found, 위에서 LEE 3333 delete 해서 에러
 insert into  phoneInfo_univ (idx, FR_U_MAJOR,FR_U_YEAR,FR_REF )
