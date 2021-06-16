@@ -68,6 +68,50 @@ select * from dept;
 insert into dept02 
 select * from dept02; -- 자기 자신도 가능!!
 --------------------------------------------------------------------------------
+--데이터를 변경 : 행 단위로 선택하고 변경하고자하는 컬럼을 기술
+--update 테이블명 set 컬럼이름 = 새로운 데이터, 컬럼이름 = 새로운 데이터...
+--where 행을 선택하는 조건;
+
+create table dept03
+as select * from dept;
+
+select * from dept03;
+
+--모든 부서의 위치를 SEOUL로 변경
+update dept03
+set loc = 'SEOUL';
+-- 4개 행 이(가) 업데이트되었습니다.
+
+--10번 부서의 위치를 BUSAN으로 변경, 부서이름도 DEV로 변경
+update dept03
+set loc = 'BUSAN' , dname = 'DEV'
+where deptno = 10;
+--------------------------------------------------------------------------------
+--emp01 새롭게 생성하고 update
+drop table emp01;
+create table emp01
+as select * from emp;
+select * from emp01;
+
+--모든 사원의 부서번호를 30번으로 수정합시다.
+update emp01
+set deptno = 10;
+-- 모든 행 업데이트
+
+-- 이번엔 모든 사원의 급여를 10%인상시키는 update문
+update emp01
+set sal = sal * 1.1;
+
+-- 모든 사원의 입사일을 오늘로 수정
+update emp01
+set hiredate = sysdate;
+-- set hiredate ='21/06/16'도 가능
+
+
+
+
+
+
 
 
 
