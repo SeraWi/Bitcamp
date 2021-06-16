@@ -1,0 +1,9 @@
+--2021.06.06
+--DML 퀴즈 리뷰
+
+-- INSERT : C REATE
+-- SELECT : R EAD
+-- UPDATE : U PDATE
+-- DELETE : D ELETE
+
+
