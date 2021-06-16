@@ -39,7 +39,7 @@ delete from phoneInfo_basic
 where fr_name = 'LEE' and idx = 3333;
 
 --SELECT
---이름과 전화번호만 볼 수 있는 table 보기
+--이름과 전화번호만 볼 수 있는 table 만들어서 보기
 
 create table Basic_Info
 as
@@ -82,7 +82,10 @@ as
 select idx, FR_U_MAJOR from phoneInfo_univ;
 
 select * from Univ_basicInfo;
-drop table Univ_basicInfo;
+-- 테이블 조인해서 보기, 대학친구의 모든 정보보기
+select *
+from phoneInfo_basic b, phoneInfo_univ u
+where b.idx = u.fr_ref;
 
 --------------------------------------------------------------------------------
 --3. phoneinfo_com 테이블의 SELECT, UPDATE, DELETE, INSERT 하는 SQL
@@ -109,9 +112,9 @@ delete from phoneInfo_com
 where FR_C_COMPANY = 'GOOGLE';
 
 -- SELECT
--- 테이블 조인해서 보기, 대학친구의 모든 정보보기
+-- 테이블 조인해서 보기, 회사친구의 모든 정보보기
 select *
-from phoneInfo_basic b, phoneInfo_univ u
-where b.idx = u.fr_ref;
+from phoneInfo_basic b, phoneInfo_com c
+where b.idx = c.fr_ref;
 
 
