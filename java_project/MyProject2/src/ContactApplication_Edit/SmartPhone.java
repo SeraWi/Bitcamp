@@ -30,107 +30,45 @@ public class SmartPhone {
 		this.numOfContact = 0;
 	}
 
-	public static void nameTest(String name) throws NameNotFindException{
-		// 연락처에 이름 입력시 공백에 대한 예외처리 -> 다시 입력받기
-		// 영문자와 한글만 허용하는 예외처리
-		// 한글 허용 해결해야함
-		try {
-			for(int i = 0; i< name.length(); i++) {
-				char nameChar = name.charAt(i);
-				if(!('a' <= nameChar && nameChar <='z' || 
-						'A' <= nameChar && nameChar <='Z' 
-						)) {
-					throw new NameNotFindException("이름에 영문자와 한글 이외에 글자가 입력되었습니다.");
-				}
-			}
-			if(name.equals("") || name == null) {
-				throw new NameNotFindException("이름이 입력되지 않았습니다.");
-			}
-
-		}catch(NameNotFindException ex) {
-			System.out.println(ex.getMessage());
-		}
-	}
-	
-	public static boolean nameTypeCheck(String name) {
+	public static boolean nameTypeCheck(String name) {// 이름 타입 체크!
 		//문자의 영문, 한글 여부를 리턴한다.
 		//단어에 영문, 한글이 들어갈 경우 true리턴한다. 
 		return Pattern.matches("^[a-zA-Z가-힣]*$", name);
 	}
-	
-	public static boolean phoneNumTypeCheck(String phoneNum) {
-		//핸드폰 번호가 형식에 맞지 않으면 false린턴한다.
-		//핸드폰 번호는 : 000-0000-0000형식
-		return Pattern.matches("^01(?:0|1|[6-9]) - (?:\\d{3}|\\d{4}) - \\d{4}$" , phoneNum);
-	}
-	
-	public static boolean nameTest2(String name) {
-		// 방법 2. 이름 검사후 boolean 타입으로 반환
-		//이름에 한글 입력도 추가해야함
-		
-		boolean result = true;
 
-		for(int i= 0; i< name.length(); i++) {
-			char c = name.charAt(i);
-			if(!(c >='a' && c <= 'z' ||
-					c >='A' && c <='Z')) {
-				result = false;
-			}
-		}
-		return result;
-	}
-
-//	public static void phoneNumTest(String phoneNum) {
-//		// 전화번호가 형식에 맞지 않을 때 예외처리
-//		// 전화번호가 동일할 경우 예외처리-> 입력되지 않도록 처리
-//
-//		try {
-//
-//		}catch(PhoneNumException ex) {
-//			System.out.println(ex.getMessage());
-//		}
-//
-//	}
-
-
-	public void saveContact() throws NameNotFindException {////1. 연락처 입력
-
+	public static String nameCheck(String name) throws NameNotFindException{
+		// 연락처에 이름 입력시 공백에 대한 예외처리 -> 다시 입력받기
+		// 영문자와 한글만 허용하는 예외처리
 		try {
-			System.out.println("-----------연락처를 저장합니다.-----------");
-			
-			System.out.print("이름을 입력해주세요 >");
-			String name = scanner.nextLine();
-			// 연락처에 이름 입력시 공백에 대한 예외처리 -> 다시 입력받기
-			// 영문자와 한글만 허용하는 예외처리
-			//nameTest(name);//예외처리 하는 메서드 호출-> NameNotFindException
-			
-//			if(name != null && !name.trim().isEmpty()) {
-//				if(nameTest2(name)) {
-//					//true ->이름 제대로 입력됨
-//				}else {//이름 제대로 입력되지 않음
-//					throw new NameNotFindException("이름에 한글과 영어 이외의 글자가 입력되었습니다.");
-//				}
-//			}else {
-//				System.out.println("이름이 입력되지 않았습니다.");
-//			}
-			
 			if(name != null && !name.trim().isEmpty()) {
 				if(nameTypeCheck(name)) {
 					//true ->이름 제대로 입력됨
-				
+					
 				}else {//이름 제대로 입력되지 않음
 					throw new NameNotFindException("이름에 한글과 영어 이외의 글자가 입력되었습니다.");
 				}
 			}else {
 				System.out.println("이름이 입력되지 않았습니다.");
 			}
-			
+		}catch(NameNotFindException ex) {
+			System.out.println(ex.getMessage());
+		}
 
-			System.out.print("전화번호를 입력해주세요(형식: 010-0000-0000) >");
-			String phoneNum = scanner.nextLine();
-			// 전화번호 형식에 맞지 않을 때 예외처리
-			// 전화번호가 동일할 경우 예외처리-> 입력되지 않도록 처리
-			
+		return name;
+	}
+
+
+	public static boolean phoneNumTypeCheck(String phoneNum) {
+		//핸드폰 번호가 형식에 맞지 않으면 false리턴한다.
+		//핸드폰 번호는 : 000-0000-0000형식
+		return Pattern.matches("^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$" , phoneNum);
+	}
+
+
+	public static String phoneNumCheck(String phoneNum) throws PhoneNumException {
+		// 전화번호가 형식에 맞지 않을 때 예외처리
+		// 전화번호가 동일할 경우 예외처리-> 입력되지 않도록 처리
+		try {
 			if(phoneNum != null ) {
 				if(phoneNumTypeCheck(phoneNum)) {
 					//true ->제대로 입력됨
@@ -140,48 +78,64 @@ public class SmartPhone {
 			}else {
 				System.out.println("전화번호가 입력되지 않았습니다.");
 			}
-			
-			
-			
-
-			System.out.print("이메일을 입력해주세요>");
-			String email = scanner.nextLine();
-			System.out.print("주소를 입력해주세요>");
-			String address = scanner.nextLine();
-			System.out.print("생일을 입력해주세요>");
-			String birthday = scanner.nextLine();
-			System.out.print("그룹을 입력해주세요. (회사,고객, 기타) >");
-			String group = scanner.nextLine();
-			//그룹에 해당하는 정보-> companyContact or customerConatct
-
-			if(group == "회사") {
-				System.out.print("회사 이름을  입력해주세요 >");
-				String comName = scanner.nextLine();
-				System.out.println("부서 이름을 입력해주세요 >");
-				String deptName = scanner.nextLine();
-				System.out.println("직급을 입력해주세요 >");
-				String position = scanner.nextLine();
-
-				contacts.add(new CompanyContact(name,phoneNum,email,address,birthday,group,comName,deptName,position));
-				System.out.println("------------저장 완료 되었습니다.-----------");
-
-			}else if(group == "고객"){// 고객 일때
-				System.out.print("회사 이름을  입력해주세요 >");
-				String comName = scanner.nextLine();
-				System.out.print("거래품목을 입력해주세요 >");
-				String product = scanner.nextLine();
-				System.out.print("직급을 입력해주세요 >");
-				String position = scanner.nextLine();
-				contacts.add(new CustomerContact(name,phoneNum,email,address,birthday,group,comName,product,position));
-				System.out.print("------------저장 완료 되었습니다.-----------");
-			}else { //기타
-				contacts.add(new Contact(name, phoneNum,email,address,birthday,group));
-			}
-		}catch(NameNotFindException ex) {
-			System.out.println(ex.getMessage());
-		} catch (PhoneNumException ex) {
+		}catch(PhoneNumException ex) {
 			System.out.println(ex.getMessage());
 		}
+		return phoneNum;
+	}
+
+
+	public void saveContact() throws NameNotFindException, PhoneNumException {////1. 연락처 입력
+
+
+		System.out.println("-----------연락처를 저장합니다.-----------");
+
+		System.out.print("이름을 입력해주세요 >");
+		String name = scanner.nextLine();
+		// 연락처에 이름 입력시 공백에 대한 예외처리 -> 다시 입력받기
+		// 영문자와 한글만 허용하는 예외처리
+		nameCheck(name);//예외처리 하는 메서드 호출-> NameNotFindException
+
+		System.out.print("전화번호를 입력해주세요(형식: 000-0000-0000/01000000000) >");
+		String phoneNum = scanner.nextLine();
+		// 전화번호 형식에 맞지 않을 때 예외처리
+		// 전화번호가 동일할 경우 예외처리-> 입력되지 않도록 처리
+		phoneNumCheck(phoneNum);
+
+		System.out.print("이메일을 입력해주세요>");
+		String email = scanner.nextLine();
+		System.out.print("주소를 입력해주세요>");
+		String address = scanner.nextLine();
+		System.out.print("생일을 입력해주세요>");
+		String birthday = scanner.nextLine();
+		System.out.print("그룹을 입력해주세요. (회사,고객, 기타) >");
+		String group = scanner.nextLine();
+		//그룹에 해당하는 정보-> companyContact or customerConatct
+
+		if(group == "회사") {
+			System.out.print("회사 이름을  입력해주세요 >");
+			String comName = scanner.nextLine();
+			System.out.println("부서 이름을 입력해주세요 >");
+			String deptName = scanner.nextLine();
+			System.out.println("직급을 입력해주세요 >");
+			String position = scanner.nextLine();
+
+			contacts.add(new CompanyContact(name,phoneNum,email,address,birthday,group,comName,deptName,position));
+			System.out.println("------------저장 완료 되었습니다.-----------");
+
+		}else if(group == "고객"){// 고객 일때
+			System.out.print("회사 이름을  입력해주세요 >");
+			String comName = scanner.nextLine();
+			System.out.print("거래품목을 입력해주세요 >");
+			String product = scanner.nextLine();
+			System.out.print("직급을 입력해주세요 >");
+			String position = scanner.nextLine();
+			contacts.add(new CustomerContact(name,phoneNum,email,address,birthday,group,comName,product,position));
+			System.out.print("------------저장 완료 되었습니다.-----------");
+		}else { //기타
+			contacts.add(new Contact(name, phoneNum,email,address,birthday,group));
+		}
+
 	}
 
 
