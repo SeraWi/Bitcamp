@@ -15,8 +15,6 @@ values(1, 'KING', '010-0000-0000', 'king@gmail.com', 'KOREA',sysdate)
 insert into phoneinfo_basic (idx, fr_name, fr_phonenumber)
 values(2,'SCOTT','010-9999-9999');
 
--- SELECT : READ
-select * from phoneInfo_basic;
 
 --UPDATE : UPDATE
 --SCOTT 의 이메일을 업데이트, 주소도 업데이트하기
@@ -30,6 +28,10 @@ where idx = 2;
 delete from phoneinfo_basic
 where idx = 1
 ;
+
+-- SELECT : READ
+select * from phoneInfo_basic;
+select * from phoneinfo_basic where idx = 2;
 
 
 
