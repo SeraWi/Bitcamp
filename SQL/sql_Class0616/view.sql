@@ -49,7 +49,26 @@ from view_hir;
 select rownum, ename, hiredate 
 from view_hir
 where rownum < 6
+order by ename
 ;
+
+--------------------------------------------------------------------------------
+--sequence : 번호 재생기
+create sequence pi_idx_pk;
+
+select pi_idx_pk.nextval
+from dual; -- 호출할 때마다 증가
+
+select pi_idx_pk.currval
+from dual; -- 현재 값을 보여준다
+
+insert into phoneinfo_basic
+values(pi_idx_pk.nextval, 'PARK', '010-7777-7777', 'park@gmail.com', 'LONDON', sysdate)
+;
+insert into phoneinfo_com
+values(1, 'NAVER', pi_idx_pk.currval)
+;
+
 
 
 
