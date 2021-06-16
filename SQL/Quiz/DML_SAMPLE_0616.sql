@@ -41,10 +41,18 @@ select * from phoneinfo_basic where idx = 2;
 insert into phoneinfo_basic
 values(3, 'SON', '010-1111-1111', 'son@gmail.com', 'KOREA',sysdate)
 ;
-
+-- 2. univ정보 입력
 insert into phoneinfo_univ
-values(1,'COMPUTER',1)
+values(1,'COMPUTER',4,3)
 ;
+
+-- SELECT : READ
+select fr_name, pu.fr_u_major, pu.fr_u_year
+from phoneinfo_basic pb, phoneinfo_univ pu
+where pb.idx= pu.fr_ref;
+
+
+
 
 
 
