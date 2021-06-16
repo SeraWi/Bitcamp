@@ -33,6 +33,12 @@ where idx = 1
 select * from phoneInfo_basic;
 select * from phoneinfo_basic where idx = 2;
 
+--------------------------------------------------------------------------------
+--INSERT : CREATE 
+--대학친구의 정보를 입력
+
+
+
 
 
 
