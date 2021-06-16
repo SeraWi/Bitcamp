@@ -4,6 +4,7 @@
 -- 앞에서 생성한 전봐번호부 테이블을 기준으로 DML을 작성해봅시다.
 
 --1. phoneInfo_basic 테이블의 select, update, delete, insert하는 sql
+desc phoneInfo_basic;
 select * from phoneInfo_basic;
 drop table phoneInfo_basic;
 delete from phoneInfo_basic;
@@ -38,7 +39,7 @@ delete from phoneInfo_basic
 where fr_name = 'LEE' and idx = 3333;
 
 --SELECT
---이름과 전화번호만 볼 수 있는 table 만들기
+--이름과 전화번호만 볼 수 있는 table 보기
 
 create table Basic_Info
 as
@@ -75,7 +76,7 @@ delete from phoneInfo_univ
 where idx = 4444;
 
 --SELECT
--- 학생 id와 전공만 볼 수 있는 새로운 테이블 생성
+-- 학생 id와 전공만 볼 수 있는 새로운 테이블 보기
 create table Univ_basicInfo
 as
 select idx, FR_U_MAJOR from phoneInfo_univ;
