@@ -106,6 +106,41 @@ set sal = sal * 1.1;
 update emp01
 set hiredate = sysdate;
 -- set hiredate ='21/06/16'도 가능
+--------------------------------------------------------------------------------
+rollback;
+select * from emp01;
+
+--부서번호가 10번인 사원의 부서번호를 30번으로 수정합시다.
+update emp01
+set deptno= 30
+where deptno = 10;
+
+-- 급여가 3000 이상인 사원만 급여를 10% 인상
+update emp01
+set sal = sal * 1.1
+where sal >= 3000;
+
+-- 1981년에 입사한 사원의 입사일이 오늘로 수정합시다.
+update emp01
+set hiredate = sysdate
+where substr(hiredate, 1, 2) = 81; 
+
+-- SCOTT 사원의 부서번호는 30번으로 직급은 MANAGER로 한꺼번에 수정
+update emp01
+set deptno = 30 , job ='MANAGER'
+where ename ='SCOTT';
+
+select * from emp01;
+
+-- SCOTT사원의 입사일은 오늘로, 급여를 50으로 커미션을 4000으로 수정
+update emp01
+set hiredate = sysdate, sal = 50, comm = 4000
+where ename ='SCOTT';
+
+
+
+
+
 
 
 
