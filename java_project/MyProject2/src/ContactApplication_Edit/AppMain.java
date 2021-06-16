@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class AppMain {
 	
 	
-	public static void main(String[] args) throws NameNotFindException {
+	public static void main(String[] args) throws NameNotFindException, PhoneNumException {
 
 		Scanner scanner = new Scanner(System.in);
 		SmartPhone smart = new SmartPhone(); //스마트폰 생성
