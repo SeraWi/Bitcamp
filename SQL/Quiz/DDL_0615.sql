@@ -41,7 +41,7 @@ create table phoneInfo_com(
     fr_c_company varchar2(20) default 'N'
     constraint com_company_nn not null,
     
-    fr_ref number(6)
+    fr_ref number(6)not null -- 반드시 참조하려면 NOT NULL써야 한다.
     constraint com_ref_fk references phoneInfo_basic(idx)
 );
 
