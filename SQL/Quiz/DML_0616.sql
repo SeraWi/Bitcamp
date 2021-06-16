@@ -54,13 +54,13 @@ drop table Basic_Info;
 desc phoneInfo_univ;
 
 insert into  phoneInfo_univ (idx, FR_U_MAJOR,FR_U_YEAR,FR_REF )
-                  values    (1111, 'English', 2 , 1111);
+                  values    (1, 'English', 2 , 1111);
 insert into  phoneInfo_univ (idx, FR_U_MAJOR,FR_U_YEAR,FR_REF )
-                  values    (2222, 'Business', 4 , 2222;
+                  values    (2, 'Business', 4 , 2222;
 insert into  phoneInfo_univ (idx, FR_U_MAJOR,FR_U_YEAR,FR_REF )
-                  values    (3333, 'Music', 3 , 3333); --에러: parent key not found, 위에서 LEE 3333 delete 해서 에러
+                  values    (3, 'Music', 3 , 3333); --에러: parent key not found, 위에서 LEE 3333 delete 해서 에러
 insert into  phoneInfo_univ (idx, FR_U_MAJOR,FR_U_YEAR,FR_REF )
-                  values    (4444, 'ART', 1 ,4444);
+                  values    (4, 'ART', 1 ,4444);
                   
 select * from phoneInfo_univ ;
 
@@ -90,10 +90,10 @@ desc phoneInfo_Com;
 drop table PhoneInfo_Com;
 --Insert
 insert into phoneInfo_Com (IDX,FR_C_COMPANY,FR_REF)
-            values        (5555, 'GOOGLE',5555);
+            values        (1, 'GOOGLE',5555);
 
 insert into phoneInfo_Com (IDX,FR_C_COMPANY,FR_REF)
-            values        (6666, 'GOOGLE',6666);
+            values        (2, 'GOOGLE',6666);
             
 select * from phoneInfo_Com;
 
