@@ -62,15 +62,41 @@ select * from phoneinfo_univ;
 
 --DELETe :DELETE
 delete from phoneinfo_univ
-where idx = 2;
+where idx = 1;
+delete from phoneinfo_basic
+where idx = 3;
 
-drop table phoneinfo_univ;
-delete from phoneinfo_basic;
-drop TABLE PHONEINFO_COM;
-DROP TABLE PHONEINFO_BASIC;
+
 --------------------------------------------------------------------------------
 
+-- INSERT : CREATe
+insert into phoneinfo_basic
+values(4, 'PARK', '010-7777-7777', 'park@gmail.com', 'LONDON', sysdate)
+;
+insert into phoneinfo_com
+values(1, 'NAVER', 4)
+;
 
+--SELECT: READ
+select fr_name, pb.fr_phonenumber, pb.fr_email, pb.fr_address, pc.fr_c_company
+from phoneinfo_basic pb , phoneinfo_com pc
+where pb.idx=pc.fr_ref
+;
+
+--UPDATe : UPDATE
+--회사정보를 수정
+update phoneinfo_com
+set fr_c_company='GOOGLE'
+where idx=1
+;
+
+--DELETE : DELETE
+delete from phoneinfo_com
+where idx=1
+;
+delete from phoneinfo_basic
+where idx=4
+;
 
 
 
