@@ -70,6 +70,9 @@ where idx = 1;
 delete from phoneInfo_univ
 where idx = 4;
 
+delete from phoneInfo_basic
+where idx = 4444;
+
 --SELECT
 -- 학생 id와 전공만 볼 수 있는 새로운 테이블 보기
 create table Univ_basicInfo
@@ -102,14 +105,19 @@ set FR_C_COMPANY = 'SAMSUNG'
 where idx = 1;
 
 --DELETE
---idx GOOGLE에 다니는 회사원을 삭제한다.
+--idx GOOGLE에 다니는 회사원(idx = 2)을 삭제한다.
 delete from phoneInfo_com
 where FR_C_COMPANY = 'GOOGLE';
+
+delete from phoneInfo_basic
+where idx = 6666;
+
 
 -- SELECT
 -- 테이블 조인해서 보기, 회사친구의 모든 정보보기
 select *
 from phoneInfo_basic b, phoneInfo_com c
 where b.idx = c.fr_ref;
+
 
 
