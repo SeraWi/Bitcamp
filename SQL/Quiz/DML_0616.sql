@@ -65,15 +65,15 @@ insert into  phoneInfo_univ (idx, FR_U_MAJOR,FR_U_YEAR,FR_REF )
 select * from phoneInfo_univ ;
 
 --UPDATE
--- idx= 1111학생이 전공을 Business로 바꿈
+-- idx= 1학생이 전공을 Business로 바꿈
 update phoneInfo_univ
 set FR_U_MAJOR = 'Business'
-where idx = 1111;
+where idx = 1;
 
 --DELETE
--- idx가 4444인 학생 삭제하기
+-- idx가 4인 학생 삭제하기
 delete from phoneInfo_univ
-where idx = 4444;
+where idx = 4;
 
 --SELECT
 -- 학생 id와 전공만 볼 수 있는 새로운 테이블 보기
@@ -98,10 +98,10 @@ insert into phoneInfo_Com (IDX,FR_C_COMPANY,FR_REF)
 select * from phoneInfo_Com;
 
 --Update
--- idx 5555의 직장을 SAMSUNG으로 바꾼다
+-- idx 1의 직장을 SAMSUNG으로 바꾼다
 update phoneInfo_Com
 set FR_C_COMPANY = 'SAMSUNG'
-where idx = 5555;
+where idx = 1;
 
 --DELETE
 --idx GOOGLE에 다니는 회사원을 삭제한다.
