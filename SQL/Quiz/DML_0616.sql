@@ -4,6 +4,9 @@
 -- 앞에서 생성한 전봐번호부 테이블을 기준으로 DML을 작성해봅시다.
 
 --1. phoneInfo_basic 테이블의 select, update, delete, insert하는 sql
+select * from phoneInfo_basic;
+drop table phoneInfo_basic;
+delete from phoneInfo_basic;
 
 -- INSERT
 
@@ -21,10 +24,6 @@ insert into phoneInfo_basic (idx, fr_name,FR_PHONENUMBER,FR_EMAIL,FR_ADDRESS)
 insert into phoneInfo_basic (idx, fr_name,FR_PHONENUMBER,FR_EMAIL,FR_ADDRESS)
                 values      (6666, 'LEA', '010-6666-6666', 'LEA6666', 'NEW YORK');
                 
-select * from phoneInfo_basic;
-drop table phoneInfo_basic;
-delete from phoneInfo_basic;
-
 
 --UPDATE
 -- KIM의 ADDRESS를 SEOUL에서 BUSAN으로 변경하기
@@ -63,7 +62,6 @@ insert into  phoneInfo_univ (idx, FR_U_MAJOR,FR_U_YEAR,FR_REF )
                   values    (4444, 'ART', 1 ,4444);
                   
 select * from phoneInfo_univ ;
-delete from phoneInfo_univ;
 
 --UPDATE
 -- idx= 1111학생이 전공을 Business로 바꿈
@@ -88,6 +86,7 @@ drop table Univ_basicInfo;
 --------------------------------------------------------------------------------
 --3. phoneinfo_com 테이블의 SELECT, UPDATE, DELETE, INSERT 하는 SQL
 desc phoneInfo_Com;
+drop table PhoneInfo_Com;
 --Insert
 insert into phoneInfo_Com (IDX,FR_C_COMPANY,FR_REF)
             values        (5555, 'GOOGLE',5555);
@@ -96,7 +95,6 @@ insert into phoneInfo_Com (IDX,FR_C_COMPANY,FR_REF)
             values        (6666, 'GOOGLE',6666);
             
 select * from phoneInfo_Com;
-delete from phoneInfo_com;
 
 --Update
 -- idx 5555의 직장을 SAMSUNG으로 바꾼다
