@@ -13,6 +13,12 @@ from emp
 where deptno = 30
 ;
 
-select * from emp_view30;
+select * from emp_view30
+where ename = 'JAMES';
+
+
+
+
+
 
 
