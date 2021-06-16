@@ -37,8 +37,14 @@ select * from phoneinfo_basic where idx = 2;
 --INSERT : CREATE 
 --대학친구의 정보를 입력
 
+-- 1. basic 정보 입력
+insert into phoneinfo_basic
+values(3, 'SON', '010-1111-1111', 'son@gmail.com', 'KOREA',sysdate)
+;
 
-
+insert into phoneinfo_univ
+values(1,'COMPUTER',1)
+;
 
 
 
