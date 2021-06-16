@@ -111,6 +111,7 @@ where FR_C_COMPANY = 'GOOGLE';
 -- SELECT
 -- 테이블 조인해서 보기, 대학친구의 모든 정보보기
 select *
-from phoneInfo_basic natural join phoneInfo_univ u;
+from phoneInfo_basic b, phoneInfo_univ u
+where b.idx = u.fr_ref;
 
 
