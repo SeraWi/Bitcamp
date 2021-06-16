@@ -30,7 +30,7 @@ create table phoneInfo_univ(
     constraint univ_year_nn not null
     constraint univ_year_ck check( 0< fr_u_year  and fr_u_year <5),
     
-    fr_ref Number(6)
+    fr_ref Number(6)not null
     constraint univ_ref_fk references phoneInfo_basic(idx)
 );
 
@@ -46,6 +46,7 @@ create table phoneInfo_com(
 );
 
 drop table phoneInfo_basic;
+
 
 
 
