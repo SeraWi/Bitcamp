@@ -46,10 +46,23 @@ insert into phoneinfo_univ
 values(1,'COMPUTER',4,3)
 ;
 
+
 -- SELECT : READ
 select fr_name, pu.fr_u_major, pu.fr_u_year
 from phoneinfo_basic pb, phoneinfo_univ pu
 where pb.idx= pu.fr_ref;
+
+--UPDATE : UPDATE 데이터 수정
+-- 전공과 학년을 수정, idx 또는 외래키
+update phoneinfo_univ
+set fr_u_major = 'KOR', fr_u_year =4
+where idx = 1;
+
+select * from phoneinfo_univ;
+
+--DELETe :DELETE
+delete from phoneinfo_univ
+where idx = 2;
 
 
 
