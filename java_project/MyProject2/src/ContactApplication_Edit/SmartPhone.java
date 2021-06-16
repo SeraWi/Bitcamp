@@ -67,7 +67,7 @@ public class SmartPhone {
 
 	public static String phoneNumCheck(String phoneNum) throws PhoneNumException {
 		// 전화번호가 형식에 맞지 않을 때 예외처리
-		// 전화번호가 동일할 경우 예외처리-> 입력되지 않도록 처리
+		// 전화번호가 동일할 경우 예외처리 -> 입력되지 않도록 처리
 		try {
 			if(phoneNum != null ) {
 				if(phoneNumTypeCheck(phoneNum)) {
