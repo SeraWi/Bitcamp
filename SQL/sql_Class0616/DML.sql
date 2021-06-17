@@ -191,6 +191,7 @@ select deptno from dept where dname = 'SALES'; -- 30 번 sales
 delete from emp01
 where deptno =(select deptno from dept where dname = 'SALES');
 
+drop table dept03;
 
 
 
