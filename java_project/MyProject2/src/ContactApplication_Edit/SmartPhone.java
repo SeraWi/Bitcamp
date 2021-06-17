@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 // 전화번호 형식에 맞지 않을 때 예외처리, 중복될 때 예외 상황 발생
 
 public class SmartPhone {
-	ArrayList<Contact> contacts ; // ArrayList에 contact저장하기
+	static ArrayList<Contact> contacts ; // ArrayList에 contact저장하기
 	Scanner scanner;
 	int numOfContact;
 
@@ -30,7 +30,7 @@ public class SmartPhone {
 		this.numOfContact = 0;
 	}
 
-	public static boolean nameTypeCheck(String name) {// 이름 타입 체크!
+	public static  boolean nameTypeCheck(String name) {// 이름 타입 체크!
 		//문자의 영문, 한글 여부를 리턴한다.
 		//단어에 영문, 한글이 들어갈 경우 true리턴한다. 
 		return Pattern.matches("^[a-zA-Z가-힣]*$", name);
@@ -60,18 +60,29 @@ public class SmartPhone {
 
 	public static boolean phoneNumTypeCheck(String phoneNum) {
 		//핸드폰 번호가 형식에 맞지 않으면 false리턴한다.
-		//핸드폰 번호는 : 000-0000-0000형식
-		return Pattern.matches("^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$" , phoneNum);
+		//핸드폰 번호는 : 000-0000-0000형식(00000000000형식 불가능)
+		return Pattern.matches("^01([0|1|6|7|8|9])-([0-9]{3,4})-([0-9]{4})$" , phoneNum);
 	}
 
 
 	public static String phoneNumCheck(String phoneNum) throws PhoneNumException {
 		// 전화번호가 형식에 맞지 않을 때 예외처리
-		// 전화번호가 동일할 경우 예외처리 -> 입력되지 않도록 처리
+		// 전화번호 동일 할 경우 예외처리
 		try {
-			if(phoneNum != null ) {
-				if(phoneNumTypeCheck(phoneNum)) {
+			if(phoneNum != null ) { //1.전화번호 입력하지 않았을 때
+				if(phoneNumTypeCheck(phoneNum)) {//2.전화번호 형식 체크
 					//true ->제대로 입력됨
+					// 전화번호가 동일할 경우 예외처리 -> 입력되지 않도록 처리
+					
+					for(int i=0; i< contacts.size(); i++) {
+						if(!phoneNum.equals(contacts.get(i).getPhoneNum())) {
+							//동일하지 않다
+						}else { // 동일하다 -> 예외 발생
+							throw new PhoneNumException("이미 존재하는 전화번호 입니다.");
+						}
+					}
+					
+					
 				}else {
 					throw new PhoneNumException("전화번호 입력이 형식에 맞지않습니다.");
 				}
@@ -82,6 +93,8 @@ public class SmartPhone {
 			System.out.println(ex.getMessage());
 		}
 		return phoneNum;
+		
+		
 	}
 
 
@@ -90,30 +103,30 @@ public class SmartPhone {
 
 		System.out.println("-----------연락처를 저장합니다.-----------");
 
-		System.out.print("이름을 입력해주세요 >");
+		System.out.println("이름을 입력해주세요 >");
 		String name = scanner.nextLine();
 		// 연락처에 이름 입력시 공백에 대한 예외처리 -> 다시 입력받기
 		// 영문자와 한글만 허용하는 예외처리
 		nameCheck(name);//예외처리 하는 메서드 호출-> NameNotFindException
 
-		System.out.print("전화번호를 입력해주세요(형식: 000-0000-0000/01000000000) >");
+		System.out.println("전화번호를 입력해주세요(형식: 000-0000-0000) >");
 		String phoneNum = scanner.nextLine();
 		// 전화번호 형식에 맞지 않을 때 예외처리
 		// 전화번호가 동일할 경우 예외처리-> 입력되지 않도록 처리
 		phoneNumCheck(phoneNum);
 
-		System.out.print("이메일을 입력해주세요>");
+		System.out.println("이메일을 입력해주세요>");
 		String email = scanner.nextLine();
-		System.out.print("주소를 입력해주세요>");
+		System.out.println("주소를 입력해주세요>");
 		String address = scanner.nextLine();
-		System.out.print("생일을 입력해주세요>");
+		System.out.println("생일을 입력해주세요>");
 		String birthday = scanner.nextLine();
-		System.out.print("그룹을 입력해주세요. (회사,고객, 기타) >");
+		System.out.println("그룹을 입력해주세요. (회사,고객, 기타) >");
 		String group = scanner.nextLine();
 		//그룹에 해당하는 정보-> companyContact or customerConatct
 
-		if(group == "회사") {
-			System.out.print("회사 이름을  입력해주세요 >");
+		if(group.equals("회사")) {
+			System.out.println("회사 이름을  입력해주세요 >");
 			String comName = scanner.nextLine();
 			System.out.println("부서 이름을 입력해주세요 >");
 			String deptName = scanner.nextLine();
@@ -123,12 +136,12 @@ public class SmartPhone {
 			contacts.add(new CompanyContact(name,phoneNum,email,address,birthday,group,comName,deptName,position));
 			System.out.println("------------저장 완료 되었습니다.-----------");
 
-		}else if(group == "고객"){// 고객 일때
-			System.out.print("회사 이름을  입력해주세요 >");
+		}else if(group.equals("고객")){// 고객 일때
+			System.out.println("회사 이름을  입력해주세요 >");
 			String comName = scanner.nextLine();
-			System.out.print("거래품목을 입력해주세요 >");
+			System.out.println("거래품목을 입력해주세요 >");
 			String product = scanner.nextLine();
-			System.out.print("직급을 입력해주세요 >");
+			System.out.println("직급을 입력해주세요 >");
 			String position = scanner.nextLine();
 			contacts.add(new CustomerContact(name,phoneNum,email,address,birthday,group,comName,product,position));
 			System.out.print("------------저장 완료 되었습니다.-----------");
@@ -145,7 +158,7 @@ public class SmartPhone {
 		// 위세라 : 010 3524 8600 의 형식으로 보여준다.
 
 		System.out.println("-------연락처를 검색합니다.--------------");
-		System.out.print("이름을 입력하세요. >");
+		System.out.println("이름을 입력하세요. >");
 		String searchName = scanner.nextLine();
 
 		//equals
