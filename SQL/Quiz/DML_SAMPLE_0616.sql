@@ -5,11 +5,52 @@
 -- SELECT : R EAD
 -- UPDATE : U PDATE
 -- DELETE : D ELETE
+--------------------------------------------------------------------------------
+create table phoneInfo_basic(
+    idx number(6) 
+    constraint basic_idx_pk primary key,
+    
+    fr_name varchar2(20) 
+    constraint basic_name_nn not null,
+    
+    fr_phonenumber varchar2(20)
+    constraint basic_phonenumber_nn not null,
+    
+    fr_email varchar2(20),
+    fr_address varchar2(20),
+    fr_regdate date default sysdate
+);
 
+create table phoneInfo_univ(
+    idx number(6) 
+    constraint univ_idx_pk primary key,
+    
+    fr_u_major varchar2(20)  default 'N'
+    constraint univ_major_nn not null,
+   
+    fr_u_year number(1)  default 1 
+    constraint univ_year_nn not null
+    constraint univ_year_ck check( 0< fr_u_year  and fr_u_year <5),
+    
+    fr_ref Number(6)not null
+    constraint univ_ref_fk references phoneInfo_basic(idx)
+);
+
+create table phoneInfo_com(
+    idx number(6) 
+    constraint com_idx_pk primary key,
+    
+    fr_c_company varchar2(20) default 'N'
+    constraint com_company_nn not null,
+    
+    fr_ref number(6)not null -- 반드시 참조하려면 NOT NULL써야 한다.
+    constraint com_ref_fk references phoneInfo_basic(idx)
+);
+--------------------------------------------------------------------------------
 -- INSERT : CREATE
 desc phoneInfo_basic;
 insert into phoneinfo_basic
-values(1, 'KING', '010-0000-0000', 'king@gmail.com', 'KOREA',sysdate)
+values(pi_idx_nextval, 'KING', '010-0000-0000', 'king@gmail.com', 'KOREA',sysdate)
 ;
 
 insert into phoneinfo_basic (idx, fr_name, fr_phonenumber)
@@ -105,6 +146,16 @@ select *
 from phoneinfo_basic pb, phoneinfo_univ pu, phoneinfo_com pc
 where pb.idx = pu.fr_ref(+) and pb.idx = pc.fr_ref(+);
 --univ가 null이라도, com이 null이더라도 결과가 나오도록한다.
+
+
+
+
+
+
+
+
+
+
 
 
 
