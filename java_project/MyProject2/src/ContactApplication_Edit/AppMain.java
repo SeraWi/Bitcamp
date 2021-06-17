@@ -5,12 +5,28 @@ import java.util.Scanner;
 public class AppMain {
 	
 	
+	public static int menuCheck(int menuNum) {
+		//1~8번외에 입력시 다시 예외처리한다.
+		// 그외에 메뉴 입력시 발생할 수 있는 예외 : 영문자 입력, 한글 입력, 특수기호 입력, 숫자 두개 입력...등
+		
+		try {
+			if( menuNum <= 0 || menuNum > 8) {//잘못 입력한 경우
+				throw new Exception("메뉴를 잘못 입력했습니다.");
+			}
+			
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		return menuNum;
+	}
+		
+	
 	public static void main(String[] args) throws NameNotFindException, PhoneNumException {
 
 		Scanner scanner = new Scanner(System.in);
 		SmartPhone smart = new SmartPhone(); //스마트폰 생성
 		while(true) {
-			
+			//메뉴 입력 시 발생할 수 있는 예외 처리
 			System.out.println("================================");
 			System.out.println("연락처 관리프로그램");
 			System.out.println("1. 연락처 입력");
@@ -24,6 +40,7 @@ public class AppMain {
 			System.out.println("================================");
 
 			int choice = Integer.parseInt(scanner.nextLine());
+			menuCheck(choice);
 			// 메뉴 입력시 발생할 수 있는 예외에 대하여 예외 처리하기
 			switch(choice) {
 			case 1:
