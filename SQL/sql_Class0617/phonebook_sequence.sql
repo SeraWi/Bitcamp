@@ -1,4 +1,4 @@
---2021.06.06
+--2021.06.17 SEQUENCE추가
 --DML 퀴즈 리뷰
 
 -- INSERT : C REATE
@@ -50,11 +50,11 @@ create table phoneInfo_com(
 -- INSERT : CREATE
 desc phoneInfo_basic;
 insert into phoneinfo_basic
-values(pi_idx_nextval, 'KING', '010-0000-0000', 'king@gmail.com', 'KOREA',sysdate)
+values(pi_idx_pk.nextval, 'KING', '010-0000-0000', 'king@gmail.com', 'KOREA',sysdate)
 ;
 
 insert into phoneinfo_basic (idx, fr_name, fr_phonenumber)
-values(2,'SCOTT','010-9999-9999');
+values(pi_idx_pk.nextval,'SCOTT','010-9999-9999');
 
 
 --UPDATE : UPDATE
@@ -80,13 +80,12 @@ select * from phoneinfo_basic where idx = 2;
 
 -- 1. basic 정보 입력
 insert into phoneinfo_basic
-values(3, 'SON', '010-1111-1111', 'son@gmail.com', 'KOREA',sysdate)
+values(pi_idx_pk.nextval, 'SON', '010-1111-1111', 'son@gmail.com', 'KOREA',sysdate)
 ;
 -- 2. univ정보 입력
 insert into phoneinfo_univ
-values(1,'COMPUTER',4,3)
+values(pi_u_idx_pk.nextval,'COMPUTER',4,pi_idx_pk.currval)
 ;
-
 
 -- SELECT : READ
 select fr_name, pu.fr_u_major, pu.fr_u_year
@@ -112,14 +111,14 @@ where idx = 3;
 
 -- INSERT : CREATe
 insert into phoneinfo_basic
-values(4, 'PARK', '010-7777-7777', 'park@gmail.com', 'LONDON', sysdate)
+values(pi_idx_pk.nextval, 'PARK', '010-7777-7777', 'park@gmail.com', 'LONDON', sysdate)
 ;
 insert into phoneinfo_com
-values(1, 'NAVER', 4)
+values(pi_c_idx_pk.nextval, 'NAVER',pi_idx_pk.currval)
 ;
 
 --SELECT: READ
-select fr_name, pb.fr_phonenumber, pb.fr_email, pb.fr_address, pc.fr_c_company
+select pb.idx, pc.idx, fr_name, pb.fr_phonenumber, pb.fr_email, pb.fr_address, pc.fr_c_company
 from phoneinfo_basic pb , phoneinfo_com pc
 where pb.idx=pc.fr_ref
 ;
@@ -150,11 +149,11 @@ where pb.idx = pu.fr_ref(+) and pb.idx = pc.fr_ref(+);
 ----------------------2016.06.17-------------------------------------------------
 --대학친구, 회사친구 테이블 -> 기본키(대리키) -> sequence 생성 ->insert 개선
 create sequence pi_idx_pk;
-create sequence pi_u_idx_pk start with 1 increment by 1;
-create sequence pi_c_idx_pk start with 1 increment by 1;
+create sequence pi_u_idx_pk start with 5 increment by 1;
+create sequence pi_c_idx_pk start with 5 increment by 1;
 
 
-
+drop sequence pi_c_idx_pk;
 
 
 
