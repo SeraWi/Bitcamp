@@ -26,7 +26,7 @@ public class DeptMain {
 			conn= DriverManager.getConnection(jdbcUrl, user, pw);
 			System.out.println("데이터베이스 연결 성공!!");
 			
-			DeptDao dao = new DeptDao();
+			DeptDao dao = DeptDao.getInstance(); // new DeptDao();
 			
 //--------------------------------------------------------------------------------------------
 			//READ : SELECT
@@ -93,8 +93,6 @@ public class DeptMain {
 				System.out.println("삭제 실패 : 해당 번호의 부서가 존재하지 않습니다.");
 			}
 			
-			
-		    
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
