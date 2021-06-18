@@ -59,7 +59,7 @@ public class DeptMain {
 //		    }
 //-----------------------------------------------------------------------------------------------
 			
-		    // Update : update
+		    // UPDATE : UPDATE
 		    		    
 //			System.out.println("부서수정을 시작합니다.");
 //			System.out.println("수정하고자 하는 부서번호  새로운 부서이름 새로운 부서위치 순으로 입력해주세요.");
@@ -79,7 +79,7 @@ public class DeptMain {
 		    
 		    
 //------------------------------------------------------------------------------------------------		
-			// DELETE : delete
+			// DELETE : DELETE
 			
 			System.out.println("부서정보를 삭제합니다.");
 			System.out.println("삭제할 부서번호를 입력해주세요.");
