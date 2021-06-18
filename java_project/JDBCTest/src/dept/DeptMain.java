@@ -11,9 +11,9 @@ public class DeptMain {
 		
 		Connection conn = null;
 		
-		
-		//1. 드라이버 로드
+				
 		try {
+			//1. 드라이버 로드
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			System.out.println("드라이버 로드 성공!");
 
@@ -35,10 +35,6 @@ public class DeptMain {
 		}
 		
 
-
-		
-		
-		
 		DeptDao dao = new DeptDao();
 		
 		List<Dept> list = dao.getDeptList(conn);
