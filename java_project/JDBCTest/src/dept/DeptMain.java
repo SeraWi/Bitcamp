@@ -28,7 +28,7 @@ public class DeptMain {
 			
 			DeptDao dao = new DeptDao();
 			
-			// 리스트 출력 READ
+//		         리스트 출력 READ
 			
 //			List<Dept> list = dao.getDeptList(conn);
 //			
