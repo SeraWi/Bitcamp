@@ -1,6 +1,6 @@
 package jdbc;
 /*
- * delete
+ * DELETE: delete
  */
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class JDBC_Dept_DML2 {
+public class JDBC_Dept_DML2_Delete {
 
 	public static void main(String[] args) {
 
