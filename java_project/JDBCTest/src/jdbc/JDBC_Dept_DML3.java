@@ -7,7 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
-
+/*
+ * update
+ */
 public class JDBC_Dept_DML3 {
 
 	public static void main(String[] args) {
@@ -61,9 +63,14 @@ public class JDBC_Dept_DML3 {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, inputs[1]); 
 			pstmt.setString(2, inputs[2]);
-			pstmt.setString(3, inputs[0]);
+			pstmt.setInt(3, Integer.parseInt(inputs[0]));
 			
-			
+			int result = pstmt.executeUpdate();
+			if(result > 0) {
+				System.out.println("수정되었습니다.");
+			}else {
+				System.out.println("찾으시는 부서가 존재하지 않습니다.");
+			}
 			
 		    //트렌젝션 완료(성공)
 		    conn.commit();
