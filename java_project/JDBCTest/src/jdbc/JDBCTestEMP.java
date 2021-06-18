@@ -41,13 +41,20 @@ public class JDBCTestEMP {
 			stmt = conn.createStatement();
 			// 2. sql 작성 
 			String sql = 
-			"select e.empno,e.ename, e.ename, e.job, e.sal, d.dname from emp e, dept d where e.deptno = d.deptno";
+			"select e.empno,e.ename, e.job, e.sal, d.dname, d.loc from emp e, dept d where e.deptno = d.deptno";
 			// 3. Resultset 객체로 데이터 받기
 			rs = stmt.executeQuery(sql);
 			// 4. 출력
 			while(rs.next()) {
-				System.out.println(rs.getInt(1)+ "\t" + rs.getString(2));  // e.empno
+				System.out.println(rs.getInt(1)+ "\t" + 
+			                       rs.getString(2)+"\t" +
+						           rs.getString(3)+"\t" +
+			                       rs.getInt(4)+"\t"+
+						           rs.getString(5)+"\t" +
+			                       rs.getString(6)); 
 			}
+			
+			
 			
 			
 			
