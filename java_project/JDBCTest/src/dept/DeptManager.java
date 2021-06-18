@@ -147,7 +147,7 @@ public class DeptManager {
 		
 		try {
 			conn = DriverManager.getConnection(jdbcUrl,user,pw);
-			
+			deptList();
 			System.out.println("삭제를 원하시는 부서번호를 입력해주세요.");
 			int deptno = Integer.parseInt(sc.nextLine());
 			
