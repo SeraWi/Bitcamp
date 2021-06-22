@@ -18,6 +18,11 @@ point number(10,2)default 0
 
 desc member;
 select * from member;
+
+update member
+set point = 500
+where id = 'park1234';
+
 drop table member;
 
 create sequence member_memcode_seq
@@ -31,6 +36,10 @@ values(member_memcode_seq.nextval, 'kim','kim1234','kim1234','Korea','0100000000
 
 insert into member(memcode, name, id, pw, address, phone) 
 values(member_memcode_seq.nextval, 'lee','lee1234','lee1234','Korea','01000000000');
+
+insert into member(memcode, name, id, pw, address, phone, point) 
+values(member_memcode_seq.nextval, 'Park','park1234','park1234','Korea','01000000000',5000);
+commit;
 
 select point from member where id = 'kim1234'; -- 포인트확인하기
 
@@ -62,6 +71,6 @@ select * from sale order by salecode
 commit;
 
 
-delete from sale;
+
 
 -------------------------------------------------------------------------------
