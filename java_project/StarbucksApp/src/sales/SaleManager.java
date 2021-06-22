@@ -29,7 +29,7 @@ public class SaleManager {
 
 	
 	void saleList() {
-		// Connection 객체 생성 -> 트렌젝션 처리
+		// Connection 객체 생성 
 		Connection conn = null;
 
 		// 연결

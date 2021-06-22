@@ -25,7 +25,12 @@ public class Sale {
 		this.sname = sname;
 		this.price= price;
 	}
-
+	
+	//생성자 오버로딩 2
+	public Sale(String sname, int price) { 
+		this.sname = sname;
+		this.price= price;
+	}
 	
 	
 	//Getter, Setter
