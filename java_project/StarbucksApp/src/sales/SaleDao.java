@@ -38,7 +38,7 @@ public class SaleDao {
 		try {
 			stmt = conn.createStatement();
 
-			String sql = "select * from sale";
+			String sql = "select * from sale order by salecode";
 
 
 			//결과 받아오기
