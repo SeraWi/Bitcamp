@@ -32,15 +32,15 @@ values(member_memcode_seq.nextval, 'kim','kim1234','kim1234','Korea','0100000000
 insert into member(memcode, name, id, pw, address, phone) 
 values(member_memcode_seq.nextval, 'lee','lee1234','lee1234','Korea','01000000000');
 
-rollback;
+select point from member where id = 'kim1234'; -- 포인트확인하기
 
 ---------------------------------------------------------------------------------
 create table sale (
 salecode varchar2(50) constraint sale_PK primary key,
 sname varchar2(50) not null,
 price integer not null,
-saledate date default sysdate,
-memcode integer constraint sale_FK references member(memcode)
+saledate date default sysdate
+
 );
 -- salecode
 desc sale;
@@ -48,15 +48,20 @@ desc sale;
 create sequence sale_salecode_seq
 start with 1;
 drop table sale;
+drop sequence sale_salecode_seq;
 
-insert into sale (salecode, sname, price,memcode)
-values(sale_salecode_seq.nextval, 'americano', 4100,1);
 
-insert into sale(salecode, sname, price,memcode)
-values (sale_salecode_seq.nextval, 'latte', 4600,2);
+insert into sale (salecode, sname, price)
+values(sale_salecode_seq.nextval, 'americano', 4100);
 
-select * from sale;
+insert into sale(salecode, sname, price)
+values (sale_salecode_seq.nextval, 'latte', 4600);
+
+select * from sale order by salecode
+;
 commit;
 
+
+delete from sale;
 
 -------------------------------------------------------------------------------
