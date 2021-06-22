@@ -10,7 +10,7 @@ public class SaleMain {
 		
 		System.out.println("1. 주문하기  2. 내 포인트 확인하기 3. 내 정보 보기");
 		System.out.println(" 주문하기 입니다. ");
-		
+		//order 인스턴스 생성해서 쓰기
 		
 		
 		try {
