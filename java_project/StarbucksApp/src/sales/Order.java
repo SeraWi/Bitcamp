@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Order {
 	
 	static Scanner scanner = new Scanner(System.in);
-	
+	static String memId =  "lee1234";
 
 		public static void main(String[] args) {
 			
@@ -119,17 +119,16 @@ public class Order {
 				String readPoint = "select point from member where id = ?";
 				pstmt= conn.prepareStatement(readPoint);
 				
-				pstmt.setString(1, "lee1234");
+				pstmt.setString(1, memId);
 				result = pstmt.executeUpdate();
 				
 				System.out.println("결제합니다.");
 				System.out.println("현재 사용가능한 포인트: ");
+				System.out.println("포인트를 사용하시겠습니까?(포인트를 사용시 현재 결제하시는 상품의 포인트는 적립이 되지 않습니다.)"); 
 				
 				
 				
-				
-
-				System.out.println("포인트를 사용하시겠습니까?(포인트를 사용시 현재 결제하시는 상품의 포인트는 적립이 되지 않습니다.)");
+				// 네, 아니오
 				// 회원이 point 사용할시 회원 DB에서 point update하기 
 				
 				System.out.println("------------------------------------");
