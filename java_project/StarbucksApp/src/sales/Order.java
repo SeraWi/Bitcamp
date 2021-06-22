@@ -157,6 +157,7 @@ public class Order {
 			
 			result = pstmt.executeUpdate();
 			
+			
 			if(result > 0) {
 				System.out.println("업데이트 완료");
 			}else {
@@ -164,7 +165,7 @@ public class Order {
 			}
 			
 
-			System.out.println("포인트가 "+point+"점 적립되어"+ currPoint+" 점 있습니다.");
+			System.out.println("포인트가 "+point+"점 적립되어"+ (currPoint+point)+" 점 있습니다.");
 			//회원이 포인트 사용하지 않고 결제 할 경우
 			//회원 DB에서 point update하기
 			//결제 한후, 회원이 산거 판매DB에 저장하기
