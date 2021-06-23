@@ -1,6 +1,7 @@
 package sales;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,7 +11,8 @@ public class SaleDao {
 	//sale을 조회, 관리한다. 
 	
 	// 1. 관리자가 전체 판매 리스트를 확인 할 수 있다. read, select
-	// 2. 회원이 산 메뉴를 판매 DB에 저장한다. create: read
+	
+	// 2. 회원이 산 메뉴를 판매 DB에 저장한다. create: insert
 
 	// 싱글톤 패턴
 	private SaleDao() {
@@ -78,9 +80,39 @@ public class SaleDao {
 		return list;
 	}
 
-	// 2. 회원이 산 메뉴를 판매 DB에 저장한다. create: read
+	// 2. 회원이 산 메뉴를 판매 DB에 저장한다. create: insert
 	
-	
+	int insertSale(Connection conn, ArrayList<Sale> list) {//sale 어레이 리스트 전달받기
+		int result = 0 ;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = "insert into sale (salecode, sname, price) values(sale_salecode_seq.nextval, ?, ?)";
+		try {
+			pstmt= conn.prepareStatement(sql);
+			for(int i = 0; i <list.size(); i++) {
+				
+				pstmt.setString(1,list.get(i).getSname());
+				pstmt.setInt(2, list.get(i).getPrice());
+				result = pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+			
+				
+		return result;
+	}
 	
 	
 	

@@ -16,7 +16,8 @@ public class SaleMain {
 			
 			System.out.println("관리자가 판매 테이블을 조회합니다. ");
 			manager.saleList();
-				
+			
+			manager.order();
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

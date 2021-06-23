@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Order {
+public class Order2 {
 
 	static Scanner scanner = new Scanner(System.in);
 	static ArrayList<Sale> list ;
@@ -74,7 +74,7 @@ public class Order {
 //------------------------------------------------------------------------------------------------------------------------------
 		//JAVA -> DB
 		// 자바에서 입력받은 데이터를 DB로 저장한다. 
-		// 이 부분을 메소드로 saleDao 로 넣기
+		// 이 부분을 메소드로 saleDao 로 넣기! 완료
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
