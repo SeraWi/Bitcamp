@@ -12,8 +12,11 @@
                 margin: 0;
                 padding: 0;
             }
-
-
+            /* 링크선택자 */
+            h1::selection, p::selection{
+                background-color:tomato;
+                color:wheat;
+            }
             /* 전체선택자 */
             /* *{
                 color : red;
@@ -186,6 +189,9 @@
                 font-size:200%;
                 
             }
+
+
+            /* 구조선택자 */
             ol{
                 overflow:hidden; 
                 list-style: none; /*앞에 숫자 빼준다.*/
@@ -209,15 +215,30 @@
             ol>li:nth-child(2n+1){/*홀수번째*/
                 background-color: cornflowerblue;
             }
-            
+
             ol>li:hover{
                 background-color: darkcyan;
                 color: white;
                 font-weight: bold;
             }
+
+
+            /* 링크선택자 */
+            a{
+                text-decoration: none; /*밑줄 없어짐*/
+                color: dimgrey;
+            }
+            a:visited{
+                color:dimgrey; /*방문하고 나면 색이 바뀜*/
+            }
+            a:hover{
+                text-decoration:underline;
+            }
         </style>
     </head>
     <body>
+
+
         <ol>
             <li><a href="http://naver.com">naver</a></li>
             <li>two</li>
