@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 Selector Basic Page</title>
+    <style>
+        /* *{
+            color:cadetblue;
+        } */
+
+        /* h1{
+            color: red;
+        } */
+        p{
+            color: blue;
+        }
+
+        body,p,h1{
+            margin: 0;
+            padding:0;
+        }
+/* 
+        #header{
+            width: 800px;
+            margin: 0% auto;
+            background-color: rgb(143, 236, 143);
+            color: white;
+        } */
+
+        #wrap{
+            width: 800px;
+            margin: 0 auto;
+            /* background-color: rgb(243, 105, 128);
+            color: white; */
+        }
+
+        #aside{
+            width: 200px; 
+            background-color:cornflowerblue;
+            color: white;
+        }
+
+        #content{
+            width: 600px;
+            background-color: rgb(243, 105, 128);
+            color: white;
+        }
+
+        .select{
+            color:rgb(196, 245, 62);
+            background-color: rgb(238, 108, 130);
+        }
+        li.select{
+            color: cornflowerblue;
+        }
+
+        input[type= text]{
+            background-color: lemonchiffon;
+        }
+        input[type =password]{
+            background-color: cornflowerblue;
+        }
+
+        #header > h1{
+            color: white;
+            background-color: black;
+        }
+
+        #section > h1{
+            color:rgb(250, 186, 197);
+            background-color: rgb(190, 209, 245);
+        }
+
+        h1+h2{
+            color: rgb(183, 228, 247);
+            background-color: slategray;
+        }
+
+        h1~h2{
+           
+            background-color: rgb(250, 186, 197);
+        }
+
+        input:enabled{
+            background-color: rgb(250, 186, 197);
+        }
+        input:disabled{
+            background-color: rgb(104, 107, 117);
+        }
+        input:focus{
+            background-color: seagreen;
+        }
+        input[type=checkbox]{
+            height: 150px;
+            width: 100px;
+        }
+
+
+
+        ul{
+           
+
+        }
+
+        li{
+            list-style: none;
+            float: left;
+            padding: 15px;
+            color:white;
+            font: thick;
+        
+        }
+
+        li:first-child{
+            border-radius: 10px 0 0 10px;
+        }
+        li:last-child{
+            border-radius: 0 10px 10px 0;
+        }
+        li:nth-child(2n){
+            background-color: rgb(250, 186, 197);
+        }
+        li:nth-child(2n+1){
+            background-color: rgb(203, 216, 255);
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <ul>
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+        <li>Fourth</li>
+        <li>Fifth</li>
+        <li>Sixth</li>
+        <li>Seventh</li>
+    </ul>
+
+
+
+    <br>
+    <input type ="checkbox">
+    <div>
+        <h1> 안녕하세요</h1>
+        <p> HI HELLO HI HELLO</p>
+    </div>
+
+    <Br>
+    <input><br>
+    <input disabled value="입력불가">
+
+
+
+    <br>
+    <h1> One</h1>
+    <h2> two</h2>
+    <h2> two</h2>
+    <h2> two</h2>
+    <h2> two</h2>
+    <h2> two</h2>
+
+
+    <br>
+    
+    <div id = "header">
+        <h1 class= "title"> title</h1>
+        <div id = "nav">
+            <h1>Navigation</h1>
+        </div>
+    </div>
+    <div id = "section">
+        <h1 class ="title">title</h1>
+        <p> contents~~~~</p>
+    </div>
+
+
+
+
+    <br>
+    <form>
+        <input type="text"/>
+        <input type= "password">
+    </form>
+
+
+    <br>
+    <ul>
+        <li class= " select"> Orange </li>
+        <li> Apple</li>
+        <li class ="select"> Kiwi</li>
+        <li> Lemon</li>
+    </ul>
+
+
+
+
+    <div id ="header">
+        <h1> Header</h1>
+    </div>
+    
+    <div id ="wrap">
+        <div id ="aside">
+            <h1>Aside</h1>
+        </div>
+        <div id ="content">
+            <h1>Content</h1>
+        </div>
+    </div>
+    
+
+
+    <hr>
+    <h1>"수도권, 5인 이상 모임 금지 유지"...거리두기 완화 유예</h1>
+    <p> 30일 서울시에 따르면 정부의 사회적 거리두기 개편안에 따라 1일부터 사적 모임 가능 인원을 최대 6명까지 허용할 예정이었으나, 이를 전격 취소하고 '5명 이상 사적 모임 금지' 조치를 유지하기로 결정했다.</p>
+
+
+</body>
+</html>
