@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrap{
+            /*블럭사이즈*/
+            width: 800px;
+            height: 400px;
+
+            /*배경색*/
+            background-color: #fccbd3;
+
+            /*요소들의 절대좌표 기준점으로 */
+            position: relative;
+
+
+        }
+        div.circle{
+            /*블럭의 사이즈*/
+            width: 100px;
+            height:100px;
+
+            /*테두리*/
+            border: 1px soli #eee;
+
+            /*원만들기*/
+            border-radius:50%;
+
+            /*이미지넣기*/
+            background-image: url(../class0629/mini1.jpg);
+            background-size:contain;
+            
+            /*절대좌표 위치 지정*/
+            position:absolute;
+        }
+        #wrap>div:nth-child(1){
+            left: 10px;
+            top: 10px;
+        }
+        #wrap>div:nth-child(2){
+            right: 10px;
+            top: 10px;
+        }
+        #wrap>div:nth-child(3){
+            right: 10px;
+            bottom: 10px;
+        }
+        #wrap>div:nth-child(4){
+            left: 10px;
+            bottom: 10px;
+        }
+        #wrap>div:hover{
+            background-image: url(../class0629/mini2.jpg);
+        }
+        #wrap:hover{
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class= "circle"></div>
+        <div class= "circle"></div>
+        <div class= "circle"></div>
+        <div class= "circle"></div>
+    </div>
+</body>
+</html>
