@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            
+        }
+        body{
+            padding-top:30px;
+        }
+        .border{
+            border: 1px solid #aaa;
+        }
+        .text-center{
+            text-align: center;
+        }
+        .font_size_200p{
+            font-size:200%;
+        }
+
+        .div_align_center{
+            margin: 0 auto;
+        }
+
+        header{
+            width: 798px;
+            height:80px;
+
+            line-height:80px;
+        }
+        nav{
+            width:798px;
+            height: 30px;
+            line-height:30px;
+        }
+
+        section{
+            width: 598px;
+            height: 400px;
+            float : left;
+        }
+
+        aside{
+            width:198px;
+            height: 200px;
+            float:left;
+
+        }
+        #wrap{
+            width: 800px;
+            overflow:hidden;
+        }
+        footer{
+            width: 798px;
+            height:100px;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <header class="border text-center font_size_200p div_align_center"> !HEADER!</header>
+    <nav class="border text-center font_size_200p div_align_center">NAVIGATION</nav>
+    <div id="wrap" class="div_align_center">
+        <section class="border text-center font_size_200p">
+            <article>CONTENT</article>
+        </section>
+        <aside class="border text-center font_size_200p">
+            ASIDE: 서브 영역
+        </aside>
+
+    </div>
+    <footer class="border text-center font_size_200p div_align_center"> FOOTER</footer>
+</body>
+</html>
