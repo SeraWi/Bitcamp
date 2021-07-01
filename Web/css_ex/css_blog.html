@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        /* body전체 설정 */
+        *{
+            
+            padding:0;
+        }
+
+        body{
+            
+            border: 7px solid #aaaaaa;
+            border-radius: 0.5%;
+        }
+        .div_align_center{
+            margin: 0 auto;
+        }
+       
+
+        /*header 설정*/
+        header{
+            width: 798px; /*800-2*/
+            height:100px;
+            
+        }
+        header h1{
+            font-size: 200%;
+            margin-top:20px;
+            margin-left:30px;
+            margin-bottom:0px;
+            padding-top:30px;
+        }
+        header p{
+            font-size:80%;
+            margin-top:5px;
+            margin-bottom:100px;
+            margin-left:30px
+        }
+
+        /*nav*/
+
+        nav{
+            width: 798px;
+            height:50px;
+            line-height:50px;
+            border-top: 1px solid #aaaaaa;
+            border-bottom:1px solid #aaaaaa;
+        }
+
+        /*list에 앞에 표시 뺴기*/
+        nav>ul>li{
+            overflow:hidden;
+            list-style:none;
+            line-height:120%;
+        }
+
+        /*리스트 옆으로 나란히 */
+        nav>ul>li{
+            padding:0;
+            margin:0;
+            float: left;
+        }
+
+        /*input을 inline으로 바꾸기*/
+        input{
+            display: inline;
+            float:right; /*오른쪽으로 붙이기*/
+        }
+        /*input 스타일*/
+        input[type=text]{
+        
+            border-radius: 15px 0 0 15px;
+        }
+        input[type=submit]{
+          
+            border-radius:0 15px 15px 0;
+            background-color: #e2dddd;
+        }
+
+
+        /*wrap(section 두개 영역) 설정*/
+        #wrap{
+            width: 800px;
+            overflow:hidden;
+        }
+
+
+
+        /*section 설정*/
+        section{
+            width: 598px;
+            height: 700px;
+            float : left;
+            border-bottom:1px solid #aaaaaa;
+        }
+
+        /*섹션에 있는 단락 폰트, 줄간격 설정*/
+        section p{
+            font-size: 1em;
+            line-height:120%;
+        }
+        
+        section> h4{
+            font-size: 150%;
+            font-weight:normal;
+            padding-top: 0px;
+            
+        }
+        section > h5{
+            margin-top:0;
+            font-size: 80%;
+            font-weight:normal;
+        }
+         
+        /* aside 설정*/
+        aside{
+            width:198px;
+            height:1402px; /*700+700+1+1*/
+            float:right;
+        }
+        aside h5{
+            font-size: 1.0em;
+            margin: 15px 5px;
+        }
+        aside li{
+            list-style:none;
+            font-size:0.8em;
+            line-height:120%;
+            margin:0 10px;
+        }
+       
+        
+
+
+        /*footer*/
+
+        footer{
+            width: 798px;
+            height:30px;
+            line-height:30px;
+        }
+
+        #footerStyle{
+            color:blue;
+        }
+
+
+       
+
+
+    </style>
+
+
+</head>
+<body>
+    <header class="div_align_center">
+        <h1>HTML5</h1>
+        <p>비트캠프</p>
+    </header>
+    
+    <nav class ="div_align_center">
+         <ul>
+                <li>HTML &nbsp</li> 
+                <li>CSS &nbsp</li>
+                <li>JavaScript &nbsp</li> 
+         </ul>
+             
+        <div>
+            <input type="submit" value="검색">
+            <input type="text">
+            
+        </div>
+    </nav> 
+    
+    <div id="wrap" class="div_align_center">
+
+        <section>
+            <h4>HTML 개요와 활용 </h4>
+            <h5>2021년 7월 1일 </h5>
+            <img src="../images/html5.jpg" width= "430" height="280">
+            <p>
+                HTML5 is a markup language used for structuring and presenting content on the World Wide Web. It is the fifth and last[3] major HTML version that is a World Wide Web Consortium (W3C) recommendation. The current specification is known as the HTML Living Standard. It is maintained by a consortium of the major browser vendors (Apple, Google, Mozilla, and Microsoft), the Web Hypertext Application Technology Working Group (WHATWG).
+
+                HTML5 was first released in a public-facing form on 22 January 2008,[4] with a major update and "W3C Recommendation" status in October 2014.[2][5] Its goals were to improve the language with support for the latest multimedia and other new features; to keep the language both easily readable by humans and consistently understood by computers and devices such as web browsers, parsers, etc., without XHTML's rigidity; and to remain backward-compatible with older software. HTML5 is intended to subsume not only HTML 4 but also XHTML 1 and DOM Level 2 HTML.[6]
+            </p>
+        </section>
+
+        <aside>
+            <h5>카테고리</h5>
+            <ul>
+                <li>데이터</li>
+                <li>데이터</li>
+                <li>데이터</li>
+                <li>데이터</li>
+                <li>데이터</li>
+            </ul>
+
+            <h5>최근글</h5>
+            <ul>
+                <li>html5</li>
+                <li>css</li>
+                <li>javaScript</li>
+            </ul>
+        </aside>
+
+
+
+        <section >
+            <h4>HTML5 응용과 실습</h4>
+            <h5>2021년 7월 2일 </h5>
+            <img src="../images/html5_2.jpg" width= "430" height="280">
+            <p>
+                HTML5 includes detailed processing models to encourage more interoperable implementations; it extends, improves, and rationalizes the markup available for documents and introduces markup and application programming interfaces (APIs) for complex web applications.[7] For the same reasons, HTML5 is also a candidate for cross-platform mobile applications because it includes features designed with low-powered devices in mind.   
+            </p>
+        </section>
+
+       
+
+    </div>
+
+    <footer class=" div_align_center" id="footerStyle">
+        Created By Team-HeXagon
+    </footer>
+</body>
+</html>
