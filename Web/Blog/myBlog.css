@@ -82,10 +82,21 @@ nav>ul{
 
 nav>ul>li{
     float:left;
-    padding: 0 20px;
+    /* padding: 0 20px; */
     height:35px;
     line-height:35px;
 }
+
+nav>ul>li>a{
+    display:block;
+    background-color: rgb(197, 230, 243);
+    padding: 0 20px; 
+
+}
+nav>ul>li>a:hover{
+    background-color: tomato;
+}
+
 
 /*input2개 감싸는 div*/
 nav>div{
@@ -143,6 +154,7 @@ section{
 
 }
 
+
 aside{
     float: right;
 
@@ -151,7 +163,27 @@ aside{
 
 }
 
-#content_wrap>section>article{
+/*카테고리와 최근글 글자!!*/
+aside>h3{
+    font-size: 120%;
+    margin-top:20px;
+}
+aside>ul{
+    list-style:none;
+}
+aside>ul>li{
+    padding-left: 10px;
+    line-height:180%;
+}
+
+/*footer 영역*/
+
+footer{
+    height:30px;
+    /*수평방향의 중앙*/
+    text-align:center;
+    /*수직방형의 중앙 height= line-height*/
+    line-height:30px;
 
 }
 
@@ -198,7 +230,15 @@ aside{
     margin-bottom: 15px;
 }
 
+a{
+    color:#333;
+    text-decoration:none;
+}
 
+a:hover{
+    color:rgb(245, 161, 175);
+    text-decoration:none;
+}
 
 
 
