@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>네이버:회원가입</title>
-    <link rel="stylesheet" href="naver_signup.css">
+    <link rel="stylesheet" href="naver_signup final.css">
 
 </head>
 <body>
@@ -29,7 +29,20 @@
             <input type="text" name="name">
 
             <h3>생년월일</h3>
-            <input type="date" name="birthday" >
+            <div class ="birthday">
+                <input type="text" name="birthyear" placeholder="년(4자)" >
+
+                <select name ="birthmonth">
+                <option value="">월</option>
+                <option value="1">1월</option>
+                <option value="2">2월</option>
+                <option value="3">3월</option>
+                </select>
+    
+                <input type="text" name="birthday" placeholder ="일">
+    
+            </div>
+            
             
 
             <h3>성별</h3>
