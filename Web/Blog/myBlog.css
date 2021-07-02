@@ -1,0 +1,215 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic:wght@700&family=Sunflower:wght@500&display=swap');
+
+ 
+/* 나눔 고딕, 주아, 선플라워 
+font-family: 'Jua', sans-serif;
+font-family: 'Nanum Gothic', sans-serif;
+font-family: 'Sunflower', sans-serif;
+ */
+
+*{
+    /*브라우저에 상관없이 설정*/
+    margin:0;
+    padding:0;
+}
+
+/*태그 기본 설정*/
+html,body, div, h1, h2, h3, h4, h5, h6,
+table, input, 
+header, nav,aside, section,article,
+p{ 
+    font-size: 16px;
+    font-family:'돋움체',Arial, Helvetica, sans-serif;
+
+}
+
+body{
+    background-color:rgb(207, 219, 240);
+}
+
+/*전체 요소를 감싸는 블록*/
+#main_wrap{
+    width:776px; /*800-10-10(마진)-1-1(보더)-2(쉐도우)  전체 화면 사이즈를 800으로 하려면*/
+    border: 1px solid #aaa;
+
+    background-color: #fff;
+    /*회색 테두리 둥글게*/
+    border-radius: 5px; 
+
+    margin: 10px auto; /*위아래는 10px , 가로는 auto*/
+    box-shadow: 2px 2px 3px rgb(143, 143, 143);
+
+    padding: 10px;
+    
+}
+
+/* header 영역 설정 */
+header{
+    padding: 15px;
+}
+
+/*header의 자손 h1와 h4*/
+header>h1{
+    font-size: 2.0em; /*16(기본 설정)*2*/
+    /* font-family: 'Jua', sans-serif; */
+    font-weight: 100; /*폰트 얇게*/
+}
+
+/* header>h4{
+    font-family: 'Jua', sans-serif;
+} */
+
+
+/* nav 영역설정 */
+nav{
+
+    height: 35px;
+
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+
+    overflow:hidden;
+}
+
+/*ul!!*/
+nav>ul{
+    float:left;
+    overflow:hidden;
+    list-style: none;
+    
+}
+
+nav>ul>li{
+    float:left;
+    padding: 0 20px;
+    height:35px;
+    line-height:35px;
+}
+
+/*input2개 감싸는 div*/
+nav>div{
+    float:right;
+}
+
+nav>div>input[type=text]{
+    width: 100px;
+    height: 24px;
+
+    /*중간으로 위치시키기*/
+    margin-top:4px;
+
+    /*테두리 둥글게 만들기*/
+     border-radius: 11px 0 0 11px;
+     border: 1px solid #aaa;
+
+     /*글자랑 테두리 간격만들기  상하 0 좌우만!*/
+     padding: 0 10px;
+}
+nav>div>input[type=submit]{
+    height: 26px;
+
+    /*중간으로 위치시키기*/
+    margin-top:4px;
+    margin-left: -10px; /*text랑 붙이기*/
+    margin-right:5px;
+
+    /*테두리 둥글게 만들기*/
+    border-radius:0 13px 13px 0;
+    border: 1px solid #aaa;
+
+    /*글자랑 테두리 간격만들기  상하 0 좌우만!*/
+    padding: 0 15px;
+}
+
+
+/*컨텐츠 영역*/
+#content_wrap{
+    overflow:hidden;
+
+    margin-top: 20px;
+
+}
+
+section{
+    float: left;
+
+    /*사이즈 주기*/
+    width:550px;
+
+    
+    /**/
+    padding: 5px;
+
+}
+
+aside{
+    float: right;
+
+    /*사이즈 주기*/
+    width:170px;
+
+}
+
+#content_wrap>section>article{
+
+}
+
+
+
+/*공통으로 사용할 클래스*/
+.font_jua{
+    font-family: 'Jua', sans-serif;
+}
+
+
+.border_bottom_a{
+    border-bottom: 1px solid #aaa;
+}
+.margin_bottom_20{
+    margin-bottom: 20px;
+}
+
+.title{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin:5px 0;
+    font-family: 'Sunflower', sans-serif;
+}
+
+.date{
+    font-weight:600;
+    font-style: italic;
+}
+
+.post_img{
+    margin: 10px 5px;
+    border: 0;
+
+    /*이미지 사이즈 주기*/
+    width: 500px;
+
+}
+.postcontent{
+    font-family: 'Nanum Gothic', sans-serif;
+    line-height: 180%;
+
+    /*내용이랑 줄 사이에 간격*/
+    margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
