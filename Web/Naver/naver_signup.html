@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네이버:회원가입</title>
+    <link rel="stylesheet" href="naver_signup.css">
+
+</head>
+<body>
+    <div id="main_wrap">
+        <header>
+            <h1><a href="http://www.naver.com">NAVER</a></h1>
+        </header>
+
+
+        <div class= "signup">
+            <h3>아이디</h3>
+            <input type="text" name="id">
+
+            <h3>비밀번호</h3>
+            <input type="text" name="pw">
+
+            <h3>비밀번호 재확인</h3>
+            <input type="text" name="pw">
+
+            <h3>이름</h3>
+            <input type="text" name="name">
+
+            <h3>생년월일</h3>
+            <input type="date" name="birthday" >
+
+            <h3>성별</h3>
+            <select name="sex" class="Option">
+            <option value="">성별</option>
+            <option value="여성">여자</option>
+            <option value="남성">남자</option>
+            <option value="선택안함">선택안함</option>
+            </select>
+            
+            <h3>본인 확인 이메일</h3>
+            <!-- <h5>선택</h5> -->
+            <input type="text" name="email" value="선택입력">
+
+            <h3>휴대전화</h3>
+            
+            <select name="tel" class="Option">
+            <option value="">대한민국+82</option>
+            <option value="그레나다">그레나다+1 473</option>
+            <option value="그리스">그리스+30</option>
+            <option value="기니">기니+224</option>
+            </select>
+
+            <input type="tel" name="tel" value="전화번호 입력"  id="tel_num">
+            <input type="submit" name="signup" value="인증번호 받기" class="check_Btn"><br>
+            <input type ="text" value ="인증번호 입력하세요">
+
+
+            <input  type="submit" name="signup" value="가입하기" class="signup_Btn">
+
+
+        </div>
+
+
+        <footer>
+            <ul>
+                <li>이용약관</li>
+                <li>개인정보처리방침</li>
+                <li>책임의 한계와 법적고지</li>
+                <li>회원정보 고객센터</li>
+            </ul>
+            <p>Naver Corp.</p>
+        </footer>
+
+
+    </div>
+</body>
+</html>

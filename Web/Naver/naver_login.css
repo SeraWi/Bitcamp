@@ -43,6 +43,10 @@ a{
 .login{
     text-align: center;
 }
+/* .login>input[type= text]:focus{
+    border-color:green;
+    border-width:3px;
+} */
 .login>input[type= text]{
     /*사이즈*/
     width:270px;

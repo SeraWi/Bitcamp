@@ -1,0 +1,197 @@
+@charset "utf-8";
+
+*{
+    margin:0;
+    padding:0;
+}
+
+html,body,h1,h2,h3,h4,h6,
+p, header,div,footer{
+    font-size: 14px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: #f5f6f7;
+}
+
+/*main wrap설정*/
+#main_wrap{
+    width: 700px;
+    padding:100px;
+    margin: 100px auto;
+}
+
+/*헤더설정*/
+header> h1{
+    font-size: 64px;
+    color:#03c75a;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+a{
+    color:#03c75a;
+    text-decoration:none;
+}
+
+
+/*div 설정*/
+.signup{
+    text-align:center;
+}
+.signup h3{
+   
+    text-align:left;
+    padding-left: 105px;
+
+    /*글자와 칸 사이 공백 만들기*/
+    margin-bottom:4px;
+    margin-top:4px;
+    
+}
+
+.signup h5{
+    text-align:left;
+    display: inline;
+}
+
+.signup input[type=text]{
+     /*사이즈*/
+     width:470px;
+     height:35px;
+     padding: 0 10px;
+ 
+     /*테두리*/
+     background-color:white;
+     border: 1px solid rgb(218, 215, 215);
+    
+ 
+     /*글자색*/
+     font-size: 12px;
+     color:gray;
+
+}
+
+/*성별 선택과 휴대전화 선택 설정*/
+.Option{
+     /*사이즈*/
+     width:490px;
+     height:35px;
+     padding: 0 10px;
+ 
+     /*테두리*/
+     background-color:white;
+     border: 1px solid rgb(218, 215, 215);
+    
+ 
+     /*글자색*/
+     font-size: 12px;
+     color:gray;
+
+     
+}
+
+/*생년월일*/
+.signup input[type= date]{
+     /*사이즈*/
+     width:470px;
+     height:35px;
+     padding: 0 10px;
+ 
+     /*테두리*/
+     background-color:white;
+     border: 1px solid rgb(218, 215, 215);
+    
+ 
+     /*글자색*/
+     font-size: 12px;
+     color:gray;
+}
+
+/*전화번호 입력하기*/
+#tel_num{
+     /*사이즈*/
+     width:368px;
+     height:35px;
+     padding: 0 10px;
+
+     /*인증번호 받기랑 붙이기*/
+     margin-left:103px;
+    
+ 
+     /*테두리*/
+     background-color:white;
+     border: 1px solid rgb(218, 215, 215);
+ 
+     /*글자색*/
+     font-size: 12px;
+     color:gray;
+
+     
+}
+
+
+/*가입하기 버튼*/
+.signup_Btn{
+    /*사이즈*/
+    width:495px;
+    height:50px;
+
+    /*배경색*/
+    background-color:#03c75a;
+    border: 0;
+
+    /*글자색*/
+    color: white;
+
+    margin-top:18px;
+}
+
+/*인증번호 받기 버튼*/
+.check_Btn{
+    /*사이즈*/
+    width:100px;
+    height:36px;
+
+    /*배경색*/
+      background-color:#03c75a;
+      border: 0;
+  
+    /*글자색*/
+      color: white;
+
+    /*오른쪽으로 붙이고 마진*/
+     float:right;
+     margin-right: 106px;
+     
+}
+
+
+/*footer 설정*/
+
+footer>ul{
+    list-style: none;
+    text-align:center;
+    
+    margin-top: 20px;
+    margin-left:100px;
+    overflow:hidden;
+    
+}
+footer>ul>li{
+    float:left;
+    padding-right: 10px;
+}
+
+footer>p{
+    text-align:center;
+    margin-top:10px;
+}
+
+
+
+
+
+
+
