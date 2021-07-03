@@ -12,15 +12,25 @@ p,header,div,footer{
 }
 
 body{
-    background-color: #f0f2f5;
+    /* background-color: #f0f2f5; */
 }
 
 /* main wrap설정*/
-#main_wrap{
+/* #main_wrap{
     width: 1300px;
     padding: 100px 150px;
     margin:100px auto;
+} */
+
+/*main wrap설정(header, div)*/
+#main_wrap{
+    width:1500px;;
+    height: 400px;
+    background-color: #f0f2f5;
+    padding: 150px;
+    
 }
+
 
 /*헤더설정*/
 
@@ -28,6 +38,7 @@ header{
 
     /* 왼쪽으로  */
     float:left;
+    margin-right:20px;
 
 }
 /*facebook로고*/
@@ -35,8 +46,6 @@ header > div{
     width: 260px;
     height:68px;
     line-height: 68px; 
-
-    /*background-color:gray;*/ 
 
     overflow:hidden;
 }
@@ -53,38 +62,205 @@ header> div> h1{
 /*페이스북 로고 밑 설명*/
 header p{
     width:330px;
-    height:28px;
+    height:100px;
 
     line-height:28px;
     font-size: 24px;
     font-weight: 400;
+
 }
 
-/*로그인 설정*/
-#login{
+
+
+/*class login 설정*/
+.login{
     width: 400px;
-    height: 400px;
+    height: 280px;
 
     /*오른쪽으로 밀기*/
     float: right;
-    background-color: gray;
+    margin-right: 500px;
+    
+
+    /*배경색*/
+    background-color:white;
+
+    /*안쪽 칸들과 간격*/
+    padding: 40px;
+
+    /*테두리*/
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 1px 1px rgb(208, 203, 203);
+
+
+    
 
 }
+
 /*이메일 비밀번호*/
-#login input[type=text]{
-    width: 350px;
+div > input[type=text]{
+    width: 100%;
     height: 45px;
+    margin-bottom: 10px;
+
+    /*테두리*/
+    border: 1px solid rgb(226, 224, 224);
+    border-radius: 7px 7px 7px 7px;
+
+    padding-left:10px
 }
 
-/*로그인과 비밀번호 잊으셨습니다.*/
-#login input[type=submit]{
-    width: 353px;
+/*로그인하기 누르는곳*/
+.login .loginClick{
+    width: 410px;
     height: 47px;
+    margin-bottom: 10px;
+
+    background-color:#1877f2;
+   
+
+    /*글자*/
+    color: white;
+    font-size:16px;
+    font-weight:bold;
+
+    /*테두리*/
+    border:1px solid rgb(226, 224, 224);
+    border-radius: 5px 5px 5px 5px;
+
 }
 
-.newAccount{
+
+/*비밀번호 잊으셨나요?*/
+.login .password{
+    width: 100%;
+    height: 47px;
+    line-height:47px;
+    margin-bottom: 20px;
+    
+
+    /*글자*/
+    color:#1877f2;
+    text-align:center;
+
+    /*배경*/
+    background-color: white;
+    
+    /*밑줄*/
+    border:0;
+    border-bottom:1px solid rgb(226, 224, 224);
+
+}
+
+/*비밀번호 잊으셨나요 링크 설정*/
+a{
+    text-decoration:none;
+}
+a:hover{ 
+    text-decoration:underline;
+    color:#1877f2;
+}
+a:visited{
+    color:#1877f2;
+}
+   
+
+
+
+/* 새계정만들기 */
+.login .newAccount{
     width:150px;
     height:45px;
+    background-color: #42B72A;
+
+    /*좌우 간격*/
+    margin-left: 125px;
+    margin-right:125px;
+
+    /*글자*/
+    color: white;
+    font-size:16px;
+    font-weight:bold;
+
+    /*테두리*/
+    border:0px;
+    border-radius: 5px 5px 5px 5px;
+    
 }
+
+
+/*div class= newPage 설정*/
+.newPage{
+    width: 300px;
+    height: 47px;
+    
+    /*login 아래로 위치*/
+    padding-top: 380px;
+    padding-left: 630px;
+    margin:0;
+    
+}
+.newPage span{
+    font-weight: bold;
+}
+
+/*footer 설정*/
+footer{
+    width: 1100px;
+    height: auto;
+    margin-left:100px;
+    margin-right:100px;
+
+    background-color: white;
+}
+
+.language{
+
+    list-style:none;
+    text-align: center;
+    overflow:hidden;
+
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-bottom:10px;
+    border-bottom:1px solid rgb(226, 224, 224);
+
+    color:gray;
+    font-size:10px;
+}
+
+
+.language>li{
+    font-size:14px;
+    float:left;
+    padding-right:40px
+   
+}
+
+
+.links{
+    list-style:none;
+    text-align: center;
+    overflow:hidden;
+
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-bottom:10px;
+
+    color:gray;
+    font-size:10px;
+}
+
+.links>li{
+    font-size:14px;
+    float:left;
+    padding-right:40px
+}
+
+footer p{
+    font-size: 12px;
+    color: gray;
+}
+
 
 
