@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7월5일javascript복습</title>
+    
+    <!-- 자바스크립트는 head태그 안에서, body 태그 안에서도 위치 가능 -->
+    <!-- html 문서는 1라인부터 아래로 실행된다. 따라서 필요에 따라 자바스크립트의 위치를 변경해주어야
+     -->
+
+     <script>
+         //브라우저가 html문서의 내용을 모두 로드 했을 때 발생하는 이벤트 속성
+         // 이벤트 속성에는 핸들러를 등록한다.
+         window.onload= function(){
+             var list ='';
+             list += '<ul>\n';
+             list +='   <li> javascript</li> \n';
+             list +='   <li>jQuery</li>\n';
+             list +='</ul>\n';
+
+             console.log('출력할 html:', list);
+
+             document.body.innerHTML =list;
+
+
+         }
+     </script>
+
+</head>
+<body>
+    
+</body>
+</html>
