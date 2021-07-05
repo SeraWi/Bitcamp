@@ -33,10 +33,118 @@
 <script>
     // javascript의 숫자는 정수와 실수를 구분하지 않고 하나의 타입으로 관리
     // 숫자 ->  number 타입 하나로 처리
+    // ; 문장의 종결을 의미하는 ;은 생략 가능하다->하지만 붙이자!!
     
-    var num = 10;
-    alert(num);
-    num= 10.2;
-    alert(num);
 
+    // var num = 10;
+    // alert(num);
+    // num= 10.2;
+    // alert(num);
+    // alert( 5+3*2); //11
+    // alert((5+3)*2); //16
+</script>
+
+
+<!-- <script>
+    // 비교연산자 : > < >= <= == !=
+    // 문자열 간의 크기 비교가 가능 -> 유니코드 값으로 비교!
+    alert('가' >'하'); // false
+    alert('가' <'하'); // true
+    alert('가 ==  가 : '+('가'=='가'));  //true
+    alert('가 ==  하 : '+('가'=='하')); //false
+    alert('가' == '하'); //false
+
+    //true ->1 false -> 0
+    alert('true > false:' +(true>false)); //true
+
+</script> -->
+
+
+<!-- <script>
+    alert(true);
+    alert(false);
+
+    //논리부정연산자 : !
+    alert('!true : '+!true); // !true : false
+    alert('!false :'+ !false); //!false : true
+
+    var num = 10;
+    var chk = num > 0 && num <100; // 0보다 크고 100보다 작은지 체크하는 논리연산
+
+    if(num>0){
+        // 조건식이 결과가 true 일 때 실행하는 블록{}
+        alert('num 변수의 값은 0보다 큰 값입니다.'); 
+    } //num 변수의 값은 0보다 큰 값입니다.
+
+    if(chk){
+        alert('num의 값은 0보다 크고 100보다 작다');
+    }
+</script> -->
+
+<!-- <script>
+    // javascript 의 변수
+    // 변수는 해당 값을 저장하는 것이 아니라 값이 저장된 메모리의 주소 값을 저장!
+
+
+    //변수의 선언: var 키워드 사용
+    //var 키워드 식별자;
+
+    var pi; // 변수 pi가 생성-> undefined 값이 초기화 된다
+    alert(pi+1); // NaN(NOT A NUMBER) = undefined +1 
+    alert(pi); // undefined
+    pi= 3.141592; //숫자 타입의 값을 저장 -> 정수와 실수를 구분하지 않는다.
+    alert(pi); //3.141592
+
+    // 변수 선언과 할당을 한번에 처리
+    var PI = 3.14; 
+    alert(PI); // 3.14
+
+</script> -->
+
+<script>
+    // javascript의 타입
+    // 1. 문자열 : '',""
+    // 2. 숫자: 정수, 실수를 구분하지 않고, 8바이트 부동수숫점 형식으로 저장
+    // 3. bool :  true false 논리값을 저장
+    // 4 .함수 : 함수를 저장
+    // 5. 객체 : 객체를 저장
+    // 6. undefined : undefined 상태의 값을 저장
+
+    var str ='String!!';
+    var num= 100;
+    var check = false;
+    var printStr = function(){alert('함수를 저장하는 변수로 호출')}; //익명
+    var objectVar ={
+        name:'Son', 
+        age:30, 
+        hello:function(){alert('메소드 호출');
+        }
+    }; //객체를 정의하는 간단한 방법
+    
+    alert(str);
+    alert(num);
+    alert(check);
+    alert(printStr); //function(){alert('함수를 저장하는 변수로 호출')}
+    alert(objectVar); //[object Object]
+
+    //함수 호출
+    printStr(); //함수를 저장하는 변수로 호출
+
+    //객체 참조
+    alert(objectVar.name); //Son
+    alert(objectVar.age); //30
+    objectVar.hello(); //메소드 호출
+
+    // 내장함수 객체 생성
+    var now =new Date();
+    alert(now); //Mon Jul 05 2021 13:13:32 GMT+0900 (대한민국 표준시)
+
+    //객체 정의: 속성(객체가 가지는 변수)과 메소드(객체가 가지는 기능, 함수)
+    var person= {
+        name:'Son', 
+        age:30,
+         hello:function(){}
+        };
+    
+    
 </script>
