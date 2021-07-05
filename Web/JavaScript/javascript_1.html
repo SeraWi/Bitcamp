@@ -257,7 +257,22 @@
     console.log('12'*'5'); // 문자 * 문자 -> 숫자 *  숫자 ->60
 
     var year = prompt('태어난 년도를 입력해주세요');
-    alert(2021-year + '살 입니다.'); //숫자 - 문자->숫자-숫자
+    var numberVal = Number(year); //문자열을 숫자타입으로 명시적 형변환
+    // 이과정에서 문자열이 숫자형식이 아닌 경우 NaN 반환한다. 
+    // 예를들어 가를 입력하면 숫자형식으로 형변환 불가해서NaN 반환함
+    console.log('numberVal type:', typeof numberVal); //numberVal type: number
+    console.log(numberVal);
+    console.log(numberVal+10);
+    console.log(isNaN(numberVal)); // numberVal이 nan이면(문자열이면) true, 
+                                    // numberVal이 숫자이면 nan아니고 false
+
+    if(!isNaN(numberVal)){ // 숫자로 잘 입력받았을 때
+        alert(2021-year + '살 입니다.'); //숫자 - 문자->숫자-숫자 // 26살입니다.
+        // year문자열을 숫자 타입으로 자동 형변환
+    } else{
+        alert('정상적인 숫자 데이터를 입력해주세요.');
+    }
+
 
 
 </script>
