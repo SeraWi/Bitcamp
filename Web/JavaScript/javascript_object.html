@@ -247,77 +247,8 @@
             document.body.innerHTML = html;
         }
        
-
    </script> -->
-      <!-- <script>
-       // 생성자 함수 : new 키워드로 객체를 생성해주는 함수
-       // 생성자 함수의 이름(식별자)는 대문자로 시작한다.
-       function Student(name,kor,eng,math){
-            //속성
-            this.name = name;
-            this.kor = kor;
-            this.eng = eng;
-            this.math = math;
-            // 총점을 구하는 메소드
-            this.getSum = function(){
-                return this.kor + this.eng + this. math;
-            }
 
-            // 평균을 구하는 메소드
-            this.getAvg = function(){
-                return this.getSum() /3;
-            }
-            
-            // html을 만들어주는 메소드 
-            this.makehtml = function(){
-                html ='';
-                html +='    <tr>';
-                html +='        <td>'+this.name+'</td>';
-                html +='        <td>'+this.getSum()+'</td>';
-                html +='        <td>'+this.getAvg()+'</td>';
-                html +='    </tr>';
-
-                return html;
-            }
-       }
-
-    //    var st = new Student('한국', 100,50,80);
-    //    console.log(typeof st); //object
-    //    console.log(st); //Student {name: "한국", kor: 100, eng: 50, math: 80}
-    
-    
-    window.onload = function(){
-       //Students 타입의 객체들을 저장하는 배열생성
-       var students =[];
-       students.push(new Student('AAA',41,80,95));
-       students.push(new Student('BBB',91,85,90));
-       students.push(new Student('CCC',51,80,90));
-       students.push(new Student('DDD',71,60,90));
-       students.push(new Student('EEE',81,85,90));
-       students.push(new Student('FFF',91,70,90));
-       students.push(new Student('GGG',100,60,90));
-       students.push(new Student('HHH',41,55,90));
-       students.push(new Student('III',61,77,90));
-       students.push(new Student('JJJ',71,88,90));
-
-       var html = '<table border="1">';
-        html += '   <tr>';
-        html += '       <th>이름</th>';
-        html += '       <th>총점</th>';
-        html += '       <th>평균</th>';
-        html += '   </tr>';
-
-            for(var i = 0; i<students.length; i++){
-                html +=students[i].makehtml();
-            }
-        html += '   </table>';
-        
-        
-            document.body.innerHTML = html;
-        }
-        -->
-
-   </script>
 
 
     <script> 
