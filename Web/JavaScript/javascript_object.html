@@ -373,7 +373,7 @@
         html +='    <tr>';
         html +='        <td>'+this.name+'</td>';
         html +='        <td>'+this.getSum()+'</td>';
-        html +='        <td>'+this.getAvg()+'</td>';
+        html +='        <td>'+Math.round(this.getAvg())+'</td>';
         html +='    </tr>';
 
                 return html;
@@ -385,7 +385,8 @@
                 html +='    <tr>';
                 html +='        <td>'+this.name+'</td>';
                 html +='        <td>'+this.getSum()+'</td>';
-                html +='        <td>'+this.getAvg()+'</td>';
+                html +='        <td>'+Math.round(this.getAvg())+'</td>';
+                // Math.round: this.getAvg 가 반올림되어 나타난다.
                 html +='    </tr>';
 
                 return html;
@@ -405,7 +406,13 @@
         students.push(new Student('HHH',41,55,90));
         students.push(new Student('III',61,77,90));
         students.push(new Student('JJJ',71,88,90));
- 
+        
+        students.sort(function(left,right){
+            return right.getSum() - left.getSum();
+        }); // 내림차순
+
+        students = students.slice(0,5); // 5등까지만!
+
         var html = '<table border="1">';
          html += '   <tr>';
          html += '       <th>이름</th>';
@@ -419,8 +426,12 @@
          html += '   </table>';
              
 
-             // 오버라이딩한 tostring 사용하기
+             // 오버라이딩한 tostring 사용하기 -> 코드 간략해진다.
             
+        //      for(var i = 0; i<students.length; i++){
+        //          html +=students[i];
+        //      }
+        //  html += '   </table>';
          
              document.body.innerHTML = html;
          }
@@ -484,7 +495,7 @@
 
     </script> -->
 
-    <script>
+    <!-- <script>
         // String 객체
 
         var str = 'hello!!';
@@ -494,9 +505,28 @@
         console.log(typeof objStr); //object
         console.log(str == objStr); //true// 타입은 다르지만 내용이 같다고 나온다.
         console.log(str.length); //7
-        console.log(objStr.length);
+        console.log(objStr.length); // 7
         //객체로 다루면 메소드 쓸 수 있다.
 
+    </script> -->
+
+    <script>
+        var arr =[5,8,3,7,9,2];
+
+        // 소팅 : 정렬
+        arr.sort(function(left, right){ 
+           // return left -right; // 오름 차순으로 정렬된다.
+            return right -left; // 내림 차순으로 정렬
+        }); 
+
+        // 높은 숫자 3개만 가지는 배열 생성
+        arr = arr.slice(0,3);
+
+        arr.forEach(function(element){
+            console.log(element);
+        }); // 베열의 요소들이 콘솔에 나타남 // 9,8,7
+
+        
     </script>
 </head>
 <body>
