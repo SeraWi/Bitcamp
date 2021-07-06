@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript Function</title>
-    <!-- <script>
+    <!-- <script> 
         // 함수 : 필요한 데이터를 받아 데이터를 처리하고, 결과를 반환하는  
         // function 키워드를 이용해서 정의
         // 1. 익명함수 : 이름을 정의하지 않은 함수 -> 식별자(변수)를 통해서 정의할 때 사용
@@ -63,7 +63,7 @@
 
     </script> -->
 
-    <script>
+    <!-- <script>
         //가변인자함수
         // 1. sumAll()
 
@@ -78,6 +78,44 @@
         }
 
         console.log('1~10까지의 합: '  , sumAll(1,2,3,4,5,6,7,8,9,10));
+
+    </script> -->
+
+
+    <!-- <script>
+        // 함수에서 사용되는 return
+        // 1. 함수의 종료
+        // 2. 값을 반환
+        function returnFunction() {
+            alert('AAA');
+            return; //함수 종료
+            alert('BBB'); //실행이 안된다
+        }
+
+        returnFunction();
+
+        var value = returnFunction();
+        console.log(typeof value, value); //결과:undefined 
+        //반환값이 없기 때문에 value에 아무것도 안들어감.
+    </script> -->
+
+    <script>
+        // 콜백 함수 -> 매개변수로 전달 받은 함수
+        // 매개변수로 전달받은 함수를 10번 실행하는 함수를 정의
+
+        function callTenTimes(callBackFn) {
+            // 데이터 처리...
+            for(var i= 0; i<10 ; i++){
+                callBackFn();
+            }
+        }
+
+        function callBack() {
+            console.log('callBackFunction call');
+        }
+
+        callTenTimes(callBack);
+
     </script>
 </head>
 <body>
