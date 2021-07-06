@@ -12,7 +12,7 @@
         // 2. 명시적 선언함수 
 
 
-        //변수의 호이스팅 특징으로 변수는 미리 만들어진다. 
+        // 변수의 호이스팅 특징으로 변수는 미리 만들어진다. 
         // console.log('check',fn1); //undefined
 
         //fn1(); // 실행 안된다. 오류 난다.
@@ -99,7 +99,7 @@
         //반환값이 없기 때문에 value에 아무것도 안들어감.
     </script> -->
 
-    <!-- <script>
+    <script>
         // 콜백 함수 -> 매개변수로 전달 받은 함수
         // 매개변수로 전달받은 함수를 10번 실행하는 함수를 정의
 
@@ -120,9 +120,9 @@
 
         callTenTimes(callBack);
 
-    </script> -->
+    </script>
 
-    <!-- <script>
+    <script>
         //내장함수 -> 타이머 함수
         // 1초마다 현재시간을 출력
 
@@ -139,7 +139,7 @@
         }, 10000);
 
 
-    </script> -->
+    </script>
 
     <!-- <script>
         //코드 실행 함수
@@ -166,7 +166,7 @@
         console.log(parseFloat(dollar)); //1.5
 
         console.log(parseInt('0x273')); //16진수표현, 627
-        console.log(parseInt('00273')); //8진수표현, 273 // 확인
+        //console.log(parseInt('00273')); //8진수표현 ->ES5에서 삭제!!
         console.log(parseInt('273',8)); // 8진수 표현, 187
         console.log(parseInt('273',16)); //16진수 표현, 627
         console.log(parseInt('1000',2)); // 2진수 표현, 8
