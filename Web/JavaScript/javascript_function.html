@@ -99,7 +99,7 @@
         //반환값이 없기 때문에 value에 아무것도 안들어감.
     </script> -->
 
-    <script>
+    <!-- <script>
         // 콜백 함수 -> 매개변수로 전달 받은 함수
         // 매개변수로 전달받은 함수를 10번 실행하는 함수를 정의
 
@@ -110,11 +110,59 @@
             }
         }
 
-        function callBack() {
-            console.log('callBackFunction call');
+        // function callBack() {
+        //     console.log('callBack Function call');
+        // }
+        // 위아래 모두 가능(익명, 명시적 함수)
+        var callBack = function(){
+            console.log('callBack Functon call');
         }
 
         callTenTimes(callBack);
+
+    </script> -->
+
+    <!-- <script>
+        //내장함수 -> 타이머 함수
+        // 1초마다 현재시간을 출력
+
+        var id = setInterval(function(){
+            //var html = '<h3>'+ new Date()+'</h3>';
+            //document.body.innerHTML = html;
+            document.body.innerHTML= '<h3>'+ new Date()+'</h3>'
+        }, 1000);
+
+        // 10 초 후에 인터벌 함수를 종료
+
+        setTimeOut(function(){
+            clearInterval(id);
+        }, 10000);
+
+
+    </script> -->
+
+    <!-- <script>
+        //코드 실행 함수
+        //javascript 문자열을 생성
+
+        var jsStr ='';
+        jsStr +='var num11 = 10;';
+        jsStr += 'alert(num11);';
+
+        // 문자열을 javascript코드로 실행
+        eval(jsStr);
+    </script> -->
+
+    <script>
+        // 숫자 변환 함수
+        var won = '1000원';
+        var dollar = '1.5$';
+
+        console.log(Number(won)); //NaN
+        console.log(Number(dollar)); //NaN
+
+        console.log(parseInt(won));
+        console.log(parseFloat(dollar));
 
     </script>
 </head>
