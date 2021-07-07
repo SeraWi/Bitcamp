@@ -5,54 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript Window Object</title>
-    <!-- <script>
-        // var output ='';
+    <script>
+        var output ='';
 
 
-        // for( var key in window){
-        //     output +='['+key+']'+ window[key] +'\n';
-        // }
+        for( var key in window){
+            output +='['+key+']'+ window[key] +'\n';
+        }
 
-        // console.log(output);
-
-
-        // window 객체
-        // 새로운 브라우저를 생성 
-        //window.open()
-        //open(); //새 창이 뜬다
-
-        // window.open(
-        //     'http://www.naver.com',
-        //     'new Window',
-        //     'width=300, height=400'); // window 객체 반환
+        console.log(output);
 
 
-        // var child = window.open('','child','width=350, height = 300');
-        // // window.open 이 window객체 반환 ->child도 window 객체임
+       // window 객체
+       // 새로운 브라우저를 생성 
+       // window.open()
+        open(); //새 창이 뜬다
 
-        // var html = '<h1 onclick ="self.close();">윈도우 닫기</h1>';
+        window.open(
+            'http://www.naver.com',
+            'new Window',
+            'width=300, height=400'); // window 객체 반환
 
-        // child.document.write('<h1>부모 윈도우에서 텍스트를 추가</h1>' +html);
+
+        var child = window.open('','child','width=350, height = 300');
+        // window.open 이 window객체 반환 ->child도 window 객체임
+
+        var html = '<h1 onclick ="self.close();">윈도우 닫기</h1>';
+
+        child.document.write('<h1>부모 윈도우에서 텍스트를 추가</h1>' +html);
         
 
         // Screen 객체
 
-        //console.log(screen); //Screen {availWidth: 1920, availHeight: 1040, width: 1920, height: 1080, colorDepth: 24, …}
+        console.log(screen); //Screen {availWidth: 1920, availHeight: 1040, width: 1920, height: 1080, colorDepth: 24, …}
 
         // Location 객체
-        // console.log(location);
+        console.log(location);
         
-        //3초후 네이버 페이지로 이동
-        // setTimeout(function(){
-        //     location.href = 'http://www.naver.com';
-        // },3000)
+        3초후 네이버 페이지로 이동
+        setTimeout(function(){
+            location.href = 'http://www.naver.com';
+        },3000)
 
-        // if(confirm('네이버 페이지로 이동하시겠습니까?')){
-        //     location.href ='http://www.naver.com';
-        // }
+        if(confirm('네이버 페이지로 이동하시겠습니까?')){
+            location.href ='http://www.naver.com';
+        }
 
-        // navigator객체
-        // console.log(navigator);
+        navigator객체
+        console.log(navigator);
         
 
         window.onload = function(){
@@ -94,7 +94,7 @@
             document.body.innerHTML ='<h1>text</h1>'; //text
         }
 
-    </script> -->
+    </script>
 
     <script>
         //HTML 문서에 작성된 태그 요소들을 캐스팅 -> 문서객체로 만드는 것
