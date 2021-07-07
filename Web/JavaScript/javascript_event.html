@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Event</title>
+    <style>
+        h1{
+            background-color: greenyellow;
+        }
+        h2{
+            background-color: hotpink;
+        }
+    </style>
+    <script>
+        
+
+        window.onload = function(){
+            //이벤트 적용
+            // 1. 문서 개체 캐스팅
+            // 2. 이벤트 속성에 핸들러를 할당
+
+            //캐스팅
+            var header = document.getElementById('btn'); 
+
+            //이벤트 속성에 핸들러 할당
+             header.onclick = function(){
+                 alert('h1 태그에 마우스 클릭!');
+             }
+             //이벤트 제거(핸들러 제거)
+             header.onclick = null;
+//          ------------------------------------------------------------------------
+            document.getElementById('btn1').onclick = function(){
+                // document.getElementById('btn1').style.backgroundColor ='black';
+                // document.getElementById('btn1').style.color ='white';
+                // this : 이벤트가 발생한 객체를 가르킨다.
+
+                this.style.backgroundColor = 'black';
+                this.style.color ='white';
+            };
+//          ------------------------------------------------------------------------            
+            // 버튼 A 버튼 B 를 클릭할 때 클릭 횟수를 화면에서 출력
+            // 버튼과 출력 영역을 캐스팅
+
+            var btnA = document.getElementById('btnA');
+            var btnB = document.getElementById('btnB');
+
+            var cntA = document.getElementById('cntA');
+            var cntB = document.getElementById('cntB');
+            
+            // 버튼에 클릭이벤트 연결
+            btnA.onlick = function(){
+                //카운트를 증가시키고 화면을 갱신
+                var cnt = Number(cntA.innerText) +1 ;//문자열에 숫자 더하기, 문자열 숫자로 바꿔줘야 한다
+                cntA.innerText = cnt; //cntA에 넣기
+
+            };
+            btnB.onlick = function(){
+                //카운트를 증가시키고 화면을 갱신
+                //var cnt = Number(cntB.innerText) +1 ;//문자열에 숫자 더하기, 문자열 숫자로 바꿔줘야 한다
+                cntB.innerText = Number(cntB.innerText) +1; //cntA에 넣기
+
+
+                //이벤트 강제 발생
+                
+            };
+            
+
+
+        };
+
+        function mClick(){
+            alert('클릭했어요!');
+        }
+
+    </script>
+</head>
+<body>
+
+    <form id ="myForm" action ="http://www.naver.com" method ="get">
+        id <input type ="text" name ="userID"><br>
+        pw <input type ="password" name ="userPW"><br>
+        <input type ="submit" value = "로그인">
+
+        <!-- get 방식, 뒤소 뒤쪽에 정보 붙인다 -->
+        <!-- https://www.naver.com/?userID=sera&userPW=1234 접속하면 이런식으로URL -->
+
+        <!-- post 방식,정보 유출x -->
+    </form>
+
+    <!-- 버튼을 누르면 buttoncnt가 올라간다. -->
+
+
+    <!-- button만드는 방법 -->
+    <button id="btnA">ButtonA</button> 
+    <!-- button은 submit 한다 -->
+
+    <input id="btnB" type ="button" value ="buttonB">
+    <!-- input button은 submit 하지 않는다 -->
+
+    <h3>Button A - <span id="cntA">0</span></h3>
+    <h3>Button B - <span id="cntB">0</span></h3>
+
+    <!-- <input type ="submit" value ="ButtonC"> -->
+    <!-- submit은 submit 한다 -->
+
+
+    <h1 id ='btn'>Click</h1>
+
+    <h2 onclick="alert('인라인방식의 이벤트 적용')">Click</h2>
+
+    <h2 onclick =" mClick();">클릭</h2>
+
+    <h1 id ="btn1">클릭하세요.</h1>
+
+</body>
+</html>
