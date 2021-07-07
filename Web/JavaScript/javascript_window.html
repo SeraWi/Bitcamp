@@ -99,7 +99,11 @@
     <script>
         //HTML 문서에 작성된 태그 요소들을 캐스팅 -> 문서객체로 만드는 것
         window.onload = function(){
-            var header1 = document.getElementById('header-1');
+
+            //1. 캐스팅한다.
+            //2. 변경한다.
+
+            var header1 = document.getElementById('header-1'); //캐스팅!
             var header2 = document.getElementById('header-2');
             console.log(typeof header1, header1.innerHTML); //object <i>안녕하세요.</i>
             console.log(typeof header2, header2.innerHTML); //object  반갑습니다.
@@ -107,8 +111,49 @@
             header1.innerHTML = '안녕히계세요!';
             header2.innerHTML = '<i>다음에 만나요!!</i>';
 
+
+            //스타일 변경할 수 있다.
+            header1.style.backgroundColor = 'red'; 
+            header1.style.color ='white';
+            header1.style.padding = '10px';
+
+            //캐스팅
             var lang = document.getElementsByName('language');
-            console.log(typeof lang, lang);
+            console.log(typeof lang, lang); //object, NodeList(3) [input, input, input]
+           
+            var inputs = document.getElementsByTagName('input');//object HTMLCollection(3) [input, input, input, language: input]
+            console.log(typeof inputs, inputs);
+
+            var checkbox = document.querySelector('#header2+input'); //header 2 바로 뒤에 있는 input
+            console.log(typeof checkbox, checkbox);
+
+
+            // 요소 삭제 : 부모캐그에서 자식 태그를 삭제
+            // 1. 삭제 대상 캐스팅
+            var header3 = document.getElementById('header-3');
+            // 2. 삭제할 요소를 포함하는 부모 태그
+            document.body.removeChild(header3);
+
+
+            var img = document.getElementById('img');
+            img.src ='../images/jutopia.jpg';
+            
+
+
+
+            /*
+            1.태그요소의 동적 생성
+                1-1 태그 엘리먼트 객체를 생성
+                1-2 텍스트 노드 생성
+                1-3 태그에 텍스트 연결
+                1-4 삽입하고자하는 위치의부모 태그를 케스팅하고 추가
+            2. 정적 파일(html 문서에서 이미 만들어져 잇는 요소)에서 생성
+                1-1 캐스팅하는 메소드를 이용해서 문서객체로 만들기
+                1-2 수정 ->객체가 가지는 속성들을 이용해서 수정
+                1-3 삭제->부모태그에서 삭제 대상 태그를 삭제
+
+            */
+
         }
         
 
@@ -118,11 +163,14 @@
 </head>
 <body>
     <h1 id="header-1"><i>안녕하세요.</i></h1>
-    <h2 id="header-2"> 반갑습니다.</h2>
+    <h2 id="header-2"> 반갑습니다.</h2>  
+    <h3 id="header-3"> 제거대상</h3>
 
     <input type ="checkbox" name ="language" value = "java" checked> java <br>
     <input type ="checkbox" name ="language" value ="javascript" checked> javascript <br>
     <input type ="checkbox" name ="language" value = "HTML5"> html5
+    
+    <img id ="img"> 
     
 </body>
 </html>
