@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Object</title>
+    <script>
+        // var output ='';
+
+        // for(var key in window){
+        //     output += '['+key+']'+ window[key] +'\n';
+        // } 
+
+        // console.log(output); // 속성 이름들을 보여준다.
+
+        // // window 객체
+        // // 새로운 브라우저를 생성
+        // window.open();
+        // open();
+        // // 팝업 차단 풀어주기
+
+        // window.open(
+        //     'http://www.naver.com',
+        //     'new Window',
+        //     'width = 300, height= 400'
+        // ); // window 객체 반환
+
+        // var child = window.open('','child','width = 350, height = 300');
+        // // window.open 이 window 객체 반환 -> child도 window객체임
+
+        // var html ='<h1 onclick ="self.close();">윈도우 닫기</h1>';
+
+        // child.document.write('<h1> 부모 윈도우에서 텍스트를 추가 </h1>'+html);
+
+        // //Screen 객체
+        // console.log(screen);
+
+        // //Location객체
+        // console.log(location);
+
+        //3초후 네이버 페이지로 이동
+        // setTimeout(function(){
+        //     location.href = 'http://www.naver.com';
+        // },3000)
+
+
+        // //이동하시겠습니까? ->yes -> true
+        // if(confirm('네이버 페이지로 이동하시겠습니까?')){
+        //     location.href ='http://www.naver.com';
+        // }
+
+       window.onload = function(){
+           //태그 생성, 텍스트 생성 ->태그에 텍스트를 붙인다.
+
+           //h1 tag 생성
+           var header = document.createElement('h1');
+
+           //text node 생성
+           var text = document.createTextNode('hello');
+
+           //태그에 텍스트 노드를 적용
+           header.appendChild(text);
+
+           //body에 연결 해주기
+           document.body.appendChild(header);
+
+           //이미지 태그 생성 -> 속성도 적용
+           var img = document.createElement('img');
+           img.setAttribute('src', '../images/jutopia.jpg');
+           img.setAttribute('width', 300);
+
+           
+            document.body.appendChild(img);
+
+
+
+       }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
