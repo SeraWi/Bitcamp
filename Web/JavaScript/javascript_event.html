@@ -45,28 +45,42 @@
 
             var btnA = document.getElementById('btnA');
             var btnB = document.getElementById('btnB');
-
             var cntA = document.getElementById('cntA');
             var cntB = document.getElementById('cntB');
             
             // 버튼에 클릭이벤트 연결
-            btnA.onlick = function(){
+            btnA.onclick = function(){
                 //카운트를 증가시키고 화면을 갱신
                 var cnt = Number(cntA.innerText) +1 ;//문자열에 숫자 더하기, 문자열 숫자로 바꿔줘야 한다
                 cntA.innerText = cnt; //cntA에 넣기
 
             };
-            btnB.onlick = function(){
+            btnB.onclick = function(){
                 //카운트를 증가시키고 화면을 갱신
                 //var cnt = Number(cntB.innerText) +1 ;//문자열에 숫자 더하기, 문자열 숫자로 바꿔줘야 한다
                 cntB.innerText = Number(cntB.innerText) +1; //cntA에 넣기
 
 
                 //이벤트 강제 발생
-                
+                btnA.onclick();
             };
+//          ------------------------------------------------------------------------                
             
+            // form 태그 캐스팅
+            var form = document.getElementById('myForm');
+            form.onsubmit = function(){
+                console.log('submit 이벤트');
+                
+                var id = document.getElementById('userId').value;
+                console.log(typeof id, id);
+                if(id.length<1){
+                    alert('아이디를 입력해주세요');
+                    return false; //아이디 없으면 화면 그대로 로그인 정상되면 네이버로 이동
+                }
 
+               // return false; // submit이 action 하지 않음(네이버로 이동하지 않음)
+                
+            }
 
         };
 
@@ -79,7 +93,7 @@
 <body>
 
     <form id ="myForm" action ="http://www.naver.com" method ="get">
-        id <input type ="text" name ="userID"><br>
+        id <input type ="text" id ="userId" name ="userID"><br>
         pw <input type ="password" name ="userPW"><br>
         <input type ="submit" value = "로그인">
 
@@ -89,6 +103,8 @@
         <!-- post 방식,정보 유출x -->
     </form>
 
+
+    <!-- ------------------------------------------------------------------------ -->
     <!-- 버튼을 누르면 buttoncnt가 올라간다. -->
 
 
@@ -105,7 +121,7 @@
     <!-- <input type ="submit" value ="ButtonC"> -->
     <!-- submit은 submit 한다 -->
 
-
+    <!-- ------------------------------------------------------------------------ -->
     <h1 id ='btn'>Click</h1>
 
     <h2 onclick="alert('인라인방식의 이벤트 적용')">Click</h2>
