@@ -5,81 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Window Object</title>
+  
     <script>
-        // var output ='';
+    //  HTML 문서에 작성된 태그 요소들을 캐스팅(객체로 바꾼다) -> 문서 객체로 만드는것
+    // 1. 캐스팅 한다.
+    // 2. 변경한다.
 
-        // for(var key in window){
-        //     output += '['+key+']'+ window[key] +'\n';
-        // } 
+    window.onload = function(){
+        var header = document.createElement('h1');
+        var text = document.createTextNode("hello");
 
-        // console.log(output); // 속성 이름들을 보여준다.
+        header.appendChild(text);
+        document.body.appendChild(header); //header를 body로 연결
 
-        // // window 객체
-        // // 새로운 브라우저를 생성
-        // window.open();
-        // open();
-        // // 팝업 차단 풀어주기
+        var header1 = document.getElementById('header-1'); //객체로 캐스팅
+        var header2 = document.getElementById('header-2'); //객체로 캐스팅
+        console.log(typeof header1, header1.innerHTML);  //object
+        console.log(typeof header2, header2.innerHTML); //object
 
-        // window.open(
-        //     'http://www.naver.com',
-        //     'new Window',
-        //     'width = 300, height= 400'
-        // ); // window 객체 반환
+        header1.innerHTML ='안녕히계세요!';
+        header2.innerHTML ='<i>다음에 만나요!!</i>';
 
-        // var child = window.open('','child','width = 350, height = 300');
-        // // window.open 이 window 객체 반환 -> child도 window객체임
+        //스타일 변경
+        header1.style.backgroundColor ='red';
+        header1.style.color ='white';
+        header1.style.padding = '10px';
 
-        // var html ='<h1 onclick ="self.close();">윈도우 닫기</h1>';
+        
+        var lang= document.getElementsByName('language');
+        console.log(lang);
+        var inputs = document.getElementsByTagName('input');
+        console.log(inputs);
 
-        // child.document.write('<h1> 부모 윈도우에서 텍스트를 추가 </h1>'+html);
+        var checkbox = document.querySelector('#header2+input');
+        console.log(typeof checkbox, checkbox); //object null
 
-        // //Screen 객체
-        // console.log(screen);
+        //  요소 삭제 : 부모태그에서 자식 태그를 삭제
+        // 1. 삭제 대상 캐스팅
+        var header3 = document.getElementById('header-3');
+        //2. 삭제할 요소를 포함하는 부모 태그
+        document.body.removeChild(header3);
 
-        // //Location객체
-        // console.log(location);
-
-        //3초후 네이버 페이지로 이동
-        // setTimeout(function(){
-        //     location.href = 'http://www.naver.com';
-        // },3000)
-
-
-        // //이동하시겠습니까? ->yes -> true
-        // if(confirm('네이버 페이지로 이동하시겠습니까?')){
-        //     location.href ='http://www.naver.com';
-        // }
-
-       window.onload = function(){
-           //태그 생성, 텍스트 생성 ->태그에 텍스트를 붙인다.
-
-           //h1 tag 생성
-           var header = document.createElement('h1');
-
-           //text node 생성
-           var text = document.createTextNode('hello');
-
-           //태그에 텍스트 노드를 적용
-           header.appendChild(text);
-
-           //body에 연결 해주기
-           document.body.appendChild(header);
-
-           //이미지 태그 생성 -> 속성도 적용
-           var img = document.createElement('img');
-           img.setAttribute('src', '../images/jutopia.jpg');
-           img.setAttribute('width', 300);
-
-           
-            document.body.appendChild(img);
-
-
-
-       }
-
+    }
+    
     </script>
 </head>
 <body>
-    
+    <h1 id ="header-1"><i>안녕하세요.</i></h1>
+    <h2 id ="header-2">반갑습니다.</h2>
+    <h3 id ="header-3">제거대상</h3>
+
+    <input type ="checkbox" name ="language" value ="java"> java
+    <input type ="checkbox" name ="language" value ="javascript"> javascript
+    <input type ="checkbox" name ="language" value ="html5"> html5
+
 </body>
 </html>
