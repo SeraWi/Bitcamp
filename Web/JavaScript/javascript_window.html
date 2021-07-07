@@ -51,8 +51,35 @@
         //     location.href ='http://www.naver.com';
         // }
 
-        console.log(navigator);
+        // navigator객체
+        // console.log(navigator);
+        
 
+        window.onload = function(){
+
+            // 태그 생성, 텍스트 생성 -> 태그에 텍스트를 붙인다.
+
+            // h1 tag 생성
+            var header = document.createElement('h1');
+            // text node 생성 
+            var text = document.createTextNode("hello");
+
+            // 태그에 텍스트 노드를 적용
+            header.appendChild(text); //<h1>hello</h1>
+
+            //body에 연결 해주기
+            document.body.appendChild(header);
+
+            //이미지 태그 생성 -> 속성도 적용
+            var img = document.createElement('img');
+            img.src = '../images/jutopia.jpg'; // 경로
+            img.width = 300;
+            img.height = 250;
+
+            //body에 적용
+            document.body.appendChild(img);
+
+        }
 
     </script>
 </head>
