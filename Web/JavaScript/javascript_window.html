@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript Window Object</title>
-    <script>
+    <!-- <script>
         // var output ='';
 
 
@@ -72,18 +72,57 @@
 
             //이미지 태그 생성 -> 속성도 적용
             var img = document.createElement('img');
-            img.src = '../images/jutopia.jpg'; // 경로
-            img.width = 300;
-            img.height = 250;
+            // img.src = '../images/jutopia.jpg'; // 경로
+            // img.width = 300;
+            // img.height = 250;
+            img.setAttribute('src','../images/jutopia.jpg');
+            img.setAttribute('width', 300);
+            
+
+            //지정된 속성이 아닌 속성을 추가
+            img.setAttribute('data-role','img');
 
             //body에 적용
             document.body.appendChild(img);
 
+            console.log(document.body.innerHTML);
+            //<h1>안녕하세요.</h1>
+            //<h1>hello</h1><img src="../images/jutopia.jpg" width="300" data-role="img">
+            console.log(document.body.innerText); //안녕하세요.hello
+
+            document.body.innerText ='<h1>text</h1>'; //<h1>text</h1>
+            document.body.innerHTML ='<h1>text</h1>'; //text
         }
 
+    </script> -->
+
+    <script>
+        //HTML 문서에 작성된 태그 요소들을 캐스팅 -> 문서객체로 만드는 것
+        window.onload = function(){
+            var header1 = document.getElementById('header-1');
+            var header2 = document.getElementById('header-2');
+            console.log(typeof header1, header1.innerHTML); //object <i>안녕하세요.</i>
+            console.log(typeof header2, header2.innerHTML); //object  반갑습니다.
+
+            header1.innerHTML = '안녕히계세요!';
+            header2.innerHTML = '<i>다음에 만나요!!</i>';
+
+            var lang = document.getElementsByName('language');
+            console.log(typeof lang, lang);
+        }
+        
+
     </script>
+
+
 </head>
 <body>
+    <h1 id="header-1"><i>안녕하세요.</i></h1>
+    <h2 id="header-2"> 반갑습니다.</h2>
+
+    <input type ="checkbox" name ="language" value = "java" checked> java <br>
+    <input type ="checkbox" name ="language" value ="javascript" checked> javascript <br>
+    <input type ="checkbox" name ="language" value = "HTML5"> html5
     
 </body>
 </html>
