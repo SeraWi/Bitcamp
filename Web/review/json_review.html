@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Object</title>
+    <script>
+        window.onload = function(){
+        //book object 생성
+        var book ={
+            name: 'Java',
+            name: 10000,
+            publisher : 'Orange Media'
+        }
+
+        // Object -> Json형식의 문자열로 변경
+        var jsonData = JSON.stringify(book); 
+        console.log(jsonData);//{"name":10000,"publisher":"Orange Media"}
+        document.getElementById('json').innerHTML = jsonData;
+        
+        var newData = '{"name":10000,"publisher":"Orange Media"}';
+        //JSON 형식의 문자열 -> JavaScript Object
+
+        var newBook = JSON.parse(newData); //type Object
+        console.log(typeof newBook, newBook); //object {name: 10000, publisher: "Orange Media"}
+        
+    }
+    
+    </script>
+</head>
+<body>
+    <h2 id ="json">안녕하세요.</h2>
+</body>
+</html>
