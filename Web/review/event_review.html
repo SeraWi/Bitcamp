@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    *{
+        padding:50;
+        margin:50;
+    }
+    h1{
+        background-color: greenyellow;
+    }
+
+    </style>
+    <script>
+        window.onload =function(){
+            //이벤트 적용
+            // 1. 문서 개체 캐스팅
+            // 2. 이벤트 속성에 핸들러를 할당
+
+            //캐스팅
+            var header = document.getElementById('btn');
+
+            //이벤트 속성에 핸들러 할당
+            header.onclick = function(){
+                alert('h1 태그에 마우스 클릭');
+            }
+            function mClick(){
+                alert('클릭했어요!');
+            }
+  //--------------------------------------------------------------
+           document.getElementById('btn1').onclick = function(){
+               this.style.backgroundColor ='black';
+               this.style.color ='white';
+           }
+           //클릭하면 색깔 바뀌게!!
+//----------------------------------------------------------------
+           //버튼 A,버튼 B를 클릭할 때 클릭 횟수를 화면에서 출력
+           //캐스팅
+           var btnA = document.getElementById('btnA');
+           var btnB = document.getElementById('btnB');
+           var cntA = document.getElementById('cntA');
+           var cntB = document.getElementById('cntB');
+
+           //버튼에 클릭이벤트 연결
+           btnA.onclick = function(){
+               var cnt = Number(cntA.innerText)+1;
+               cntA.innerText =cnt;
+           }
+           btnB.onclick = function(){
+               var cnt = Number(cntB.innerText)+1;
+               cntB.innerText =cnt;
+               btnA.onclick(); //b 누르면 a도 증가// 이벤트 강제 발생
+               
+           }
+//----------------------------------------------------------------
+           //form 태그 캐스팅
+           var form =document.getElementById('myForm');
+           form.onsubmit =function(){
+               console.log('submit 이벤트');
+
+               var id = document.getElementById('userId').value;
+               console.log(typeof id, id);//string 
+
+               if(id.length<1){
+                   alert('아이디를 입력해주세요');
+                   return false;//아이디 없으면 화면 그대로
+               }
+            }
+//----------------------------------------------------------------
+           //p 태그 캐스팅
+           var p1= document.getElementById('p1');
+           p1.onclick = function(){
+               // var event = e|| window.event;
+
+                alert('p Click');
+
+                event.cancelBubble= true;
+
+                if(event.stopImmediatePropagation){
+                    event.stopImmediatePropagation
+                }
+           };
+
+
+        }
+    </script>
+</head>
+<body>
+    <!-- 이벤트 버블링 -->
+    <!-- 이벤트 하나 클릭하면 위로 전달 -->
+    <div style ="border: 1px solid black" onclick ="alert('div1')">
+        <div style ="border: 1px solid green" onclick ="alert('div2')">
+            <h1 style ="border: 1px solid blue" onclick ="alert('h1')">
+                <p id="p1" style="border:1px solid red; width: 50%">클릭</p>
+            </h1>
+        </div>
+    </div>
+
+<!-- ---------------------------------------------------------------- -->
+
+    <form id="myForm" action ="http://www.naver.com" method="get">
+        id<input type="text" id="userId" name="userId"><Br>
+        pw<input type ="password"  name="userPW"><br>
+        <input type ="submit" value ="로그인">
+    </form>
+
+
+
+<!-- ----------------------------------------------------------- -->
+    <button id="btnA">ButtonA</button>
+    <input id ="btnB" type="button" value="buttonB">
+
+    <h3>ButtonA -<span id="cntA">0</span></h3>
+    <h3>ButtonB -<span id="cntB">0</span></h3>
+
+
+
+
+
+
+
+<!-- ----------------------------------------------------------- -->
+   <h1 id='btn'> Click</h1>
+
+   <h2 onclick ="alert('인라인방식의 이벤트 적용')"> click </h2>
+
+   <h2 onclick =" mClick();">클릭</h2>
+
+   <h1 id ="btn1">클릭하세요</h1>
+
+   
+
+</body>
+</html>
