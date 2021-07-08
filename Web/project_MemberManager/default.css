@@ -108,7 +108,8 @@ div.msg{
     border-collapse: collapse;
 }
 
-#listArea>table td, #listArea>table th{
+/* th : 컬럼명들 td:밑에 생기게 되는 정보들 */
+#listArea>table td, #listArea>table th{ 
     padding:10px;
     border : 1px solid #aaa;
 
