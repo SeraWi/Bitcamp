@@ -306,6 +306,7 @@ function editMember(index){
     //alert(index +'인덱스의 요소를 수정합니다.');
 
     //전달받은 index 값으로 members 배열의 객체 하나를 얻을 수 있다!
+    //수정 누르는 순간 index받아서 콘솔에 보여주기
     console.log (index,members[index]);
 
     // editForm의 태그들의 value 값을 세팅
