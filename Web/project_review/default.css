@@ -56,7 +56,7 @@ form label{
     padding: 0 5px;
 }
 
-#regForm input[type= submit]{
+#regForm input[type= submit], #editForm input[type =submit]{
     width:100px;
     height: 56px;
 
@@ -76,3 +76,72 @@ div.msg{
 }
 
 
+/* --------------------------------------------------------- */
+/* 회원리스트 영역 */
+
+#listArea{
+    padding: 20px 40px;
+    border-bottom: 1px solid #aaa;
+}
+
+#listArea>table{
+    margin: 10px 0;
+
+    width: 60%;
+
+    border-collapse: collapse;
+    
+}
+#listArea>table td, #listArea>table th{
+    padding:10px;
+    border : 1px solid #aaa;
+
+    /* 안에 텍스트 가운데 정렬 */
+    text-align: center;
+}
+
+/* --------------------------------------------------------- */
+/* 수정폼 영역 */
+#editFormArea{
+    width:350px;
+    border: 1px solid #aaa;
+    background-color: greenyellow;
+    border-radius: 10px;
+
+
+    padding: 20px;
+
+
+    position:absolute;
+    left:50%;
+    top:100px;
+    margin-left:-175px;
+    display:none;
+}
+
+#div_header{
+    border-bottom: 1px solid #aaa;
+    overflow:hidden;
+}
+
+#div_header>h2{
+    float:left;
+    padding-bottom:5px;
+}
+
+#div_header>div{
+    /* 오른쪽으로 밀기 */
+
+    float:right;
+}
+
+#editFormArea >table{
+    width:100%;
+    margin-top:15px;
+}
+
+#editForm>table td{
+    padding: 5px 10px;
+    text-align:center;
+
+}

@@ -52,6 +52,76 @@
             </table>
         </form>
     </div>
-    
+
+    <!-- 회원리스트 시작 -->
+    <div id="listArea">
+        <h2 class="title_font">회원리스트</h2>
+
+        <table>
+            <tbody id="list">
+                <tr>
+                    <th>순번(index)</th>
+                    <th>아이디</th>
+                    <th>비밀번호</th>
+                    <th>이름</th>
+                    <th>관리</th>
+                </tr>
+            </tbody>
+
+            
+        </table>
+    </div>
+    <!-- 회원리스트 끝 -->
+
+    <!-- 회원 데이터 수정 시작 -->
+    <div id="editFormArea">
+        
+        <div id="div_header">
+            <h2 class="title_font">회원 정보 수정</h2>
+            <div><a href="javascript:editMemberClose()">닫기</a></div>
+        </div>
+
+        <!-- 수정창시작 -->
+        <form id="editForm">
+            <table>
+                <tr>
+                    <td>아이디</td>
+                    <td>
+                        <input type="text" id="editId" disabled>
+                        <input type="hidden" id="index">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>비밀번호</td>
+                    <td>
+                        <input type="password" id="editPw" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>비밀번호 확인</td>
+                    <td>
+                        <input type="password" id="editRePw" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>이름</td>
+                    <td>
+                        <input type="text" id="editName" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"><input type="submit" value ="수정"></td>
+                    <td></td>
+                </tr>
+            </table>
+               
+
+        </form>
+    </div>
+
 </body>
 </html>
