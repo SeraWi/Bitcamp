@@ -88,4 +88,30 @@ div.msg{
     display:none;
 
 }
+/* ---------------------------------------------------------------- */
+/* 회원리스트 영역 */
+#listArea{
+    padding:20px 40px;
+    border-bottom: 1px solid #aaa;
+}
+
+#listArea>table{
+    margin: 10px 0;
+
+    /* 테이블의 폭 */
+    /* 화면의 사이즈에 따라 달라진다 */
+    width: 60%; 
+
+    /* 중간에 보더 두줄이 붙도록 간격 없애기 */
+    border-collapse: collapse;
+}
+
+#listArea>table td, #listArea>table th{
+    padding:10px;
+    border : 1px solid #aaa;
+
+    /* 안에 텍스트 가운데 정렬 */
+    text-align: center;
+}
+
 

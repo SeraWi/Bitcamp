@@ -27,6 +27,10 @@ var members= []; // new Array()
 // submit 이벤트 연결 -> 캐스팅 필요
 
     window.onload = function () {
+
+        //회원리스트 보여주기, 함수 호출
+        setList();
+
         var userid = document.querySelector('#userID');
         var pw = document.querySelector('#pw');
         var repw = document.querySelector('#repw');
@@ -131,11 +135,13 @@ var members= []; // new Array()
             // form 초기화
             this.reset();
             
+            //회원리스트 보여주기 함수 호출
+            setList();
             
             return false;
         }
 
-//--------------------------------------------------------------------
+
         // 이벤트 처리하기
         // 안쪽 입력창에 커서 들어갔을 때 이벤트
         // 커서가 들어가면 밑에 메세지 없어진다(공백으로 만들기)
@@ -173,4 +179,58 @@ var members= []; // new Array()
 
 }
 
+//---------------------------------------------------------------------------
+
+//배열에 있는 요소를 -> table tr행을 만들어서 추가
+function setList(){ //함수 호출해야 작동
+    
+    //table 의 tbody를 캐스팅한다.
+    var list = document.querySelector('#list');
+
+    //이전에 있던 테이블도 가져 오는 문제 해결하기 위해서
+    var tbody = '<tr>';
+    tbody += '  <th>순번(index)</th>';
+    tbody += '  <th>아이디</th>';
+    tbody += '  <th>비밀번호</th>';
+    tbody += '  <th>이름</th>';
+    tbody += '  <th>관리</th>';
+    tbody += '</tr>';
+    
+
+    //아직 입력된 회원이 없다면
+    if(members.length <1){
+        //데이터 존재X
+
+        tbody += '<tr>';
+        tbody += '<td colspan="5">데이터가 존재하지않습니다.</td>';
+        tbody += '</tr>';
+
+    }else{
+        
+        //데이터 존재
+        for(var i=0; i<members.length; i++){
+            // <tr>
+            //     <td>0</td>
+            //     <td>cool</td>
+            //     <td>1111</td>
+            //     <td>COOL</td>
+            //     <td>수정 | 삭제</td>
+            // </tr>
+    
+            tbody +='<tr>';
+            tbody +='   <td>'+i+'</td>'; //인덱스
+            tbody +='   <td>'+members[i].userId+'</td>';
+            tbody +='   <td>'+members[i].pw+'</td>';
+            tbody +='   <td>'+members[i].userName+'</td>';
+            tbody +='   <td>수정 | 삭제</td>';
+            tbody +='</tr>';
+        }
+        
+        
+    }
+    //tbody를 html에 넣기
+    list.innerHTML = tbody;
+
+
+}
 
