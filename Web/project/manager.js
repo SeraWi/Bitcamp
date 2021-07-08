@@ -21,6 +21,16 @@ Member.prototype.makeHtml = function(){
 var members= []; // new Array()
 
 
+// 배열을 JSON(문자열)으로 ->loalStorage에 저장
+// 저장시
+// 수정시
+// 삭제시 
+// setItem('members',JSON.Stringify(members))으로 저장 해줘야 한다.
+// 배열과 localstorage가 싱크가 맞도록한다.
+
+
+
+
 
 //--------------------------------------------------------------------------
 // 사용자가 입력한 정보를 가지고 Member 객체를 생성
@@ -28,8 +38,25 @@ var members= []; // new Array()
 
     window.onload = function () {
 
-        //회원리스트 보여주기, 함수 호출
-        setList();
+        // localStorage 저장된 데이터가 있는지 확인
+        // localStorage.getItem에 저장된 members가 없다면 null 반환
+        if(localStorage.getItem('members') == null){
+            // 배열 members 를 json문자열로 변환해서 저장
+            localStorage.setItem('members', JSON.stringify(members));
+
+        }else{
+            // 존재
+            // JSON문자열 -> 객체로 변환
+            members = JSON.parse(localStorage.getItem('members')); 
+            console.log(members);
+
+            //회원리스트 보여주기, 함수 호출
+            setList();
+        }
+
+
+        // //회원리스트 보여주기, 함수 호출
+        // setList();
 
         var userid = document.querySelector('#userID');
         var pw = document.querySelector('#pw');
@@ -128,9 +155,15 @@ var members= []; // new Array()
     
             // //배열에 사용자 정보를 추가
             members.push(new Member(userid.value, pw.value, userName.value));
+
+            //localStorage에 저장해주기
+            localStorage.setItem('members', JSON.stringify(members));
+
             //등록하면 알림창
             alert('등록되었습니다.');
             console.log('회원 리스트', members);
+
+            
     
             // form 초기화
             this.reset();
@@ -184,6 +217,9 @@ var members= []; // new Array()
 //배열에 있는 요소를 -> table tr행을 만들어서 추가
 function setList(){ //함수 호출해야 작동
     
+    console.log(members);
+   
+
     //table 의 tbody를 캐스팅한다.
     var list = document.querySelector('#list');
 
@@ -233,6 +269,7 @@ function setList(){ //함수 호출해야 작동
 
 }
 
+//---------------------------------------------------------------------------
 // 배열의 요소 삭제 함수
 function deleteMember(index){
     //alert(index+'인덱스의 요소를 삭제합니다.');
@@ -247,6 +284,9 @@ function deleteMember(index){
     if(confirm('삭제하시겠습니까?')){
         members.splice(index,1);
         alert('삭제되었습니다.');
+        
+        //localStorage에 저장해주기
+        localStorage.setItem('members', JSON.stringify(members));
 
         //테이블의 리스트를 갱신
         setList();
@@ -254,9 +294,82 @@ function deleteMember(index){
    
 }
 
+//---------------------------------------------------------------------------
 //배열의 요소 수정 함수
 function editMember(index){
-    alert(index +'인덱스의 요소를 수정합니다.');
+
+    //수정 폼이 화면에 노출되도록 한다
+    document.querySelector('#editFormArea').style.display ='block';
+
+
+
+    //alert(index +'인덱스의 요소를 수정합니다.');
+
+    //전달받은 index 값으로 members 배열의 객체 하나를 얻을 수 있다!
+    console.log (index,members[index]);
+
+    // editForm의 태그들의 value 값을 세팅
+    //캐스팅
+    var editUserId = document.querySelector('#editId');
+    var editPw = document.querySelector('#editPw');
+    var editRePw = document.querySelector('#editRePw');
+    var editName = document.querySelector('#editName');
+    var editIndex= document.querySelector('#index');
+
+    //데이터 폼(회원리스트)에 세팅하기
+    editUserId.value= members[index].userId;
+    editPw.value = members[index].pw;
+    editRePw.value = members[index].pw;
+    editName.value =members[index].userName;
+    editIndex.value= index; //인덱스 전달 받기
+    
+
+    //수정버튼 눌렀을 때!
+    document.querySelector('#editForm').onsubmit= function(){
+        
+        //수정한 데이터 담는 객체
+        //var member= new Member(editUserId.value,editPw.value,editName.value );
+        //수정 누르면 콘솔에 인덱스와 정보 보여주기
+        //console.log(editIndex.value,member);
+
+
+        //비밀번호와 비밀번호 확인 같은지 체크
+        if(editPw.value !== editRePw.value){
+            //다르다!
+            alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+
+            return false; //종료: 밑에꺼 실행 안된다.
+        }
+
+
+        if(!confirm('수정하시겠습니까?')){
+            //아니오!, 수정안함
+            return false;
+        }
+
+        //변경된 사항을 다시 객체에 넣어주기(인덱스에 있는 객체를 찾아서!)
+        // 수정된다!!
+        members[editIndex.value].pw = editPw.value;
+        members[editIndex.value].userName =editName.value;
+
+        alert('수정되었습니다.');
+
+        //localStorage에 저장해주기
+        localStorage.setItem('members', JSON.stringify(members));
+        
+
+        //리스트 갱신해주기
+        setList();
+
+        return false;
+    };
+
+
 }
 
 
+//---------------------------------------------------------------------------
+function editMemberClose(){
+    // 수정폼을 닫아주기 -> 안보이게 하기
+    document.querySelector('#editFormArea').style.display ='none';
+}

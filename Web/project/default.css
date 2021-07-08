@@ -54,7 +54,9 @@ form label{
     padding: 5px;
 }
 
-#regForm input[type =text],#regForm input[type =password]{
+
+/* 등록과 수정submit 설정 */
+#regForm input[type =text],#regForm input[type =password]{ 
     /* 입력창 높이 키우기 */
     height: 30px;
     width: 200px;
@@ -66,7 +68,7 @@ form label{
     padding: 0 5px;
 }
 
-#regForm input[type=submit]{
+#regForm input[type=submit], #editForm input[type =submit]{
     /* 등록 버튼 */
 
     width: 100px;
@@ -111,6 +113,75 @@ div.msg{
     border : 1px solid #aaa;
 
     /* 안에 텍스트 가운데 정렬 */
+    text-align: center;
+}
+
+
+/* ---------------------------------------------------------------- */
+/* 회원 정보 수정 영역 */
+#editFormArea{
+
+    /* 감싸고 있는 전체 박스 설정 */
+
+    width:350px;
+    border : 1px solid #aaa;
+    border-radius : 10px;
+
+    background-color:rgb(207, 243, 198);
+
+    /* 간격주기 */
+    padding: 20px;
+
+    /* 위치를 가운데로 오도록 */
+    /* 절대좌표 */
+    position: absolute;
+    /* 화면의 50%e를 차지한다.  */
+    left:50%; 
+    top:100px;
+    margin-left:-175px;
+
+    /* 수정 전에는 화면에서 안보이도록 설정 */
+    display:none;
+}
+
+/* 회원정보수정과 닫기 영역 */
+#div_header{
+    border-bottom: 1px solid #aaa;
+
+    overflow: hidden;
+}
+
+/* 회원정보수정 */
+#div_header>h2{
+    /* 왼쪽으로 밀기 */
+
+    float: left;
+
+    padding-bottom: 5px;
+}
+
+/* 닫기  */
+#div_header>div{
+    /* 오른쪽으로 밀기 */
+
+    float:right;
+}
+
+/* 테이블 설정 */
+#editFormArea > table{
+    width: 100%;
+
+    margin-top:15px;
+
+
+}
+
+/* 테이블 밑에 있는 칸들 설정 */
+#editForm> table td{
+    /* 칸들간의 간격 주기 */
+    padding : 5px 10px;
+
+    /* 텍스트 중간 정렬 */
     text-align: center;
 }
 

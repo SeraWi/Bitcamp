@@ -57,6 +57,8 @@
     </div>
     <!-- 회원 등록 폼 끝 -->
 
+
+    <!-- 회원리스트시작 -->
     <div id="listArea">
         <h2 class="title_font">회원 리스트</h2>
         <table>
@@ -80,6 +82,52 @@
         </table>
 
     </div>
+    <!-- 회원리스트 끝 -->
+
+    <!-- 회원 데이터 수정 시작 -->
+    <div id="editFormArea">
+
+        <div id ="div_header">
+            <h2 class="title_font">회원 정보 수정</h2>
+            <div><a href ="javascript: editMemberClose()"> 닫기</a> </div>
+        </div>
+
+        <!-- 수정창 시작 -->
+        <form id="editForm">
+            <table>
+                <tr>
+                    <td>아이디</td>
+                    <td><input type="text" id="editId"  disabled>
+                        <input type="hidden" id="index">
+                        <!-- 사용자에게 보여주지 않는 값:hidden -->
+                        <!-- readonly, disabled :읽기전용 바꿀 수 없다 -->
+                    </td>
+                </tr>
     
+                <tr>
+                    <td>비밀번호</td>
+                    <td><input type="password" id="editPw" required></td>
+                </tr>
+    
+                <tr>
+                    <td>비밀번호 확인</td>
+                    <td><input type="password" id="editRePw" required></td>
+                </tr>
+    
+                <tr>
+                    <td>이름</td>
+                    <td><input type ="text" id="editName" required></td>
+                </tr>
+    
+                <tr>
+                    <td colspan="2"><input type="submit" value ="수정"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+        
+    </div>
+    <!-- 회원 데이터 수정 끝 -->
+
 </body>
 </html>
