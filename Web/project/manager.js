@@ -15,6 +15,10 @@ function Member(id,pw,name){
 Member.prototype.makeHtml = function(){
     return'[id:'+this.userId+', pw:'+ this.pw+', name:'+this.userName+']';
 }
+//---------------------------------------------------------------------------
+
+//회원의 정보를 저장하는 배열
+var members= []; // new Array()
 
 
 
@@ -113,13 +117,21 @@ Member.prototype.makeHtml = function(){
             console.log(repw.value);
             console.log(userName.value);
 
-            //객체 만들기
-            var member = new Member(userid.value, pw.value,  userName.value);
+            //객체생성
+            //var member = new Member(userid.value, pw.value,  userName.value);
+            //객체 확인
+            // console.log(typeof member, member.makeHtml());
     
-            console.log(typeof member, member.makeHtml());
+            // //배열에 사용자 정보를 추가
+            members.push(new Member(userid.value, pw.value, userName.value));
+            //등록하면 알림창
+            alert('등록되었습니다.');
+            console.log('회원 리스트', members);
     
-    
-    
+            // form 초기화
+            this.reset();
+            
+            
             return false;
         }
 
