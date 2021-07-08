@@ -222,10 +222,9 @@ function setList(){ //함수 호출해야 작동
             tbody +='   <td>'+members[i].userId+'</td>';
             tbody +='   <td>'+members[i].pw+'</td>';
             tbody +='   <td>'+members[i].userName+'</td>';
-            tbody +='   <td>수정 | 삭제</td>';
+            tbody +='   <td><a href="javascript:editMember('+i+')">수정 </a> |<a href="javascript: deleteMember('+i+')"> 삭제</a></td>';
             tbody +='</tr>';
         }
-        
         
     }
     //tbody를 html에 넣기
@@ -233,4 +232,31 @@ function setList(){ //함수 호출해야 작동
 
 
 }
+
+// 배열의 요소 삭제 함수
+function deleteMember(index){
+    //alert(index+'인덱스의 요소를 삭제합니다.');
+
+    //var chk = confirm('삭제하시겠습니까?');
+
+    //배열의 index 요소를 삭제
+    // splice(index, count) : index에서 시작해서 count 만큼의 요소를 삭제하고
+    // 남은 요소를 반환한다.
+    // splice(index , 1)
+
+    if(confirm('삭제하시겠습니까?')){
+        members.splice(index,1);
+        alert('삭제되었습니다.');
+
+        //테이블의 리스트를 갱신
+        setList();
+    }
+   
+}
+
+//배열의 요소 수정 함수
+function editMember(index){
+    alert(index +'인덱스의 요소를 수정합니다.');
+}
+
 
