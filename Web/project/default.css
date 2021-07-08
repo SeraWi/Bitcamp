@@ -14,7 +14,12 @@ font-family: 'Sunflower', sans-serif;
     margin:0;
     padding:0;
 }
+/* 타이틀 폰트 적용 */
+.title_font{
+    font-family: 'Jua', sans-serif;
+}
 
+/* ---------------------------------------------------------------- */
 /* header 설정 */
 header{
     padding: 20px;
@@ -28,6 +33,59 @@ hr{
     margin: 5px 0;
 
 }
+/* ---------------------------------------------------------------- */
+/* 회원 가입 폼 영역 */
+#regFormArea{
+    padding:20px 40px;
+    border-bottom: 1px solid #aaa;
+}
 
+form label{ 
+    /* form 안에 있는 모두 후손 label */
+    display : block; 
+    /* 블록으로 만들면 라벨(인라인)과 입력칸이 위아래로 생김 */
+}
 
+#regForm>table td{
+
+    width : 200px;
+
+    /* 각 td마다 5px씩 간격주기 */
+    padding: 5px;
+}
+
+#regForm input[type =text],#regForm input[type =password]{
+    /* 입력창 높이 키우기 */
+    height: 30px;
+    width: 200px;
+
+    /* 폰트 크기 키우기 */
+    font-size: 1.2em;
+
+    /* 입력할 때 글자가 좌우로 간격주기 */
+    padding: 0 5px;
+}
+
+#regForm input[type=submit]{
+    /* 등록 버튼 */
+
+    width: 100px;
+    height: 56px;
+
+    /* 테두리 */
+    border: 1px solid #aaa;
+
+    /* 폰트  */
+    font-size: 1.5em;
+    font-family: 'Jua', sans-serif;
+
+    /* 배경색 */
+    background-color:greenyellow;
+}
+
+div.msg{
+    color:red;
+    display:none;
+
+}
 
