@@ -9,6 +9,18 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js" 
     integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" 
     crossorigin="anonymous"></script>
+
+    <style>
+        div{
+            width : 300px;
+            border: 1px solid salmon;
+            border-radius:10px;
+        }
+        div>h1, div>p{
+            padding: 5px;
+           
+        }
+    </style>
     <script>
         //xml 문자열을 만든다
 
@@ -33,6 +45,7 @@
         // $.parseXml(문자열)
 
         var xmlDoc = $.parseXML(xml);
+        var html ='';
 
         //xml요소 엘리먼트를 찾아주는 메소드 - find(엘리먼트 이름), 배열형태로 반환
         // xml 문서객체를 ->jQuery객체로 변환
@@ -42,8 +55,23 @@
             var name = $(this).find('name').text();//name 태그에 해당하는 텍스트 가져오기
             var url =$(this).find('url').text(); 
             console.log(name, url);
+
+            html += '<div>';
+            html +='     <h1>'+name+'</h1>';    
+            html +='     <p>'+url+'</p>';   
+            html += '</div>';
+
         });
+
+        // html을 body에 넣기
+        $(document).ready(function(){
+            $('body').html(html);
+        });
+       
         
+
+
+
 
     </script>
 </head>
