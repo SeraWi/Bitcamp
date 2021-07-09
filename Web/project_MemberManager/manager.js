@@ -177,7 +177,7 @@ var members= []; // new Array()
 
         // 이벤트 처리하기
         // 안쪽 입력창에 커서 들어갔을 때 이벤트
-        // 커서가 들어가면 밑에 메세지 없어진다(공백으로 만들기)
+        // 커서가 들어가면 밑에 메세지 없어진다(공백으로 만들기) 
 
         // sumit이랑 범위 다르다
         userid.addEventListener('focus', function(){
