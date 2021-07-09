@@ -89,6 +89,7 @@
                 }
             });
             //-----------------------------------------------------------------------
+            //getter
 
             var strHtml = $('h1').html(); //getter, 배열로 가져옴
             console.log(strHtml); //header - 0 , 가져올때는 가장 첫번째 출력
@@ -99,14 +100,24 @@
             //-----------------------------------------------------------------------
            
             // setter
-            $('div').html(function(index, html){ //html :현재 가지고 있는 html
+            $('div').html(function(index, html){ //html :현재 가지고 있는 html 전달
                 console.log(index,html);
                 $(this).html('<h1>'+html+ index+'!!!'+'</h1>');            
                 //원래 있던html에 !!! 붙이고 tag달기
                 //this = 선택된 div
             });
 
+            //-----------------------------------------------------------------------
+            // 문서 객체 제거
 
+            $('#btn03').click(function(){
+                $('#menu').remove(); //ul이 사라짐 li남아있다
+            });
+
+            $('#btn04').click(function(){
+                $('#menu').empty(); //내용만 사라진다. ul 남아있고 li사라진다.
+            });
+            
 
         });
     </script>
@@ -143,6 +154,8 @@
     <!-- // 변경 누르면 수평방향으로 리스트가 바뀐다 -->
     <button id ="btn01"> 변경</button> 
     <button id ="btn02"> 초기화</button>
-    
+    <button id ="btn03"> 메뉴삭제</button>
+    <button id ="btn04"> 내용삭제</button>
+
 </body>
 </html>
