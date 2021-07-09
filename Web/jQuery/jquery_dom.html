@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div>img{
+            width: 350px;
+            height: 250px;
+        }
+
+        #banner{
+            width: 350px;
+            border: 10px solid #aaa;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" 
+    integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" 
+    crossorigin="anonymous">
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            //동적 html 요소 생성 
+            // 방법 1.
+            $('<h1></h1>');
+            $('<h1></h1>').html('hello ~!!!');
+
+
+            //방법 2
+            $('<h1>hello~</h1>');
+
+
+            //요소를 추가, appendTo -> 괄호로!
+            $('<h1></h1>').html('hello ~!!!').appendTo('body');
+            $('<h1>hello~!!! Javascript!!</h1>').appendTo('body');
+
+
+            //이미지 추가 하기 (체이닝)
+            $('<img>').attr('src', '../images/jutopia.jpg').attr('width', 100).appendTo('body');
+
+            // 체이닝되는 것보다 객체로 만들어주는 것이 좋다.
+            $('<img>').attr({
+                src: '../images/jutopia.jpg',
+                width: 500
+            }).appendTo('body');
+
+            $('<img>').attr({
+                src: '../images/jutopia.jpg',
+                width: 500
+            }).prependTo('body'); //prepend 앞쪽으로 들어간다.
+
+            //------------------------------------------------------------------------------
+            
+            var html1 = '<a href="#">test</a>';
+            var html2 = '<p>TEST</p>';
+            var html3 = '<div>DIV -0</div><div>DIV -1</div><div>DIV -2</div>';
+            
+            
+            $('body').append('<h3>hello~JS!</h3>'); //body의 가장 뒤에 붙인다, 동적처리(함수)에 append 쓴다.
+            $('body').append(html1, html2,html3,'<hr>'); //여러개 한번에 추가 가능
+
+            //함수도 가능
+            
+
+            // 배열 생성
+            var links = [
+                {name: '네이버',url : 'http://www.naver.com'},
+                {name: '다음',url : 'http://www.daum.net'},
+                {name: '카카오',url : 'http://www.kakao.com'}
+            ];
+
+            $('div').append(function(index){
+                return '<h3><a href ="'+links[index].url+'">'+links[index].name+'</a></h3>';
+            });
+
+            //------------------------------------------------------------------------------
+            // 문서 객체 이동 --banner
+            setInterval(function(){
+                $('#banner > img').first().appendTo('#banner'); //첫번째 캐스팅하고 banner제일 뒤로 넣기
+
+            }, 3000);
+
+
+           
+
+
+
+        });
+    </script>
+</head>
+<body>
+    <div id = "banner">
+        <img src ="../images/window1.jpg">
+        <img src ="../images/window2.jpg">
+        <img src ="../images/photo.jpg">
+        <img src="../images/nice.jpg">
+
+    </div>
+    
+</body>
+</html>
