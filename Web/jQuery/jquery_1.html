@@ -107,6 +107,30 @@
            // 미리 정해진 스타일이 아니라 
            //특정 상황에 위의 클래스가 적용되어 (색이 바뀐다) 스타일이 바뀌도록 할 수 있다.
 
+            //----------------------------------------------------------------------------
+
+            // filter사용하기
+            //3의배수는 색을 반전시키기
+
+
+            $('h3').filter(function(index){
+                return index%3 == 0; //3의배수면 true, 논리값 반환 ,3의배수가 맞으면 css가 적용된다.
+            }).css({ //객체 타입으로 속성을 부여
+                 backgroundColor : 'black',
+                 color:'white'
+            });
+
+            //----------------------------------------------------------------------------
+            $('H2').css('background','orange').filter(':even').css('color', 'white').end().filter(':odd').css('color','red');
+            
+            $('h1').eq(1).css('background', 'orange'); //인덱스 선택하고 적용
+
+            $('h1').last().css('background','blue');
+
+            $('h1').first().css('background','green');
+
+            $('h1').css('background','gray').add('h3').css('float','left');
+            //h1 배경색 설정하고 h1와 h3모두 float속성 적용
 
 
 
@@ -116,6 +140,24 @@
 </head>
 <body>
 
+
+
+    <h2>header -0</h2>
+    <h2>header -1</h2>
+    <h2>header -2</h2>
+    <h2>header -3</h2>
+    <h2>header -4</h2>
+
+
+<!-- -----------------------------------     -->
+    <h3>header-0</h3>
+    <h3>header-1</h3>
+    <h3>header-2</h3>
+    <h3>header-3</h3>
+    <h3>header-4</h3>
+    <h3>header-5</h3>
+
+<!-- -----------------------------------     -->
     <div id="wrap">
         <h1>header-0</h1>
         <h1>header-1</h1>
