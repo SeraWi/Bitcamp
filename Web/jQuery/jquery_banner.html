@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div>img{
+            width: 350px;
+            height: 250px;
+        }
+
+        #banner{
+            width: 350px;
+            border: 10px solid #aaa;
+            overflow: hidden;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" 
+    integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" 
+    crossorigin="anonymous">
+    </script>
+
+   <script>
+
+       $(document).ready(function(){
+           //3초마다 이미지가 위로 올라간다.
+
+            setInterval(function(){
+                $('#banner > img').first().appendTo('#banner'); //첫번째 캐스팅하고 banner제일 뒤로 넣기
+
+            }, 2000);
+
+       });
+        
+
+   </script>
+
+
+</head>
+<body>
+    <div id = "banner">
+        <img src ="../images/window1.jpg">
+        <img src ="../images/window2.jpg">
+        <img src ="../images/photo.jpg">
+        <img src="../images/nice.jpg">
+
+    </div>
+    
+</body>
+</html>
