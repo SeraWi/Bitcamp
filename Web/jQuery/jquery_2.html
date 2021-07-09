@@ -16,6 +16,9 @@
             float:left;
         }
 
+        h1{
+            color: aqua;
+        }
 
     </style>
     <script src="https://code.jquery.com/jquery-1.12.4.js" 
@@ -44,14 +47,15 @@
             var srcPath = $('.img').attr('src'); 
             console.log('이미지 경로', srcPath); //getter
 
-            //속성의 값을 정의(속성 추가)- 이미지 3개 모두 바뀐다
+            // 1.속성의 값을 정의(속성 추가)- 이미지 3개 모두 바뀐다
             $('.img').attr('width', 200); //setter
 
-             
+            //2.
             $('.img').attr('width', function(index){// 메소드로
                 return(index+1) *100; //100,200,300으로 각각 이미지 크기 달라진다. setter
             });
 
+            //3.
             $('.img').attr({ //객체로
                 width:100,
                 // hegiht:200
@@ -62,6 +66,46 @@
 
 
             $('.img').removeAttr('height');//height 속성만 삭제
+            //-----------------------------------------------------------------------
+            //스타일
+    
+            // 태그의 css 속성값 확인
+            console.log($('h1.title').css('color')); //rgb(0, 255, 255)
+
+            //css 적용 1 name, value
+            $('h1').css('background','orange'); 
+
+            //css 적용2 name, function
+            var colors = ['black', 'white' ,'yellow'];
+            $('h1').css('background', function(index){
+                return colors[index];
+            });
+
+            //css 적용3 object
+            $('h1').css({
+                color: 'green',
+                backgroundColor : function(index){
+                    return colors[index];
+                }
+            });
+            //-----------------------------------------------------------------------
+
+            var strHtml = $('h1').html(); //getter, 배열로 가져옴
+            console.log(strHtml); //header - 0 , 가져올때는 가장 첫번째 출력
+
+            console.log($('#menu').html()); // tag도 가져온다
+            console.log($('#menu').text()); //text만 가져온다
+
+            //-----------------------------------------------------------------------
+           
+            // setter
+            $('div').html(function(index, html){ //html :현재 가지고 있는 html
+                console.log(index,html);
+                $(this).html('<h1>'+html+ index+'!!!'+'</h1>');            
+                //원래 있던html에 !!! 붙이고 tag달기
+                //this = 선택된 div
+            });
+
 
 
         });
@@ -72,8 +116,18 @@
 </head>
 <body>
 
+    <div>DIV-0</div>
+    <div>DIV-0</div>
+    <div>DIV-0</div>
 
 
+<!-- -------------------------------------------------------------- -->
+    <H1 class="title">header - 0</H1>
+    <H1>header - 1</H1>
+    <H1>header - 2</H1>
+
+
+<!-- -------------------------------------------------------------- -->
     <img class= "img" src='../images/jutopia.jpg'>
     <img class= "img" src='../images/jutopia.jpg'>
     <img class= "img" src='../images/jutopia.jpg'>
