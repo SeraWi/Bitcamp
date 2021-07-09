@@ -15,11 +15,85 @@
         $(document).ready(function(){
             //ready == onload
             $('*').css('color','red');
+
+            var value = $('input[type = text]').val(); // get메소드: 값을 가져온다.
+            //var userid = document.querySelector('#userID'). value 자바스크립트 버전
+            console.log(value); //hello
+
+            $('input[type = text]').val('안녕'); //캐스팅을 하고메소드 통해 값을 변경할 수도 있다.
+            //화면에 hello가 안녕을 바뀐다.
+
+            $('input:text').val('안녕2'); //이런형식으로 쓰면 더 간단해진다!!
+
+
+            //----------------------------------------------------------------------------
+            // 5초 후에 select 의 선택 항목의 value 값을 확인
+
+            setTimeout(function(){
+                var selVal = $('select>option:selected').val(); //값 가져오기
+                console.log(selVal);
+                // 2021을 누르면 21이 콘솔 창에 뜨고
+                // 2020, 2019는 20201, 2019가 나온다
+
+
+                
+                var chk = $('input:checkbox:checked').val();
+                console.log(chk); //체크박스에 체크하면 5초후에 콘솔에 ok 뜬다
+
+
+            },5000);
+
+            //----------------------------------------------------------------------------
+            //인덱스 처럼 첫번째가 0, 테이블이 배열형태로 객체에 저장된다.
+            $('table tr:odd').css('background-color','#DDD'); //홀수
+            $('table tr:even').css('background-color', '#aaa'); //찍수
+            $('table tr:first').css('background-color','#000').css('color','#fff');
+            $('table tr:last').css('background-color', 'white');
+
         });
 
     </script>
 </head>
 <body>
+    <table border="1">
+        
+        <tr>
+            <th>thread1</th>
+            <th>thread2</th>
+        </tr>
+        <tr>
+            <td>tbody 1- 1</td>
+            <td>tbody 1- 2</td>
+        </tr>
+        <tr>
+            <td>tbody 2- 1</td>
+            <td>tbody 2- 2</td>
+        </tr>
+        <tr>
+            <td>111</td>
+            <td>222</td>
+        </tr>
+        <tr>
+            <td>tfoot -1</td>
+            <td>tfoot -2</td>
+        </tr>
+    </table>
+
+<!-- -----------------------------------     -->
+
+    개인정보 보호 정책 보기 <input type="checkbox" value ="ok">
+
+
+    <select>
+        <option value="21">2021</option>
+        <option>2020</option>
+        <option>2019</option>
+    </select>
+<!-- -----------------------------------     -->
+
+    <input type="text" value ="hello">
+
+<!-- -----------------------------------     -->
     <h1>안녕하세요</h1>    
     <h2>안녕하세요</h2>
 </body>
