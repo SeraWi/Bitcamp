@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery2</title>
+
+    <style>
+        #menu{
+            list-style: none;
+            overflow:hidden;
+        }
+        /* 클릭하면 나타난다 */
+        .floatLeft{
+            float:left;
+        }
+
+
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" 
+    integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" 
+    crossorigin="anonymous">
+    </script>
+
+    <script>
+        $(document).ready(function(){
+
+            //버튼 캐스팅 -> 이벤트 연결(눌렀을 때)
+            $('#btn01').click(function(){
+                $('#menu>li').addClass('floatLeft'); //클릭하면 float설정 클래스 추가
+            });
+
+            $('#btn02').click(function(){
+                $('#menu>li').removeClass('floatLeft');
+            });
+
+            //-----------------------------------------------------------------------
+            // 속성 반환, 추가 attr()
+            // 속성 제가 removeAttr()
+            
+
+            //속성의 값을 반환하는 메소드
+            var srcPath = $('.img').attr('src'); 
+            console.log('이미지 경로', srcPath); //getter
+
+            //속성의 값을 정의(속성 추가)- 이미지 3개 모두 바뀐다
+            $('.img').attr('width', 200); //setter
+
+             
+            $('.img').attr('width', function(index){// 메소드로
+                return(index+1) *100; //100,200,300으로 각각 이미지 크기 달라진다. setter
+            });
+
+            $('.img').attr({ //객체로
+                width:100,
+                // hegiht:200
+                height: function(index){ //높이값 다르게
+                    return (index+1)*100;
+                }
+            });
+
+
+            $('.img').removeAttr('height');//height 속성만 삭제
+
+
+        });
+    </script>
+
+
+
+</head>
+<body>
+
+
+
+    <img class= "img" src='../images/jutopia.jpg'>
+    <img class= "img" src='../images/jutopia.jpg'>
+    <img class= "img" src='../images/jutopia.jpg'>
+<!-- -------------------------------------------------------------- -->
+    <ul id="menu">
+        <li>menu-1</li>
+        <li>menu-2</li>
+        <li>menu-3</li>
+        <li>menu-4</li>
+        <li>menu-5</li>
+
+    </ul>
+    <!-- // 변경 누르면 수평방향으로 리스트가 바뀐다 -->
+    <button id ="btn01"> 변경</button> 
+    <button id ="btn02"> 초기화</button>
+    
+</body>
+</html>
