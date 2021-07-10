@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js" 
+    integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" 
+    crossorigin="anonymous">
+    </script>
+
+    <style>
+
+    </style>
+
+    <script>
+        $(document).ready(function(){
+            //동적 html요소 생성
+            //방법1
+
+            $('<h1></h1>');
+            $('<h1></h1>').html('hello~!');
+
+
+            //방법2
+            $('<h1>hello</h1>');
+
+            //요소를 추가, appendTo ->괄호로!
+            $('<h1></h1>').html('hello~!!!').appendTo('body');
+
+            //이미지 추가
+            $('<img>').attr('src','../../images/window1.jpg').attr('width',400).appendTo('body');
+
+            //체이닝되는 것보다 객체로 만들자
+            $('<img>').attr({
+                src: '../../images/window2.jpg',
+                width:500
+            }).prependTo('body');
+
+        });
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

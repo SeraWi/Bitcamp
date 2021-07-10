@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" 
+    integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" 
+    crossorigin="anonymous">
+    </script>
+    <style>
+        #menu{
+            list-style:none;
+            overflow:hidden;
+        }
+        .floatLeft{
+            float:left;
+        }
+        h1{
+            color:cornflowerblue;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            //버튼 캐스팅 클래스 추가 addClass
+            $('#btn01').click(function(){
+                $('#menu>li').addClass('floatLeft'); //클릭하면 float설정 클래스 추가
+            });
+
+            //버튼 2 클릭 캐스팅없애기 removeClass
+            $('#btn02').click(function(){
+                $('#menu>li').removeClass('floatLeft');
+            });
+        //-----------------------------------------------------------------------
+        // 속성 반환, 추가 attr()
+        // 속성 제가 removeAttr()
+
+        //속성의 값을 반환하기 getter
+        var srcPath = $('.img').attr('src');
+        console.log(srcPath); //../../images/window1.jpg
+
+
+        //1.속성의 값을 정의 == 추가 하기
+        $('.img').attr('width','300');//setter
+
+        //2. 메소드로 추가하기
+        $('.img').attr('width', function(index){
+            return(index+1)*100; //100,200,300으로 각각 이미지 달라진다.
+        });
+
+        //3. 
+        $('.img').attr({
+            width: 100,
+            height:function(index){
+                return(index+1)*100;
+            }
+
+        });
+
+        //속성 삭제 높이 속성 삭제하기
+        $('.img').removeAttr('height');
+        //-----------------------------------------------------------------------
+        //스타일
+
+        //태그의 css 속성 확인
+        console.log($('h1.title').css('color'));//getter //rgb(100, 149, 237)
+
+        //css적용, 1. name value
+        $('h1').css('background','pink');
+
+        //css적용 2. name, function
+        var color =['balck','white','yellow'];
+
+        $('h1').css('background', function(index){
+            return color[index];
+        });
+        var strHtml =$('h1').html();//getter
+        console.log(strHtml); //header - 0 배열 중 가장 첫번째거 출력
+
+        console.log($('#menu').html());//getter 태그도 같이
+        console.log($('#menu').text()); //getter 텍스트만
+
+
+        //setter
+        $('div').html(function(index,html){
+            console.log(index, html);
+            $(this).html('<h1>'+html+index+'!!!</h1>')
+
+        });
+
+        //-----------------------------------------------------------------------
+        // 문서 객체 제거
+
+        $('#btn03').click(function(){
+            $('#menu').remove(); //ul이 사라짐 li남아있다
+        });
+
+        $('#btn04').click(function(){
+            $('#menu').empty(); //내용만 사라진다. ul 남아있고 li사라진다.
+        });
+
+
+            
+        });
+    </script>
+</head>
+<body>
+    
+    <div>DIV-0</div>
+    <div>DIV-0</div>
+    <div>DIV-0</div>
+
+<!-- -------------------------------------------------------------- -->  
+
+    <h1 class = "title">header - 0</h1>
+    <h1>header - 1</h1>
+    <h1>header - 2</h1>
+
+<!-- -------------------------------------------------------------- -->
+    <img class="img" src ='../../images/window1.jpg'>
+    <img class="img" src ='../../images/window2.jpg'>
+    <img class="img" src ='../../images/photo.jpg'>
+<!-- -------------------------------------------------------------- -->
+    <ul id="menu">
+        <li>menu-1</li>
+        <li>menu-2</li>
+        <li>menu-3</li>
+        <li>menu-4</li>
+        <li>menu-5</li>
+    </ul>
+    <button id ="btn01">변경</button>
+    <button id ="btn02">초기화</button>
+    <button id ="btn03">메뉴삭제</button>
+    <button id ="btn04">내용삭제</button>
+</body>
+</html>
