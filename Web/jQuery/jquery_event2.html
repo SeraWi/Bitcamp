@@ -69,12 +69,37 @@
                 alert('myForm submit');
                 return false; //url 그대로 같다
             });
+            //--------------------------------------------------------------------------------------------------
+            // all을 체크하면 a,b,c가 모두 체크 되도록 해보자 
+            //상태가 바뀐다
 
+            $('#allCheck').change(function(){
+                //체크 상태이면 true, 체크 상태 아니면 false
+                if(this.checked){
+                    // #checkItem 안에 있는 input type = checkbox 속성을 checked = true로 바꾼다
+                    $('#checkItem').children().prop('checked',true);
+
+                }else{
+                    $('#checkItem').children().prop('checked', false);
+                }
+            });
 
         });
     </script>
 </head>
 <body>
+
+    <input type ="checkbox" id="allCheck">
+    <label for="allCheck">all</label>
+
+    <div id="checkItem"> 
+        <input type ="checkbox"><label>A type</label>
+        <input type ="checkbox"><label>B type</label>
+        <input type ="checkbox"><label>C type</label>
+    </div>
+
+
+<!-- --------------------------------------------------- -->
     <form id ="myForm">
         <input type ="submit">
     </form>
