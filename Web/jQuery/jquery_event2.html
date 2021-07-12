@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery event2</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" 
+    integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" 
+    crossorigin="anonymous"></script>
+    <style>
+        div{
+            border: 1px solid #aaa;
+            padding: 10px;
+        } 
+        h1{
+            border: 3px solid #000;
+        }
+    </style>
+    <script>
+       
+        $(document).ready(function(){
+            //  //h1클릭하면 몇개인지 세고 html에 추가해주기
+            // header만 눌러야 밑에 생김
+            // $('h1').click(function(){
+            //     var length = $('h1').length;
+            //     var oldHtml =$(this).html();//getter 이벤트 발생한 객체의 html가져오기
+
+            //     //추가하기
+            //     $('#wrap').append('<h1>'+length+'-'+oldHtml+'</h1>');
+            // });
+
+                //위와 아래 결과 다르다
+                
+
+             //부모 태그 캐스팅 -> 범위한정하기
+             //추가된 h1들을 눌러도 click이벤트 발생한다. 
+             $('#wrap').on('click','h1', function(){
+                var length = $('h1').length;
+                var oldHtml =$(this).html();//getter 이벤트 발생한 객체의 html가져오기
+
+                //추가하기
+                $('#wrap').append('<h1>'+length+'-'+oldHtml+'</h1>');
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+    <div id="wrap">
+
+        <h1>header</h1>
+    </div>
+    
+</body>
+</html>
