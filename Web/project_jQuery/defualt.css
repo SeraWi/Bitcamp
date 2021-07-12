@@ -47,7 +47,7 @@ header{
 
 /* 등록 submit */
 
-#regForm input[type =submit]{
+#regForm input[type =submit],#editForm input[type = submit]{
     height: 45px;
     width: 100px;
 
@@ -61,7 +61,7 @@ header{
 }
 
 /* input text 설정 */
-#regForm input[type=text]{
+#regForm input[type=text],#regForm input[type =password]{
     height: 30px;
     width:200px;
 
@@ -77,14 +77,19 @@ div.msg{
 /* ---------------------------------------------------------------- */
 /* 회원리스트 영역 */
 #listArea{
-    padding: 20px, 40px;
+    padding:20px 40px;
     border-bottom: 1px solid #aaa;
 }
 
 #listArea>table{
-    margin:10px 0;
-    width: 60%;
-    border-collapse:collapse;
+    margin: 10px 0;
+
+    /* 테이블의 폭 */
+    /* 화면의 사이즈에 따라 달라진다 */
+    width: 60%; 
+
+    /* 중간에 보더 두줄이 붙도록 간격 없애기 */
+    border-collapse: collapse;
 }
 
 #listArea>table td, #listArea>table th{
@@ -94,3 +99,45 @@ div.msg{
 }
 
 /* ---------------------------------------------------------------- */
+
+/* 회원정보 수정 폼 */
+
+#editFormArea{
+    width: 350px;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+
+    background-color: lightblue;
+
+    padding: 20px;
+
+
+}
+/* 제목과 닫기 영역 */
+#div_header{
+    border-bottom: 1px solid #aaa;
+    overflow:hidden;
+}
+
+/* 회원정보 수정 글자 */
+#div_header>h2{
+    float:left;
+    padding-bottom: 5px;;
+}
+/* 닫기 */
+#div_header>div{
+    float:right;
+}
+/* 수정 테이블  */
+#editFormArea > table{
+    width: 100%;
+    margin-top:15px;
+}
+
+#editForm> table td{
+    /* 칸들간의 간격 주기 */
+    padding : 5px 10px;
+
+    /* 텍스트 중간 정렬 */
+    text-align: center;
+}

@@ -36,13 +36,13 @@
 
                     <td>
                         <label for="pw">비밀번호</label>
-                        <input type="text" id="pw" placeholder="비밀번호를 입력하세요.">
+                        <input type="password" id="pw" placeholder="비밀번호를 입력하세요.">
                         <div class="msg"></div>
                     </td>
 
                     <td>
                         <label for="repw">비밀번호 확인</label>
-                        <input type="text" id="repw" placeholder="비밀번호를 다시 입력하세요.">
+                        <input type="password" id="repw" placeholder="비밀번호를 다시 입력하세요.">
                         <div class="msg"></div>
                     </td>
 
@@ -79,6 +79,49 @@
     <!-- 회원리스트 끝 -->
 
     <!-- 회원 데이터 수정 시작 -->
-    
+    <div id="editFormArea">
+        <div id="div_header">
+            <h2 class="title_font">회원 정보 수정</h2>
+            <div>닫기</div>
+        </div>
+
+        <form id="editForm">
+            <table>
+                <tr>
+                    <td>아이디</td>
+                    <td>
+                        <input type="text" id ="editId" disabled>
+                        <input type ="hidden" id="index">
+                     </td>
+                </tr>
+
+                <tr>
+                    <td>비밀번호</td>
+                    <td>
+                        <input type="password" id ="editPw" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>비밀번호 확인</td>
+                    <td>
+                        <input type="password" id ="editRePw" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>이름</td>
+                    <td>
+                        <input type="text" id ="editName" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan ="2"><input type ="submit" value="수정"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <!-- 회원정보 수정 폼 끝 -->
 </body>
 </html>
