@@ -211,6 +211,7 @@ function editMember(index){
         }
 
         if(!confirm('수정하시겠습니까?')){ // 여기서 부터 에러...// 여기가 왜 반복되지??
+            // 여기 버블링되는 거 막기
             //아니오!
             return false;
         }
