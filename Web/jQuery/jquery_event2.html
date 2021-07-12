@@ -30,8 +30,8 @@
             //     $('#wrap').append('<h1>'+length+'-'+oldHtml+'</h1>');
             // });
 
-                //위와 아래 결과 다르다
-                
+                //위와 아래 결과 다르다 중요!!
+
 
              //부모 태그 캐스팅 -> 범위한정하기
              //추가된 h1들을 눌러도 click이벤트 발생한다. 
@@ -42,12 +42,38 @@
                 //추가하기
                 $('#wrap').append('<h1>'+length+'-'+oldHtml+'</h1>');
             });
+            
+            // 텍스트 영역에 글쓰면 글자 수 보여주기
+
+            $('textarea').keyup(function(){
+                //this : textarea val() : 문자열 반환
+                var cnt = $(this).val().length; // cnt = 숫자 타입
+                var remain = 150 - cnt;
+
+                if(remain <0){
+                    //글자수 초과
+                    alert('소개서는 150자까지 작성이 가능합니다.');
+                    var str = $(this).val().substr(0,150); //150자까지만 자르기(그 이후 작성한거 입력되지 않도록)
+                    $(this).val(str); 
+                    $('span').text('150'); //150자 초과하면 더이상 카운팅 되지 않고 150으로유지
+                    return false;
+                } 
+
+                console.log(cnt, remain);
+                $('span').text(cnt);
+
+            });
 
 
         });
     </script>
 </head>
 <body>
+
+    <textarea cols="50" rows="10"></textarea>
+    <span>0</span>/150
+
+
     <div id="wrap">
 
         <h1>header</h1>
