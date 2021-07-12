@@ -1,11 +1,11 @@
 ## ✔Bitcamp
-* Learning Java, SQL, Html5, CSS, JavaScrpt <br>
+* Learning Java, SQL, Html5, CSS, JavaScript <br>
 * all the projects and works that I've done during the class or myself <Br>
-* it is a record from basic to the advanced.<br>
+* It is a record from basic to the advanced.<br>
 
 ## ✔Details
 * Java : 2021. 05~2021.06
 * SQL : 2021.06
 * JDBC : 2021.06
-* Web : 2021.06~2021.07
+* Web(HTML, CSS, JavaScript, jQuery) : 2021.06~2021.07
 
