@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" 
+    integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" 
+    crossorigin="anonymous"></script>
+
+    <style>
+        h1,h2{
+            border: 1px solid #aaa;
+        }
+
+        .reverse{
+            /* 반전시키기 */
+            background-color: black;
+            color: white;
+        }
+
+        h1:hover, h2:hover{
+            /* 커서-> 손가락으로 */
+            cursor: pointer; 
+        }
+    </style>
+
+    <script>
+        $(document).ready(function(){
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------------------------
+            //클릭 할 때 마다 +붙이기
+
+            //h1 태그를 캐스팅 -> click 이벤트를 연결 -> 함수 이용
+            $('h1').on('click', function(){
+                // 이벤트가 발생한 엘리먼트 객체 =this
+                // this = header -0, header-1, header-2가 각각 클릭되었을 때를 의미
+                $(this).html(function(index, html){
+                    // index값에 해당하는 html(기존)가져온다.
+                    return html +'+'; 
+                });
+            });
+
+            // 마우스 커서가 들어왔을 때 반전시키기 -> 객체 이용
+            $('h1').on({
+                //객체로
+                //click : function(){},
+                mouseenter : function(){
+                    $(this).addClass('reverse'); //커서가 올라가면 색 반전, 클래스 추가
+                },
+                mouseleave : function(){
+                    $(this).removeClass('reverse'); //커서가 다시 나가면 색 반전, 클래스 제거
+                }
+            });
+
+            //.hover() ->mouesenter와 mouseleave를 한번에 처리해주는 메소드
+            // $('h2').hover(handeler in, hander out);
+
+            $('h2').hover(function(){
+                $(this).addClass('reverse');
+            }, function(){
+                $(this).removeClass('reverse');
+                //이벤트 삭제
+                //$(this).off(); // 한번하고 나면 이벤트 사라짐
+                $(this).off('mouseleave'); //mouseleave 이벤트 한번 발생한 후에는 발생이 되지 않음
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <h2>header-2-0</h2>
+    <h2>header-2-1</h2>
+    <h2>header-2-2</h2>
+<!-- ------------------------------------------------------ -->
+    <h1>header-0</h1>
+    <h1>header-1</h1>
+    <h1>header-2</h1>
+</body>
+</html>
