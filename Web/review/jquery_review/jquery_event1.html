@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" 
+    integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" 
+    crossorigin="anonymous"></script>
+
+    <style>
+        h1,h2{
+            border: 1px solid #aaa;
+        }
+        .reverse{
+            background-color: black;
+            color: white;
+        }
+
+        div{
+            border : 3px solid #aaa;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+
+    </style>
+
+    <Script>
+
+        $(document).ready(function(){
+
+            //클릭 할 때 마다 +붙이기
+            //h1 태그 캐스팅 -> click 이벤트 연결 -> 함수 이용
+            $('h1').on('click', function(){
+                $(this).html(function(index,html){
+                    return html+'+';
+                });
+            });
+
+
+            //마우스 커서가 들어왔을 때 반전시키기 -> 객체 이용
+            $('h1').on({
+                mouseenter : function(){
+                    $(this).addClass('reverse');
+                },
+
+                mouseleave : function(){
+                    $(this).removeClass('reverse');
+                }
+            });
+
+            //hover -> in out 한번에 처리
+            $('h2').hover(function(){
+                $(this).addClass('reverse');
+
+            }, function(){
+                $(this).removeClass('reverse');
+
+                //이벤트삭제
+                $(this).off('mouseleave'); // 커서 벗어나도 class 적용 된 상태로 계속됨
+               // $(this).off(); //한번만 실행되고 사라져버림
+            });
+
+            //div 안에 header클릭했을 때 이벤트
+            $('div').click(function(e){// event 객체 전달
+                var h3 =$('h3', this).text(); //getter
+                var p =$('p',this).text(); //getter
+
+                alert(h3+'\n'+p);
+                console.log(e);
+            });
+
+            //trigger 이벤트 강제 발생시키기
+
+            setInterval(function(){
+                //1초마다 click 강제 실행 -> +가 자동 증가
+                
+               // $('h1').last().trigger('click');
+            },1000);
+
+
+            $('a').click(function(e){
+                alert('a tag click');
+
+                var e = e|| window.event;
+
+               return false;
+            });
+
+        });
+    </Script>
+
+</head>
+<body>
+
+    <div>
+        <div><a href ="http://www.naver.com"> click</a></div>
+    </div>
+
+
+    <div>
+        <h3>header 1</h3>
+        <p>paragraph1</p>
+    </div>
+    <div>
+        <h3>header 2</h3>
+        <p>paragraph2</p>
+    </div>
+    <div>
+        <h3>header 3</h3>
+        <p>paragraph3</p>
+    </div>
+
+<!-- ------------------------------------------------------------------ -->
+    <h2>header 2-0</h2>
+    <h2>header 2-1</h2>
+    <h2>header 2-2</h2>
+
+    <h1>header-0</h1>
+    <h1>header-1</h1>
+    <h1>header-2</h1>
+    
+</body>
+</html>
