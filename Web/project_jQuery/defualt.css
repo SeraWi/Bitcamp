@@ -111,7 +111,15 @@ div.msg{
 
     padding: 20px;
 
+    /* 화면의 가운데로 위치 */
+    position : absolute;
+    left:50%;
+    top:100px;
+    margin-left:-175px;
 
+
+    /* 수정전에는 화면에서 안보이도록 설정 */
+    display:none;
 }
 /* 제목과 닫기 영역 */
 #div_header{
