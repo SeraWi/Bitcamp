@@ -9,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js" 
     integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" 
     crossorigin="anonymous"></script>
+    <script src ="naver_signup.js"></script>
     
 
 </head>
@@ -21,18 +22,18 @@
         <div class= "signup">
             <form id = "regForm">
                 <h3>아이디</h3>
-                <input type="text" name="id">
+                <input type="text" id="id">
                 <h3>비밀번호</h3>
-                <input type="text" name="pw">
+                <input type="text" id="pw">
                 <h3>비밀번호 재확인</h3>
-                <input type="text" name="pw">
+                <input type="text" id="repw"> 
                 <h3>이름</h3>
-                <input type="text" name="name">
+                <input type="text" id="name">
                 <h3>생년월일</h3>
                 <div class ="birthday">
-                    <input type="text" name="birthyear" placeholder="년(4자)" >
+                    <input type="text" id="birthYear" placeholder="년(4자)" >
     
-                    <select name ="birthmonth">
+                    <select id ="birthMonth">
                     <option value="">월</option>
                     <option value="1">1월</option><option value="2">2월</option><option value="3">3월</option>
                     <option value="4">4월</option> <option value="5">5월</option> <option value="6">6월</option>
@@ -40,12 +41,12 @@
                     <option value="10">10월</option> <option value="11">11월</option> <option value="12">12월</option>
                     </select>
         
-                    <input type="text" name="birthday" placeholder ="일">
+                    <input type="text" name="birthday" placeholder ="일" id="birthDay">
         
                 </div>
     
                 <h3>성별</h3>
-                <select name="sex" class="Option">
+                <select id="sex" class="Option">
                 <option value="">성별</option>
                 <option value="여성">여자</option>
                 <option value="남성">남자</option>
@@ -53,22 +54,23 @@
                 </select>
                 
                 <h3>본인 확인 이메일 <span>(선택)</span></h3>
-                
-                <input type="text" name="email" placeholder="선택입력">
+                <input type="text" id="email" placeholder="선택입력">
     
                 <h3>휴대전화</h3>
                 
-                <select name="tel" class="Option">
-                <option value="">대한민국+82</option>
-                <option value="그레나다">그레나다+1 473</option>
-                <option value="그리스">그리스+30</option>
-                <option value="기니">기니+224</option>
+                <select id="tel" class="Option">
+                <option value="+82">대한민국+82</option>
+                <option value="+233">가나+233</option>
+                <option value="+30">그리스+30</option>
+                <option value="+224">기니+224</option>
+                <option value="+49">독일+49</option>
+                <option value="+1">미국/캐나다+1</option>
                 </select>
     
-                <input type="tel" name="tel" placeholder="전화번호 입력"  id="tel_num">
+                <input type="tel" id="tel_num" placeholder="전화번호 입력"  >
                 <input type="submit" name="signup" value="인증번호 받기" class="check_Btn"><br>
                 <input type ="text" placeholder ="인증번호 입력하세요">
-                <input  type="submit" name="signup" value="가입하기" class="signup_Btn">
+                <input  type="submit" id="signup" value="가입하기" class="signup_Btn">
             </form>
 
 
