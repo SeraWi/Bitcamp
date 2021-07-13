@@ -10,7 +10,7 @@ function Member(id,pw,name){
 //회원정보를 담는 배열 members
 var members =[];
 
-//readt -> 등록 submit과 수정 submit 이벤트
+//ready -> 등록 submit과 수정 submit 이벤트
 $(document).ready(function(){
     
     //localstorage에 저장된 데이터 있는지 확인
@@ -72,7 +72,7 @@ $(document).ready(function(){
                 console.log('패턴에 맞는 비밀번호');
             }else{
                 console.log('패턴에 맞지 않은 비밀번호');
-                $('#pw+div.msg').html('6글자 이상 20미만의 영문 대소문자, 숫자 혹은 특수문자(?=.) 1개 이상만 허용');
+                $('#pw+div.msg').html('6글자 이상 20미만의 영문 대소문자, 숫자 혹은 특수문자(?=.) 1개 이상 허용');
                 $('#pw+div.msg').css('display','block');
                 return false;
             }
