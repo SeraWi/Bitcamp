@@ -6,12 +6,6 @@ function Member(id,pw,name){
     this.userName = name;
 }
 
-// 전역변수
-// var userId = $('#userId').val(); //getter
-// var pw = $('#pw').val();
-// var repw =$('#repw').val();
-// var userName =$('#userName').val();
-
 
 //회원정보를 담는 배열 members
 var members =[];
