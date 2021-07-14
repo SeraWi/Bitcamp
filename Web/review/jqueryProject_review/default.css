@@ -1,0 +1,113 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic:wght@700&family=Sunflower:wght@500&display=swap');
+
+ 
+/* 나눔 고딕, 주아, 선플라워 
+font-family: 'Jua', sans-serif;
+font-family: 'Nanum Gothic', sans-serif;
+font-family: 'Sunflower', sans-serif;
+ */
+
+ *{
+     margin : 0;
+     padding: 0;
+ }
+ .title_font{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: bold;
+ }
+
+ header{
+     padding:20px;
+     border-bottom: 1px solid #aaa;
+ }
+
+ #regFormArea{
+     padding: 20px;
+     border-bottom: 1px solid #aaa;
+ }
+ #regForm>table td{
+     width: 200px;
+     padding: 5px;
+ }
+
+ #regForm>table label{
+     display : block;
+     padding: 5px;
+ }
+
+
+ #regForm input[type= text]{
+     height: 30px;
+     width : 200px;
+     padding: 0 5px;
+ }
+
+ #regForm input[type= submit],#editForm input[type=submit]{
+     height: 45px;
+     width: 100px;
+
+     border: 1px solid #aaa;
+     background-color: cornflowerblue;
+     color:white;
+     font-size: 1.2em;
+     font-weight: bold;
+     
+ }
+
+ div.msg{
+     color:red;
+     display : none;
+ }
+
+ /* 회원리스트 */
+ #listArea{
+     padding:20px;
+     border-bottom: 1px solid #aaa;
+ }
+
+ #listArea>table{
+     margin: 10px 0;
+     width: 60%;
+     border-collapse: collapse;
+ }
+
+ #listArea>table td, #listArea>table th{
+    padding: 10px;
+    border: 1px solid #aaa;
+    text-align: center;
+}
+
+/* 회원정보 수정 폼 */
+
+#editFormArea{
+    width:350px;
+    border:1px solid #aaa;
+    border-radius: 10px;
+
+    background-color: cornsilk;
+    padding:20px;
+}
+
+#div_header{
+    border-bottom: 1px solid #aaa;
+    overflow: hidden;
+}
+
+#div_header>h2{
+    float: left;
+}
+
+#div_header>div{
+    float:right;
+}
+
+#editFormArea > table{
+    width: 100%;
+    margin-top:15px;
+}
+
+#editForm>table td{
+    padding: 5px 10px;
+    text-align: center;
+}
