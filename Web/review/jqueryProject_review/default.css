@@ -87,6 +87,11 @@ font-family: 'Sunflower', sans-serif;
 
     background-color: cornsilk;
     padding:20px;
+    display: none;
+
+    position: absolute;
+    left: 35%;
+    top: 100px;
 }
 
 #div_header{

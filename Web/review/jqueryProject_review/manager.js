@@ -1,15 +1,22 @@
 function Member(userId, pw, name){
     this.userId = userId;
     this.pw = pw;
-    this.name = name;
+    this.userName = name;
 };
 
 var members =[];
 
 
 $(document).ready(function(){
+
+    if(localStorage.getItem('members')==null){
+        localStorage.setItem('members', JSON.stringify(members));
+    }else{
+        members = JSON.parse(localStorage.getItem('members'));
+        setList();
+    }
     
-    setList();
+    
 
     $('#regForm').submit(function(){
        
@@ -56,7 +63,9 @@ $(document).ready(function(){
     //배열에 저장
     members.push(new Member(userId, pw, userName));
     
-
+    //저장소 저장
+    localStorage.setItem('members', JSON.stringify(members));
+    //알림창
     alert('등록되었습니다.');
     console.log('회원리스트',members);
     
@@ -84,11 +93,28 @@ $(document).ready(function(){
    $('#userName').on('focus', function(){
     displayer($('#userName+div.msg'));
    });
-
+//-------------------------------------------------------------------
    //수정 SUBMIT 눌렀을 때 이벤트
    $('#editForm').submit(function(){
-       
-        return false;
+       //사용자 입력시 유효성 검사하기
+       // 사용자가 입력한 값을 캐스팅한다
+       // 배열에서 찾아서 새로운 정보를 다시 넣어준다.
+       // list 갱신시킨다.
+
+       if(!confirm('수정하시겠습니까?')){
+           return false;
+       }
+
+       var index = $('#index').val();
+       members[index].pw = $('#editPw').val();
+       members[index].userName =$('#editName').val();
+
+     //저장소 저장
+     localStorage.setItem('members', JSON.stringify(members));       
+
+       alert('수정되었습니다.');
+       setList();
+       return false;
    });
 
    
@@ -133,13 +159,17 @@ function deleteMember(){
     if(confirm('삭제하시겠습니까?')){
         members.splice(index, 1);
         alert('삭제되었습니다.');
+        //저장소 저장
+        localStorage.setItem('members', JSON.stringify(members));   
         setList();
     }
 };
 
-function editMember(){
+function editMember(index){
+    //인덱스 받아와서 members배열에서 찾기
     console.log(index,members[index]);
 
+    //폼이 화면에 나타난다.
     $('#editFormArea').css('display','block');
 
     //캐스팅하고 기존 정보 세팅
@@ -147,7 +177,8 @@ function editMember(){
     $('#editPw').val(members[index].pw);
     $('#editRePw').val(members[index].pw);
     $('#editName').val(members[index].userName);
-    $('#index').val(index);
+    $('#index').val(index); //index도 캐스팅하기 ->js -> jquery
+    
 
 
 };
