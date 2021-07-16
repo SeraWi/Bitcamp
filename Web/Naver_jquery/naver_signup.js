@@ -50,9 +50,9 @@ $(document).ready(function(){
         console.log(birthYear);
         console.log(birthMonth);
         console.log(birthDay);
-        console.log(sex);
+        console.log(sex); 
         console.log(email);
-        console.log(telFront); //+82
+        console.log(telFront); //+82 ,
         console.log(tel);
 
         //배열에 저장하기

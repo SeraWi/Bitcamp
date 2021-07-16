@@ -22,5 +22,14 @@
 	
 </div>
 
+	<jsp:include page="footer.jsp">
+	<!-- 실행된 JSP ->html(text)결과를 가져온다.  -->
+	<!-- 파라미터 전달 param -->
+		<jsp:param name ="email" value ="test@gmail.com"/>
+		<jsp:param name="tel" value="010-0000-0000"/>
+	</jsp:include>	
+	
+	
+
 </body>
 </html>
