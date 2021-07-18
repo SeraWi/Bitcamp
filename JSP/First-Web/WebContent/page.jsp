@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!--  지시어 include -->
 	<!-- header를 외부 파일에서 가져오기  --> 
 	<%@ include file="include/header.jsp"  %>
 	<!-- 웹인프에 있는 파일도 가져올 수 는 있지만 웹인프를 직접 url로 들어가서 볼 수 는 없다 -->
@@ -21,6 +22,7 @@
 	<%@ include file ="include/shopping.jsp" %>
 	
 </div>
+		<!-- 액션  include -->
 
 	<jsp:include page="footer.jsp">
 	<!-- 실행된 JSP ->html(text)결과를 가져온다.  -->
@@ -30,6 +32,5 @@
 	</jsp:include>	
 	
 	
-
 </body>
 </html>
