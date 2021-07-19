@@ -14,20 +14,20 @@
 <!--   http 상태코드로 등록 -->
 <!-- <error-page>
 	<error-code>404</error-code>
-	<location>/error/error404.jsp</location>
+	<location>/review/error/error404.jsp</location>
 </error-page>
 
 <error-page>
 	<error-code>500</error-code>
-	<location>/error/error500.jsp</location>
+	<location>/review/error/error500.jsp</location>
 </error-page>
 
 에러타입으로 등록
 <error-page>
 	<exception-type>java.lang.NullPointerException</exception-type>
-	<location>/error/errortypeNull.jsp</location>
-</error-page> -->
-  
+	<location>/review/error/errorNullPoint.jsp</location>
+</error-page> 
+   -->
   
   
   <servlet>
