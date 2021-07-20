@@ -22,14 +22,30 @@ public class JDBCTest {
 
 		try {
 			//1. 드라이버 로드
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//오라클
+			//Class.forName("oracle.jdbc.driver.OracleDriver");
+			
+			//mySql
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("드라이버 로드 성공!");
 
 
 			//2. 연결
-			String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-			String user = "hr";
-			String pw = "tiger";
+			// 오라클
+			//String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+			
+			//mysql
+			String jdbcUrl ="jdbc:mysql://localhost:3306/project?serverTimezone=UTC";
+			
+			
+//			오라클 계정
+//			String user = "hr";
+//			String pw = "tiger";
+			
+			
+			//sql 계정
+			String user ="bit";
+			String pw = "1234";
 
 			conn= DriverManager.getConnection(jdbcUrl, user, pw);
 			System.out.println("데이터베이스 연결 성공!!");
