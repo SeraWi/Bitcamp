@@ -14,7 +14,7 @@
 <style>
 	td{
 	
-		test-align: center;
+		text-align: center;
 		padding: 5px 10px;
 	}
 	button{

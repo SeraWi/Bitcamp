@@ -1,3 +1,5 @@
+<%@page import="dept.domain.Dept"%>
+<%@page import="dept.dao.DeptDao"%>
 <%@page import="jdbc.util.ConnectionProvider"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -5,6 +7,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	//역할 : 사용자가 입력한 데이터 받고 -> 처리 -> 결과를 속성에 저장 -> view 지정
+	
 	//1.사용자가 입력한 데이터를 받고
 	//입력데이터의 한글 처리!
 	request.setCharacterEncoding("utf-8");
@@ -17,17 +21,18 @@
 
 	//2.DB처리 :insert
 	
-	//데이터 베이스 드라이버 로드
-	Class.forName("com.mysql.cj.jdbc.Driver");
+/* 	//데이터 베이스 드라이버 로드
+	Class.forName("com.mysql.cj.jdbc.Driver"); */
 	
 	
-	try{
+	
 		
 	
 	
 	//connenction 연결
 	Connection conn = null;
-	PreparedStatement pstmt = null;
+	//PreparedStatement pstmt = null; -- dao안에 있다.
+	DeptDao dao = DeptDao.getInstance();
 	
 	
 /* 	String jdbcUrl = "jdbc:mysql://localhost:3306/project?serverTimezone=UTC";
@@ -36,21 +41,23 @@
 	
 	
 	//conn = DriverManager.getConnection(jdbcUrl,user,pw);
-	conn =ConnectionProvider.getConnection();
 	
+	try{
+	conn =ConnectionProvider.getConnection();
+	resultCnt = dao.insertDept(conn,new Dept(Integer.parseInt(deptno),dname,loc)); // 객체로 저장해서 보내기
 	
 	//PreparedStatement
 	
-	String sqlInsert = "insert into dept values(?,?,?)";
+/* 	String sqlInsert = "insert into dept values(?,?,?)"; --dao 안 메서드로 넣기
 	pstmt = conn.prepareStatement(sqlInsert);
 	pstmt.setInt(1, Integer.parseInt(deptno));
 	pstmt.setString(2, dname);
-	pstmt.setString(3, loc);
+	pstmt.setString(3, loc); 
 	
 	//insert -> int반환
 	resultCnt = pstmt.executeUpdate(); //업데이트 되면 1반환 안되면 0
 	
-	out.println(resultCnt);
+	out.println(resultCnt); */
 	
 	
 	

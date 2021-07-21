@@ -1,3 +1,6 @@
+<%@page import="jdbc.util.JdbcUtil"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="dept.dao.DeptDao"%>
 <%@page import="jdbc.util.ConnectionProvider"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="dept.domain.Dept"%>
@@ -8,26 +11,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%	
+	//역할 : 전달받은 부서번호로 부서정보를 가져온다 -> db 처리 -> 속성으로 공유해주기
+
 	//사용자가 전달하는 부서번호 받기 (수정 버튼 누르면 파라미터로 deptno 넘어온다)
 	String deptno = request.getParameter("deptno");
 	out.println(deptno);
 
 	// 전달 받은 부서 번호로 부서 정보를 가져온다.( 수정할 정보 찾으러 DB로 간다)
-	//1.드라이버 로드
-	Class.forName("com.mysql.cj.jdbc.Driver");
+/* 	//1.드라이버 로드
+	Class.forName("com.mysql.cj.jdbc.Driver"); */
+	//1.드라이버 로드 : servlet클래스에서 로드된다.
 	
 	//2. DB 연결
 	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
+//	PreparedStatement pstmt = null;
+//	ResultSet rs = null;
+	DeptDao dao = null;
 	
+	try{
+	conn = ConnectionProvider.getConnection();
+	dao = DeptDao.getInstance();
+	
+	// 부서정보를 form_view.jsp 전달(공유)
+	request.setAttribute("dept",dao.selectByDeptno(conn, Integer.parseInt(deptno)));
+	
+	}catch(SQLException e){
+		e.printStackTrace();
+	} finally{
+		JdbcUtil.close(conn);
+	}
 	//jdbcUrl
 /* 	String jdbcUrl = "jdbc:mysql://localhost:3306/project?serverTimezone=UTC";
 	String user = "bit";
 	String pw = "1234"; */
 	
 	//conn = DriverManager.getConnection(jdbcUrl, user, pw);
-	conn =ConnectionProvider.getConnection();
+	
+/*	conn =ConnectionProvider.getConnection();
 	
 	Dept dept = null;
 	
@@ -49,7 +69,7 @@
 	
 	
 	// 부서정보를 form_view.jsp 전달(공유)
-	request.setAttribute("dept",dept);
+	request.setAttribute("dept",dept); */
 	
 	
 %>
