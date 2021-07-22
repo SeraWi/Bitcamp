@@ -1,8 +1,15 @@
+<%@page import="util.CookieBox"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 
-	Cookie[] cookies = request.getCookies();
+	//Cookie[] cookies = request.getCookies();
+
+	//cookiebox
+	CookieBox cBox = new CookieBox(request);
+	
+	
+	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,8 +22,16 @@
 </script>
 </head>
 <body>
+
+	<!-- checkbox이용하기 쿠키 값 가져오기 -->  
+	name = <%= cBox.getValue("name")%> <br>
+	number = <%= cBox.getValue("number1") %> <br>
+	age =<%= cBox.getValue("age") %> <br>
+	
+
+
 	<%
-		if (cookies != null && cookies.length > 0) {
+/* 		if (cookies != null && cookies.length > 0) {
 			for (int i = 0; i < cookies.length; i++) {
 				//쿠키의 이름 반환 : getName()
 				String name = cookies[i].getName();
@@ -27,7 +42,9 @@
 					out.println("<h1>" + name + "=" + value + "</h1>");
 				}
 			}
-		}
+		} */
+
+		
 	%>
 
 	<a href="editCookie.jsp">쿠키수정</a>

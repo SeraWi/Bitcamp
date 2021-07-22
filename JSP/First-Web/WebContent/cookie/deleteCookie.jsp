@@ -1,17 +1,22 @@
+<%@page import="util.CookieBox"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	//쿠키의 삭제: 쿠키 유지 시간을 0으로 설정하기
 	
-	Cookie c = new Cookie("cname","");
+	//Cookie c = new Cookie("cname","");
 	//초단위
 	//c.setMaxAge(60*60*24*7); 1주일유지
 	
 	//쿠키가 바로 소멸 : 삭제
-	c.setMaxAge(0);
+	//c.setMaxAge(0);
 	
 	//응답주기
-	response.addCookie(c);
+	//response.addCookie(c);
+	
+	
+	//cookiebox
+	response.addCookie(CookieBox.makeCookie("name","","/First-Web/cookie",0));
 
 
 %>

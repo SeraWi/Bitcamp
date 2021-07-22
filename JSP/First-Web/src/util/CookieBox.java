@@ -1,6 +1,7 @@
 package util;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +30,33 @@ public class CookieBox {
 		}
 	}
 	
+	//객체 생성 -> 메소드 :ㅣ쿠키 검색(존재유무), 쿠키이름으로 쿠키 캑체 반홚, 쿠키이름으로 쿠키 값을 반환
+	
+	// 이름으로 쿠키 객체를 만환하는 메소드
+	public Cookie getCookie(String name) {
+		return cookieMap.get(name); 
+		
+	}
+	
+	//이름으로 쿠키의 값(=string)을 반환하는 메소드
+	public String getValue(String name) throws UnsupportedEncodingException {
+		Cookie c= cookieMap.get(name);
+		
+		if(c ==null) {
+			return null;
+		}
+		
+		return URLDecoder.decode(c.getValue(),"utf-8");
+	}
+	
+	//쿠키 이름으로 쿠키가 존재하는 지 확인하는 메소드
+	
+	public boolean exist(String name) {
+		
+		return cookieMap.get(name) != null; //null이 아니면 true, null이면 false 
+	}
+	
+	
 	//cookie 객체 생성하는 메소드 : 오버로딩, static
 	// 쿠키이름, 쿠키값으로 생성
 	public static Cookie makeCookie(String name, String value) throws UnsupportedEncodingException {
@@ -56,6 +84,9 @@ public class CookieBox {
 		c.setDomain(domain);
 		return c;
 	}
+	
+	
+	
 	
 }
 
