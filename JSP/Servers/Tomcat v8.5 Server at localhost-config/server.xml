@@ -155,7 +155,7 @@
 
 
       <Context docBase="First-Web" path="/First-Web" reloadable="true" source="org.eclipse.jst.jee.server:First-Web"/>
-      <Context docBase="First-Web2" path="/First-Web2" reloadable="true" source="org.eclipse.jst.jee.server:First-Web2"/><Context docBase="jdbc-member" path="/jdbc-member" reloadable="true" source="org.eclipse.jst.jee.server:jdbc-member"/><Context docBase="member-manager2" path="/member-manager2" reloadable="true" source="org.eclipse.jst.jee.server:member-manager2"/></Host>
+      <Context docBase="First-Web2" path="/First-Web2" reloadable="true" source="org.eclipse.jst.jee.server:First-Web2"/><Context docBase="jdbc-member" path="/jdbc-member" reloadable="true" source="org.eclipse.jst.jee.server:jdbc-member"/><Context docBase="member-manager2" path="/member-manager2" reloadable="true" source="org.eclipse.jst.jee.server:member-manager2"/><Context docBase="member-manager" path="/member-manager" reloadable="true" source="org.eclipse.jst.jee.server:member-manager"/></Host>
 
 
     </Engine>
