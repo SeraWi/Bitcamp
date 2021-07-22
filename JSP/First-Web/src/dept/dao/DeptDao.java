@@ -170,7 +170,7 @@ public class DeptDao {
 	
 	
 	
-	public static int updateDept(Connection conn, Dept dept) {
+	public int updateDept(Connection conn, Dept dept) {
 		int resultCnt = 0;
 		PreparedStatement pstmt = null;
 		

@@ -1,5 +1,6 @@
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.PreparedStatement"%>
+<%@page import="jdbc.util.JdbcUtil"%>
+<%@page import="dept.dao.DeptDao"%>
+<%@page import="jdbc.util.ConnectionProvider"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -7,25 +8,20 @@
 	String deptno = request.getParameter("deptno");
 	int resultCnt = 0;
 	
-	Class.forName("com.mysql.cj.jdbc.Driver");
-	Connection conn= null;
-	PreparedStatement pstmt = null;
 	
-	String jdbcUrl = "jdbc:mysql://localhost:3306/project?serverTimezone=UTC";
-	String user ="bit";
-	String pw ="1234";
+	Connection conn= null;
+	DeptDao dao = DeptDao.getInstance();
+	
 	
 	try{
 	
-	conn = DriverManager.getConnection(jdbcUrl,user,pw);
-	String sqlDelete = "delete from dept where deptno =?";  
-	pstmt = conn.prepareStatement(sqlDelete);
-	pstmt.setInt(1,Integer.parseInt(deptno));
-	
-	resultCnt = pstmt.executeUpdate();
+	conn = ConnectionProvider.getConnection();
+	resultCnt = dao.deleteDept(conn,Integer.parseInt(deptno));
 	
 	}catch(Exception e){
 		e.printStackTrace();
+	} finally{
+		JdbcUtil.close(conn);
 	}
 	
 	if(resultCnt > 0){

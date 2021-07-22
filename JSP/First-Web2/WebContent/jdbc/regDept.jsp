@@ -1,5 +1,7 @@
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.PreparedStatement"%>
+<%@page import="jdbc.util.JdbcUtil"%>
+<%@page import="dept.domain.Dept"%>
+<%@page import="dept.dao.DeptDao"%>
+<%@page import="jdbc.util.ConnectionProvider"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -16,40 +18,20 @@
 	String loc = request.getParameter("loc");
 	int resultCnt = 0;
 	
-	//2.DB 처리 : insert
 	
-	//데이터 베이스 드라이버 로드
-	
-	Class.forName("com.mysql.cj.jdbc.Driver");
+	Connection conn = null;
+	DeptDao dao = DeptDao.getInstance();
+
 	
 	try{
-	
-	//Connection 연결
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	
-	
-	String jdbcUrl = "jdbc:mysql://localhost:3306/project?serverTimezone=UTC";
-	String user ="bit";
-	String pw ="1234";
-	
-	conn = DriverManager.getConnection(jdbcUrl,user,pw);
-	
-	
-	String sqlInsert = "insert into dept values(?,?,?)";
-	
-	pstmt = conn.prepareStatement(sqlInsert);
-	pstmt.setInt(1,Integer.parseInt(deptno));
-	pstmt.setString(2,dname);
-	pstmt.setString(3,loc);
-	
-	
-	resultCnt = pstmt.executeUpdate();
-	
-	out.println(resultCnt);
+		conn =ConnectionProvider.getConnection();
+		resultCnt = dao.insertDept(conn,new Dept(Integer.parseInt(deptno),dname,loc)); 
 			
 			
 	}catch(Exception e ){
+		
+	} finally{
+		JdbcUtil.close(conn);
 		
 	}
 	
