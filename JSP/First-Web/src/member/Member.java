@@ -1,4 +1,4 @@
-package member_beans;
+package member;
 
 
 //빈즈 클래스 생성
