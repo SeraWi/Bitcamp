@@ -3,8 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	List<Member> list =(List<Member>)request.getAttribute("result");
-
+	List<Member> list = (List<Member>) request.getAttribute("result");
 %>
 <html>
 <head>
@@ -44,7 +43,7 @@
 			<th>관리</th>
 		</tr>
 <%
-	if(list != null && list.isEmpty()){
+	if(list != null && !list.isEmpty()){
 		for(int i=0; i<list.size(); i++){
 			%>
 			

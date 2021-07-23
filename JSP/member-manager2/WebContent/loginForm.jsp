@@ -42,7 +42,7 @@
 
 				<tr>
 					<th></th>
-					<td><input type="checkbox" name="reid" value="on" <%= checked %>>아이디 기억하기</td>
+					<td><input type="checkbox" name="reid" value="on" <%= checked %>> 아이디 기억하기</td>
 				</tr>			
 				<tr>
 					<th></th>

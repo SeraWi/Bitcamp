@@ -37,7 +37,7 @@
 		//member가 있다 ->아이디 패스워드 일치하는 회원 정보 있다.
 		
 		if(member !=null){
-			//회원 정보 session객체에 저장
+			//회원 정보 session객체에 저장 
 			session.setAttribute("loginInfo", member.toLoginInfo());
 			loginChk= true;
 		}
