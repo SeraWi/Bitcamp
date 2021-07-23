@@ -80,5 +80,8 @@ public class Member {
 				+ ", regdate=" + regdate + "]";
 	}
 	
+	public LoginInfo toLoginInfo() {
+		return new LoginInfo(this.idx,this.memberid,this.membername);
+	}
 	
 }

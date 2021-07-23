@@ -25,7 +25,7 @@ public class MemberDao {
 	}
 	
 	//member추가하기
-	public int insetMember(Connection conn, Member member) {
+	public int insertMember(Connection conn, Member member) {
 		int resultCnt = 0;
 		
 		PreparedStatement pstmt = null;
