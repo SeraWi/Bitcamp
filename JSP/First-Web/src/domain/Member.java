@@ -1,4 +1,4 @@
-package member;
+package domain;
 
 
 //빈즈 클래스 생성
