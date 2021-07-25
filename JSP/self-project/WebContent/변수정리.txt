@@ -1,0 +1,21 @@
+DB
+<member table>
+
+idx
+memberid
+password
+membername
+
+<java resource>
+Member Class
+int idx
+String memberId
+String password
+String memberName
+Timestamp regdate
+
+
+
+<jsp>
+regForm :  memberId, password, memberName
+loginForm : memberId, password, rememberId(checkbox)

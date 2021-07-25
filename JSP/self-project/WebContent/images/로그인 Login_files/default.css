@@ -25,16 +25,7 @@ nav>ul>li {
 	float: left;
 	padding : 5px 10px;
 }
-/* div 설정 == contents영역 설정 */
-div.contents {
-	margin : 10px;
-	padding : 10px;
-	
-}
 
-div.contents>h2 {
-	margin : 5px;
-}
 
 hr {
 	border : 0;

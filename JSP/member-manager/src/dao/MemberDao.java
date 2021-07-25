@@ -35,7 +35,9 @@ public class MemberDao {
 			pstmt.setString(1, member.getMemberid());
 			pstmt.setString(2, member.getPassword());
 			pstmt.setString(3, member.getMembername());
-
+			
+			
+			
 			resultCnt = pstmt.executeUpdate();
 
 		} catch (SQLException e) {

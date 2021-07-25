@@ -78,7 +78,4 @@ public class Member {
 		
 		return new LoginInfo(this.idx, this.memberid, this.membername);
 	}
-	
-	
-
 }
