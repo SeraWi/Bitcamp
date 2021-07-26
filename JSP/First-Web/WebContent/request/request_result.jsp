@@ -3,7 +3,7 @@
 <%	
 
 	//사용자가 전달한 데이터의 한글 처리!
-	request.setCharacterEncoding("utf-8");
+	//request.setCharacterEncoding("utf-8");  --> CharacterEncodingFilter로 바꿨음
  	String userName = request.getParameter("username");
 	String job = request.getParameter("job");
 	//배열로 받기

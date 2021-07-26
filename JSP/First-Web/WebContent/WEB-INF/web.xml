@@ -11,11 +11,11 @@
   </welcome-file-list>
   
   
-  <servlet>
+<!--   <servlet>
   	<servlet-name>Loader</servlet-name>
   	<servlet-class>jdbc.util.Loader</servlet-class>
   	<load-on-startup>1</load-on-startup>
-  </servlet>
+  </servlet> -->
   
 <!--에러페이지등록  -->
 <!--   http 상태코드로 등록 -->
@@ -35,10 +35,34 @@
 	<location>/review/error/errorNullPoint.jsp</location>
 </error-page> 
    -->
+<!-- 필터 등록 -->
+  <filter>
+  	<filter-name>LoginCheckFilter</filter-name>
+  	<filter-class>filter.LoginCheckFilter</filter-class>
+  </filter>
+<!-- 필터 매핑 -->
+  <filter-mapping>
+  	<filter-name>LoginCheckFilter</filter-name>
+  	<url-pattern>/member/mypage/*</url-pattern>
+  </filter-mapping>
   
+  <filter-mapping>
+  	<filter-name> LoginCheckFilter</filter-name>
+  	<url-pattern>/jdbc/*</url-pattern>
+  </filter-mapping>
   
   <servlet>
     <servlet-name>nowServlet</servlet-name>
     <servlet-class>firstweb.NowServlet</servlet-class>
   </servlet>
+  
+  <context-param>
+  	<param-name>jdbcdriver</param-name>
+  	<param-value>com.mysql.cj.jdbc.Driver</param-value>
+  </context-param>
+  
+  
+  <listener>
+  	<listener-class>jdbc.util.JdbcListener</listener-class>
+  </listener>
 </web-app>

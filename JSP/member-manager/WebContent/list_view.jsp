@@ -2,8 +2,11 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core"%>
 <%
-	List<Member> list = (List<Member>) request.getAttribute("result");
+	//List<Member> list = (List<Member>) request.getAttribute("result");
+	
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -40,7 +43,8 @@
 			<th>관리</th>
 		</tr>
 		
-	<%
+<%-- 표현식사용
+	 	<%
 		if(list!=null && !list.isEmpty()){
 			for(int i=0; i<list.size(); i++){
 				%>
@@ -58,8 +62,25 @@
 				<%
 			}
 		}
-	%>
-		
+	%> --%>
+	
+	<!--el, jstl -->
+	<c:if test="${result ne null and not empty result}">
+	<c:forEach items="${result}" var= "member" varStatus ="stat">
+
+		<tr>
+			<td>${member.idx}</td>			
+			<td>${member.memberid}</td>
+			<td>${member.password}</td>
+			<td>${member.membername}</td>
+			<td>${member.regdate}</td>
+			<td>
+				<a href="#">수정</a> 
+				<a href="#">삭제</a>
+			</td>
+		</tr>
+	</c:forEach>	
+	</c:if>
 		
 	</table>
 	<script>

@@ -19,6 +19,6 @@
 			
 			<!--로그인 상태이든 아니든 마이페이지 볼 수 있다.  -->
 			<li><a href="<%= request.getContextPath()%>/mypage.jsp">MyPage</a></li>
-			
+			<li><a href="<%= request.getContextPath()%>/mypage/mypage.jsp">MyPage</a></li>
 		</ul>
 	</nav>

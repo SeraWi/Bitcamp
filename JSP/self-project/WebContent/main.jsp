@@ -10,19 +10,7 @@
     integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" 
     crossorigin="anonymous">
 </script>
-<style>
-#banner>img {
-	width: 1000px;
-}
 
-#banner {
-	width: 1000px;
-	height: 600px;
-	border: 10px solid #aaa;
-	overflow: hidden;
-	margin: 10px;
-}
-</style>
 <script>
 	//3초마다 위로 올라가기
 	$(document).ready(function() {
