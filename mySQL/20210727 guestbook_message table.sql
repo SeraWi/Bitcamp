@@ -14,6 +14,8 @@ create table project.guestbook_message(
 select * from project.guestbook_message order by regdate desc; 
 -- 페이징 처리 (limit, count)
 select * from project.guestbook_message order by regdate desc limit 0,3; 
+--전체 게시물의 개수
+select count(*) from project.guestbook_message;
 
 -- insert
 insert into project.guestbook_message (guestname,password,message)
@@ -26,4 +28,5 @@ where messageid =1;
 
 -- delete
 delete from project.guestbook_message where messageid = 1;
+
 
