@@ -62,7 +62,9 @@
 	
 	if(loginChk){
 		//로그인 성공
-		response.sendRedirect("index.jsp");
+		//response.sendRedirect("index.jsp");
+		//로그인하면 자동으로 마이페이지로 보낸다.
+		response.sendRedirect(request.getContextPath()+"/mypage/mypage.jsp");
 		
 	}else{
 		//로그인 실패

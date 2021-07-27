@@ -44,6 +44,7 @@ public class LoginCheckFilter implements Filter{
 			chain.doFilter(request, response);
 			// 다음 필터를 실행, 현재 필터가 마지막 필터이면 실제 요청을 처리
 		} else {
+			viewPage = "/loginForm.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
 		}
@@ -54,15 +55,14 @@ public class LoginCheckFilter implements Filter{
 
 	@Override
 	public void init(FilterConfig config) throws ServletException {
-		ServletContext context = config.getServletContext();
-
-		String loginFormUri = context.getInitParameter("loginFormUri");
-
-		if (loginFormUri != null) {
-			viewPage = loginFormUri;
-		} else {
-			viewPage = "/loginForm.jsp";
-		}
+		/*
+		 * ServletContext context = config.getServletContext();
+		 * 
+		 * String loginFormUri = context.getInitParameter("loginFormUri");
+		 * 
+		 * if (loginFormUri != null) { viewPage = loginFormUri; } else { viewPage =
+		 * "/loginForm.jsp"; }
+		 */
 
 	}
 

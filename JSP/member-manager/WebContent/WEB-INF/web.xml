@@ -19,6 +19,7 @@
   	</init-param>
   	<load-on-startup>1</load-on-startup>
   </servlet> --> 
+  
  <!-- 필터 등록 -->
  
  <filter>
@@ -31,7 +32,7 @@
  
  </filter>
  
-<!-- filter mapping 설정 -->
+<!-- filter mapping 설정 : 모든 파일-->
  
  <filter-mapping>
  
@@ -52,16 +53,13 @@
  	</init-param>
  </filter>
  
- <!-- filter mapping 설정 -->
+ <!-- filter mapping 설정 :mypage폴더 아래 모든 파일-->
  <filter-mapping>
  	<filter-name>LoginCheckFilter</filter-name>
  	<url-pattern>/mypage/*</url-pattern>
  </filter-mapping>
  
-  <!-- 리스너 -->
-  <listener>
-  	<listener-class>jdbc.JdbcListener</listener-class>
-  </listener>  
+ 
   
   <!--context-param  -->
   <context-param>
@@ -69,8 +67,12 @@
   	<param-value>com.mysql.cj.jdbc.Driver</param-value>
   </context-param>
   
+   <!-- 리스너 -->
+  <listener>
+  	<listener-class>jdbc.JdbcListener</listener-class>
+  </listener>  
   
-  <!-- 필터 등록 -->
+
   
   
 </web-app>
