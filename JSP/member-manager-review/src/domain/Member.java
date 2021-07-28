@@ -8,15 +8,17 @@ public class Member {
 	private String memberid;
 	private String password;
 	private String membername;
+	private String memberphoto;
 	private Timestamp regdate;
 	
 	//생성자
-	public Member(int idx, String memberid, String password, String membername, Timestamp regdate) {
+	public Member(int idx, String memberid, String password, String membername,String memberphoto, Timestamp regdate) {
 		super();
 		this.idx = idx;
 		this.memberid = memberid;
 		this.password = password;
 		this.membername = membername;
+		this.memberphoto = memberphoto;
 		this.regdate = regdate;
 	}
 	
@@ -67,6 +69,16 @@ public class Member {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
+	
+	
+	public String getMemberphoto() {
+		return memberphoto;
+	}
+	
+	
+	public void setMemberphoto(String memberphoto) {
+		this.memberphoto = memberphoto;
+	}
 
 	//java.sql.TimeStamp ->java.util.Date
 	public Date getDate() {
@@ -74,14 +86,16 @@ public class Member {
 		
 	}
 	
+
+	
 	@Override
 	public String toString() {
 		return "Member [idx=" + idx + ", memberid=" + memberid + ", password=" + password + ", membername=" + membername
-				+ ", regdate=" + regdate + "]";
+				+ ", memberphoto=" + memberphoto + ", regdate=" + regdate + "]";
 	}
-	
+
 	public LoginInfo toLoginInfo() {
-		return new LoginInfo(this.idx,this.memberid,this.membername);
+		return new LoginInfo(this.idx,this.memberid,this.membername,this.memberphoto);
 	}
 	
 }
