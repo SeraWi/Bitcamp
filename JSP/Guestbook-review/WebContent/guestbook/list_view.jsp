@@ -77,7 +77,7 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td>삭제</td>
+				<td><a href="confirmMessage.jsp?mid=${message.messageid}">삭제</a></td>
 			</tr>
 		</table>
 	

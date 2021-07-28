@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+</style>
+<script>
+</script>
+</head>
+<body>
+	<h3>메세지를 삭제하려면 비밀번호를 입력해주세요</h3>
+	
+	<form action="deleteMessage.jsp" method="post">
+		비밀번호 <input type ="password" name="password">
+		<input type="hidden" name="mid" value="${param.mid}"> <br>
+		<!-- 파라미터값인 mid를 가져오기 -->
+		<input type="submit" value="삭제">	
+	</form>
+</body>
+</html>

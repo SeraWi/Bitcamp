@@ -7,6 +7,7 @@ import java.util.List;
 import guest.dao.MessageDao;
 import guest.domain.Message;
 import guest.domain.MessageListView;
+import guest.domain.MessageRequest;
 import guest.jdbc.ConnectionProvider;
 
 public class MessageListService {
@@ -58,4 +59,6 @@ public class MessageListService {
 		
 		return listView;
 	}
+	
+	
 }

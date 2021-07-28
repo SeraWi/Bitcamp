@@ -20,10 +20,8 @@
 	<c:if test="${result eq 1}">
 	 	메시지가 입력되었습니다.
 	</c:if>
-	
-	
-	
-	
 	</h1>
+	
+	<h2><a href="list.jsp">리스트 보기</a></h2>
 </body>
 </html>

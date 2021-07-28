@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import guest.dao.MessageDao;
 import guest.domain.Message;
 import guest.domain.MessageRequest;
+import guest.jdbc.ConnectionProvider;
 
 public class WriteMessageService {
 	private WriteMessageService() {}
@@ -20,6 +21,8 @@ public class WriteMessageService {
 		Connection conn= null;
 		MessageDao dao = null;
 		try {
+			conn= ConnectionProvider.getConnection();
+			dao=MessageDao.getInstance();
 			conn.setAutoCommit(false);
 
 			//메세지 폼 정보를 담은 requestMessage를 message객체로 만들고
