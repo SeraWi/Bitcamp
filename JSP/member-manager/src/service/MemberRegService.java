@@ -26,12 +26,15 @@ public class MemberRegService {
 		return service;
 	}
 
-	public int regMember(HttpServletRequest request) throws FileUploadException {
+	public void regMember(HttpServletRequest request) throws FileUploadException {
 
 		int resultCnt = 0;
 		Member member =  new Member(); //dao처리할 때 필요한 member객체
 		Connection conn = null; //Connection 객체
 		MemberDao dao = null;
+
+		File newFile = null;
+		
 
 		try {
 			//1. multipart여부 확인한다
@@ -90,9 +93,13 @@ public class MemberRegService {
 							//파일이름이 존재(getName())하고 사이즈 확인
 							if(item.getName() !=null && item.getSize() >0) {
 								//저장
-								item.write(new File(saveDir, item.getName())); //디렉토리이름 + 파일이름 ->경로로저장된다.
+								newFile = new File(saveDir, item.getName());
+								item.write(newFile); //디렉토리이름 + 파일이름 ->경로로저장된다.
+								System.out.println("파일 저장!");
+								
 								//member객체에 저장할 파일 이름 ->DB에도 저장할 파일의 이름
 								member.setMemberphoto(item.getName());
+								
 							}
 						}
 					}
@@ -105,30 +112,35 @@ public class MemberRegService {
 			////////////
 			//db에 insert
 			//Connection, MemberDao 필요
-			
+
 			conn = ConnectionProvider.getConnection();
 			dao= MemberDao.getInstance();
-			
+
 			//db 갔다온뒤 결과 반환
 			resultCnt = dao.insertMember(conn, member);
-			
+
 
 		}catch(SQLException e){
 			e.printStackTrace();
-			//파일이 저장된뒤 sql예외 발생시 ,db에는 저장되지 않는다.
-			//현재 저장된 파일을 삭제해야 한다
+			//파일이 upload 디렉토리에 
+			//저장된뒤 sql예외 발생시(동일한 아이디 존재 등..) db에는 저장되지 않는다.
+			//현재 저장된 파일(==쓰레기)을 삭제해야 한다
 			
-			
-			
-			
-			
-			
+			//DB입력시 오류라면 파일을 삭제!!
+			if(newFile !=null && newFile.exists()) {
+				//파일을 삭제
+				newFile.delete();
+				System.out.println("파일 삭제!");
+			}
+
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return resultCnt;
+		request.setAttribute("result", resultCnt);
+
+		//return resultCnt;
 	}
 }
