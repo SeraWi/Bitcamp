@@ -93,8 +93,8 @@ public class MemberRegService {
 							//파일이름이 존재(getName())하고 사이즈 확인
 							if(item.getName() !=null && item.getSize() >0) {
 								//저장
-								newFile = new File(saveDir, item.getName());
-								item.write(newFile); //디렉토리이름 + 파일이름 ->경로로저장된다.
+								newFile = new File(saveDir, item.getName()); //디렉토리이름 + 파일이름 ->경로로저장된다.
+								item.write(newFile); 
 								System.out.println("파일 저장!");
 								
 								//member객체에 저장할 파일 이름 ->DB에도 저장할 파일의 이름
