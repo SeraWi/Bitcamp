@@ -10,6 +10,11 @@ public class JdbcListener implements ServletContextListener {
 
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
+
+	}
+
+	@Override
+	public void contextInitialized(ServletContextEvent sce) {
 		System.out.println("리스너 진입");
 		
 		try {
@@ -28,12 +33,6 @@ public class JdbcListener implements ServletContextListener {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public void contextInitialized(ServletContextEvent sce) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
