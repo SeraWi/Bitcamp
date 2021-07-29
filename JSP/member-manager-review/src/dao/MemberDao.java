@@ -123,6 +123,7 @@ public class MemberDao {
 				member.setMemberid(rs.getString("memberid"));
 				member.setPassword(rs.getString("password"));
 				member.setMembername(rs.getString("membername"));
+				member.setMemberphoto(rs.getString("memberphoto"));
 				member.setRegdate(rs.getTimestamp("regdate"));
 				
 			}

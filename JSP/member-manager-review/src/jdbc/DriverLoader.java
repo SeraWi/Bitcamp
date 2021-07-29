@@ -4,7 +4,7 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
-public class DriverLoader extends HttpServlet{
+public class DriverLoader extends HttpServlet {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
@@ -26,8 +26,6 @@ public class DriverLoader extends HttpServlet{
 		}
 
 	}
-	
-	
-	
-	
+
 }
+
