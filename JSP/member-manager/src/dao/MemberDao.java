@@ -129,5 +129,30 @@ public class MemberDao {
 		
 		return member;
 	}
+	// 아이디 중복 여부를 확인하는 메서드
+	// id값 전달 받아서 db에서 확인한후 결과를 int로 반환한다.
+	public int selectById(Connection conn, String memberid) throws SQLException {
+		int cnt = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
+		
+		//멤버아이디로 select 
+		String sql = "select count(*) from member where memberid =?;";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,memberid);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				cnt = rs.getInt(1);
+			}
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		return cnt;
+	}
 
 }
