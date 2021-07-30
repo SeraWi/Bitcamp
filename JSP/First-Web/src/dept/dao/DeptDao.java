@@ -104,7 +104,7 @@ public class DeptDao {
 	
 	
 	//dept 삭제하기
-	public static int deleteDept(Connection conn,int deptno ) {
+	public  int deleteDept(Connection conn,int deptno ) {
 		int resultCnt = 0;
 		
 		PreparedStatement pstmt = null;
