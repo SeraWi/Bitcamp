@@ -140,7 +140,7 @@ public class RegCommandImpl implements Command {
 	@Override
 	public String getPage(HttpServletRequest request, HttpServletResponse reponse) {
 		register(request);
-		return "/WEB-INF/views/reg_view.jsp";
+		return "/WEB-INF/views/regView.jsp";
 	}
 
 }

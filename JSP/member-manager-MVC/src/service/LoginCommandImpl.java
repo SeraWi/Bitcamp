@@ -65,7 +65,7 @@ public class LoginCommandImpl implements Command {
 		login(request);
 		//request.setAttribute("loginInfo", loginInfo);
 		request.getSession().setAttribute("loginInfo", loginInfo);
-		return "/WEB-INF/views/login_view.jsp";
+		return "/WEB-INF/views/loginView.jsp";
 	}
 
 }

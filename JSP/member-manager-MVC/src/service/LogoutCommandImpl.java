@@ -11,7 +11,7 @@ public class LogoutCommandImpl implements Command {
 	@Override
 	public String getPage(HttpServletRequest request, HttpServletResponse reponse) {
 		request.getSession().invalidate();
-		return "/WEB-INF/views/logout_view.jsp";
+		return "/WEB-INF/views/logoutView.jsp";
 	}
 
 }

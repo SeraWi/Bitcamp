@@ -22,11 +22,8 @@
 </head>
 <body>
 	
-	<h1>부서 리스트</h1>
+	<h1>회원 리스트</h1>
 	<hr>
-	
-	<!-- <button onclick="location.href='dept_regForm.jsp';">부서정보 등록</button> -->
-	
 	<table border=1>
 		<tr>
 			<th>idx</th>			
