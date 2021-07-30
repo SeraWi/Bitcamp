@@ -7,7 +7,7 @@
 /reg.do=service.RegCommandImpl
 /idChk.do=service.IdCheckCommandImpl
 /logout.do=service.LogoutCommandImpl
-
+/memberList.do=service.MemberListCommandImpl
 
 
 
