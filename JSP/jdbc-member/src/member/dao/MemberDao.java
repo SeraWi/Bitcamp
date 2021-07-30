@@ -38,7 +38,7 @@ public class MemberDao {
 			
 			//쿼리에서 받은 데이터 member객체로 생성 ->배열에 넣기
 			while(rs.next()) {
-				memberList.add(new Member(rs.getNString(1),rs.getNString(2),rs.getNString(3),rs.getNString(4)));
+				memberList.add(new Member(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)));
 			}
 			
 		} catch (SQLException e) {
