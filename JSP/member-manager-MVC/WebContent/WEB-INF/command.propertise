@@ -1,0 +1,13 @@
+## 메인페이지
+/=service.IndexCommandImpl
+/index.do=service.IndexCommandImpl
+/loginForm.do=service.LoginFormCommandImpl
+/login.do=service.LoginCommandImpl
+/regForm.do=service.RegFormCommandImpl
+/reg.do=service.RegCommandImpl
+/idChk.do=service.IdCheckCommandImpl
+/logout.do=service.LogoutCommandImpl
+
+
+
+
