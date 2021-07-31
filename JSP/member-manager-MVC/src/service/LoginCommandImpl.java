@@ -44,7 +44,7 @@ public class LoginCommandImpl implements Command {
 					
 					if(member != null) {
 						//로그인 성공
-						//member객체에서 필요한 정보만 loginInfo로 만들어서 session에 저장
+						//member객체에서 필요한 정보만 loginInfo로 만들어서 session에 저장예정
 						 loginInfo= member.toLoginInfo();
 						 System.out.println("저장");
 					}
@@ -62,9 +62,8 @@ public class LoginCommandImpl implements Command {
 	
 	@Override
 	public String getPage(HttpServletRequest request,HttpServletResponse reponse) {
-		login(request);
 		//request.setAttribute("loginInfo", loginInfo);
-		request.getSession().setAttribute("loginInfo", loginInfo);
+		request.getSession().setAttribute("loginInfo", login(request));
 		return "/WEB-INF/views/loginView.jsp";
 	}
 

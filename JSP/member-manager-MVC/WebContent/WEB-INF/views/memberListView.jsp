@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Member List</title>
+<link rel="stylesheet" href="<c:url value="/css/default.css"/>"> 
 <style>
 	td {
 		text-align: center;
@@ -16,13 +17,19 @@
 	button {
 		margin: 5px 0;
 	}
+
 </style>
 <script>
 </script>
 </head>
 <body>
 	
-	<h1>회원 리스트</h1>
+<%@ include file="/WEB-INF/frame/header.jsp" %>
+
+<%@ include file="/WEB-INF/frame/nav.jsp" %>
+	
+<div class="contents">
+	<h2>회원 리스트</h2>
 	<hr>
 	<table border=1>
 		<tr>
@@ -46,13 +53,15 @@
 			<td>${member.regdate}</td>
 			<td>
 				<a href="#">수정</a> 
-				<a href="#">삭제</a>
+				<a href="<c:url value="/delete.do"/>">삭제</a> 
 			</td>
 		</tr>
 	</c:forEach>	
 	</c:if>
 		
 	</table>
-
+	
+	<%-- ${result} --%>
+</div>
 </body>
 </html>

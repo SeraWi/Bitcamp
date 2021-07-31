@@ -31,13 +31,14 @@ public class MemberListCommandImpl implements Command {
 			e.printStackTrace();
 		}
 		
+		//회원 리스트 정보 request에 저장 전달
 		request.setAttribute("result", list);
 	}
 	
 	@Override
 	public String getPage(HttpServletRequest request, HttpServletResponse reponse) {
 		list(request);
-		return "/WEB-INF/views/memberList_view.jsp";
+		return "/WEB-INF/views/memberListView.jsp";
 	}
 
 }

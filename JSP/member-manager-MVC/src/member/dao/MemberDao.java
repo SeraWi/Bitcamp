@@ -22,7 +22,8 @@ public class MemberDao {
 	public static MemberDao getInstance() {
 		return dao;
 	}
-
+	
+	//member 회원가입 하면 db에 저장:insert
 	public int insertMember(Connection conn, Member member) throws SQLException {
 
 		int resultCnt = 0;
@@ -57,7 +58,7 @@ public class MemberDao {
 		return resultCnt;
 	}
 
-	
+	//회원리스트 보기:select
 	public List<Member> selectList(Connection conn) {
 
 		List<Member> list = null;
@@ -96,7 +97,7 @@ public class MemberDao {
 
 	}
 	
-	
+	//로그인할 때 아이디와 비빌번호 체크 용:select
 	public Member selectByIdPw(Connection conn, String id, String pw) {
 		Member member = null;
 		PreparedStatement pstmt = null;
@@ -130,6 +131,7 @@ public class MemberDao {
 		
 		return member;
 	}
+	
 	// 아이디 중복 여부를 확인하는 메서드
 	// id값 전달 받아서 db에서 확인한후 결과를 int로 반환한다.
 	public int selectById(Connection conn, String memberid) throws SQLException {
@@ -154,6 +156,29 @@ public class MemberDao {
 			JdbcUtil.close(pstmt);
 		}
 		return cnt;
+	}
+	
+	//회원리스트에서 회원정보 삭제할 때 사용:delete
+	public int deleteMember(Connection conn, int idx) {
+		int resultCnt = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = "delete from project.member where idx= ?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			
+			resultCnt=pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+		
+		return resultCnt;
 	}
 
 }

@@ -55,7 +55,7 @@ public class FrontController extends HttpServlet{
 		while(itr.hasNext()) {
 			String command = (String)itr.next();
 			String commandClassName = prop.getProperty(command); //키값을 받아서 value반환
-			System.out.println(command+"="+commandClassName);//  /greeting.do=service.GreetingCommandImpl
+			//System.out.println(command+"="+commandClassName);//  /greeting.do=service.GreetingCommandImpl
 			
 			
 			//클래스 이름올 해당클래스의 인스턴스 생성

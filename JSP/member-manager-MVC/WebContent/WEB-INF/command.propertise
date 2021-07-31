@@ -8,6 +8,6 @@
 /idChk.do=service.IdCheckCommandImpl
 /logout.do=service.LogoutCommandImpl
 /memberList.do=service.MemberListCommandImpl
-
-
-
+/myPage.do=service.MyPageCommandImpl
+/message.do=service.MessageCommandImpl
+/delete.do=service.DeleteMemCommandImpl
