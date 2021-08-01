@@ -50,8 +50,14 @@
 				<img src="<c:url value="/upload/${loginInfo.memberphoto}"/>" style="width: 100px">
 				</td>
 			</tr>			
-		
+			<tr>
+				<td colspan="2"><a href="<c:url value="/withdraw.do"/>">회원 탈퇴하기</a></td>
+			</tr>			
+			
 		</table>
+		
+		
+		
 	</div>
 	${loginInfo}
 

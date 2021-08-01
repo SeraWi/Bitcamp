@@ -61,7 +61,7 @@
 		
 	</table>
 	
-	<%-- ${result} --%>
+	 ${result} 
 </div>
 </body>
 </html>

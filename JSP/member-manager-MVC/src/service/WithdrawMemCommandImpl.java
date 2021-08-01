@@ -10,34 +10,34 @@ import member.dao.MemberDao;
 import member.domain.LoginInfo;
 import member.util.ConnectionProvider;
 
-public class DeleteMemCommandImpl implements Command {
+public class WithdrawMemCommandImpl implements Command {
 	
 	
-	//회원정보 삭제할 때 idx받아오기
-	//view 지정하기
-	//내정보(session)말고 회원리스트에서 다른 회원 삭제하기! 다른 회원 idx구해오기
-	
-	
-	//회원탈퇴할떄
-	
+	//회원탈퇴할때
+	//session에 저장된 idx로 삭제하기
+	//view 지정
 	
 	public int deleteMember(HttpServletRequest request) {
 		int resultCnt =0;
 		MemberDao dao = null;
 		Connection conn = null;
+		LoginInfo loginInfo = null;
 		
-		//파라미터로 받은 idx가져오기
-		int idx = Integer.parseInt(request.getParameter("idx"));
+		//session정보 가져오기
+		loginInfo = (LoginInfo) request.getSession().getAttribute("loginInfo");
+		//session에 있는 idx
+		int idx = loginInfo.getIdx();
+		
 		
 		try {
 			conn= ConnectionProvider.getConnection();
+			dao = MemberDao.getInstance();
 			resultCnt = dao.deleteMember(conn, idx);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		
 		return resultCnt;
 	}
@@ -48,8 +48,9 @@ public class DeleteMemCommandImpl implements Command {
 	
 	@Override
 	public String getPage(HttpServletRequest request, HttpServletResponse reponse) {
+		//결과를 전달
 		request.setAttribute("result",deleteMember(request));
-		return "/WEB-INF/views/deleteMemberView.jsp";
+		return "/WEB-INF/views/withdrawMemView.jsp";
 	}
 
 }

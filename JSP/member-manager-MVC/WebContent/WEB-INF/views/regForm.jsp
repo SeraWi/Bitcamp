@@ -43,7 +43,7 @@
 				type : 'post',
 				data : {
 					//this==현재 발생 이벤트 memberid의 value(입력값)캐스팅
-					mid : $(this).val()
+					memberid : $(this).val()
 				},
 				beforeSend : function(){
 					$('#loadingimg').removeClass('display_none');

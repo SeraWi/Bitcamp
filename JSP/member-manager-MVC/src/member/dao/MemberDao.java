@@ -137,24 +137,25 @@ public class MemberDao {
 	public int selectById(Connection conn, String memberid) throws SQLException {
 		int cnt = 0;
 		PreparedStatement pstmt = null;
-		ResultSet rs =null;
+		ResultSet rs = null;
 		
-		//멤버아이디로 select 
-		String sql = "select count(*) from member where memberid =?;";
+		String sql = "select count(*) from member where memberid=?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,memberid);
+			pstmt.setString(1, memberid);
 			
-			rs=pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				cnt = rs.getInt(1);
 			}
-		}finally {
-			JdbcUtil.close(rs);
+			
+		} finally {
 			JdbcUtil.close(pstmt);
+			JdbcUtil.close(rs);
 		}
+		
 		return cnt;
 	}
 	

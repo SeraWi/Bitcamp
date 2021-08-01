@@ -11,3 +11,4 @@
 /myPage.do=service.MyPageCommandImpl
 /message.do=service.MessageCommandImpl
 /delete.do=service.DeleteMemCommandImpl
+/withdraw.do=service.WithdrawMemCommandImpl

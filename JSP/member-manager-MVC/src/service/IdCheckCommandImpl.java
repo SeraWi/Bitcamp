@@ -24,6 +24,7 @@ public class IdCheckCommandImpl implements Command {
 			//db에 memberid 전달하고 결과값 받기
 			String memberid = request.getParameter("memberid");
 			cnt = dao.selectById(conn,memberid);
+			System.out.println(cnt);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
