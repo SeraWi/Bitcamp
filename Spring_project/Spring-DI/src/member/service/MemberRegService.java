@@ -14,6 +14,7 @@ public class MemberRegService {
 	
 	public MemberRegService(Dao dao) {
 		this.dao = dao;
+		System.out.println("memberRegService 인스턴스 생성");
 	}
 	
 	public void regMember(RegRequest request) throws Exception {

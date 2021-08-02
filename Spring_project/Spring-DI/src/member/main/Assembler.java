@@ -1,5 +1,6 @@
 package member.main;
 
+import member.dao.GuestDao;
 import member.dao.MemberDao;
 import member.service.ChangePasswordService;
 import member.service.MemberRegService;
@@ -16,11 +17,13 @@ public class Assembler {
 	private MemberDao dao;
 	private MemberRegService regService;
 	private ChangePasswordService passwordService;
+	private GuestDao gDao;
 	
 	
 	public Assembler() {
 		//인스턴스를 생성 -> 의존 주입
 		dao = new MemberDao();
+		gDao = new GuestDao();
 		regService = new MemberRegService(dao);
 		passwordService = new ChangePasswordService(dao);
 	}
