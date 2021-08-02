@@ -41,6 +41,7 @@ public class LoginCommandImpl implements Command {
 					dao = MemberDao.getInstance();
 					
 					member = dao.selectByIdPw(conn,memberid, password);
+					System.out.println(member);
 					
 					if(member != null) {
 						//로그인 성공
