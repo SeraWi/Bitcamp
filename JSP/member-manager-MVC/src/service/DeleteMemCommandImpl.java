@@ -31,6 +31,7 @@ public class DeleteMemCommandImpl implements Command {
 		
 		try {
 			conn= ConnectionProvider.getConnection();
+			dao=MemberDao.getInstance();
 			resultCnt = dao.deleteMember(conn, idx);
 			
 		} catch (SQLException e) {

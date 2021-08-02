@@ -53,15 +53,15 @@
 			<td>${member.regdate}</td>
 			<td>
 				<a href="#">수정</a> 
-				<a href="<c:url value="/delete.do"/>">삭제</a> 
+				<a href="<c:url value="/delete.do?idx=${member.idx}"/>">삭제</a> 
 			</td>
 		</tr>
 	</c:forEach>	
 	</c:if>
 		
 	</table>
-	
-	 ${result} 
+	<%-- 
+	 ${result}  --%>
 </div>
 </body>
 </html>
