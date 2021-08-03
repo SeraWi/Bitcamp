@@ -5,12 +5,11 @@ import java.util.Scanner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import member.dao.MemberDao;
 import member.domain.RegRequest;
-import member.service.ChangePasswordService;
-import member.service.MemberRegService;
+import member.service.ChangePasswordService2;
+import member.service.MemberRegService2;
 
-public class SpringMain1 {
+public class SpringMain3 {
 	
 	//static MemberDao dao =new MemberDao();
 	//static Assembler assembler = new Assembler();
@@ -20,7 +19,7 @@ public class SpringMain1 {
 		
 		//ctx = new GenericXmlApplicationContext("classpath:appCtx1.xml");
 		//ctx = new GenericXmlApplicationContext("classpath:appCtx2.xml");
-		ctx = new GenericXmlApplicationContext("classpath:appCtx3.xml"); //3_1과 3_2를 읽어오는것과 같다
+		ctx = new GenericXmlApplicationContext("classpath:appCtx5.xml"); //3_1과 3_2를 읽어오는것과 같다
 		
 		Scanner sc= new Scanner(System.in);
 		
@@ -57,7 +56,7 @@ public class SpringMain1 {
 		
 		//ChangePasswordService service = new ChangePasswordService(dao);
 		//ChangePasswordService service = assembler.getPasswordService();
-		ChangePasswordService service = ctx.getBean("changePwService",ChangePasswordService.class);
+		ChangePasswordService2 service = ctx.getBean("changePwService",ChangePasswordService2.class);
 		
 		
 		try {
@@ -75,7 +74,7 @@ public class SpringMain1 {
 		//memberRegSerivce 이용해서 정보를 저장
 		//MemberRegService service = new MemberRegService(dao);
 		//MemberRegService service = assembler.getRegService();
-		MemberRegService service = ctx.getBean("regService",MemberRegService.class);
+		MemberRegService2 service = ctx.getBean("regService",MemberRegService2.class);
 		
 		RegRequest request = new RegRequest();
 		request.setEmail(values[1]);

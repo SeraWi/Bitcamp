@@ -9,6 +9,7 @@ public interface Dao {
 	
 	// 회원데이터를 email로 검색  ->member객체 반환
 	Member selectByEmail(String email);
+	
 	//데이터 저장
 	void insert(Member member);
 	

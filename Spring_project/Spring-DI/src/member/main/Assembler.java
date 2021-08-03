@@ -21,6 +21,7 @@ public class Assembler {
 	
 	
 	public Assembler() {
+		//초기화
 		//인스턴스를 생성 -> 의존 주입
 		dao = new MemberDao();
 		gDao = new GuestDao();

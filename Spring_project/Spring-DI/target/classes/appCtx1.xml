@@ -7,12 +7,28 @@
 	<bean id="memberDao" class= "member.dao.MemberDao"></bean>
 	
 	<!-- memberRegService bean등록 -->
+	<!-- 인스턴스 생성 후 setter메소드 호출(생성) -->
 	<bean id="regService" class="member.service.MemberRegService">
 		<constructor-arg ref="memberDao"/>
 	</bean>
 	
+	<!--기본형 타입의 데이터 주입  -->
+	<bean id="regService1" class="member.service.MemberRegService">
+		<constructor-arg value="10"/>
+	</bean>	
+	
+	<!-- 기본형과 참조형 두개의 데이터를 주입  index == 파라미터 순서 지정-->
+	<bean id="regService2" class="member.service.MemberRegService">
+		<constructor-arg index="1" ref="memberDao"/> 
+		<constructor-arg index="2" value="10"/>
+	</bean>	
+	
+	
 	<bean id="changePwService" class="member.service.ChangePasswordService">
-		<constructor-arg ref="memberDao"></constructor-arg>
+		<!-- <constructor-arg ref="memberDao"></constructor-arg> -->
+		<constructor-arg>
+			<bean class="member.dao.MemberDao"/>
+		</constructor-arg>
 	</bean>
 	
 
