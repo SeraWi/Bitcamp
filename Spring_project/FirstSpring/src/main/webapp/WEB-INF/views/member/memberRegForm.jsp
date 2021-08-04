@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h1>회원가입</h1>
-	<form action="memberReg.jsp" method="post"  enctype="multipart/form-data"> 
+	<form method="post"> 
 			<table>
 				<tr>
 					<td>아이디</td>
@@ -31,10 +31,10 @@
 					<td>이름</td>
 					<td><input type="text" name="membername"></td>
 				</tr>
-				<tr>
+<!--  			<tr>
 					<td>사진</td>
 					<td><input type="file" name="photo"></td>
-				</tr>				
+				</tr>	-->				
 				<tr>
 					<td></td>
 					<td>
