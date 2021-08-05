@@ -21,7 +21,7 @@
 	
 	
 	<bean id="changePwService" class="member.service.ChangePasswordService"
-			p:dao-ref="">
+			p:dao-ref="memberDao">
 <!-- 		<property name="dao" ref="memberDao"/> -->
 	</bean>
 	
