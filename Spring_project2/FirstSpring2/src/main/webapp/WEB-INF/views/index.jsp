@@ -23,6 +23,8 @@
 		<li><a href="<c:url value="/member/mypage/king"/>"> /member/mypage/king</a></li>
 		<li><a href="<c:url value="/member/mypage/scott"/>"> /member/mypage/scott</a></li>
 		<li><a href="<c:url value="/member/mypage/sera"/>"> /member/mypage/sera</a></li>
+		<li><a href="<c:url value="/error/error"/>"> /error/error</a></li>
+		
 	</ul>
 </body>
 </html>

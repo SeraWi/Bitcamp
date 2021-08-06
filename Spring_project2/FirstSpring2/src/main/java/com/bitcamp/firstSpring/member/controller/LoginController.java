@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bitcamp.firstSpring.member.domain.LoginInfo;
 import com.bitcamp.firstSpring.member.domain.LoginRequest;
 
 @Controller
@@ -57,7 +58,10 @@ public class LoginController {
 		///---------------------------------------
 		System.out.println(loginRequest); //bean 사용
 		//model에 자동 저장된다.
-
+		
+		//8/6일 추가
+		//세션의 속성에 loginInfo등록
+		request.getSession(false).setAttribute("loginInfo", new LoginInfo());
 		
 		return "member/login"; // /WEB-INF/views/member/login.jsp
 	}
