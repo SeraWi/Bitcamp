@@ -24,7 +24,7 @@
 		<table>
 			<tr>
 				<td>아이디</td>
-				<td>${id}, ${uid}, ${loginRequest.id}</td>
+				<td>${id}, ${uid}, ${loginReg.id}</td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>

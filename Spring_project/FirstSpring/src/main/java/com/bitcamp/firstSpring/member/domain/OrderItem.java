@@ -5,7 +5,7 @@ public class OrderItem {
 	private int number;
 	private String remark;
 	
-	
+	//기본 생성자
 	
 	//getter와 setter
 	public String getItemId() {

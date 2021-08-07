@@ -19,7 +19,6 @@ public class OrderController {
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public String order(
-			
 			OrderCommand orderCommand
 			) {
 		System.out.println(orderCommand);
