@@ -18,6 +18,8 @@ public class CookieController {
 		Cookie c = new Cookie("username","KING");
 		response.addCookie(c);
 		
+		
+		//쿠키 생성도 핵심 처리 이기 때문에 서비스에서 처리하도록 하자!
 		//Service.process(response);
 		
 		return "cookie/make";

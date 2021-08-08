@@ -12,8 +12,9 @@
 <!-- http:localhost:8080/firstSpring/cookie/make -->
 	<h1>쿠키가 생성되었습니다.</h1>
 	<a href="<c:url value="/"/>">홈으로 가기</a><br>
+	
 	<!-- http:localhost:8080/firstSpring/cookie/view -->
-	<a href="view">쿠키 정보 보기</a>
+	<a href="view">쿠키 정보 보기</a> 
 	  
 </body>
 </html>
