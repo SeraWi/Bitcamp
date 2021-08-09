@@ -4,3 +4,64 @@
 	margin:0;
 	paddign:0;
 }
+/*header 영역  */
+header{
+	padding:20px;
+}
+
+/* nav 영역 */
+nav>ul{
+ 	overflow:hidden;	
+ 	list-style:none;
+ 	border-top: 1px solid #aaa;
+ 	border-bottom: 1px solid #aaa;
+}
+
+nav>ul>li{
+	/* nav 카테고리 옆으로 일렬로 나열, 글자 중앙 */
+	float:left;
+	width:150px;
+	text-align:center;
+	height:35px;
+	line-height:35px;
+}
+
+/*content영역 */
+#content{
+	padding:20px;
+}
+
+/* a 태그의 밑줄 없애기 */
+a{
+	text-decoration:none;
+	color:#333;
+}
+/* 커서 올리면 밑줄이 나타난다 */
+a:hover{
+	text-decoration:underline;
+}
+
+/* a 태그 누르고 나서도 색이 바뀌지 않도록! */
+a:visited{
+	color:#333
+}
+
+/* hr 설정 */
+hr{
+	/* border 초기화 시키고 설정 */
+	border:0;
+	border-top:1px solid #ccc;
+	/*       상하 좌우 */
+	margin: 20px 0;
+}
+
+/* table 설정 */
+td{
+	/* 칸 간격 주기 */
+	padding:5px;
+}
+
+
+
+
+

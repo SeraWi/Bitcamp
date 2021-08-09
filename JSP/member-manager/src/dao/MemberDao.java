@@ -33,7 +33,7 @@ public class MemberDao {
 		try {
 			
 			if(member.getMemberphoto() == null) {
-				//사진 언넣었을 때
+				//사진 안넣었을 때
 				pstmt = conn.prepareStatement(sql1);
 				pstmt.setString(1, member.getMemberid());
 				pstmt.setString(2, member.getPassword());
