@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.bitcamp.op2.jdbc.ConnectionProvider;
 import com.bitcamp.op2.jdbc.JdbcUtil;
+import com.bitcamp.op2.member.dao.JdbctemplateMemberDao;
 import com.bitcamp.op2.member.dao.MemberDao;
 import com.bitcamp.op2.member.domain.Member;
 import com.bitcamp.op2.member.domain.MemberRegRequest;
@@ -21,8 +22,11 @@ public class MemberRegService {
 	
 	final String UPLOAD_URI = "/uploadfile";
 	
+//	@Autowired
+//	private MemberDao dao;
+	
 	@Autowired
-	private MemberDao dao;
+	private JdbctemplateMemberDao dao;
 	
 	public int memberReg(
 			MemberRegRequest regRequest,
@@ -30,7 +34,7 @@ public class MemberRegService {
 			) {
 		
 		int resultCnt = 0;
-		Connection conn = null;
+		//Connection conn = null;
 		File newFile = null;
 		
 		try {
@@ -53,19 +57,25 @@ public class MemberRegService {
 			// 새로운 File 객체
 			newFile = new File(newDir, newFileName);
 			
+			// Member 객체 생성 
+			Member member = regRequest.toMember();
+			
 			// 파일 저장
 			if(regRequest.getPhoto() != null && !regRequest.getPhoto().isEmpty()) {
+				//파일 저장해주기
 				regRequest.getPhoto().transferTo(newFile);
+				//파일 이름 새롭게 setting
+				member.setMemberphoto(newFileName);
 			}
 			
 			// 2. dao 저장
-			conn = ConnectionProvider.getConnection();
+			//conn = ConnectionProvider.getConnection();
 			
-			// Member 객체 생성 -> 저장된 파일의 이름을 set
-			Member member = regRequest.toMember();
-			member.setMemberphoto(newFileName);
+			resultCnt = dao.insertMember1(member);
+			System.out.println("새롭게 등록된 idx=>"+member.getIdx());
 			
-			resultCnt = dao.insertMember(conn, member);
+			//idx값은 자식 테이블의 insert시 외래키로 사용할 수 있다.
+			//자식테이블 insert 구문...
 			
 		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
@@ -76,7 +86,7 @@ public class MemberRegService {
 			}
 			e.printStackTrace();
 		} finally {
-			JdbcUtil.close(conn);
+			//JdbcUtil.close(conn);
 		}
 		
 		return resultCnt;
