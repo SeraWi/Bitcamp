@@ -142,6 +142,8 @@ public class JdbctemplateMemberDao {
 		//String sql = "select count(*) from member where memberid = ?";
 		//int cnt = template.queryForObject(sql,Integer.class,memberId);
 		
+		//queryForObject : 행 1개만 가져올 때
+		
 		return template.queryForObject("select count(*) from member where memberid = ?",Integer.class,memberId);
 		
 	}

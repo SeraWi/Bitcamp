@@ -7,13 +7,16 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.op2.jdbc.ConnectionProvider;
 import com.bitcamp.op2.jdbc.JdbcUtil;
+import com.bitcamp.op2.member.dao.Dao;
 import com.bitcamp.op2.member.dao.JdbctemplateMemberDao;
 import com.bitcamp.op2.member.dao.MemberDao;
+import com.bitcamp.op2.member.dao.MybatisMemberDao;
 import com.bitcamp.op2.member.domain.Member;
 import com.bitcamp.op2.member.domain.MemberRegRequest;
 
@@ -25,8 +28,15 @@ public class MemberRegService {
 //	@Autowired
 //	private MemberDao dao;
 	
+//	@Autowired
+//	private JdbctemplateMemberDao dao;
+	
+//	@Autowired
+//	private MybatisMemberDao dao;
+	
 	@Autowired
-	private JdbctemplateMemberDao dao;
+	private SqlSessionTemplate template;
+	private Dao dao;
 	
 	public int memberReg(
 			MemberRegRequest regRequest,
@@ -36,6 +46,7 @@ public class MemberRegService {
 		int resultCnt = 0;
 		//Connection conn = null;
 		File newFile = null;
+		
 		
 		try {
 			// 1. 파일 저장
@@ -58,7 +69,7 @@ public class MemberRegService {
 			newFile = new File(newDir, newFileName);
 			
 			// Member 객체 생성 
-			Member member = regRequest.toMember();
+			Member member = regRequest.toMember(); //파일 이름 null인 상태
 			
 			// 파일 저장
 			if(regRequest.getPhoto() != null && !regRequest.getPhoto().isEmpty()) {
@@ -71,19 +82,15 @@ public class MemberRegService {
 			// 2. dao 저장
 			//conn = ConnectionProvider.getConnection();
 			
-			resultCnt = dao.insertMember1(member);
+			dao = template.getMapper(Dao.class);
+			
+			resultCnt = dao.insertMember(member);
 			System.out.println("새롭게 등록된 idx=>"+member.getIdx());
 			
 			//idx값은 자식 테이블의 insert시 외래키로 사용할 수 있다.
 			//자식테이블 insert 구문...
 			
 		} catch (IllegalStateException | IOException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// DB 예외 발생 시 -> 저장된 파일을 삭제
-			if(newFile != null && newFile.exists() ) {
-				newFile.delete();
-			}
 			e.printStackTrace();
 		} finally {
 			//JdbcUtil.close(conn);

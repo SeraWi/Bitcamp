@@ -7,12 +7,15 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.op2.jdbc.ConnectionProvider;
+import com.bitcamp.op2.member.dao.Dao;
 import com.bitcamp.op2.member.dao.JdbctemplateMemberDao;
 import com.bitcamp.op2.member.dao.MemberDao;
+import com.bitcamp.op2.member.dao.MybatisMemberDao;
 import com.bitcamp.op2.member.domain.Member;
 
 @Service
@@ -21,8 +24,15 @@ public class LoginService {
 //	@Autowired
 //	MemberDao dao;
 	
+//	@Autowired
+//	JdbctemplateMemberDao dao;
+	
+//	@Autowired
+//	MybatisMemberDao dao;
+	
 	@Autowired
-	JdbctemplateMemberDao dao;
+	private SqlSessionTemplate template;
+	private Dao dao;
 	
 	public boolean login(
 			String id, 
@@ -36,6 +46,10 @@ public class LoginService {
 		boolean loginChk = false;
 		
 		//Connection conn= null;
+		
+		//인터페이스 Dao 구현체 Mapper
+		dao = template.getMapper(Dao.class);
+		System.out.println("인터페이스 매퍼 dao생성");
 		
 		Member member =dao.selectByIdPw(id, pw);
 		

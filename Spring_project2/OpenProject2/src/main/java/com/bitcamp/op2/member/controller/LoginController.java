@@ -1,5 +1,6 @@
 package com.bitcamp.op2.member.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -19,49 +20,51 @@ public class LoginController {
 	
 	@Autowired
 	private LoginService loginService;
-	
-	@RequestMapping(method=RequestMethod.GET)
+
+	@RequestMapping(method = RequestMethod.GET)
 	public String loginForm(
-			@RequestHeader(value="referer", required=false) String redirectUri,
+			@RequestHeader(value="referer", required = false) String rediectUri,
 			Model model
 			) {
-		//header값 받기 (이전페이지 정보를 알기위해)
 		
-		//header값 전달하기 ->model에 저장!
-		model.addAttribute("redirectUri",redirectUri);
-		
+		model.addAttribute("redirectUri", rediectUri);
 		return "member/loginForm";
 	}
 	
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public String login(
 			@RequestParam("memberid") String memberid,
 			@RequestParam("password") String password,
-			@RequestParam(value="reid", required=false) String reid,
-			@RequestParam(value="redirectUri",required=false)String redirectUri,
+			@RequestParam(value = "redirectUri", required = false) String redirectUri,
+			@RequestParam(value = "reid", required = false) String reid,
 			HttpSession session,
 			HttpServletResponse response,
+			HttpServletRequest request,
 			Model model
 			) {
-		// 사용자가 입력한 id,password,reid를 받아서 (사용자 요청 받는 방법 3가지 있다.)
-		// id,password, reid ->커맨드 객체 이용해도 된다!
-		// reid는 null이 들어와도 상관없다, 에러가 아니다->required=false
-		// 세션을 이용하기!
-		// 결과 저장하기 위해 model 필요
 		
-		
-		// 서비스에 전달하고 로그인 처리해준다!
-		boolean loginChk = loginService.login(memberid,password,reid,session,response);
-		model.addAttribute("loginChk",loginChk);
+		// 사용자가 입력한 id, pw 서비스에 전달해서 로그인 처리
+		boolean loginChk =  loginService.login(memberid, password, reid, session, response);
+		model.addAttribute("loginChk", loginChk);
 		
 		String view = "member/login";
 		
-		//로그인 된 상태라면 ->redirectUri로 넘어간다. 
-		if(redirectUri != null && loginChk) {
+		if(chkURI(redirectUri) && loginChk) {
+			
+			redirectUri = redirectUri.substring(request.getContextPath().length());
 			view = "redirect:"+redirectUri;
 		}
 		
-		//return "member/login";
 		return view;
 	}
+	
+	private boolean chkURI(String uri) {
+		boolean chk = true;
+		if(!uri.startsWith("/op2")) {
+			chk = false;
+		}
+		return chk;
+	}
+	
+	
 }

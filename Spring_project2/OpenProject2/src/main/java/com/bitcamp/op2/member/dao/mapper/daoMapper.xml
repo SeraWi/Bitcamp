@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.bitcamp.op2.member.dao.Dao">
+ <!--인터페이스의 fullname을 namespace로 설정해야 한다
+ 	com.bitcamp.op2.member.dao -> 패키지
+ 	Dao ->인터페이스 
+   -->
+ 
+  	<!--SQL tag 식별(id)은 인터페이스의 메소드 이름과 일치시킨다.  -->
+ 	<!--로그인을 위한 select  -->
+ 	<select id="selectByIdPw"
+			resultType="com.bitcamp.op2.member.domain.Member"
+ 	>
+ 	select * from member where memberid=#{param1} and password=#{param2} 
+ 	</select>
+ 	
+ 	<!--아이디체크  -->
+ 	<!--파라미터 하나면 parametertype쓸 필요 없다.  -->
+ 	<select id="selectById"
+ 			resultType="int"
+ 	>
+	select count(*) from member where memberid=#{mid} 	
+ 	</select>
+ 	
+ 	<!--회원가입  -->
+ 	<insert id="insertMember"
+ 			parameterType="com.bitcamp.op2.member.domain.Member"
+ 			useGeneratedKeys="true"
+ 			keyProperty="idx"
+ 	>
+ 	insert into member (memberid,password,membername,memberphoto) 
+ 	values (#{memberid},#{password},#{membername},#{memberphoto})
+ 	</insert>
+ 	
+ 	<!-- 회원 정보 수정 -->
+ 	<update id="updateMember"
+ 			parameterType="com.bitcamp.op2.member.domain.Member"
+ 	>
+ 		update member
+ 		set membername =#{membername}
+ 		where idx =#{idx}
+ 	</update>
+ 	
+ 	<!-- 회원 삭제 / 회원탈퇴 -->
+ 	<delete id="deleteMember">
+ 	delete from member where idx= #{idx}
+ 	</delete>
+ 	
+ 	
+ 	<!-- 전체 회원 리스트 -->
+ 	<select id="selectAll"
+ 			resultType="com.bitcamp.op2.member.domain.Member"
+ 	>
+ 		select * from order by memberid
+ 	</select>
+ 	
+ 	<!-- 페이징 처리가 가능한 회원 리스트 -->
+ 	<select id="selectList"
+ 			resultType="com.bitcamp.op2.member.domain.Member"
+ 	>
+ 	select * from member order by memberid limit (#{param1}, #{param2})
+ 	</select>
+ 	
+ 	<!-- 전체 회원 가져오기 -->
+ 	<select id="selectTotalCount"
+ 			resultType="int"
+ 	>
+	select count(*) from member 	
+ 	</select>
+ 	
+ 	
+ 	
+ </mapper>
