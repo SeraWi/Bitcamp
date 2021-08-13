@@ -51,11 +51,11 @@
  	
  	
  	<!-- 전체 회원 리스트 -->
- 	<select id="selectAll"
- 			resultType="com.bitcamp.op2.member.domain.Member"
- 	>
- 		select * from order by memberid
- 	</select>
+	<select id="selectAll"
+			resultType="com.bitcamp.op2.member.domain.Member"
+	>
+		select * from member order by idx
+	</select>
  	
  	<!-- 페이징 처리가 가능한 회원 리스트 -->
  	<select id="selectList"
