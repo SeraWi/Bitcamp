@@ -8,6 +8,16 @@
  	com.bitcamp.op2.member.dao -> 패키지
  	Dao ->인터페이스 
    -->
+   <!-- Select 의 결과를 매핑하는 설정 -->
+   <resultMap id="memberListResult"
+   			type="com.bitcamp.op2.member.domain.Member">
+   		<id column="idx" property="idx"/>
+		<result column="memberid" property="memberid"/>   	
+		<result column="membername" property="membername"/>
+		<!-- <result column="password" property="password"/> -->
+		<result column="memberphoto" property="memberphoto"/>	
+		<result column="regdate" property="regdate"/>
+   </resultMap>
  
   	<!--SQL tag 식별(id)은 인터페이스의 메소드 이름과 일치시킨다.  -->
  	<!--로그인을 위한 select  -->
@@ -56,6 +66,14 @@
 	>
 		select * from member order by idx
 	</select>
+	
+	<!-- resultMap 을 이용하여 회원리스트 -->
+<!-- 	<select id="selectAll"
+			resultMap="memberListResult"
+	>
+	</select>  -->
+	
+	
  	
  	<!-- 페이징 처리가 가능한 회원 리스트 -->
  	<select id="selectList"
@@ -71,6 +89,27 @@
 	select count(*) from member 	
  	</select>
  	
+ 	
+ 	<!-- 검색을 통한 회원 리스트가져오기  -->
+ 	<select id="selectMember"
+ 			parameterType="com.bitcamp.op2.member.domain.SearchType"
+ 			resultType="com.bitcamp.op2.member.domain.Member"
+ 	>
+ 	<!-- 1.아이디검색 2. 이름 검색 3. 아이디+이름 -->
+ 	select * from member 
+ 	
+ 	<where>
+ 		<if test="searchType == 'id'">
+ 			memberid like concat('%',#{keyword},'%')
+ 		</if>
+ 		<if test="searchType == 'name'">
+ 			membername like concat('%',#{keyword},'%')
+ 		</if>
+ 		<if test="searchType == 'both'">
+ 			memberid like concat('%',#{keyword},'%') or membername like concat('%',#{keyword},'%')
+ 		</if>
+ 	</where>
+ 	</select>
  	
  	
  </mapper>
