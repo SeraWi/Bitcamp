@@ -100,16 +100,29 @@
  	
  	<where>
  		<if test="searchType == 'id'">
- 			memberid like concat('%',#{keyword},'%')
+ 			<!-- memberid like concat('%',#{keyword},'%') -->
+ 			<include refid="searchId"/>
  		</if>
+ 		
  		<if test="searchType == 'name'">
- 			membername like concat('%',#{keyword},'%')
+ 			<!-- membername like concat('%',#{keyword},'%') -->
+ 			<include refid="searchName"/>
  		</if>
+ 		
  		<if test="searchType == 'both'">
- 			memberid like concat('%',#{keyword},'%') or membername like concat('%',#{keyword},'%')
+ 			<include refid="searchId"/> <include refid="searchName"/>
  		</if>
  	</where>
+ 		
  	</select>
+ 	
+ 		<sql id="searchId">
+ 			or memberid like concat('%',#{keyword},'%')
+ 		</sql>
+ 		
+ 		<sql id="searchName">
+ 			or membername like concat('%',#{keyword},'%')
+ 		</sql>
  	
  	
  </mapper>
