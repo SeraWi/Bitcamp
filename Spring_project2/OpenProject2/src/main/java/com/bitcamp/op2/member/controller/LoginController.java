@@ -50,11 +50,11 @@ public class LoginController {
 		
 		String view = "member/login";
 		
-		if(chkURI(redirectUri) && loginChk) {
-			redirectUri = redirectUri.substring(request.getContextPath().length());
-			System.out.println(view);
-			view = "redirect:"+redirectUri;
-		}
+//		if(chkURI(redirectUri) && loginChk) {
+//			redirectUri = redirectUri.substring(request.getContextPath().length());
+//			System.out.println(view);
+//			view = "redirect:"+redirectUri;
+//		}
 		System.out.println(redirectUri);
 		
 		return view;
