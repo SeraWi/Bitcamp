@@ -18,7 +18,7 @@ import com.bitcamp.op3.member.service.LoginService;
 public class LoginController {
 	
 	@Autowired
-	LoginService loginService;
+	private LoginService loginService;
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String loginForm(

@@ -1,7 +1,6 @@
 package com.bitcamp.op3.member.service;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -10,15 +9,22 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bitcamp.op3.jdbc.ConnectionProvider;
-import com.bitcamp.op3.member.dao.MemberDao;
+import com.bitcamp.op3.member.dao.jdbcTemplateMemberDao;
+import com.bitcamp.op3.member.dao.mybatisMemberDao;
 import com.bitcamp.op3.member.domain.Member;
 
 @Service
 public class LoginService {
 	
+//	@Autowired
+//	MemberDao dao;
+	
+//	@Autowired
+//	private jdbcTemplateMemberDao dao;
+	
+	
 	@Autowired
-	MemberDao dao;
+	private mybatisMemberDao dao;
 	
 	public boolean login(
 			String id, 
@@ -32,24 +38,18 @@ public class LoginService {
 		
 		Connection conn = null;
 				
-		try {
-			conn = ConnectionProvider.getConnection();
-			Member member = dao.selectByIdPw(conn, id, pw);
+		Member member = dao.selectByIdPw(id, pw);
+		
+		//전달받은 id와 pw로 DB에서 검색
+		//있다면 로그인 true, 없다면 false
+		
+		if(member != null) {
+			//로그인 처리
+			//로그인 정보 세션에 저장
+			session.setAttribute("loginInfo",member.toLoginInfo());
 			
-			//전달받은 id와 pw로 DB에서 검색
-			//있다면 로그인 true, 없다면 false
+			loginChk = true;
 			
-			if(member != null) {
-				//로그인 처리
-				//로그인 정보 세션에 저장
-				session.setAttribute("loginInfo",member.toLoginInfo());
-				
-				loginChk = true;
-				
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
 		
