@@ -3,6 +3,7 @@ package com.bitcamp.op3.member.dao;
 import java.util.List;
 
 import com.bitcamp.op3.member.domain.Member;
+import com.bitcamp.op3.member.domain.SearchType;
 
 public interface Dao {
 	
@@ -25,4 +26,7 @@ public interface Dao {
 	
 	//전체 회원의 수
 	int selectTotalCount();
+	
+	//검색을 통한 회원 리스트 
+	List<Member> selectMember(SearchType searchType);
 }

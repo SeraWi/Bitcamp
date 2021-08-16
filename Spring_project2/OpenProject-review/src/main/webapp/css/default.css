@@ -53,3 +53,20 @@ hr{
 td{
 	padding:5px;
 }
+
+table.border{
+	border-collapse: collapse;
+}
+
+table.border th, table.border td{
+	border: 1px solid #ddd;
+	padding:10px;
+}
+
+a.border{
+	background-color:#eee;
+	border-raidus:5px;
+	padding:3px;
+	border:1px solid #ddd;
+	margin:5px;
+}
