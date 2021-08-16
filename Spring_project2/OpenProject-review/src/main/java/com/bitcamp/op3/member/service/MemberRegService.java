@@ -6,9 +6,11 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bitcamp.op3.member.dao.Dao;
 import com.bitcamp.op3.member.dao.jdbcTemplateMemberDao;
 import com.bitcamp.op3.member.dao.mybatisMemberDao;
 import com.bitcamp.op3.member.domain.Member;
@@ -26,9 +28,13 @@ public class MemberRegService {
 //	@Autowired
 //	private jdbcTemplateMemberDao dao;
 	
+//	
+//	@Autowired
+//	private mybatisMemberDao dao;
 	
 	@Autowired
-	private mybatisMemberDao dao;
+	private SqlSessionTemplate template;
+	private Dao dao;
 	
 	public int memberReg(
 			MemberRegRequest regRequest,
@@ -78,22 +84,13 @@ public class MemberRegService {
 			
 			//사용자가 올린 파일이름 != 받아서 우리가 저장한 파일의 이름
 			
-			
+			dao = template.getMapper(Dao.class);
 			resultCnt  = dao.insertMember(member);
 			System.out.println("idx ->"+ member.getIdx());
 			
 			
 		} catch (IllegalStateException | IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			
-			//DB예외 발생시 ->저장된 파일을 삭제 (쓰레기 데이터 삭제해주기)
-			if(newFile !=null && newFile.exists()) {
-				newFile.delete();
-			}
-			
 			e.printStackTrace();
 		} 
 		
