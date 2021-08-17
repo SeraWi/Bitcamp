@@ -1,0 +1,79 @@
+body{
+    margin:0;
+    font-size:1em;
+}
+
+h1,p{
+    margin:0;
+}
+
+.container{
+    /* font-size:0; */
+    /* 전체를 조정 */
+    /* max-width:1000px; */
+    /* margin-left:auto;
+    margin-right: auto; */
+    /* margin:0 auto; */
+    background-color: pink;
+}
+.container:after{
+    content:'';
+    display:block;
+    clear:both;
+}
+
+.item{
+    /* width값 주지 않아도 알아서 꽉차게 쓴다 */
+    padding:5%;
+
+    /* inline-block: inline 속성을 가지지만 크기 조정가능 */
+    /* display:inline-block; */
+
+    float:left;
+
+    /* font size 0을 회복시키기
+        1rem : 16px, 기본임
+    */
+    /* font-size:1rem;  */
+
+    /* 수직 정렬 위로 붙이기 */
+    /* vertical-align:top; */
+}
+
+.item-a{
+    background-color: yellow;
+
+    /* width:30%; */
+    
+}
+
+.item-b{
+    background-color: yellowgreen;
+
+    /* width:50%; */
+}
+
+footer{
+    /* float설정 없애주기 */
+    clear:both; 
+    background-color: gray;
+}
+
+@media screen and(min-width:700px){
+    .container{
+        font-size: 0;
+    }
+    
+    .item{
+        display:inline-block;
+        vertical-align: top;
+        font-size: 1rem;
+
+    }
+    .item-a{
+        width:30%;
+    }
+    .item-b{
+        width:50%;
+    }
+}

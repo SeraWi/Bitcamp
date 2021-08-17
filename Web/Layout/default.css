@@ -1,0 +1,19 @@
+body{
+    font-size:2em;
+
+}
+
+div{
+    /*기본이 block  -> 크기 조정 가능*/
+    display:block;
+    background-color: red;
+}
+span{
+    /* 기본이 inline  -> 크키 조정 불가능, width, height 안먹는다*/
+    display:inline;
+    background-color: blue;
+}
+
+/*div를 가지고 레이아웃을 만든다고 생각하면 된다. 
+display 속성: inline, block, inline-block, none
+*/
