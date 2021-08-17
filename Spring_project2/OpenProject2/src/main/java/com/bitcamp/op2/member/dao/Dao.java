@@ -31,4 +31,7 @@ public interface Dao {
 	List<Member> selectList(int startRow, int count); 
 	//전체 회원의 수
 	int selectTotalCount();
+	
+	// Rest get: idx값으로 Member 객체를 반환
+	Member selectByIdx(int idx);
 }

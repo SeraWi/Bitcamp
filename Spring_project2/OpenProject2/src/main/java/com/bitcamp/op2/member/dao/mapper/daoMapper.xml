@@ -124,5 +124,11 @@
  			or membername like concat('%',#{keyword},'%')
  		</sql>
  	
+ 	<!--rest 구현: idx로 member 객체 반환  -->
+ 	<select id="selectByIdx"
+ 			resultType="com.bitcamp.op2.member.domain.Member"
+ 	>
+ 		select * from member where idx = #{idx}
+ 	</select>
  	
  </mapper>
