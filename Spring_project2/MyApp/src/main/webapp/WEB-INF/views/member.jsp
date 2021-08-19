@@ -62,7 +62,7 @@
 		$('#memberid').focusout(function() {
 			// ajax 비동기 통신 > id를 서버로 보내고 사용 가능 유무의 응답 코드를 받는다 -> 화면에 메시지 출력
 			$.ajax({
-				url : 'http://13.125.199.218:8080/op2/member/idCheck',
+				url : 'http://13.125.199.218:8080/op/member/idCheck',
 				type : 'post',
 				data : {
 					mid : $(this).val()
@@ -106,7 +106,7 @@
 			formData.append("photo", file1);
 			console.log(formData);
 			$.ajax({
-				url : '/op2/members/reg1',
+				url : 'http://13.125.199.218:8080/op/members/reg1',
 				type : 'post',
 				data : formData,
 				enctype : 'multipart/form-data',
@@ -155,7 +155,7 @@
 	
 	function memberList(){
 		$.ajax({
-			url : 'http://13.125.199.218:8080/op2/members',
+			url : 'http://13.125.199.218:8080/op/members',
 			type : 'GET',
 			success : function(data){
 				console.log(data);
@@ -166,7 +166,7 @@
 					html += 'idx : ' + item.idx + '<br>';
 					html += '아이디 : ' + item.memberid + '<br>';
 					html += '이름 : ' + item.membername + '<br>';
-					html += '사진 : <img src="http://13.125.199.218:8080/op2/uploadfile/' + item.memberphoto + '"><br>';
+					html += '사진 : <img src="http://13.125.199.218:8080/op/uploadfile/' + item.memberphoto + '"><br>';
 					html += '등록일 : ' + item.regdate + '<br>';
 					html += '</div>';
 					
