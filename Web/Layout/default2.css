@@ -13,7 +13,7 @@ h1,p{
     /* max-width:1000px; */
     /* margin-left:auto;
     margin-right: auto; */
-    /* margin:0 auto; */
+    margin:0 auto; 
     background-color: pink;
 }
 .container:after{
@@ -27,7 +27,7 @@ h1,p{
     padding:5%;
 
     /* inline-block: inline 속성을 가지지만 크기 조정가능 */
-    /* display:inline-block; */
+    /* display:inline-block;
 
     float:left;
 

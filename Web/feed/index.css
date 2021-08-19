@@ -1,0 +1,268 @@
+body{
+    background-color:#FAFAFA;
+    margin:0;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:visited{
+    color: #545454;
+}
+nav{
+    background-color:#FFF;
+    height:3.3em;
+    line-height:3.3em;
+    padding:0 13.5em;
+    border-bottom:0.1px solid #DBDBDB;
+}
+
+.logo{
+    text-decoration:none;
+}
+.logo>img{
+    vertical-align:middle;
+}
+.search{
+    background-color: #FAFAFA;
+    margin-left:19em;
+    height: 2em;
+    width:15.5em;
+    border:1px solid #DBDBDB;
+}
+.search::placeholder{
+    text-align: center;
+    color:#BB9CAA;
+}
+
+.nav-links{
+    margin-left:8em;
+}
+
+.nav-links>a{
+    margin-left:1.5em;
+}
+.nav-links i{
+    transform:scale(1.6);
+    color:#252525;
+    vertical-align: middle;
+}
+
+/* 전체 container */
+
+.container{
+    padding:0 15%;
+}
+
+.bio{
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+
+    /* background-color: brown; */
+    height:13em;
+    padding:3em 0 0 5em;
+    /* border-bottom: 0.1px solid #DBDBDB;  */
+}
+
+/* 프로필 사진 */
+
+/* div를 원으로 틀을 만들어서 그안에 img를 꽉차게 들어가도록 하기! */
+.profile-photo{
+ background-color: brown;
+ width:10em;
+ height:10em;
+ border-radius: 50%;
+}
+/* 위에 만든 거에 img 꽉들어맞게 */
+.profile-photo>img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+/* profile-info 사진 옆 사용자 정보 영역 */
+/* profile-info 전체 */
+.profile-info{
+    display:flex;
+    flex-direction: column;
+}
+
+/* 사용자 아이디영역 */
+.username>a{
+    font-size:1.5em;
+    /* color: #545454; */
+
+    /* a태그 밑줄 없애기 */
+    /* text-decoration:none; */
+    
+}
+
+/* 게시물, 팔로우, 팔로워 */
+.follow-infos{
+    display:flex;
+    list-style:none;
+    margin : 0;
+    padding-left:0;
+    
+}
+
+.follow-infos li{
+    /* 위에 아이디랑 간격 */
+    margin-top:5px;
+
+    /* 글자 간 각격 */
+    padding-right: 15px;
+
+    width: 100px;
+
+    /* 커서 포인터 올리기 */
+    cursor:pointer;
+    
+    color: #545454;
+    
+}
+
+/* 게시글 영역 */
+.user-post{
+    /* 글 길어지면 아래로 내려가지 않도록 */
+    overflow:hidden;
+}
+.user-post>p{
+   width:630px; 
+   height:80px;
+}
+
+
+/* 버튼 영역 : 내사진 수정, 사진 업로드 */
+.buttons{
+    display:flex;
+}
+.buttons input{
+    background-color: yellow;
+    width:150px;
+    height:30px;
+
+    border: 0.1px solid #DBDBDB;
+    font-size:0.8m;
+
+    cursor:pointer;
+
+    margin-right: 30px;
+}
+
+/* 인기많은 크루 하이라이트 영역 */
+.mycrews{
+    display:flex;
+
+    padding:20px;
+    
+    /* 이미지와 크루명의 총 높이가 110->꽉들어맞게!  */
+    height:110px;
+    line-height:center;
+    
+    /* 게시물 nav랑 구분  */
+    border-bottom: 0.1px solid #DBDBDB;
+}
+/* crew = 이미지+ 글자 */
+/* .crew{
+    background-color: brown;
+    width:80px;
+    height:80px;
+    border-radius: 50%;
+
+    margin-right:20px;
+} */
+
+.crew{
+    /* 이미지 80+30 =110 높이 */
+    width:110px;
+    height:110px;
+    /* 중간으로 정렬 */
+    text-align: center;
+    line-height:center;
+
+    /* 인기크루끼리 간격 */
+    margin-right:15px;
+
+    /* padding:10px; */
+}
+.crew img{
+    width: 80px;
+    height:80px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 80px;
+
+    
+    padding:0;
+    
+/*     width:100%;
+    height:100%;
+    border-radius:50%; */
+/*    
+    margin-bottom: 10px; */
+}
+
+.crew div{
+    width:110px;
+    height:30px;
+
+    line-height: 30px;
+    text-align: center;
+
+}
+
+
+/* 갤러리 nav :피드랑 하트 */
+.gallery-nav{
+    /* 전체 중간 정렬 */
+    height:5em;
+    line-height: 5em;
+
+    /* nav의 한칸을 1:1비율로 나누기 */
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
+
+.gallery-nav>a{
+    /* 중간으로 위치시키기 위해 왼쪽 마진 */
+   margin-left:13em;
+}
+
+.gallery-nav i{
+    /* 아이콘 키우기 */
+  transform:scale(1.5);
+  /* 중간 정렬 */
+  vertical-align: center;
+
+}
+
+/* 사진  갤러리 영역 */
+.gallery{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+   /* 액자식으로 여백주기 */
+    column-gap:0.5em;
+    row-gap:1.7em;
+    /* 위쪽 실선 */
+    margin-bottom:2em;
+}
+
+.item{
+    height:17.5em;
+    width:17.5em;
+    background:#000;
+}
+
+.item>img{
+    height:100%;
+    width:100%;
+    
+}
+
+/* 커서 올리면 불투명 회색으로 바뀜 */
+.item>img:hover{
+    opacity:0.7;
+}
