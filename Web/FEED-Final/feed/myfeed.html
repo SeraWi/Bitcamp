@@ -5,25 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="feed.css">
 </head>
 <body>
     <!-- 가장 위의 로고 -->
-    <nav>
-        <!-- 로고 -->
-        <a href="#" class="logo">
-            <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png">
-        </a>
-        <!-- 검색창 -->
-        <input type="text" class="search" placeholder="Search">
-        <!-- 검색창 옆 아이콘 -->
-        <span class="nav-links">
-            <a href ="#"><i class="fas fa-home"></i></a>
-            <a href ="#"><i class="far fa-comment-alt"></i></a>
-            <a href ="#"><i class="far fa-compass"></i></a>
-            <a href ="#"><i class="far fa-heart"></i></a>
-        </span>
-    </nav>
+
     <script src="https://kit.fontawesome.com/c840993408.js" crossorigin="anony    mous"></script>
     
     <div class="container">
@@ -35,15 +21,8 @@
                 <img src="profile-photo.jpg" alt="profile-photo">
                 
             </div>
-            <!-- 이름, 게시물, 팔로우,팔로워, 게시글 -->
-<!--             <div class="profile-info">
-                <p class="username">Sera_lalala</p> -->
-                
-                <!-- 내사진 수정, 사진 업로드 버튼 -->
-<!--                 <button>내 사진 수정</button>
-                <button>사진업로드</button>
-            </div>  -->
 
+            <!-- 사용자 정보 영역: username, follow-infos, user-post,buttons -->
             <div class="profile-info">
 
                 <!-- 사용자 id -->
@@ -53,9 +32,9 @@
 
 
                 <ul class="follow-infos">
-                    <li><a>게시물 113</a></li>
-                    <li><a>팔로우 300</a></li>
-                    <li><a>팔로워 300</a></li>
+                    <li>게시물 113</li>
+                    <li><a href="#">팔로우 300</a></li>
+                    <li><a href="#">팔로워 300</a></li>
                 </ul>
 
                 <!-- 게시글 -->
@@ -64,13 +43,10 @@
                 </div>
 
                 <!-- 버튼 -->
-                <div>
+                <div class="buttons">
                     <input type="submit" value="내 사진 수정">
                     <input type="submit" value="사진업로드">
-
                 </div>
-               
-            
             
             </div>
 
@@ -79,16 +55,29 @@
 
         <!-- 인기많은 크루 하이라이트 영역 (사진+크루명)-->
         <section class="mycrews">
-            <a href="#" class="crew">
 
+            <a href="#" class="crew">
+                <img src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
+                <div>크루이름</div>
             </a>
             <a href="#" class="crew">
-
+                <img src="https://images.pexels.com/photos/1232594/pexels-photo-1232594.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
+                <div>크루이름</div>
             </a>
             <a href="#" class="crew">
-
+                <img src="https://images.pexels.com/photos/2739505/pexels-photo-2739505.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                <div>크루이름</div>
             </a>
 
+            <a href="#" class="crew">
+                <img src="https://images.pexels.com/photos/2739505/pexels-photo-2739505.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                <div>크루이름</div>
+            </a>
+
+            <a href="#" class="crew">
+                <img src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
+                <div>크루이름</div>
+            </a>
 
         </section> 
 
@@ -119,7 +108,35 @@
             <a href="#" class="item">
                 <img src="https://images.pexels.com/photos/6051221/pexels-photo-6051221.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
             </a>
+            <a href="#" class="item">
+                <img src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
+            </a>
+            <a href="#" class="item">
+                <img src="https://images.pexels.com/photos/3598706/pexels-photo-3598706.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            </a>
         </section>
+
+        <!-- 페이징 -->
+<!--         <section class="pages">
+            <div>
+                <span class="pagenumber"><a href="#">111</a></span>
+                <span class="pagenumber"><a href="#">222</a></span>
+                <span class="pagenumber"><a href="#">333</a></span>
+                <span class="pagenumber"><a href="#">444</a></span>
+                <span class="pagenumber"><a href="#">555</a></span>
+            </div>
+        </section> -->
+
+        <section class="pages">
+            
+                <div class="pagenumber"><a href="#">111</a></div>
+                <div class="pagenumber"><a href="#">222</a></div>
+                <div class="pagenumber"><a href="#">333</a></div>
+                <div class="pagenumber"><a href="#">444</a></div>
+                <div class="pagenumber"><a href="#">555</a></div>
+            
+        </section>
+
     </div>
 
 </body>

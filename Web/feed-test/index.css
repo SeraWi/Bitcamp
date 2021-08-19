@@ -5,6 +5,7 @@ body{
 
 a{
     text-decoration: none;
+    color: #545454;
 }
 
 a:visited{
@@ -139,11 +140,12 @@ nav{
     display:flex;
 }
 .buttons input{
-    background-color: yellow;
+    background-color:#fdef7b;
     width:150px;
     height:30px;
 
     border: 0.1px solid #DBDBDB;
+    border-radius: 10px;
     font-size:0.8m;
 
     cursor:pointer;
@@ -187,13 +189,17 @@ nav{
 
     /* padding:10px; */
 }
+
+/* 크루 대표 이미지 */
 .crew img{
     width: 80px;
     height:80px;
+    /* 중간정렬 */
     text-align: center;
-    border-radius: 50%;
     line-height: 80px;
 
+    /* 동그라미로 */
+    border-radius: 50%;
     
     padding:0;
     
@@ -204,12 +210,16 @@ nav{
     margin-bottom: 10px; */
 }
 
+
+/* 크루명 */
 .crew div{
     width:110px;
     height:30px;
 
     line-height: 30px;
     text-align: center;
+
+    font-size:12px;
 
 }
 
@@ -265,4 +275,49 @@ nav{
 /* 커서 올리면 불투명 회색으로 바뀜 */
 .item>img:hover{
     opacity:0.7;
+}
+
+
+
+/* 페이징 영역 */
+.pages{
+    /*div 항상 중간 정렬 */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+
+    padding:10px 0;
+    
+    
+    
+}
+
+ /* width값 안줘야 번호 커져도 밑으로 숫자 안내려감 */
+/* .pages div{
+        height: 100px;
+   
+    line-height: 100px;
+    text-align: center;
+} */
+
+/* 페이지 번호 사이 간격 */
+/* .pagenumber{
+    
+    margin-right: 10px;
+} */
+
+
+.pages.pagenumber{
+    width:50px;
+    height:50px;
+   /*  line-height: 50px;
+    text-align: center;
+     */
+    
+}
+
+.pagenumber a{
+    padding:10px 10px;
+   
 }
