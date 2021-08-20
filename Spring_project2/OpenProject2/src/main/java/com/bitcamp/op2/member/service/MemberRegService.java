@@ -85,7 +85,11 @@ public class MemberRegService {
 			dao = template.getMapper(Dao.class);
 			
 			resultCnt = dao.insertMember(member);
+			
 			System.out.println("새롭게 등록된 idx=>"+member.getIdx());
+			
+			//db에 저장된(insert)다음 메일을 보낸다. 
+			
 			
 			//idx값은 자식 테이블의 insert시 외래키로 사용할 수 있다.
 			//자식테이블 insert 구문...
