@@ -27,6 +27,7 @@ public class RestTestController {
 		System.out.println("body : "+body);
 		//return null;
 		//return "@ResponseBody 를 이용한 응답";
+		//@ReponseBody : java->json객체로 응답
 		return body;
 	}
 }

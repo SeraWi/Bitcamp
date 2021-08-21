@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>simple.jsp</h1>
+	<h1>simple.jsp입니다.</h1>
+	
 </body>
 </html>
