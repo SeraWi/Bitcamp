@@ -6,6 +6,7 @@
     box-sizing:border-box;
 }
 
+
 body{
     font-family: 'Noto Sans KR', sans-serif;
     display:flex;
@@ -26,13 +27,14 @@ body::before{
     left:0;
     background-color:rgba(0,0,0,0.7); 
 }
-/* 전체 section영역 설정 */
-.forgot-id{
+
+/* section 영역 전체 */
+.show-id{
     position:relative;
     z-index:2;
 }
-/* 섹션 아래 forgot id 글씨 */
-.forgot-id h1{
+
+.show-id h1{
     font-size: 32px;
     color:#FDEF7B;
     text-align:center;
@@ -41,59 +43,87 @@ body::before{
     margin-bottom:30px;
 }
 
-/* input박스 전체 사이즈, 위치 설정 */
-.input-area{
+.id-area{
     width:350px;
-    position: relative;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position:relative;
+    margin-bottom: 30px;
 }
 
-/* input 설정  */
-.input-area input{
+.id-table{
     width:100%;
     padding:20px 10px 10px;
+    text-align: center;
+
+    font-size:13px;
+    font-weight: lighter;
+    color:#fff;
     background-color: transparent;
 
-    border:none;
-    border-bottom: 1px solid #999;
-
-    font-size: 18px;
-    color:#fff;
-
-    margin-bottom: 20px;
-   
-}
-/* input label 설정->NAME, E-MAIL */
-.input-area label{
-    position:absolute;
-    left:10px;
-    top:15px;
-    font-size:18px;
-    color:#999;
-    transition: all .5s ease;
 }
 
-/* label 움직일때 설정: 색과 위치 */
-.input-area input:focus +label,
-.input-area input:valid+label{
-    top:-2px;
+.id-table h5{
     font-size:13px;
-    color:#166cea;
+    font-weight: lighter;
+    border-bottom:1px solid #999;
+    padding-bottom: 10px;
 }
 
-/* 아이디 찾기 버튼 영역 */
-.btn-area{
+.id-table span{
+    font-size:20px;
+    font-weight: lighter;
+    color:#FDEF7B;
+}
+
+
+
+.a-area{
+    width:350px;
+    display:flex;
+    flex-direction: column;
     margin-top:10px;
 }
 
-.btn-area input{
+.search-pw{
     width:100%;
     height:50px;
+    line-height:50px;
+    text-align:center;
+
+    font-size:13px;
+    color:#FDEF7B;
+    text-decoration: none;
+}
+
+
+
+.login{
+    width:100%;
+    height:50px;
+    line-height:50px;
+    text-align: center;
+
     background:#FDEF7B;
+
     font-size:15px;
-    font-weight: 600;
+    letter-spacing: 3px;
+    font-weight: bold;
     color:black;
+
     border:none;
     border-radius:10px;
 
-    cursor:pointer;
+    cursor:pointer; 
+
+    text-decoration: none;
+
 }
+
+.login:visited{
+    color:black;
+}
+
