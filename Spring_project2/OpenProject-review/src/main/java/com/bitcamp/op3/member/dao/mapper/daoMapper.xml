@@ -32,6 +32,14 @@
  	select count(*) from member where memberid=#{mid}
  	</select>
  	
+ 	<!--08.22 REST-API 수업 추가  -->
+ 	<select id="selectByIdx"
+			resultType ="com.bitcamp.op3.member.domain.Member"
+ 	>
+ 	select * from member where idx=#{idx}
+ 	</select>
+ 	
+ 	
  	<!-- 회원가입 -->
  	<insert id="insertMember"
  			parameterType="com.bitcamp.op3.member.domain.Member"

@@ -29,4 +29,8 @@ public interface Dao {
 	
 	//검색을 통한 회원 리스트 
 	List<Member> selectMember(SearchType searchType);
+	
+	//08.22 Rest-API 수업
+	//REST get: idx 값으로 Member 객체 반환
+	Member selectByIdx(int idx);
 }
