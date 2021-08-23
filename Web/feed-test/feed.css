@@ -1,6 +1,9 @@
 body{
     background-color:#FAFAFA;
     margin:0;
+    /* 08.22 수정 */
+    padding:0
+
 }
 
 a{
@@ -15,7 +18,11 @@ a:visited{
 /* 전체 container */
 
 .container{
-    padding:0 15%;
+    /* padding:0 15%; */
+
+     /* 08.22 수정 */
+    margin:0 auto;
+    width:1000px;
 }
 
 .bio{
@@ -75,7 +82,8 @@ a:visited{
     /* 글자 간 각격 */
     padding-right: 15px;
 
-    width: 100px;
+    /* 8.22 수정 100px->120px */
+    width: 120px;
 
     /* 커서 포인터 올리기 */
     cursor:pointer;
@@ -191,6 +199,12 @@ a:visited{
     margin-left: 320px;
 }
 
+.heart{
+    width: 30px;
+    height: 30px;
+    padding-top:5px;
+}
+
 
 
 /* 사진  갤러리 영역 */
@@ -198,16 +212,30 @@ a:visited{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
    /* 액자식으로 여백주기 */
-    column-gap:0.3em;
-    row-gap:1.7em;
+   
+    /* 08.22 수정 */
+    /* column-gap:0.3em; */
+    /* row-gap:1.7em; */
+
+    column-gap: 10px;
+    row-gap:30px;
+
     /* 위쪽 실선 */
     margin-bottom:2em;
+
+    /* 08.22추가 */
+    padding-left:18px;
 }
 
 .item{
-    height:17.5em;
-    width:17.5em;
+    /* height:17.5em;
+    width:17.5em; */
+
+    /* 08.22수정: 사이즈 수정 */
+    height: 300px;
+    width:300px;
     background:#000;
+
 }
 
 .item>img{
@@ -230,10 +258,7 @@ a:visited{
     justify-content: center;
     align-items: center;
 
-
     padding:10px 0;
-    
-    
     
 }
 
