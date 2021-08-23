@@ -11,6 +11,11 @@ public class IndexController {
 		//void일 경우 @RequestMapping("/index")에서 index와 일치한 views아래 jsp파일 자동을 찾는다!
 	}
 	
+	@RequestMapping("/index2")
+	public void index2() {
+		//void일 경우 @RequestMapping("/index")에서 index와 일치한 views아래 jsp파일 자동을 찾는다!
+	}
+	
 	
 	@RequestMapping("/")
 	public String index1() {

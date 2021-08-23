@@ -80,14 +80,17 @@
 </head>
 <body>
 
-	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
+<%-- 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
-	<%@ include file="/WEB-INF/views/frame/nav.jsp"%>
+	<%@ include file="/WEB-INF/views/frame/nav.jsp"%> --%>
+	<%@include file="/WEB-INF/views/frame/bootstrap_header.jsp" %>
 
 
+	<main role="main" class="container">
 
-	<div id="content">
-		<h2>회원가입</h2>
+
+		<div class="my-3 p-3 bg-white rounded shadow-sm">
+					<h2>회원가입</h2>
 		<hr>
 
 		<form method="post" enctype="multipart/form-data">
@@ -96,7 +99,7 @@
 				<tr>
 					<td>아이디</td>
 					<td>
-						<input type="text" name="memberid" id="memberid">
+						<input class="form-control m-2" type="text" name="memberid" id="memberid">
 						<span id="msg" class="display_none"></span> 
 						<img id="loadingimg"
 						class="display_none" alt="loading"
@@ -104,11 +107,11 @@
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="password"></td>
+					<td><input class="form-control m-2" type="password" name="password"></td>
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="membername"></td>
+					<td><input class="form-control m-2" type="text" name="membername"></td>
 				</tr>
 				<tr>
 					<td>사진</td>
@@ -116,7 +119,7 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit"> <input type="reset">
+					<td><input type="submit"  class="form-control m-2 btn-primary" > <input type="reset" class="form-control m-2 btn-info" >
 					</td>
 				</tr>
 			</table>
@@ -124,15 +127,16 @@
 		</form>
 
 			<div>
-			ajax로 회원 가입 <input type="button" value="회원가입" id="btnReg1">
+			ajax로 회원 가입 <input type="button" value="회원가입" id="btnReg1" class=" m-2 btn-primary" >
 			</div>
 			<div>
-			ajax로 Json 전송 회원 가입 <input type="button" value="회원가입" id="btnReg2">
+			ajax로 Json 전송 회원 가입 <input type="button" value="회원가입" id="btnReg2" class="m-2 btn-primary" >
 			</div>
+		</div>
 
 
-
-	</div>
+	</main>
+<%@include file="/WEB-INF/views/frame/footer.jsp" %>
 
 <script>
 		$(document).ready(function() {
