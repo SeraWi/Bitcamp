@@ -34,6 +34,15 @@ body::before{
     z-index:2;
 }
 
+a{
+    color:#FDEF7B;
+    text-decoration: none;
+}
+
+a:visited{
+    color:#FDEF7B;
+}
+
 .login-form h1{
     font-size: 32px;
     font-weight: 700;
@@ -91,12 +100,12 @@ body::before{
 }
 
 /* 아이디랑 비번 안치고 로그인 누르면 글자 흔들림 */
-/* @keyframes warning{
+@keyframes warning{
     0% {transform:translateX(-8px);}
     25% {transform:translateX(8px);}
     50% {transform:translateX(-8px);}
     75% {transform:translateX(8px);}
-} */
+}
 
 /* label 색과 위치 */
 .int-area input:focus + label,

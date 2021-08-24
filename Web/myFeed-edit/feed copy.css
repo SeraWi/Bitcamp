@@ -17,9 +17,7 @@ a:visited{
 
 /* 전체 container */
 
-.container{
-    /* padding:0 15%; */
-
+.container1{
      /* 08.22 수정 */
     margin:0 auto;
     width:1000px;
@@ -30,7 +28,10 @@ a:visited{
     grid-template-columns: 1fr 2fr;
 
     /* background-color: brown; */
-    height:13em;
+    /* height:13em; */
+
+    /* 08.24 높이 수정  */
+    height:260px;
     padding:3em 0 0 5em;
     /* border-bottom: 0.1px solid #DBDBDB;  */
 }
@@ -39,7 +40,7 @@ a:visited{
 
 /* div를 원으로 틀을 만들어서 그안에 img를 꽉차게 들어가도록 하기! */
 .profile-photo{
- background-color: brown;
+ background-color: black;
  width:10em;
  height:10em;
  border-radius: 50%;
@@ -50,6 +51,7 @@ a:visited{
     height:100%;
     object-fit:cover;
     border-radius:50%;
+
 }
 /* profile-info 사진 옆 사용자 정보 영역 */
 /* profile-info 전체 */
@@ -62,8 +64,6 @@ a:visited{
 .username>a{
     font-size:1.5em;
     /* color: #545454; */
-
-    
 }
 
 /* 게시물, 팔로우, 팔로워 */
@@ -72,6 +72,9 @@ a:visited{
     list-style:none;
     margin : 0;
     padding-left:0;
+
+    /* 08.24 수정 */
+    margin-bottom:10px;
     
 }
 
@@ -100,6 +103,7 @@ a:visited{
 .user-post>p{
    width:630px; 
    height:80px;
+   color: #545454;
 }
 
 
@@ -114,11 +118,16 @@ a:visited{
 
     border: 0.1px solid #DBDBDB;
     border-radius: 10px;
-    font-size:0.8m;
+    /* 폰트 사이즈 색 수정(08.24) */
+    font-size:13px;
+    color: #545454;
 
     cursor:pointer;
 
     margin-right: 30px;
+
+    /* 추가 08.24 */
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -126,7 +135,7 @@ a:visited{
 .swiper-container {
     width: 1000px;
     /* 08.24 수정- 높이 키웠음 */
-    height: 170px;
+    height: 190px;
 
   }
 
@@ -154,7 +163,8 @@ a:visited{
 
 .crew{
     /* 이미지 80+30 =110 높이 */
-    width:110px;
+       /* 가로길이 수정 ->120으로*/
+    width:120px;
     height:110px;
     /* 중간으로 정렬 */
     text-align: center;
@@ -179,12 +189,14 @@ a:visited{
     
     padding:0;
 
+
 }
 
 
 /* 크루명 */
 .crew div{
-    width:110px;
+    /* 너비값 수정 */
+    width:120px;
     height:30px;
 
     line-height: 30px;
@@ -192,15 +204,22 @@ a:visited{
 
     font-size:12px;
 
-}
+    overflow:hidden;
 
+}
 
 
 /* 갤러리 nav :피드랑 하트 */
 .gallery-nav{
     /* 전체 중간 정렬 */
-    height: 50px;
-    line-height: 50px;
+
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    /* 높이 수정 (08.24) */
+    height: 70px;
+    line-height: 70px;
 
     padding-top: 15px;
     padding-bottom: 15px;
@@ -211,18 +230,6 @@ a:visited{
     
 }
 
-.gallery-nav>a {
-    /* 중간으로 위치시키기 위해 왼쪽 마진 */
-    margin-left: 320px;
-}
-
-.heart{
-    width: 30px;
-    height: 30px;
-    padding-top:5px;
-}
-
-
 
 /* 사진  갤러리 영역 */
 .gallery{
@@ -231,9 +238,6 @@ a:visited{
    /* 액자식으로 여백주기 */
    
     /* 08.22 수정 */
-    /* column-gap:0.3em; */
-    /* row-gap:1.7em; */
-
     column-gap: 10px;
     row-gap:30px;
 
@@ -245,27 +249,23 @@ a:visited{
 }
 
 .item{
-    /* height:17.5em;
-    width:17.5em; */
-
     /* 08.22수정: 사이즈 수정 */
     height: 300px;
     width:300px;
     background:#000;
 
+
 }
 
-.item>img{
+.item img{
     height:100%;
     width:100%;
-    
 }
 
 /* 커서 올리면 불투명 회색으로 바뀜 */
 .item>img:hover{
     opacity:0.7;
 }
-
 
 
 /* 페이징 영역 */
@@ -279,32 +279,13 @@ a:visited{
     
 }
 
- /* width값 안줘야 번호 커져도 밑으로 숫자 안내려감 */
-/* .pages div{
-        height: 100px;
-   
-    line-height: 100px;
-    text-align: center;
-} */
 
-/* 페이지 번호 사이 간격 */
-/* .pagenumber{
-    
-    margin-right: 10px;
-} */
+/* bootstrap button */
 
-
-.pages.pagenumber{
-    width:50px;
-    height:50px;
-   /*  line-height: 50px;
-    text-align: center;
-     */
-    
+.pagination{
+/*     
+    padding-left:410px;
+    margin-bottom: 30; */
+    /* margin:0 auto; */
+    padding-left:410px;
 }
-
-.pagenumber a{
-    padding:10px 10px;
-   
-}
-
