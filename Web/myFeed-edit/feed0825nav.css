@@ -1,0 +1,500 @@
+body{
+    background-color:#FAFAFA;
+    margin:0;
+    /* 08.22 수정 */
+    padding:0;
+
+}
+
+a{
+    text-decoration: none;
+    color: #545454;
+}
+
+a:visited{
+    color: #545454;
+}
+
+/* 전체 container */
+
+.container1{
+     /* 08.22 수정 */
+    margin:0 auto;
+    width:1000px;
+}
+
+.bio{
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+
+    /* background-color: brown; */
+    /* height:13em; */
+
+    /* 08.24 높이 수정  */
+    height:260px;
+    padding:3em 0 0 5em;
+    /* border-bottom: 0.1px solid #DBDBDB;  */
+}
+
+/* 프로필 사진 */
+
+/* div를 원으로 틀을 만들어서 그안에 img를 꽉차게 들어가도록 하기! */
+.profile-photo{
+ background-color: black;
+ width:10em;
+ height:10em;
+ border-radius: 50%;
+}
+/* 위에 만든 거에 img 꽉들어맞게 */
+.profile-photo>img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+
+}
+/* profile-info 사진 옆 사용자 정보 영역 */
+/* profile-info 전체 */
+.profile-info{
+    display:flex;
+    flex-direction: column;
+}
+
+/* 사용자 아이디영역 */
+.username>a{
+    font-size:1.5em;
+    /* color: #545454; */
+}
+
+/* 게시물, 팔로우, 팔로워 */
+.follow-infos{
+    display:flex;
+    list-style:none;
+    margin : 0;
+    padding-left:0;
+
+    /* 08.24 수정 */
+    margin-bottom:10px;
+    
+}
+
+.follow-infos li{
+    /* 위에 아이디랑 간격 */
+    margin-top:5px;
+
+    /* 글자 간 각격 */
+    padding-right: 15px;
+
+    /* 8.22 수정 100px->120px */
+    width: 120px;
+
+    /* 커서 포인터 올리기 */
+    cursor:pointer;
+    
+    color: #545454;
+    
+}
+
+/* 게시글 영역 */
+.user-post{
+    /* 글 길어지면 아래로 내려가지 않도록 */
+    overflow:hidden;
+}
+.user-post>p{
+   width:630px; 
+   height:80px;
+   color: #545454;
+}
+
+
+/* 버튼 영역 : 내사진 수정, 사진 업로드 */
+.buttons{
+    display:flex;
+}
+.buttons input{
+    background-color:#fdef7b;
+    width:150px;
+    height:30px;
+
+    border: 0.1px solid #DBDBDB;
+    border-radius: 10px;
+    /* 폰트 사이즈 색 수정(08.24) */
+    font-size:13px;
+    color: #545454;
+
+    cursor:pointer;
+
+    margin-right: 30px;
+
+    /* 추가 08.24 */
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 추가->swiper 인기많은 크루 하이라이트 영역 */
+.swiper-container {
+    width: 1000px;
+    /* 08.24 수정- 높이 키웠음 */
+    height: 190px;
+
+  }
+
+  /* 크루사진+이름 전체 영역 */
+  .swiper-slide {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+    /* 스와이퍼 버튼 색 */
+
+.swiper-button-next{
+    color:#fdef7b;
+}
+
+.swiper-button-prev{
+    color:#fdef7b;
+}
+
+
+.swiper-pagination > .swiper-pagination-bullet-active {
+    background-color: yellow;
+}
+
+.crew{
+    /* 이미지 80+30 =110 높이 */
+       /* 가로길이 수정 ->120으로*/
+    width:120px;
+    height:110px;
+    /* 중간으로 정렬 */
+    text-align: center;
+    line-height:center;
+
+    /* 인기크루끼리 간격 */
+    /* margin-right:15px; */
+
+}
+
+
+/* 크루 대표 이미지 */
+.crew img{
+    width: 80px;
+    height:80px;
+    /* 중간정렬 */
+    text-align: center;
+    line-height: 80px;
+
+    /* 동그라미로 */
+    border-radius: 50%;
+    
+    padding:0;
+
+
+}
+
+
+/* 크루명 */
+.crew div{
+    /* 너비값 수정 */
+    width:120px;
+    height:30px;
+
+    line-height: 30px;
+    text-align: center;
+
+    font-size:12px;
+
+    overflow:hidden;
+
+}
+
+
+/* 갤러리 nav :피드랑 하트 */
+.gallery-nav{
+    /* 전체 중간 정렬 */
+
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    /* 높이 수정 (08.24) */
+    height: 70px;
+    line-height: 70px;
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+  
+    display:flex;
+
+    border-top: 0.1px solid #DBDBDB;
+    
+}
+.feed-icon{
+    /* 08.25 수정 아이콘 1/3 정도로 위치시키려고 마진 주기 */
+    margin-left: 140px;
+}
+
+.heart-icon{
+    /* 08.25 수정 아이콘 1/3 정도로 위치시키려고 마진 주기 */
+    margin-right:140px;
+}
+
+
+/* 사진  갤러리 영역 */
+.gallery{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+   /* 액자식으로 여백주기 */
+   
+    /* 08.22 수정 */
+    column-gap: 10px;
+    row-gap:30px;
+
+    /* 위쪽 실선 */
+    margin-bottom:2em;
+
+
+    /* 08.22추가 */
+    padding-left:18px;
+}
+
+.item{
+    /* 08.22수정: 사이즈 수정 */
+    height: 300px;
+    width:300px;
+    background:#000;
+
+
+}
+
+.item img{
+    height:100%;
+    width:100%;
+}
+
+/* 커서 올리면 불투명 회색으로 바뀜 */
+.item>img:hover{
+    opacity:0.7;
+}
+
+
+/* 페이징 영역 */
+.pages{
+    /*div 항상 중간 정렬 */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    padding:10px 0;
+    
+}
+
+
+/* bootstrap button */
+
+.pagination{
+/*     
+    padding-left:410px;
+    margin-bottom: 30; */
+    /* margin:0 auto; */
+    padding-left:380px;
+}
+
+
+
+
+/* nav추가 */
+
+.logo {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	min-width: 20%;
+}
+
+.action .icon {
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	padding-left: 35px;
+}
+
+.action .menu {
+	position: absolute;
+	top: 80px;
+	right: 90px;
+	padding: 20px;
+	backdrop-filter: bulr(10px);
+	background-color: rgba(0, 0, 0, 0.3);
+	box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+	z-index: 100;
+	border-radius: 15px;
+	transition: 0.5s;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.big-bg {
+	background-size: cover;
+	background-position: center top;
+	background-repeat: no-repeat;
+}
+
+#home .header h1 {
+	font-size: 1.5rem;
+	display: inline;
+}
+
+.action .menu.active {
+	top: 70px;
+	visibility: visible;
+	opacity: 1;
+	margin-right: -20px;
+}
+
+.action .menu ul li {
+	list-style: none;
+	margin: -10px;
+	border-top: 1px solid rgba(0, 0, 0, 0.05);
+	direction: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.action .menu ul li a {
+	display: inline-block;
+	text-decoration: none;
+	color: #fff;
+	font-weight: 500;
+	transition: 0.5s;
+}
+
+.action .menu ul li:hover a {
+	color: #ff5d94;
+}
+
+.header {
+	width: 100%;
+	padding-top: 20px;
+	left: 0;
+	padding-bottom: 10px;
+	line-height: 60px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.header a {
+	position: relative;
+	text-decoration: none;
+	color: black;
+}
+
+.nav {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	padding-right: 70px;
+}
+
+.header .menu a::after, .header .nav a::after {
+	content: "";
+	position: absolute;
+	bottom: -5px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 0;
+	height: 4px;
+	background: black;
+	transition: all .5s ease-out;
+}
+
+.header .menu a::after {
+	bottom: 2px;
+}
+
+.header a:hover::after {
+	width: 100%;
+}
+
+.header:hover {
+	backdrop-filter: bulr(10px);
+	background-color: rgba(255, 255, 255, 0.25);
+	transition: all 0.5s ease;
+	z-index: 100;
+}
+
+.nav ul {
+	display: flex;
+	font-size: 1.25rem;
+	text-transform: uppercase;
+	list-style: none;
+	font-family: 'Philosopher', sans-serif;
+	margin-bottom: 0;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav ul li {
+	margin-left: 36px;
+}
+
+.nav ul li a {
+	columns: #432;
+}
+
+/* footer 추가 */
+.footer {
+	padding: 70px 0;
+	background-color: #cac0ae;
+	flex-wrap: wrap;
+	display: flex;
+}
+
+.footer-col {
+	width: 30%;
+	text-align: center;
+	padding-left: 50px;
+}
+
+.footer-col h3 {
+	font-size: 18px;
+	text-transform: capitalize;
+	margin-bottom: 25px;
+	font-weight: 500;
+	position: relative;
+	color: white;
+	font-weight: bold;
+}
+
+.footer-col li {
+	list-style: none;
+	padding: 5px;
+}
+
+.footer-col h3::before {
+	content: '';
+	position: absolute;
+	left: 10;
+	height: 2px;
+	bottom: -10px;
+	box-sizing: border-box;
+	background-color: white;
+	width: 120px;
+}
+
+.footer-col ul li a {
+	font-size: 16px;
+	text-transform: capitalize;
+	color: white;
+	display: block;
+	transition: all 0.5s ease;
+	text-decoration: none;
+}
+
+.footer-col ul li a:hover {
+	color: #ffffff;
+	padding-left: 20px;
+}

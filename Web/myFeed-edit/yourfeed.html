@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 스와이퍼 css -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- 제이쿼리 -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
+    <!-- 제이쿼리 다음에 스와이퍼, 스와이퍼js min버전 -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- bootstrap js -->
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <!-- 그 밑으로 css 파일 -->
+    
+    <link rel="stylesheet" href="feed0825nav.css">
+
+    <!-- nav, footer 추가 08.25 -->
+    <script src="https://kit.fontawesome.com/cccee664d4.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+
+</head>
+<body>
+    <!-- nav 추가 08.25-->
+    <div class="action">
+      <div id="home" class="big-bg">
+        <div class="header wrapper">
+          <div class="logo">
+            <h1>
+              <a href="<c:url value='/'/>">오를래</a>
+            </h1>
+          </div>
+          <div class="nav">
+            <ul>
+              <li><a href="<c:url value='/'/>">MAIN</a></li>
+              <li><a href="#">HIKING</a></li>
+              <li><a href="#">CREW</a></li>
+              <li><a href="#">COMMUNITY</a></li>
+              <div class="icon" onclick="menuToggle();"><a href="#"><i
+                  class="far fa-user"></i></a></div>
+            </ul>
+          </div>
+          <div class="menu">
+            <ul>
+              <li><a href="#">로그인</a></li>
+              <li><a href="#">회원가입</a></li>
+              <li><a href="#">내 크루</a></li>
+              <li><a href="#">내 피드</a></li>
+              <li><a href="#">마이페이지</a></li>
+              <li><a href="#">로그아웃</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+      function menuToggle() {
+        const toggleMenu = document.querySelector('.menu');
+        toggleMenu.classList.toggle('active')
+      }
+    </script>
+
+
+<!-- nav 끝 -->
+
+
+    <!-- 메인 피드 영역 -->
+    <div class="container1">
+
+        <!-- 프로필 영역 -->
+        <section class="bio">
+            <!-- 사진 영역 -->
+            <div class="profile-photo">
+                <img src="profile-photo.jpg" alt="profile-photo">
+            </div>
+
+            <!-- 사용자 정보 영역: username, follow-infos, user-post,buttons -->
+            <div class="profile-info">
+
+                <!-- 사용자 id -->
+                <div class="username">
+                    <a href="#">Cool_123456789000000000</a>
+                </div>
+
+
+                <ul class="follow-infos">
+                    <li>게시물 113</li>
+                    <li><a href="#">팔로우 300</a></li>
+                    <li><a href="#">팔로워 300</a></li>
+                </ul>
+
+                <!-- 게시글 -->
+                <div class="user-post">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ratione consequuntur et ex, reiciendis natus qui quo repellendus ad fugit quis sunt dignissimos? A sequi odit velit voluptatibus commodi rerum?</p>
+                </div>
+
+                <!-- 버튼 -->
+                <div class="buttons">
+                    <input type="submit" value="팔로우하기">
+                    <!-- <input type="submit" value="사진업로드"> -->
+                </div>
+            
+            </div>
+
+
+        </section>
+
+
+        <!-- 내크루 가기 추가 ->Swiper사용 -->
+        <div class="swiper-container mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a href="#" class="crew">
+                  <img
+                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                    alt=""/>
+                  <div>크루이름크루크루크루크루크루</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="crew">
+                  <img
+                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                    alt=""/>
+                  <div>크크크루루루!</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="crew">
+                  <img
+                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                    alt=""/>
+                  <div>크루이름</div>
+                </a>
+              </div>
+
+              <div class="swiper-slide">
+                <a href="#" class="crew">
+                  <img
+                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                    alt=""/>
+                  <div>크루이름10글자까지</div>
+                </a>
+              </div>
+              
+              <div class="swiper-slide">
+                <a href="#" class="crew">
+                  <img
+                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                    alt=""/>
+                  <div>넘어가면잘린다..</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="crew">
+                  <img
+                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                    alt=""/>
+                  <div>clickclick</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="crew">
+                  <img
+                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                    alt=""/>
+                  <div>크루이름</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="crew">
+                  <img
+                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                    alt=""/>
+                  <div>크루이름</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="crew">
+                  <img
+                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                    alt=""/>
+                  <div>크루이름</div>
+                </a>
+              </div>
+
+              <div class="swiper-slide">
+                <a href="#" class="crew">
+                  <img
+                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                    alt=""/>
+                  <div>크루이름</div>
+                </a>
+              </div>
+
+              <div class="swiper-slide">
+                <a href="#" class="crew">
+                  <img
+                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                    alt=""/>
+                  <div>크루이름</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="crew">
+                  <img
+                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                    alt=""/>
+                  <div>크루이름</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="crew">
+                  <img
+                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                    alt=""/>
+                  <div>크루이름</div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="crew">
+                  <img
+                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                    alt=""/>
+                  <div>크루이름</div>
+                </a>
+              </div>
+
+              <div class="swiper-slide">
+                <a href="#" class="crew">
+                    <img src="../icons/more.png" alt="">
+                    <div>MORE</div>
+                </a>
+              </div>
+
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+      
+          <!-- Swiper JS -->
+          <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+      
+          <!-- Initialize Swiper -->
+          <script>
+            var swiper = new Swiper(".mySwiper", {
+              slidesPerView: 6,
+              spaceBetween: -40,
+              slidesPerGroup: 6,
+              loop: true,
+              loopFillGroupWithBlank: true,
+              pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+              },
+              navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+              }
+            });
+          </script>
+
+        <!-- 갤러리 네비게이션 영역 : 피드보기랑 좋아요 보기 -->
+        <div class="gallery-nav">
+            <div class="feed-icon"><a href="#"><img src="../icons/feedicon.png"></a></div>
+            <div class="heart-icon"><a href="#"><img src="../icons/redheart2.png"></a></div>
+        </div>
+
+        <!-- 사진 피드 영역  -->
+        <section class="gallery">
+
+            <a href="#" class="item">
+              <img src="https://images.pexels.com/photos/2829336/pexels-photo-2829336.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            </a>
+
+            <a href="#" class="item">
+              <img src="https://images.pexels.com/photos/3598706/pexels-photo-3598706.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            </a>
+            <a href="#" class="item">
+                <img src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
+            </a>
+            <a href="#" class="item">
+                <img src="https://images.pexels.com/photos/3598706/pexels-photo-3598706.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            </a>
+            <a href="#" class="item">
+                <img src="https://images.pexels.com/photos/2829336/pexels-photo-2829336.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            </a>
+            <a href="#" class="item">
+                <img src="https://images.pexels.com/photos/2739505/pexels-photo-2739505.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            </a>
+            <a href="#" class="item">
+                <img src="https://images.pexels.com/photos/6051221/pexels-photo-6051221.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            </a>
+            <a href="#" class="item">
+                <img src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
+            </a>
+            <a href="#" class="item">
+                <img src="https://images.pexels.com/photos/3598706/pexels-photo-3598706.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            </a>
+        </section>
+
+
+        <nav aria-label="Page navigation example ">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <!-- <span class="sr-only">Previous</span> -->
+                  </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <!-- <span class="sr-only">Next</span> -->
+                    </a>
+                </li>
+            </ul>
+    </nav>
+       
+
+    </div>
+<!-- 메인 피드 영역 -->
+
+    <!-- footer 추가 08.25 -->
+
+    <div class="footer">
+      <div class="footer-col">
+        <ul>
+          <h3>MY ACCOUNT</h3>
+          <li><a href="#">footer</a></li>
+          <li><a href="#">footer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <ul>
+          <h3>MY ACCOUNT</h3>
+          <li><a href="#">footer</a></li>
+          <li><a href="#">footer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <ul>
+          <h3>MY ACCOUNT</h3>
+          <li><a href="#">MY PAGE</a></li>
+          <li><a href="#">MY ORDER</a></li>
+          <li><a href="#">MEMBERSHIP</a></li>
+          <li><a href="#">LOGIN</a></li>
+          <li><a href="#">JOIN US</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <ul>
+          <h3>MY ACCOUNT</h3>
+          <li><a href="#">footer</a></li>
+          <li><a href="#">footer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <ul>
+          <h3>MY ACCOUNT</h3>
+          <li><a href="#">footer</a></li>
+          <li><a href="#">footer</a></li>
+        </ul>
+      </div>
+    </div>
+
+</body>
+</html>
