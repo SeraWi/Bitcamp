@@ -10,22 +10,18 @@
 
 	$(document).ready(function(){
 		//alert("ready");
-		$('#btn').click(function(){
+		
+		
+		//get방식으로 보내기
+		$.get('data.html',function(data){
 			
-			//객체로 표현하기
-			$.ajax({
-				//보내줘야 하는 경로
-				url:'parameter.jsp',
-				type:'post', //http method get,post, put, delete
-				data :{
-					pname:$('#pname').val(),
-					price:$('#price').val()
-				},  //문자열 형식 ?name=test&price=1000, 객체형식으로도 가능
-				success:function(data){
-					//alert(data);
-					$('#menu').append(data);
-				}
-			});
+			$('body').html(data);
+		});		
+		
+		//post방식으로 보내기
+		$.post('data.html',function(data){
+			
+			$('body').html(data);
 		});
 	});
 </script>

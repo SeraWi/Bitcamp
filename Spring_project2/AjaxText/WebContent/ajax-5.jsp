@@ -11,20 +11,17 @@
 	$(document).ready(function(){
 		//alert("ready");
 		
-		
-		//객체로 표현하기
-		$.ajax({
-			url:'data.html',
-			success:function(data){
-				$('body').html(data);
-			}
+		$.getJSON('data.json',function(data){
+			$.each(data,function(index,value){
+				var html='<h3>이름:'+value.name+' , 가격:'+value.price+' </h3>';
+				$('body').append(html);
+			});
+			
 		});
-		
-		
 	});
 </script>
 </head>
 <body>
-	ajax.-2.jsp
+
 </body>
 </html>
