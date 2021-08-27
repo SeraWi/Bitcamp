@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+   
     <!-- 스와이퍼 css -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
 
@@ -24,44 +24,63 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
     <!-- 그 밑으로 css 파일 -->
+
+    <script src="https://kit.fontawesome.com/8e91329278.js" crossorigin="anonymous"></script>
+  
     
     <link rel="stylesheet" href="feed0825nav.css">
+
+  <!-- script추가 --header 08.27 -->
+    <script>
+      function menuToggle() {
+          const toggleMenu = document.querySelector('.menu');
+          toggleMenu.classList.toggle('active')
+      }
+  </script>
 
 
 </head>
 <body>
-    <!-- nav 추가 08.25-->
+    <!-- header 추가 08.27-->
     <div class="action">
       <div id="home" class="big-bg">
-        <div class="header wrapper">
-          <div class="logo">
-            <h1>
-              <a href="<c:url value='/'/>">오를래</a>
-            </h1>
+          <div class="header wrapper">
+              <div class="logo">
+                  <span class="oly"><i class="fas fa-seedling"></i></span>
+                  <h1><a href="#">오를래</a></h1>
+              </div>
+              <div class="nav">
+                  <ul>
+                      <li><a href="#">MAIN</a></li>
+                      <li><a href="#">HIKING</a></li>
+                      <li><a href="#">CREW</a></li>
+                      <li><a href="#">COMMUNITY</a></li>
+                      <div class="icon" onclick="menuToggle();">
+                          <a href="#"><i class="far fa-user"></i></a>
+                      </div>
+                  </ul>
+              </div>
+              <div class="menu">
+                  <ul>
+                      <li><a href="#">로그인</a></li>
+                      <li><a href="#">회원가입</a></li>
+                      <li><a href="#">내 크루</a></li>
+                      <li><a href="#">내 피드</a></li>
+                      <li><a href="#">마이페이지</a></li>
+                      <li><a href="#">로그아웃</a></li>
+                  </ul>
+              </div>
           </div>
-          <div class="nav">
-            <ul>
-              <li><a href="<c:url value='/'/>">MAIN</a></li>
-              <li><a href="#">HIKING</a></li>
-              <li><a href="#">CREW</a></li>
-              <li><a href="#">COMMUNITY</a></li>
-              <div class="icon" onclick="menuToggle();"><a href="#"><i
-                  class="far fa-user"></i></a></div>
-            </ul>
-          </div>
-          <div class="menu">
-            <ul>
-              <li><a href="#">로그인</a></li>
-              <li><a href="#">회원가입</a></li>
-              <li><a href="#">내 크루</a></li>
-              <li><a href="#">내 피드</a></li>
-              <li><a href="#">마이페이지</a></li>
-              <li><a href="#">로그아웃</a></li>
-            </ul>
-          </div>
-        </div>
       </div>
-    </div>
+  </div>
+
+<!--   <script>
+    function menuToggle() {
+        const toggleMenu = document.querySelector('.menu');
+        toggleMenu.classList.toggle('active')
+    }
+</script> -->
+
 <!-- nav 끝 -->
 
 
@@ -86,14 +105,14 @@
 
                 <ul class="follow-infos">
                     <li>게시물 113</li>
-                    <li><a href="#">팔로우 300</a></li>
-                    <li><a href="#">팔로워 300</a></li>
+                    <li class="follows"><a href="#">팔로우 300</a></li>
+                    <li class="follows"><a href="#">팔로잉 300</a></li>
                 </ul>
 
                 <!-- 게시글 -->
-                <div class="user-post">
+<!--                 <div class="user-post">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ratione consequuntur et ex, reiciendis natus qui quo repellendus ad fugit quis sunt dignissimos? A sequi odit velit voluptatibus commodi rerum?</p>
-                </div>
+                </div> -->
 
                 <!-- 버튼 -->
                 <div class="buttons">

@@ -20,6 +20,10 @@ a:visited{
 .container1{
      /* 08.22 수정 */
     margin:0 auto;
+
+    /* 08.27 수정 */
+    margin-top:200px;
+
     width:1000px;
 }
 
