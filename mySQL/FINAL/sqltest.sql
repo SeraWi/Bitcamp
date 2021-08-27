@@ -188,7 +188,16 @@ from final.follow
 where memberIdx2 = 3;
 
 
--- 사진 피드 크게 보기 했을 때 정보 
+-- 사진 피드에 댓글 남기기
+select * from final.photoboardcomment;
+
+-- 1번 게시물에 member3번이 댓글 남긴다.
+insert into final.photoboardcomment
+(comment,boardIdx, memberIdx)
+values('멋있다!',1,3);
+
+-- 1번 게시물 크게 보기 했을 때 정보
+-- 1번 게시물 사진, 아이디, 내용, 해시태그, 대댓글
 
 
 
