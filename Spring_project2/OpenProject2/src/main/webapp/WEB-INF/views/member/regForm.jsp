@@ -133,7 +133,7 @@
 			ajax로 Json 전송 회원 가입 <input type="button" value="회원가입" id="btnReg2" class="m-2 btn-primary" >
 			</div>
 		</div>
-
+S
 
 	</main>
 <%@include file="/WEB-INF/views/frame/footer.jsp" %>

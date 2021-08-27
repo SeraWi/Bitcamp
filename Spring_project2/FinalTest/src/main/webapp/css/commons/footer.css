@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+
+/* css 추가 --08.27 소연언니 */
+/*구글 아이콘 넣기*/
+@font-face {
+    font-family: "Material Icons";
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local("Material Icons"), local("MaterialIcons-Regular"),
+      url(https://example.com/MaterialIcons-Regular.woff2) format("woff2"),
+      url(https://example.com/MaterialIcons-Regular.woff) format("woff"),
+      url(https://example.com/MaterialIcons-Regular.ttf) format("truetype");
+  }
+  .material-icons {
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px; /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: "liga";
+  }
+  
+  /*폰트 스타일넣기*/
+  /*로고폰트*/
+  @font-face {
+    font-family: "Cafe24SsurroundAir";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff")
+      format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+  /*본문 폰트*/
+  @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap");
+  
+  :root {
+    --background-color: #f8f8f8;
+    --yello-color: #fdef7b;
+    --footer-color: #cac0ae;
+    --point-color: #785024;
+    --text-sans: "Noto Sans KR ", sans-serif;
+    --text-logo: "Cafe24SsurroundAir";
+  }
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+
+
+.footer {
+	padding: 70px 0;
+	background-color: #cac0ae;
+	flex-wrap: wrap;
+	display: flex;
+}
+
+.footer-col {
+	width: 30%;
+	text-align: center;
+	padding-left: 50px;
+}
+
+.footer-col h3 {
+	font-size: 18px;
+	text-transform: capitalize;
+	margin-bottom: 25px;
+	font-weight: 500;
+	position: relative;
+	color: white;
+	font-weight: bold;
+}
+
+.footer-col li {
+	list-style: none;
+	padding: 5px;
+}
+
+.footer-col h3::before {
+	content: '';
+	position: absolute;
+	left: 10;
+	height: 2px;
+	bottom: -10px;
+	box-sizing: border-box;
+	background-color: white;
+	width: 120px;
+}
+
+.footer-col ul li a {
+	font-size: 16px;
+	text-transform: capitalize;
+	color: white;
+	display: block;
+	transition: all 0.5s ease;
+	text-decoration: none;
+}
+
+.footer-col ul li a:hover {
+	color: #ffffff;
+	padding-left: 20px;
+}
