@@ -100,26 +100,118 @@
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="password"></td>
+					<td><input type="password" name="password" id="password"></td>
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="membername"></td>
+					<td><input type="text" name="membername" id="membername"></td>
 				</tr>
 				<tr>
 					<td>사진</td>
-					<td><input type="file" name="photo"></td>
+					<td><input type="file" name="photo" id="photo"></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td><input type="submit"> <input type="reset">
 					</td>
 				</tr>
+				
+				
 			</table>
+			
 
 		</form>
-
 		
+				<div>
+				ajax로 회원가입 <input type="button" value="회원가입" id="btnReg1">
+				</div>
+				
+				<div>
+				ajax로 json 전송 회원 가입 <input type="button" value="회원가입" id="btnReg2">
+				</div>
+			
+			<script>
+				$(document).ready(function(){
+					
+					$('#btnReg1').click(function(){
+						
+						var photoFile=$('#photo');
+						
+						var file1 = photoFile[0].files[0];
+						
+						
+						//formdata :javascript제공!
+						var formData = new FormData();
+						formData.append("memberid",$('#memberid').val());
+						formData.append("password",$('#password').val());
+						formData.append("membername",$('#membername').val());
+						formData.append("photo",file1);
+						
+						console.log(formData);
+						
+						
+						$.ajax({
+							
+							url:'/op3/members/reg1',
+							type:'post',
+							data:formData,
+							enctype:'multipart/form-data',
+							processData:false,
+							contentType:false,
+							cache:false,
+							success:function(data){
+								console.log(data);
+								if(data==1){
+									alert('회원가입이 되었습니다.');
+								}
+							}
+							
+							
+						});
+						
+					});
+					
+					$('#btnReg2').click(function(){
+						
+						var userid =$('#memberid').val();
+						var pw =$('#password').val();
+						var username =$('#membername').val();
+						
+						
+						var member ={
+								memberid:userid,
+								password:pw,
+								membername:username
+						}
+						
+						console.log(JSON.stringify(member));
+						
+						
+						$.ajax({
+							
+							url:'/op3/members/reg2',
+							type:'post',
+							data:JSON.stringify(member),
+							dataType:'json',
+							contentType:'application/json',
+							success:function(data){
+								console.log(data);
+								if(data==1){
+									alert('회원가입이 되었습니다.');
+								}
+							}
+							
+							
+						});
+						
+					});
+					
+				});/* document ready */
+			
+			
+			
+			</script>
+	
 	</div>
 
 </body>
