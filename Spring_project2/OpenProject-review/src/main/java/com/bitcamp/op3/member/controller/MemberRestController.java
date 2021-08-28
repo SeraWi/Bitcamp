@@ -71,7 +71,7 @@ public class MemberRestController {
 		//command 객체 (regRequest)로 폼에 입력한 정보 가져오기
 		
 		System.out.println(regRequest);
-		return Integer.toBinaryString(regService.memberReg(regRequest,request));
+		return Integer.toString(regService.memberReg(regRequest,request));
 	}
 	
 	@PostMapping("/members/reg2")

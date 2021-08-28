@@ -134,11 +134,8 @@
 				$(document).ready(function(){
 					
 					$('#btnReg1').click(function(){
-						
 						var photoFile=$('#photo');
-						
 						var file1 = photoFile[0].files[0];
-						
 						
 						//formdata :javascript제공!
 						var formData = new FormData();
@@ -149,9 +146,7 @@
 						
 						console.log(formData);
 						
-						
 						$.ajax({
-							
 							url:'/op3/members/reg1',
 							type:'post',
 							data:formData,
