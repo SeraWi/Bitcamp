@@ -28,7 +28,7 @@
     <script src="https://kit.fontawesome.com/8e91329278.js" crossorigin="anonymous"></script>
   
     
-    <link rel="stylesheet" href="feed0825nav.css">
+    <link rel="stylesheet" href="feed0830.css">
 
   <!-- script추가 --header 08.27 -->
     <script>
@@ -105,19 +105,20 @@
 
                 <ul class="follow-infos">
                     <li>게시물 113</li>
-                    <li class="follows"><a href="#">팔로우 300</a></li>
-                    <li class="follows"><a href="#">팔로잉 300</a></li>
+                    <li class="follows"><a class="btn btn-default" data-target="#modal" data-toggle="modal">팔로우 300</a></li>
+                    <li class="follows"><a data-target="#modal" data-toggle="modal">팔로잉 300</a></li>
                 </ul>
 
-                <!-- 게시글 -->
-<!--                 <div class="user-post">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ratione consequuntur et ex, reiciendis natus qui quo repellendus ad fugit quis sunt dignissimos? A sequi odit velit voluptatibus commodi rerum?</p>
-                </div> -->
+              
 
                 <!-- 버튼 -->
                 <div class="buttons">
-                    <input type="submit" value="내 정보 수정">
-                    <input type="submit" value="사진업로드">
+
+                    <!-- <input type="submit" value="내 정보 수정"> -->
+                    <!-- <input type="submit" value="사진업로드"> -->
+                    <!-- a 태그로 수정 08.30 -->
+                    <div><a href="#" class="buttons-area">내 정보 수정</a></div>
+                    <div><a href="#" class="buttons-area">피드업로드</a></div>
                 </div>
             
             </div>
@@ -398,6 +399,28 @@
         </ul>
       </div>
     </div>
+
+<!-- 팔로우 모달 -->
+    <div class="row">
+      <div class="modal" id="modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+               팔로우
+               <button class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body" style="text-align: center">
+                사용자 아이디!!!!!<br>
+                사용자 아이디!!!!!<br>
+                사용자 아이디!!!!!<br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
 </body>
 </html>

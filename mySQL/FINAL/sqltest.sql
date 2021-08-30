@@ -18,23 +18,23 @@ values
 -- 사진 피드
 select * from final.photoboard;
 
-insert into final.photoboard
+insert into final.photoBoard
 (boardPhoto, boardDiscription, hashtag, memberIdx)
 values
 ('default.jpg', '아름다운 북한산!!', '#등산 #오를래 #북한산 #둘레길', 1);
 
-insert into final.photoboard
+insert into final.photoBoard
 (boardPhoto, boardDiscription, hashtag, memberIdx)
 values
 ('default2.jpg', '주말 설악산 등산', '#등산 #오를래 #설악산 #속초여행', 1);
 
 
-insert into final.photoboard
+insert into final.photoBoard
 (boardPhoto, boardDiscription, hashtag, memberIdx)
 values
 ('picture.jpg', '남산~!~!', '#남산', 3);
 
-insert into final.photoboard
+insert into final.photoBoard
 (boardPhoto, boardDiscription, hashtag, memberIdx)
 values
 ('beautiful.jpg', '주말 등산,친구들과!', '#부산여행 #황령산', 4);
@@ -42,11 +42,11 @@ values
 
 -- member와 사진 게시판 조인
 select * 
-from final. member natural join final.photoboard;
+from final. member natural join final.PhotoBoard;
 
 -- 내가 올린 피드 사진만
 select boardPhoto, memberName, memberId
-from final.member natural join final.photoboard
+from final.member natural join final.PhotoBoard
 where memberIdx = 3;
 
 -- 나의 게시물 개수
@@ -160,11 +160,20 @@ select * from final.follow;
 insert into final.follow
 (memberIdx, memberIdx2)
 values(1,3);
+insert into final.follow
+(memberIdx, memberIdx2)
+values(1,2);
 
 -- cool(1) 이 son(4)을 팔로우
 insert into final.follow
 (memberIdx, memberIdx2)
 values(1,4);
+insert into final.follow
+(memberIdx, memberIdx2)
+values(1,5);
+insert into final.follow
+(memberIdx, memberIdx2)
+values(5,1);
 
 -- son(4)가 cool(1)을 팔로우
 insert into final.follow
@@ -177,10 +186,18 @@ select *
 from final.follow
 where memberIdx =1;
 
--- cool이 팔로잉 하는 사람
+select count(*)
+from final.follow
+where memberIdx = 1;
+
+-- cool을  팔로우 하는 사람
 select *
 from final.follow
 where memberIdx2 = 1;
+
+select count(*)
+from final.follow
+where memberIdx2 =1;
 
 -- cool 1이 팔로잉하는 sera 3을 팔로우 취소하기
 delete 

@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 /* 내 feed css */
 body{
     background-color:#f8f8f8;
@@ -38,8 +39,8 @@ a:visited{
     /* background-color: brown; */
     /* height:13em; */
 
-    /* 08.24 높이 수정  */
-    height:260px;
+    /* 08.27 높이 수정  */
+    height:240px;
     padding:3em 0 0 5em;
     /* border-bottom: 0.1px solid #DBDBDB;  */
 }
@@ -64,8 +65,17 @@ a:visited{
 /* profile-info 사진 옆 사용자 정보 영역 */
 /* profile-info 전체 */
 .profile-info{
+    
     display:flex;
     flex-direction: column;
+    /* 08.27 수정 */
+    padding-top:15px;
+}
+
+.username{
+    /* 08.30 수정 */
+    padding-top:10px;
+    padding-bottom: 5px;
 }
 
 /* 사용자 아이디영역 */
@@ -84,8 +94,8 @@ a:visited{
     margin : 0;
     padding-left:0;
 
-    /* 08.24 수정 */
-    margin-bottom:10px;
+    /* 08.27 수정 */
+    margin-bottom:30px;
 
     /* 08.27 폰트 추가 */
     font-family: var(--text-sans);
@@ -131,23 +141,35 @@ a:visited{
 .buttons{
     display:flex;
 }
-.buttons input{
-    background-color:#fdef7b;
-    width:150px;
-    height:30px;
 
-    border: 0.1px solid #DBDBDB;
-    border-radius: 10px;
-    /* 폰트 사이즈 색 수정(08.24) */
-    font-size:13px;
-    color: #545454;
+.buttons div{
+  background-color:#fdef7b;
+  width:150px;
+  height:30px;
 
-    cursor:pointer;
+  border: 0.1px solid #DBDBDB;
+  border-radius: 10px;
+  /* 폰트 사이즈 색 수정(08.24) */
+/*   font-size:13px;
+  color: #545454; */
 
-    margin-right: 30px;
+  cursor:pointer;
 
-    /* 추가 08.24 */
-    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+  margin-right: 30px;
+
+  /* 추가 08.24 */
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+.buttons-area{
+  display:block;
+  width:150px;
+  line-height: 30px;
+  text-align: center;
+
+  font-size:13px;
+  color: #545454;
+  cursor:pointer;
 }
 
 
@@ -311,7 +333,6 @@ a:visited{
     padding:10px 0;
     
 }
-
 
 /* bootstrap button */
 
