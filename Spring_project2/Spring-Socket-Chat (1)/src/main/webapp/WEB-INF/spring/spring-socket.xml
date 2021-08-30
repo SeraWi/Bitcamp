@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<bean id="echohandler" class="com.aia.socket.handler.EchoHandler"/>
+	
+	<websocket:handlers>
+		<websocket:mapping handler="echohandler" path="/echo"/>
+		<websocket:handshake-interceptors>
+		<!-- WebSocketSEssion + HttpSession 
+			websocket만 하면 접속만 되고 누가 접속했는지 확인할 수 없다.
+			따라서 반드시 httpsession을 추가해야 하는데
+			이 설정을 밑에서 해주고 있다.
+		-->
+			<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
+		</websocket:handshake-interceptors>
+		<websocket:sockjs/>
+	</websocket:handlers>
+	
+</beans>
