@@ -27,4 +27,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 
+	
+	<!-- 팔로잉 리스트 가져오기 -->
+ 	<select id="selectFollowingList"
+			resultType="com.bitcamp.orl.feed.domain.FollowList"
+	>
+	select F.followIdx, F.memberIdx, F.memberIdx2, M.memberNickname,M.memberProfile
+	from final.follow as F inner join final.member as M
+	on F.memberIdx2 = M.memberIdx
+	where F.memberIdx = ${memberIdx};
+	</select>
+	
+	<!-- 팔로워 리스트 가져오기 -->
+	
+	<select id="selectFollowerList"
+			resultType="com.bitcamp.orl.feed.domain.FollowList"
+	>
+	select F.followIdx, F.memberIdx, F.memberIdx2, M.memberNickname,M.memberProfile
+	from final.follow as F inner join final.member as M
+	on F.memberIdx = M.memberIdx
+	where F.memberIdx2 = ${memberIdx};
+	</select>
+	
+	
+
 </mapper>

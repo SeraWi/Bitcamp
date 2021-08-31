@@ -15,6 +15,11 @@ insert into final.member
 values
 ('son','1111','손흥민','son@naver.com','son');
 
+insert into final.member
+(memberId, memberPw, memberName,memberEmail, memberNickname)
+values
+('test4','1111','test4','test4@naver.com','test4');
+
 -- 사진 피드
 select * from final.photoboard;
 
@@ -167,13 +172,13 @@ values(1,2);
 -- cool(1) 이 son(4)을 팔로우
 insert into final.follow
 (memberIdx, memberIdx2)
-values(1,4);
+values(1,13);
 insert into final.follow
 (memberIdx, memberIdx2)
 values(1,5);
 insert into final.follow
 (memberIdx, memberIdx2)
-values(5,1);
+values(8,1);
 
 -- son(4)가 cool(1)을 팔로우
 insert into final.follow
@@ -186,11 +191,23 @@ select *
 from final.follow
 where memberIdx =1;
 
+-- 팔로잉 수
+select count(*)
+from final.follow
+where memberIdx=1;
+
+-- cool = memberIdx1 이 팔로잉 하는 사람 정보까지 같이! -- member table이랑 조인
+-- 필요한 정보 idx, 내 idx, 내가 팔로우 하는 사람 idx, 그 사람 닉네임, 그사람 프사
+select F.followIdx, F.memberIdx, F.memberIdx2, M.memberNickname,M.memberProfile
+from final.follow as F inner join final.member as M
+on F.memberIdx2 = M.memberIdx
+where F.memberIdx = 1;
+
 select count(*)
 from final.follow
 where memberIdx = 1;
 
--- cool을  팔로우 하는 사람
+-- cool을  팔로우 하는 사람(=팔로워)
 select *
 from final.follow
 where memberIdx2 = 1;

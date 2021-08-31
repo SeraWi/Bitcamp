@@ -68,10 +68,10 @@
 
                 <!-- 버튼 -->
                 <div class="buttons" >
-                    <div><a class="buttons-area" >내 정보 수정</a></div>
+                    <div><a class="buttons-area" href="<c:url value="/member/mypage"/>">내 정보 수정</a></div>
                     <div><a class="buttons-area" href="/orl/feed/createFeed">피드 올리기</a></div>
                 </div>
-            
+            	
             </div>
 
 
@@ -276,60 +276,57 @@
             <button><img src="<c:url value="/images/feed/feeds/formdelete.png"/>" class="form-close"></button>
         </div>
 
-        <div class="follower-members">
+        <div class="follower-members" id="follower-members">
             <div class="member">
                 <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
                 <a href="#">사용자아이디</a>
                 <input type="submit" value="팔로우하기">
             </div>
-            <div class="member">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
-                <a>사용자아이디아이디아이디아이디디디디</a>
-                <input type="submit" value="팔로우하기">
-            </div>
-            <div class="member">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
-                <a>사용자아이디</a>
-                <input type="submit" value="팔로우하기">
-            </div>
-            <div class="member">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
-                <a>사용자아이디</a>
-                <input type="submit" value="팔로우하기">
-            </div>
-                        <div class="member">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
-                <a>사용자아이디아이디아이디아이디디디디</a>
-                <input type="submit" value="팔로우하기">
-            </div>
-            <div class="member">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
-                <a>사용자아이디</a>
-                <input type="submit" value="팔로우하기">
-            </div>
-            <div class="member">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
-                <a>사용자아이디</a>
-                <input type="submit" value="팔로우하기">
-            </div>
-            <div class="member">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
-                <a>사용자아이디</a>
-                <input type="submit" value="팔로우하기">
-            </div>
+
 
         </div>
 
 
     </div>
 	
-	<!-- 팔로우 눌렀을 때 -->
+	<!-- 팔로워 눌렀을 때 -->
 	<script>
 	$('#follower').click(function(){
+		//팔로워 보여주기
 		$('#container-follower').removeClass('display_none');
+		
+		//팔로워 명단 초기화 시키기
+		$('#follower-members').html('');
+		
+		//비동기 통신
+		$.ajax({
+			url:'<c:url value="/feed/followerList"/>',
+			type:'POST',
+			success: function(data){
+				console.log(data); 
+			
+ 			$.each(data,function(index,item){
+					console.log(index,item);
+					
+					var html ='<div class="member">';
+					html += '	<img src="'+item.memberProfile+'"/>';
+					html += '	<a>'+item.memberNickname+'</a>';
+					html += '	<input type="submit" value="팔로우하기">';
+					html += '</div>';
+					
+					//div 추가해주기
+					$('#follower-members').append(html);
+				});  
+ 			
+				
+				
+			}
+		});
+		
 		
 	});
 	
+	// 닫기 버튼 눌렀을 때 다시 팔로워 숨기기
 	$('.form-close').click(function(){
 		$('#container-follower').addClass('display_none');
 		
@@ -345,50 +342,8 @@
             <button><img src="<c:url value="/images/feed/feeds/formdelete.png"/>" class="form-close"></button>
         </div>
 
-        <div class="follower-members">
-            <div class="member">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
-                <a href="#">사용자아이디</a>
-                <input type="submit" value="팔로우끊기">
-            </div>
-            <div class="member">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
-                <a>사용자아이디아이디아이디아이디디디디</a>
-                <input type="submit" value="팔로우끊기">
-            </div>
-            <div class="member">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
-                <a>사용자아이디</a>
-                <input type="submit" value="팔로우끊기">
-            </div>
-            <div class="member">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
-                <a>사용자아이디</a>
-                <input type="submit" value="팔로우끊기">
-            </div>
-            <div class="member">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
-                <a>사용자아이디</a>
-                <input type="submit" value="팔로우끊기">
-            </div>
-            <div class="member">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
-                <a>사용자아이디</a>
-                <input type="submit" value="팔로우끊기">
-            </div>
-            <div class="member">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
-                <a>사용자아이디</a>
-                <input type="submit" value="팔로우끊기">
-            </div>
-            <div class="member">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
-                <a>사용자아이디</a>
-                <input type="submit" value="팔로우하기">
-            </div>
-
-         
-            
+        <div class="follower-members" id="following-members">
+			<!-- 비동기 통신으로 추가되는 영역 -->            
         </div>
 
 
@@ -399,7 +354,36 @@
 	$('#following').click(function(){
 		$('#container-following').removeClass('display_none');
 		
+		//명단 초기화 해준다음에 추가!
+		$('#following-members').html('');
+		
+		//팔로잉 버튼 눌렀을 때 명단 가져오기 ->비동기 통신으로
+		$.ajax({
+			url:'<c:url value="/feed/followingList"/>',
+			type:'POST',
+			success: function(data){
+				console.log(data); 
+			
+ 			$.each(data,function(index,item){
+					console.log(index,item);
+					
+					var html ='<div class="member">';
+					html += '	<img src="'+item.memberProfile+'"/>';
+					html += '	<a>'+item.memberNickname+'</a>';
+					html += '	<input type="submit" value="팔로우끊기">';
+					html += '</div>';
+					
+					//div 추가해주기
+					$('#following-members').append(html);
+				});  
+ 			
+				
+				
+			}
+		});
+		
 	});
+	
 	$('.form-close').click(function(){
 		$('#container-following').addClass('display_none');
 		
