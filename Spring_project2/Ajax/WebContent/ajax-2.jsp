@@ -18,7 +18,7 @@
 			type:'get', //http method get,post, put, delete
 			data :{
 				pname:'우유',
-				price:1000
+				price:1000,
 			},  //문자열 형식 ?name=test&price=1000, 객체형식으로도 가능
 			success:function(data){
 				alert(data);

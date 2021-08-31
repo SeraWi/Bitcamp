@@ -46,12 +46,14 @@ public class UserFeedController {
 		int followingCount = feedService.getFollowingCount(member.getMemberIdx());
 
 		// 게시물 수 구하기
+		int feedCount = feedService.getFeedCount(member.getMemberIdx());
 
 
 		//member 객체 전달
 		model.addAttribute("member",member);
 		model.addAttribute("followerCount",followerCount);
 		model.addAttribute("followingCount",followingCount);
+		model.addAttribute("feedCount",feedCount);
 
 		return "feed/userFeed";
 	}

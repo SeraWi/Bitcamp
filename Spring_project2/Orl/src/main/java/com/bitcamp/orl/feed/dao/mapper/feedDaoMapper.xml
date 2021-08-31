@@ -50,5 +50,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
+	<!-- 게시물 가져오기  -->
+	<select id="selectFeedCount"
+			resultType="int"
+	>
+	select count(*)
+	from final.photoBoard
+	where memberIdx = ${memberIdx};
+	
+	</select>
+	
+	
 
 </mapper>

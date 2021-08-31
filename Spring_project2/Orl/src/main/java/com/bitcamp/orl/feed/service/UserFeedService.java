@@ -64,12 +64,21 @@ public class UserFeedService {
 		
 		return followingList;
 	}
-
-
-
 	
-	// 팔로워 리스트 가져오기
-		// 팔로잉 리스트 가져오기
+	
+	// 게시물 수 가져오기
+	public int getFeedCount(int memberIdx) {
+		
+		int feedCount = 0;
+		
+		dao = template.getMapper(FeedDao.class);
+		feedCount = dao.selectFeedCount(memberIdx);
+		
+		
+		return feedCount;
+	}
+
+
 	
 	
 	

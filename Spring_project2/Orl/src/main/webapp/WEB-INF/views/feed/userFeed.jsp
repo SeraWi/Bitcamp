@@ -61,7 +61,7 @@
 
 
                 <ul class="follow-infos">
-                    <li>게시물 113</li>
+                    <li>게시물 ${feedCount}</li>
                     <li class="follows" id="follower"><a href="#">팔로워 ${followerCount}</a></li>
                     <li class="follows" id="following"><a href="#">팔로잉 ${followingCount}</a></li>
                 </ul>

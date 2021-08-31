@@ -34,7 +34,7 @@ public class FollowController {
 			System.out.println(followingList); 
 			
 			
-			//비동기 통신의 결과 데이터 제이슨
+			//비동기 통신의 결과 데이터 json
 			return followingList;
 		}
 		

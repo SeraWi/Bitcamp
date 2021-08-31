@@ -20,4 +20,7 @@ public interface FeedDao {
 	
 	//follwing 리스트 가져오기
 	List<FollowList> selectFollowingList(int memberIdx);
+
+	// 게시물 갯수 가져오기
+	int selectFeedCount(int memberIdx);
 }

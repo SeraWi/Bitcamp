@@ -5,7 +5,7 @@ select * from final.member;
 insert into final.member
 (memberId, memberPw, memberName,memberEmail, memberNickname)
 values
-('cool','1234','cool','cool@naver.com','cool1234');
+('cool','1111','cool','cool@naver.com','cool1234');
 insert into final.member
 (memberId, memberPw, memberName,memberEmail, memberNickname)
 values
@@ -21,7 +21,8 @@ values
 ('test4','1111','test4','test4@naver.com','test4');
 
 -- 사진 피드
-select * from final.photoboard;
+select * from final.photoBoard;
+
 
 insert into final.photoBoard
 (boardPhoto, boardDiscription, hashtag, memberIdx)
@@ -32,18 +33,29 @@ insert into final.photoBoard
 (boardPhoto, boardDiscription, hashtag, memberIdx)
 values
 ('default2.jpg', '주말 설악산 등산', '#등산 #오를래 #설악산 #속초여행', 1);
+insert into final.photoBoard
+(boardPhoto, boardDiscription, hashtag, memberIdx)
+values
+('default2.jpg', '주말 설악산 등산', '#등산 #오를래 #설악산 #속초여행', 9);
 
 
 insert into final.photoBoard
 (boardPhoto, boardDiscription, hashtag, memberIdx)
 values
-('picture.jpg', '남산~!~!', '#남산', 3);
+('picture.jpg', '남산~!~!', '#남산', 1);
 
 insert into final.photoBoard
 (boardPhoto, boardDiscription, hashtag, memberIdx)
 values
-('beautiful.jpg', '주말 등산,친구들과!', '#부산여행 #황령산', 4);
+('beautiful.jpg', '주말 등산,친구들과!', '#부산여행 #황령산', 1);
 
+-- 1번이 쓴 게시물
+select *
+from final.photoBoard
+where memberIdx =1;
+
+DROP TABLE IF EXISTS final.photoBoard;
+DROP TABLE IF EXISTS final.PhotoBoardComment;
 
 -- member와 사진 게시판 조인
 select * 
@@ -172,13 +184,13 @@ values(1,2);
 -- cool(1) 이 son(4)을 팔로우
 insert into final.follow
 (memberIdx, memberIdx2)
-values(1,13);
+values(1,12);
 insert into final.follow
 (memberIdx, memberIdx2)
-values(1,5);
+values(1,4);
 insert into final.follow
 (memberIdx, memberIdx2)
-values(8,1);
+values(13,1);
 
 -- son(4)가 cool(1)을 팔로우
 insert into final.follow
@@ -212,9 +224,17 @@ select *
 from final.follow
 where memberIdx2 = 1;
 
+-- 팔로워 수
 select count(*)
 from final.follow
 where memberIdx2 =1;
+
+-- 나를 팔로워 하는 사람 정보
+select F.followIdx, F.memberIdx, F.memberIdx2, M.memberNickname,M.memberProfile
+from final.follow as F inner join final.member as M
+on F.memberIdx = M.memberIdx
+where F.memberIdx2 = 1;
+
 
 -- cool 1이 팔로잉하는 sera 3을 팔로우 취소하기
 delete 
@@ -233,7 +253,17 @@ values('멋있다!',1,3);
 -- 1번 게시물 크게 보기 했을 때 정보
 -- 1번 게시물 사진, 아이디, 내용, 해시태그, 대댓글
 
+drop table final.member;
 
+drop table final.crew;
+drop table final.crewreg;
+drop table final.crewComment;
+
+DROP TABLE IF EXISTS final.PhotoBoard;
+DROP TABLE IF EXISTS final.PhotoBoardComment;
+
+DROP TABLE IF EXISTS final.follow;
+DROP TABLE IF EXISTS final.like;
 
 
 
