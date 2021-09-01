@@ -155,7 +155,9 @@
 	
 	function memberList(){
 		$.ajax({
-			url : 'http://13.125.199.218:8080/op/members',
+			/* url : 'http://13.125.199.218:8080/op/members', */
+			/* 0901에 수정 - spring boot, DemoApp*/
+			url : 'http://localhost:8081/members',
 			type : 'GET',
 			success : function(data){
 				console.log(data);
