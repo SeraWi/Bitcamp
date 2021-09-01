@@ -41,7 +41,6 @@ public class UserFeedService {
 	}
 	
 	
-	
 	// 팔로잉 수 가져오기
 	public int getFollowingCount(int memberIdx){
 		
@@ -53,7 +52,6 @@ public class UserFeedService {
 		return followingCount;
 		
 	}
-
 
 	//팔로잉 리스트 가져오기
 	public List<FollowList> getFollowingList(int memberIdx) {

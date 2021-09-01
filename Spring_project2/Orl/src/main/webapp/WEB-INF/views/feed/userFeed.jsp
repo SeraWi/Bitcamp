@@ -69,10 +69,22 @@
                 <!-- 버튼 -->
                 <!-- 내피드 남피드 버튼 다르게 해줘야 한다.  -->
                 <!-- 현재 session memberIdx랑 파라미터 memberIdx 가 같은 지 -->
-                <div class="buttons" >
+<%--                 <div class="buttons" >
                     <div><a class="buttons-area" href="<c:url value="/member/mypage"/>">내 정보 수정</a></div>
                     <div><a class="buttons-area" href="/orl/feed/createFeed">피드 올리기</a></div>
-                </div>
+                </div> --%>
+                
+                <div class="buttons" >
+	                <c:choose>
+	                	<c:when test="${sessionScope.member.memberIdx ne member.memberIdx}">
+	            			<div><a class="buttons-area" href="#">팔로우하기</a></div>
+	                	</c:when>
+						<c:otherwise>
+		                    <div><a class="buttons-area" href="<c:url value="/member/mypage"/>">내 정보 수정</a></div>
+		                    <div><a class="buttons-area" href="/orl/feed/createFeed">피드 올리기</a></div>  						
+						</c:otherwise>
+	                </c:choose>
+            	</div>
             	
             </div>
 
