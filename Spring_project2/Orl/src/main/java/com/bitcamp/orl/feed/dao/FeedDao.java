@@ -3,6 +3,7 @@ package com.bitcamp.orl.feed.dao;
 import java.util.List;
 
 import com.bitcamp.orl.feed.domain.FollowList;
+import com.bitcamp.orl.member.domain.Member;
 
 public interface FeedDao {
 	
@@ -23,4 +24,9 @@ public interface FeedDao {
 
 	// 게시물 갯수 가져오기
 	int selectFeedCount(int memberIdx);
+	
+	
+	// 남피드 출력 위해 필요한 member 객체 가져오기(한행)
+	Member selectOneMember(int memberIdx);
+	
 }

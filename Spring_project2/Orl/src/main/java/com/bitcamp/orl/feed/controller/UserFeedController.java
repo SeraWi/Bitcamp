@@ -1,17 +1,13 @@
 package com.bitcamp.orl.feed.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bitcamp.orl.feed.domain.Follow;
-import com.bitcamp.orl.feed.domain.FollowList;
 import com.bitcamp.orl.feed.service.UserFeedService;
 import com.bitcamp.orl.member.domain.Member;
 
@@ -57,7 +53,36 @@ public class UserFeedController {
 
 		return "feed/userFeed";
 	}
+	
+	// 남피드 보여주기  메서드 오버로딩
+	@RequestMapping("/feed/userFeed/{memberIdx}")
+	public String getUserFeed(
+			@PathVariable("memberIdx") int memberIdx,
+			Model model
+			) {
+		
+		//memberIdx에 해당하는 member객체 가져오기 
+		Member member = feedService.getOneMember(memberIdx);
+		
+		//팔로워 수 구하기
+		int followerCount = feedService.getFollowerCount(memberIdx);
 
+		//팔로잉 수 구하기
+		int followingCount = feedService.getFollowingCount(memberIdx);
+
+		// 게시물 수 구하기
+		int feedCount = feedService.getFeedCount(memberIdx);
+
+
+		//member 객체 전달
+		model.addAttribute("member",member);
+		model.addAttribute("followerCount",followerCount);
+		model.addAttribute("followingCount",followingCount);
+		model.addAttribute("feedCount",feedCount);
+		
+		
+		return "feed/userFeed";
+	}
 
 
 

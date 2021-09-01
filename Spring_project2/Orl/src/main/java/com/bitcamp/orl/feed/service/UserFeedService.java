@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.bitcamp.orl.feed.dao.FeedDao;
 import com.bitcamp.orl.feed.domain.Follow;
 import com.bitcamp.orl.feed.domain.FollowList;
+import com.bitcamp.orl.member.domain.Member;
 
 @Service
 public class UserFeedService {
@@ -77,7 +78,17 @@ public class UserFeedService {
 		
 		return feedCount;
 	}
-
+	
+	// memberIdx로 member객체 가져오기( 남피드 연결 위해)
+	public Member getOneMember(int memberIdx) {
+		Member member = null;
+		
+		dao = template.getMapper(FeedDao.class);
+		member = dao.selectOneMember(memberIdx);
+		
+		//System.out.println(member); 확인 완료
+		return member;
+	}
 
 	
 	

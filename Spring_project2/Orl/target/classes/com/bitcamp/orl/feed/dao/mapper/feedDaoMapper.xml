@@ -50,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-	<!-- 게시물 가져오기  -->
+	<!-- 게시물 갯수 가져오기  -->
 	<select id="selectFeedCount"
 			resultType="int"
 	>
@@ -60,6 +60,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
+	<!-- 남피드 출력을 위한 member객체 -->
+	<select id="selectOneMember"					
+			resultType="com.bitcamp.orl.member.domain.Member">
+		select * 
+		from member
+		where memberIdx=#{memberIdx}
+	</select>
 	
 
 </mapper>

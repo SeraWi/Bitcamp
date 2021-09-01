@@ -67,6 +67,8 @@
                 </ul>
 
                 <!-- 버튼 -->
+                <!-- 내피드 남피드 버튼 다르게 해줘야 한다.  -->
+                <!-- 현재 session memberIdx랑 파라미터 memberIdx 가 같은 지 -->
                 <div class="buttons" >
                     <div><a class="buttons-area" href="<c:url value="/member/mypage"/>">내 정보 수정</a></div>
                     <div><a class="buttons-area" href="/orl/feed/createFeed">피드 올리기</a></div>
@@ -300,7 +302,7 @@
 		
 		//비동기 통신
 		$.ajax({
-			url:'<c:url value="/feed/followerList"/>',
+			url:'<c:url value="/feed/followerList/${member.memberIdx}"/>',
 			type:'POST',
 			success: function(data){
 				console.log(data); 
@@ -310,7 +312,7 @@
 					
 					var html ='<div class="member">';
 					html += '	<img src="'+item.memberProfile+'"/>';
-					html += '	<a>'+item.memberNickname+'</a>';
+					html += '	<a href="<c:url value="/feed/userFeed/'+item.memberIdx+'"/>">'+item.memberNickname+'</a>';
 					html += '	<input type="submit" value="팔로우하기">';
 					html += '</div>';
 					
@@ -359,8 +361,10 @@
 		
 		//팔로잉 버튼 눌렀을 때 명단 가져오기 ->비동기 통신으로
 		$.ajax({
-			url:'<c:url value="/feed/followingList"/>',
-			type:'POST',
+			/* url:'<c:url value="/feed/followingList"/>', */
+			/* 09.01 수정 */
+			url:'<c:url value="/feed/followingList/${member.memberIdx}"/>',
+			type:'GET',
 			success: function(data){
 				console.log(data); 
 			
@@ -369,7 +373,7 @@
 					
 					var html ='<div class="member">';
 					html += '	<img src="'+item.memberProfile+'"/>';
-					html += '	<a>'+item.memberNickname+'</a>';
+					html += '	<a href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
 					html += '	<input type="submit" value="팔로우끊기">';
 					html += '</div>';
 					

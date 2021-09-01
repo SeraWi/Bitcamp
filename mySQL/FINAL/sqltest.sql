@@ -195,13 +195,13 @@ values(13,1);
 -- son(4)가 cool(1)을 팔로우
 insert into final.follow
 (memberIdx, memberIdx2)
-values(4,1);
+values(3,9);
 
 
 -- cool이 팔로우 하는 사람
 select * 
 from final.follow
-where memberIdx =1;
+where memberIdx =4;
 
 -- 팔로잉 수
 select count(*)
@@ -213,7 +213,7 @@ where memberIdx=1;
 select F.followIdx, F.memberIdx, F.memberIdx2, M.memberNickname,M.memberProfile
 from final.follow as F inner join final.member as M
 on F.memberIdx2 = M.memberIdx
-where F.memberIdx = 1;
+where F.memberIdx = 4;
 
 select count(*)
 from final.follow
