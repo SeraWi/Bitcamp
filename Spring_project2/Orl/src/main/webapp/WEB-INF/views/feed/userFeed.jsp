@@ -62,26 +62,23 @@
 
                 <ul class="follow-infos">
                     <li>게시물 ${feedCount}</li>
-                    <li class="follows" id="follower"><a href="#">팔로워 ${followerCount}</a></li>
+                    <li class="follows" id="follower"><a href="#" >팔로워 <span id="followerCount"> ${followerCount}</span></a></li>
                     <li class="follows" id="following"><a href="#">팔로잉 ${followingCount}</a></li>
                 </ul>
 
-                <!-- 버튼 -->
-                <!-- 내피드 남피드 버튼 다르게 해줘야 한다.  -->
-                <!-- 현재 session memberIdx랑 파라미터 memberIdx 가 같은 지 -->
-<%--                 <div class="buttons" >
-                    <div><a class="buttons-area" href="<c:url value="/member/mypage"/>">내 정보 수정</a></div>
-                    <div><a class="buttons-area" href="/orl/feed/createFeed">피드 올리기</a></div>
-                </div> --%>
-                
+                <!-- 버튼 영역 팔로우하기, 팔로우 끊기, 내정보 수정하기, 피드 올리기  -->
                 <div class="buttons" >
 	                <c:choose>
 	                	<c:when test="${sessionScope.member.memberIdx ne member.memberIdx}">
-	            			<div><a class="buttons-area" href="#">팔로우하기</a></div>
+	            			<!-- <div><a class="buttons-area" href="#">팔로우하기</a></div> -->
+	            			<!-- 09.01 기존 a태그에서 서버 통신 위해 button으로 바꿈  -->
+	            			<!-- <div id="followButton"><input type="button" class="buttons-area" value="팔로우하기"></div> -->
+	                		<div id="follow-button-div"><input type="button" id="follow-button" class="${followRelation==0? 'buttons-area-yellow':'buttons-area-gray'}" value="${followRelation==0? '팔로우 시작하기': '팔로우 그만하기'}"></div>
+	                		
 	                	</c:when>
 						<c:otherwise>
-		                    <div><a class="buttons-area" href="<c:url value="/member/mypage"/>">내 정보 수정</a></div>
-		                    <div><a class="buttons-area" href="/orl/feed/createFeed">피드 올리기</a></div>  						
+		                    <div><a class="buttons-area-yellow" href="<c:url value="/member/mypage"/>">내 정보 수정</a></div>
+		                    <div><a class="buttons-area-yellow" href="/orl/feed/createFeed">피드 올리기</a></div>  						
 						</c:otherwise>
 	                </c:choose>
             	</div>
@@ -90,9 +87,106 @@
 
 
         </section>
+        <!--프로필 영역 끝  -->
+        
+        <!-- 팔로우 시작하기, 팔로우 그만하기 버튼 js -->
+        <script>
+        	// 비동기 통신으로 팔로우 시작하기, 팔로우 그만하기 버튼을 눌렀을 때 팔로우 그민하기와 팔로우 시작하기 버튼으로 바꿔주기
+        	
+        	$('#follow-button-div').click(function(){
+        		//클릭하면 비동기 통신 시작
+        		
+        		var followStatus = $('#follow-button').val();
+        		console.log(followStatus);
+        		
+        		if(followStatus =='팔로우 그만하기'){
+        			// 0 == delete Member
+        			followStatus ='-1';
+        		}else{
+        			// 1 == insert Member
+        			followStatus='1';
+        		}
+        		
+        		console.log(followStatus);
+        		
 
+        		if(followStatus == -1){
+        			//팔로우 그만하기
+        			$.ajax({
+            			url:'<c:url value="/feed/followButtonClick"/>',
+            			type:'POST',
+            			data:{
+            				followStatus : followStatus,
+            				memberIdx : ${member.memberIdx}
+            			},
+            			success: function(data){
+            				//data == 1 또는 0
+            				if(data==1){
+            					// 팔로우 그만하기 성공 ->글자 시작하기로 바꾸기
+            					 $('#follow-button').val('팔로우 시작하기');
+            					
+            					//배경색 노란색으로 바꿔주기
+            					 $('#follow-button').css('background','#fdef7b');
+            					
+            					// 팔로워 수 갱신 시키기
+            					// 남 피드 팔로워 수 -1시키기
+            					//int로 변환해줘야 더하면 값이 int
+            					var followerCount = parseInt($('#followerCount').text());
+             					var newFollowerCount = followerCount -1;
+             					
+             					$('#followerCount').text(newFollowerCount);
+             					console.log(newFollowerCount);
+            					
+            					
+            				}else{
+            					//팔로우 그만하기 실패
+            				}
+            			}
+            			
+            		});  
+        			
+        			
+        		}else{
+        			//팔로우 시작하기: followStatus ==1
+        			
+        			$.ajax({
+        				url:'<c:url value="/feed/followButtonClick"/>',
+            			type:'POST',
+            			data:{
+            				followStatus : followStatus,
+            				memberIdx : ${member.memberIdx}
+            			},
+            			success:function(data){
+            				if(data ==1){
+            					//팔로우 시작하기 성공
+            					$('#follow-button').val('팔로우 그만하기');
+            					
+            					// 배경색 회색으로 바꾸기
+            					$('#follow-button').css('background','#f8f8f8');
+            					
+            					// 팔로잉 수 갱신 시키기
+            					// 남 피드 팔로워 수 +1시키기
+            					
+            					// int로 바꾸기 (text로 받으면 type이 String->String +1 =String)
+            					var followerCount = parseInt($('#followerCount').text());
+            					var newFollowerCount = followerCount +1;
+            					
+            					$('#followerCount').text(newFollowerCount);
+            					console.log(newFollowerCount);
+            					
+            				}
+            			}
+        				
+        			});
+        		}
+        		
+        	});
+        	
+        </script>
+	<!-- 팔로우 시작하기, 팔로우 그만하기 버튼 js 끝-->
+        
 
-        <!-- 내크루 가기 추가 ->Swiper사용 -->
+		<!-- 내크루 가기 영역  swiper 사용 -->
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
@@ -212,12 +306,15 @@
               }
             });
           </script>
+         <!-- 내 크루 영역 끝 --> 
+          
 
         <!-- 갤러리 네비게이션 영역 : 피드보기랑 좋아요 보기 -->
         <div class="gallery-nav">
             <div class="feed-icon"><a href="#"><img src="<c:url value="/images/feed/feeds/feedicon.png"/>"></a></div>
             <div class="heart-icon"><a href="#"><img src="<c:url value="/images/feed/feeds/redheart.png"/>"></a></div>
         </div>
+        <!--갤러리 네비게이션 영역 끝 -->
 
         <!-- 사진 피드 영역  -->
         <section class="gallery">
@@ -251,7 +348,9 @@
                 <img src="https://images.pexels.com/photos/3598706/pexels-photo-3598706.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
             </a>
         </section>
-
+        <!--갤러리 영역 끝 --> 
+		
+		<!-- 페이징 영역 -->
         <nav aria-label="Page navigation example ">
             <ul class="pagination">
               <li class="page-item"><a class="page-link" href="#" aria-label="Previous">
@@ -271,18 +370,19 @@
                     </a>
                 </li>
             </ul>
-    </nav>
+    	</nav>
+    	<!-- 페이징 영역 끝 -->
        
 
     </div>
-<!-- 메인 피드 영역 -->
+<!-- 메인 피드 영역  끝-->
 
 
 <!-- footer영역 -->
 <%@ include file="/WEB-INF/frame/default/footer.jsp"%>
 
 
-	<!--follower 영역 -->
+	<!--팔로워 영역 -->
 	 <div class="container-follow display_none" id="container-follower">
 
         <div class="title">
@@ -295,15 +395,13 @@
                 <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
                 <a href="#">사용자아이디</a>
                 <input type="submit" value="팔로우하기">
+                <!-- 비동기 통신으로 추가되는 영역 -->  
             </div>
-
-
         </div>
-
-
     </div>
+    <!-- 팔로워 리스트 영역 끝  -->
 	
-	<!-- 팔로워 눌렀을 때 -->
+	<!-- 팔로워 눌렀을 때  이벤트-->
 	<script>
 	$('#follower').click(function(){
 		//팔로워 보여주기
@@ -331,9 +429,6 @@
 					//div 추가해주기
 					$('#follower-members').append(html);
 				});  
- 			
-				
-				
 			}
 		});
 		
@@ -347,6 +442,7 @@
 	});
 	/* 팔로우 하기 팔로우 끊기 비동기 통신 여기서 처리!! */
 	</script>
+	<!--팔로워 영역 js 끝  -->
 	
 	<!--팔로잉 영역  -->
 	<div class="container-follow display_none" id="container-following">
@@ -359,8 +455,6 @@
         <div class="follower-members" id="following-members">
 			<!-- 비동기 통신으로 추가되는 영역 -->            
         </div>
-
-
     </div>
     
     <!-- 팔로잉 눌렀을 때 -->
@@ -392,9 +486,6 @@
 					//div 추가해주기
 					$('#following-members').append(html);
 				});  
- 			
-				
-				
 			}
 		});
 		

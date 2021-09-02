@@ -143,12 +143,12 @@ a:visited{
 }
 
 .buttons div{
-  background-color:#fdef7b;
+ /*  background-color:#fdef7b; */
   width:150px;
   height:30px;
 
-  border: 0.1px solid #DBDBDB;
-  border-radius: 10px;
+/*   border: 0.1px solid #DBDBDB;
+  border-radius: 10px; */
   /* 폰트 사이즈 색 수정(08.24) */
 /*   font-size:13px;
   color: #545454; */
@@ -158,10 +158,10 @@ a:visited{
   margin-right: 30px;
 
   /* 추가 08.24 */
-  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1); */
 }
-
-.buttons-area{
+/* 0901 수정 : 팔로우하기 버튼색 노랑색 */
+.buttons-area-yellow{
   display:block;
   width:150px;
   line-height: 30px;
@@ -170,7 +170,40 @@ a:visited{
   font-size:13px;
   color: #545454;
   cursor:pointer;
+  
+  /* 0901수정 -> 기존에 div 영역에서 하던 설정을 여기에서 하는걸로! */
+  border: 0.1px solid #DBDBDB;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+  
+  
+  /* 0901 버튼 색 테스트  회색*/
+  /* background-color:#f8f8f8; */
+  background-color:#fdef7b;
 }
+/* 0901 수정: 팔로우 끊기 버튼 색- 회색 */
+.buttons-area-gray{
+  display:block;
+  width:150px;
+  line-height: 30px;
+  text-align: center;
+
+  font-size:13px;
+  color: #545454;
+  cursor:pointer;
+  
+  /* 0901수정 -> 기존에 div 영역에서 하던 설정을 여기에서 하는걸로! */
+  border: 0.1px solid #DBDBDB;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+  
+  
+  /* 0901 버튼 색 테스트  회색*/
+  /* background-color:#f8f8f8; */
+  background-color:#f8f8f8;
+}
+
+
 
 
 /* 추가->swiper 인기많은 크루 하이라이트 영역 */

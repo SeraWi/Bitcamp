@@ -176,7 +176,7 @@ select * from final.follow;
 
 insert into final.follow
 (memberIdx, memberIdx2)
-values(1,3);
+values(1,5);
 insert into final.follow
 (memberIdx, memberIdx2)
 values(1,2);
@@ -201,7 +201,7 @@ values(3,9);
 -- cool이 팔로우 하는 사람
 select * 
 from final.follow
-where memberIdx =4;
+where memberIdx =1;
 
 -- 팔로잉 수
 select count(*)
@@ -215,7 +215,7 @@ from final.follow as F inner join final.member as M
 on F.memberIdx2 = M.memberIdx
 where F.memberIdx = 4;
 
-select count(*)
+select *
 from final.follow
 where memberIdx = 1;
 
@@ -235,11 +235,31 @@ from final.follow as F inner join final.member as M
 on F.memberIdx = M.memberIdx
 where F.memberIdx2 = 1;
 
+-- 09.01 팔로우하기와 팔로우끊기 버튼을 위해
+-- 내가 남을 팔로우 하는지 안하는지 확인하기
+select *
+from final.follow
+where memberIdx = 1 and memberIdx2 =6;
+
+select count(*)
+from final.follow
+where memberIdx = 1 and memberIdx2 =2;
+
+
+select * 
+from final.follow;
+
+
+
+
 
 -- cool 1이 팔로잉하는 sera 3을 팔로우 취소하기
 delete 
 from final.follow
-where memberIdx2 = 3;
+where memberIdx =1  and memberIdx2 = 9;
+
+select *
+from final.follow;
 
 
 -- 사진 피드에 댓글 남기기

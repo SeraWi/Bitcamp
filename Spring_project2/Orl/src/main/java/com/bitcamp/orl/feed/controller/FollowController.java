@@ -6,54 +6,26 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bitcamp.orl.feed.domain.FollowList;
-import com.bitcamp.orl.feed.service.UserFeedService;
+import com.bitcamp.orl.feed.service.FollowService;
 import com.bitcamp.orl.member.domain.Member;
 
 @RestController
 public class FollowController {
+	//비동기 통신 처리
 	
+//	@Autowired
+//	UserFeedService feedService;
 	
 	@Autowired
-	UserFeedService feedService;
-		
-		//팔로잉 리스트 출력 : 내 피드
-//		@RequestMapping("/feed/followingList")
-//		public List<FollowList> getFollowingList(
-//				HttpServletRequest request,
-//				Model model
-//				) {
-//			Member member = (Member) request.getSession().getAttribute("member");
-//			
-//			//팔로잉 리스트 가져오기
-//			List<FollowList> followingList =feedService.getFollowingList(member.getMemberIdx());
-//			//System.out.println(followingList); 
-//			
-//			
-//			//비동기 통신의 결과 데이터 json
-//			return followingList;
-//		}
-//		
-		//팔로워 리스트 출력: 내 피드
-//		@RequestMapping("/feed/followerList")
-//		public List<FollowList> getFollowerList(
-//				HttpServletRequest request,
-//				Model model
-//				) {
-//			Member member = (Member) request.getSession().getAttribute("member");
-//			
-//			//팔로잉 리스트 가져오기
-//			List<FollowList> followerList =feedService.getFollowerList(member.getMemberIdx());
-//			System.out.println(followerList); //확인!
-//			
-//			return followerList;
-//		}
-	
-	
+	FollowService followService;
 	
 		@RequestMapping("/feed/followerList/{memberIdx}")
 		public List<FollowList> getFollowerList(
@@ -62,7 +34,7 @@ public class FollowController {
 				) {
 			
 			//팔로잉 리스트 가져오기
-			List<FollowList> followerList =feedService.getFollowerList(memberIdx);
+			List<FollowList> followerList =followService.getFollowerList(memberIdx);
 			System.out.println(followerList); //확인!
 			
 			return followerList;
@@ -77,13 +49,42 @@ public class FollowController {
 				) {
 			
 			//팔로잉 리스트 가져오기
-			List<FollowList> followingList =feedService.getFollowingList(memberIdx);
+			List<FollowList> followingList =followService.getFollowingList(memberIdx);
 			System.out.println(followingList); 
 			
 			
 			//비동기 통신의 결과 데이터 json
 			return followingList;
 		}
-	
+		
+		// 팔로우 시작하기 혹은 그만하기 버튼 클릭
+		@PostMapping("/feed/followButtonClick")
+		public int startFollow(
+				@RequestParam("memberIdx") int yourIdx,
+				@RequestParam("followStatus") int followStatus,
+				HttpServletRequest request
+				) {
+			//팔로우 시작하기
+			int followResult = 0;
+			
+			// session에 저장된 myIdx 가져오기
+			int myIdx = ((Member) request.getSession().getAttribute("member")).getMemberIdx();
+			
+			if(followStatus == -1) {
+				// -1: 팔로우 그만하기를 눌렀다. -->delete
+				followResult = followService.followCancle(myIdx,yourIdx);
+				//결과 성공이면 1
+			}else {
+				// 1: 팔로우 시작하기를 눌렀다. -->insert 
+				followResult = followService.followStart(myIdx, yourIdx);
+			}
+			
+			
+			//결과 json
+			return followResult;
+		}
+		
+
+		
 	
 }

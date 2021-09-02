@@ -20,7 +20,7 @@ public class UserFeedService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	// 팔로워 수 가져오기
+	// 팔로워 수 가져오기 (08.30)
 	public int getFollowerCount(int memberIdx) {
 		int followerCount = 0;
 		
@@ -31,17 +31,17 @@ public class UserFeedService {
 	}
 	
 	//팔로워 리스트 가져오기
-	public List<FollowList> getFollowerList(int memberIdx) {
-		List<FollowList> followerList = new ArrayList<>();
-		
-		dao = template.getMapper(FeedDao.class);
-		followerList = dao.selectFollowerList(memberIdx);
-		
-		return followerList;
-	}
+//	public List<FollowList> getFollowerList(int memberIdx) {
+//		List<FollowList> followerList = new ArrayList<>();
+//		
+//		dao = template.getMapper(FeedDao.class);
+//		followerList = dao.selectFollowerList(memberIdx);
+//		
+//		return followerList;
+//	}
 	
 	
-	// 팔로잉 수 가져오기
+	// 팔로잉 수 가져오기(08.30)
 	public int getFollowingCount(int memberIdx){
 		
 		int followingCount = 0;
@@ -53,19 +53,19 @@ public class UserFeedService {
 		
 	}
 
-	//팔로잉 리스트 가져오기
-	public List<FollowList> getFollowingList(int memberIdx) {
-		List<FollowList> followingList = new ArrayList<>();
-		
-		dao = template.getMapper(FeedDao.class);
-		followingList = dao.selectFollowingList(memberIdx);
-		
-		
-		return followingList;
-	}
+	//팔로잉 리스트 가져오기(08.31)
+//	public List<FollowList> getFollowingList(int memberIdx) {
+//		List<FollowList> followingList = new ArrayList<>();
+//		
+//		dao = template.getMapper(FeedDao.class);
+//		followingList = dao.selectFollowingList(memberIdx);
+//		
+//		
+//		return followingList;
+//	}
 	
 	
-	// 게시물 수 가져오기
+	// 게시물 수 가져오기 (08.31)
 	public int getFeedCount(int memberIdx) {
 		
 		int feedCount = 0;
@@ -77,7 +77,7 @@ public class UserFeedService {
 		return feedCount;
 	}
 	
-	// memberIdx로 member객체 가져오기( 남피드 연결 위해)
+	// memberIdx로 member객체 가져오기(남피드 이동할 때 전달할 객체)
 	public Member getOneMember(int memberIdx) {
 		Member member = null;
 		
@@ -86,6 +86,19 @@ public class UserFeedService {
 		
 		//System.out.println(member); 확인 완료
 		return member;
+	}
+	
+	
+	//09.01 추가
+	//myIdx와 yourIdx로 내가 남을 팔로우 하는 상태인지 확인한다 ->팔로우하기, 팔로우 끊기 버튼 보여주기!
+	public int getfollowRelation(int myIdx, int yourIdx) {
+		int followRelationResult = 1;
+		
+		dao=template.getMapper(FeedDao.class);
+		//반환 결과는 1또는 0
+		followRelationResult = dao.selectFollowRelation(myIdx,yourIdx);
+		
+		return followRelationResult;
 	}
 
 	

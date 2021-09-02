@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	
-	<!-- 팔로잉 리스트 가져오기 -->
+	<!-- 팔로잉 리스트 가져오기 (비동기통신)-->
  	<select id="selectFollowingList"
 			resultType="com.bitcamp.orl.feed.domain.FollowList"
 	>
@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where F.memberIdx = ${memberIdx};
 	</select>
 	
-	<!-- 팔로워 리스트 가져오기 -->
+	<!-- 팔로워 리스트 가져오기 (비동기통신)-->
 	
 	<select id="selectFollowerList"
 			resultType="com.bitcamp.orl.feed.domain.FollowList"
@@ -60,13 +60,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
-	<!-- 남피드 출력을 위한 member객체 -->
+	<!-- member 정보 가져오기-->
 	<select id="selectOneMember"					
 			resultType="com.bitcamp.orl.member.domain.Member">
-		select * 
-		from member
-		where memberIdx=#{memberIdx}
+	select * 
+	from member
+	where memberIdx=#{memberIdx}
 	</select>
+	
+	
+	<!-- 나와 남의 관계: 팔로우 관계인가 아닌가를 확인,결과는 1또는0 -->
+	<select id="selectFollowRelation"
+			resultType="int"
+	>
+	select count(*)
+	from final.follow
+	where memberIdx = ${param1} and memberIdx2 = ${param2};	
+	</select>
+	
+	
+	<!-- 팔로우 시작하기 -->
+	<insert id="insertFollowMember"
+	>
+	insert into final.follow
+	(memberIdx, memberIdx2)
+	values(${param1},${param2});	
+	</insert>
+	
+	<!-- 팔로우 그만하기 -->
+	
+	<delete id="deleteFollowMember">
+	delete 
+	from final.follow
+	where memberIdx =${param1} and memberIdx2 = ${param2};
+		
+	</delete>
+	
+	
+	
+	
+	
+	
 	
 
 </mapper>

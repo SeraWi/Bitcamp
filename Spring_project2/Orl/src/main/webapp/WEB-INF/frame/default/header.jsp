@@ -39,7 +39,8 @@
 					</c:if>
 					<c:if test="${sessionScope.member ne null }">
 						<li><a href="#">내 크루</a></li>
-						<li><a href="<c:url value='/feed/userFeed'/>">내 피드</a></li>
+						<%-- <li><a href="<c:url value='/feed/userFeed'/>">내 피드</a></li> --%>
+						<li><a href="<c:url value='/feed/userFeed/${sessionScope.member.memberIdx}'/>">내 피드</a></li>
 						<li><a href="<c:url value='/member/mypage'/>">마이페이지</a></li>
 						<li><a href="<c:url value='/member/logout'/>">로그아웃</a></li>
 					</c:if>
