@@ -99,24 +99,15 @@
         		var followStatus = $('#follow-button').val();
         		console.log(followStatus);
         		
-        		if(followStatus =='팔로우 그만하기'){
-        			// 0 == delete Member
-        			followStatus ='-1';
-        		}else{
-        			// 1 == insert Member
-        			followStatus='1';
-        		}
-        		
-        		console.log(followStatus);
-        		
 
-        		if(followStatus == -1){
+        		if(followStatus == '팔로우 그만하기'){
         			//팔로우 그만하기
+        			//followStatus = -1
         			$.ajax({
             			url:'<c:url value="/feed/followButtonClick"/>',
             			type:'POST',
             			data:{
-            				followStatus : followStatus,
+            				followStatus : -1,
             				memberIdx : ${member.memberIdx}
             			},
             			success: function(data){
@@ -153,7 +144,7 @@
         				url:'<c:url value="/feed/followButtonClick"/>',
             			type:'POST',
             			data:{
-            				followStatus : followStatus,
+            				followStatus : 1,
             				memberIdx : ${member.memberIdx}
             			},
             			success:function(data){

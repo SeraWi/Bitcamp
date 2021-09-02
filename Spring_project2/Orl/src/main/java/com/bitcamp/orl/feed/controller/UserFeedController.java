@@ -86,7 +86,6 @@ public class UserFeedController {
 		int followRelation = feedService.getfollowRelation(myIdx,memberIdx);
 		//System.out.println(followRelation); 
 		
-
 		//model에 객체 전달
 		model.addAttribute("member",member);
 		model.addAttribute("followerCount",followerCount);
