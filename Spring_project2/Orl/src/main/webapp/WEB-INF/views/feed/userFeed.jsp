@@ -335,7 +335,7 @@
         <section class="gallery display_none" id="like-sort-gallery">
         	<c:forEach var="feedLikeGallery" items="${feedLikeGallery}">
 	        	<a href="#" class="item">
-	        		<img src="feedLikeGallery.boardPhoto" alt="좋아요">
+	        		<img src="feedLikeGallery.boardPhoto" alt="좋아요"> 
 	        	</a>
         	</c:forEach>
         </section>
