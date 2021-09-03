@@ -79,7 +79,9 @@
 	            			<!-- <div><a class="buttons-area" href="#">팔로우하기</a></div> -->
 	            			<!-- 09.01 기존 a태그에서 서버 통신 위해 button으로 바꿈  -->
 	            			<!-- <div id="followButton"><input type="button" class="buttons-area" value="팔로우하기"></div> -->
-	                		<div id="follow-button-div"><input type="button" id="follow-button" class="${followRelation==0? 'buttons-area-yellow':'buttons-area-gray'}" value="${followRelation==0? '팔로우 시작하기': '팔로우 그만하기'}"></div>
+	                		<div id="follow-button-div">
+	                		<input type="button" id="follow-button" class="${followRelation==0? 'buttons-area-yellow':'buttons-area-gray'}" value="${followRelation==0? '팔로우 시작하기': '팔로우 그만하기'}">
+	                		</div>
 	                		
 	                	</c:when>
 						<c:otherwise>
@@ -113,8 +115,8 @@
             			url:'<c:url value="/feed/followButtonClick"/>',
             			type:'POST',
             			data:{
-            				followStatus : -1,
-            				memberIdx : ${member.memberIdx}
+            				followStatus : '-1',
+            				memberIdx : '${member.memberIdx}'
             			},
             			success: function(data){
             				//data == 1 또는 0
@@ -152,8 +154,8 @@
         				url:'<c:url value="/feed/followButtonClick"/>',
             			type:'POST',
             			data:{
-            				followStatus : 1,
-            				memberIdx : ${member.memberIdx}
+            				followStatus :'1',
+            				memberIdx : '${member.memberIdx}'
             			},
             			success:function(data){
             				if(data ==1){
@@ -311,14 +313,14 @@
 
         <!-- 갤러리 네비게이션 영역 : 피드보기랑 좋아요 보기 -->
         <div class="gallery-nav">
-           <%--  <div class="feed-icon"><a href="#"><img src="<c:url value="/images/feed/feeds/feedicon.png"/>"></a></div> --%>
+        	<!-- 기본정렬 -->
             <div class="feed-icon" id="default-sort-Click"><input type="image" src="<c:url value="/images/feed/feeds/feedicon.png"/>"></div>
-            <%-- <div class="heart-icon" id="likeClick" ><a href="#"><img src="<c:url value="/images/feed/feeds/redheart.png"/>"></a></div> --%>
+        	<!-- 좋아요 정렬 -->
         	<div class="heart-icon" id="like-sort-Click" ><input type="image" src="<c:url value="/images/feed/feeds/redheart.png"/>"></div>
         </div>
         <!--갤러리 네비게이션 영역 끝 -->
 
-        <!-- 사진 피드 영역 : 기본정렬 -->
+        <!-- 갤러리영역 : 기본정렬 -->
         <section class="gallery" id="default-sort-gallery">
         	
         		<c:forEach var ="feedGallery" items="${feedGallery}">
@@ -327,7 +329,37 @@
 	        		</a>
         		</c:forEach>
          </section>
-<!-- 
+
+      
+        <!-- 사진 피드 영역: 좋아요 영역 display_none으로 안보이는 상태-->
+        <section class="gallery display_none" id="like-sort-gallery">
+        	<c:forEach var="feedLikeGallery" items="${feedLikeGallery}">
+	        	<a href="#" class="item">
+	        		<img src="feedLikeGallery.boardPhoto" alt="좋아요">
+	        	</a>
+        	</c:forEach>
+        </section>
+        <!--갤러리 영역 끝 --> 
+        
+        <!-- 좋아요 갤러리 정렬  js-->
+	    <script>
+        
+   			// 좋아요 아이콘 클릭하면 좋아요 정렬로 보여주기
+	    	   $('#like-sort-Click').click(function(){
+	       		//좋아요 정렬 보여주기
+	       		$('#default-sort-gallery').addClass('display_none');
+	       		$('#like-sort-gallery').removeClass('display_none');
+	       	});
+	        
+	        
+	        // 다시 기본 정렬 클릭하면 기본정렬로 보여주기
+	        	$('#default-sort-Click').click(function(){
+	        		$('#like-sort-gallery').addClass('display_none');
+	        		$('#default-sort-gallery').removeClass('display_none');
+	        	}); 
+        
+        </script>
+ <!-- 
             <a href="#" class="item">
               <img src="https://images.pexels.com/photos/2829336/pexels-photo-2829336.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
             </a>
@@ -355,38 +387,6 @@
             <a href="#" class="item">
                 <img src="https://images.pexels.com/photos/3598706/pexels-photo-3598706.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
             </a> -->
-      
-        <!-- 사진 피드 영역: 좋아요 영역 -->
-        <section class="gallery display_none" id="like-sort-gallery">
-        	<c:forEach var="feedLikeGallery" items="${feedLikeGallery}">
-	        	<a href="#" class="item">
-	        		<img src="feedLikeGallery.boardPhoto" alt="좋아요">
-	        	</a>
-        	</c:forEach>
-        </section>
-        <!--갤러리 영역 끝 --> 
-        
-        <!-- 좋아요 갤러리 정렬  js-->
-	    <script>
-        
-   		// 좋아요 아이콘 클릭하면 좋아요 정렬로 보여주기
-	    	   $('#like-sort-Click').click(function(){
-	       		console.log('클릭이벤트 실행');
-	       		//좋아요 정렬 보여주기
-	       		$('#default-sort-gallery').addClass('display_none');
-	       		$('#like-sort-gallery').removeClass('display_none');
-	       	});
-	        
-	        
-	        // 다시 기본 정렬 클릭하면 기본정렬로 보여주기
-	        	$('#default-sort-Click').click(function(){
-	        		console.log('클릭이벤트 실행')
-	        		$('#like-sort-gallery').addClass('display_none');
-	        		$('#default-sort-gallery').removeClass('display_none');
-	        	}); 
-        
-        </script>
-        
 		
 		<!-- 페이징 영역 -->
        <!--  <nav aria-label="Page navigation example ">

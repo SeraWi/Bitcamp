@@ -45,7 +45,8 @@ public interface FeedDao {
 	// 팔로우 그만하기
 	int deleteFollowMember(int myIdx, int yourIdx);
 
-	// 내 피드 사진 갤러리 전체 가져오기
+	
+	// 내 피드 기본 정렬 가져오기
 	List<FeedGallery> selectFeedGallery(@Param("memberIdx")int memberIdx);
 
 	// 내 피드 좋아요 정렬 가져오기

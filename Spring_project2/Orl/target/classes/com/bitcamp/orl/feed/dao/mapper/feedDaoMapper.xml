@@ -96,7 +96,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</delete>
 	
-	<!-- 10. 피드 갤러리 가져오기(첫요청) , 최근거를 위로 -->
+	<!-- 10. 피드 갤러리 기본 정렬 가져오기(첫요청) , 최근거를 위로 -->
 	<select id="selectFeedGallery"
 			resultType="com.bitcamp.orl.feed.domain.FeedGallery">
 	select boardIdx, boardPhoto
