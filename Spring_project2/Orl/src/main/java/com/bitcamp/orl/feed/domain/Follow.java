@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class Follow {
+	// 아직 안씀!!!
+	// 팔로워 수 랑 팔로잉 수는 int 반환하기 때문에 이 객체 쓸 필요 없음.
+	
 	
 	private int followIdx;
 	private Timestamp followDate;

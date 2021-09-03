@@ -2,6 +2,10 @@ package com.bitcamp.orl.feed.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+import com.bitcamp.orl.feed.domain.FeedGallery;
+import com.bitcamp.orl.feed.domain.FeedLikeGallery;
 import com.bitcamp.orl.feed.domain.FollowList;
 import com.bitcamp.orl.member.domain.Member;
 
@@ -40,6 +44,15 @@ public interface FeedDao {
 	
 	// 팔로우 그만하기
 	int deleteFollowMember(int myIdx, int yourIdx);
+
+	// 내 피드 사진 갤러리 전체 가져오기
+	List<FeedGallery> selectFeedGallery(@Param("memberIdx")int memberIdx);
+
+	// 내 피드 좋아요 정렬 가져오기
+	List<FeedLikeGallery> selectFeedLikeGallery(int memberIdx);
+	
+	
+	
 	
 	
 	

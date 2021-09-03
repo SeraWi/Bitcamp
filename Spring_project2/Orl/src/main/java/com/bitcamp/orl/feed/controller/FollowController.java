@@ -64,7 +64,7 @@ public class FollowController {
 				@RequestParam("followStatus") int followStatus,
 				HttpServletRequest request
 				) {
-			//팔로우 시작하기
+			//반환하는 결과 데이터
 			int followResult = 0;
 			
 			// session에 저장된 myIdx 가져오기

@@ -20,10 +20,10 @@ insert into final.member
 values
 ('test4','1111','test4','test4@naver.com','test4');
 
--- 사진 피드
+-- 사진 피드 0903-----------------------------------------------------------------------------------------------------
 select * from final.photoBoard;
 
-
+-- 피드 업로드
 insert into final.photoBoard
 (boardPhoto, boardDiscription, hashtag, memberIdx)
 values
@@ -49,10 +49,20 @@ insert into final.photoBoard
 values
 ('beautiful.jpg', '주말 등산,친구들과!', '#부산여행 #황령산', 1);
 
--- 1번이 쓴 게시물
-select *
+-- 1번이 쓴 게시물 ( 최근거를 가장 위로)
+select boardIdx, boardPhoto
 from final.photoBoard
-where memberIdx =1;
+where memberIdx =1 
+order by boardIdx desc;
+
+-- 사진 갤러리 찾기 : 정렬 기준 최근순
+select boardIdx, boardPhoto
+from final.photoBoard
+where memberIdx = 1
+order by boardIdx DESC;
+
+-- 내가 좋아요한 갤러리 정렬
+
 
 DROP TABLE IF EXISTS final.photoBoard;
 DROP TABLE IF EXISTS final.PhotoBoardComment;
@@ -130,7 +140,7 @@ where crewIdx in ( select crewIdx from final.member natural join final.crewReg w
 
 -- 좋아요 table
 select * from final.like;
-select * from final.photoboard;
+select * from final.photoBoard;
 
 -- 좋아요 눌렀을 때 --> insert
 insert into final.like
@@ -139,7 +149,7 @@ values(1,1);
 
 insert into final.like
 (memberIdx,boardIdx)
-values(1,2);
+values(1,7);
 
 insert into final.like
 (memberIdx,boardIdx)
@@ -159,12 +169,20 @@ select memberIdx, boardIdx
 from final.like
 where memberIdx =4;
 
--- 내가 좋아요 한 게시물의 사진찾기
+-- 내가 좋아요 한 게시물의 사진찾기 ->내 피드는 빼기
 -- 게시물번호가 같은걸로 join
-select final.like.memberIdx as '내 아이디', boardPhoto as'좋아요한 사진', final.photoboard.memberIdx as'내가 좋아요 누른 사람 아이디'
-from final.like inner join final.photoboard
-where final.like.boardIdx = final.photoboard.boardIdx
-and final.like.memberIdx =4;
+select photoBoard.boardIdx as'게시물 idx', photoBoard.boardPhoto as'좋아요한 사진', photoBoard.memberIdx as'내가 좋아요 누른 사람 idx'
+from final.like inner join final.photoBoard
+on final.like.boardIdx = final.photoBoard.boardIdx
+where final.like.memberIdx =1 and photoBoard.memberIdx != 1
+order by boardIdx desc;
+
+select *
+from final.like inner join final.photoBoard
+on final.like.boardIdx = final.photoBoard.boardIdx;
+
+
+
 
 -- 팔로우 팔로잉 관계
 select * from final.follow;
@@ -248,8 +266,6 @@ where memberIdx = 1 and memberIdx2 =2;
 
 select * 
 from final.follow;
-
-
 
 
 
