@@ -344,19 +344,22 @@
         <!-- 좋아요 갤러리 정렬  js-->
 	    <script>
         
-   			// 좋아요 아이콘 클릭하면 좋아요 정렬로 보여주기
-	    	   $('#like-sort-Click').click(function(){
-	       		//좋아요 정렬 보여주기
-	       		$('#default-sort-gallery').addClass('display_none');
-	       		$('#like-sort-gallery').removeClass('display_none');
+   		// 좋아요 아이콘 클릭하면 좋아요 정렬로 보여주기
+	    	$('#like-sort-Click').click(function(){
+	       		// 좋아요 정렬 : display_none 없애기
+	       		// 기본 정렬: display_none 설정
+		       	$('#default-sort-gallery').addClass('display_none');
+		       	$('#like-sort-gallery').removeClass('display_none');
 	       	});
 	        
 	        
-	        // 다시 기본 정렬 클릭하면 기본정렬로 보여주기
-	        	$('#default-sort-Click').click(function(){
-	        		$('#like-sort-gallery').addClass('display_none');
-	        		$('#default-sort-gallery').removeClass('display_none');
-	        	}); 
+	     // 다시 기본 정렬 클릭하면 기본정렬로 보여주기
+	        $('#default-sort-Click').click(function(){
+	        	// 좋아요 정렬 :display_none 설정
+	        	// 기본 정렬 : 보이도록 설정
+	        	$('#like-sort-gallery').addClass('display_none');
+	        	$('#default-sort-gallery').removeClass('display_none');
+	        }); 
         
         </script>
  <!-- 
@@ -418,9 +421,11 @@
 
 <!-- footer영역 -->
 <%@ include file="/WEB-INF/frame/default/footer.jsp"%>
+<!-- footer 영역 끝 -->
 
 
-	<!--팔로워 영역 -->
+
+	<!--팔로워 리스트 영역 -->
 	 <div class="container-follow display_none" id="container-follower">
 
         <div class="title">
@@ -439,7 +444,7 @@
     </div>
     <!-- 팔로워 리스트 영역 끝  -->
 	
-	<!-- 팔로워 눌렀을 때  이벤트-->
+	<!-- 팔로워 눌렀을 때  리스트 보여주기 JS-->
 	<script>
 	$('#follower').click(function(){
 		//팔로워 보여주기
@@ -480,9 +485,9 @@
 	});
 	/* 팔로우 하기 팔로우 끊기 비동기 통신 여기서 처리!! */
 	</script>
-	<!--팔로워 영역 js 끝  -->
+	<!--팔로워 리스트  영역 js 끝  -->
 	
-	<!--팔로잉 영역  -->
+	<!--팔로잉  리스트 영역  -->
 	<div class="container-follow display_none" id="container-following">
 
         <div class="title">
@@ -495,7 +500,7 @@
         </div>
     </div>
     
-    <!-- 팔로잉 눌렀을 때 -->
+    <!-- 팔로잉 리스트 JS -->
 	<script>
 	$('#following').click(function(){
 		$('#container-following').removeClass('display_none');
@@ -529,6 +534,7 @@
 		
 	});
 	
+	// 닫기 버튼 눌렀을 때 
 	$('.form-close').click(function(){
 		$('#container-following').addClass('display_none');
 		
