@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.bitcamp.orl.crew.domain.Crew;
+import com.bitcamp.orl.crew.service.CrewListViewService;
 import com.bitcamp.orl.feed.domain.FeedGallery;
 import com.bitcamp.orl.feed.domain.FeedLikeGallery;
 import com.bitcamp.orl.feed.service.FeedGalleryService;
@@ -24,6 +26,9 @@ public class UserFeedController {
 	
 	@Autowired
 	FeedGalleryService galleryService;
+	
+	@Autowired
+	CrewListViewService crewListService;
 
 	//가장 첫번째 요청: 피드 보여주기 (세션에 저장된 idx 필요)
 	// 1. 사용자 닉네임 --해결
@@ -100,6 +105,10 @@ public class UserFeedController {
 		// 6) 사진 갤러리 좋아요 정렬 보여주기
 		List<FeedLikeGallery> feedLikeGallery = galleryService.getFeedLikeGallery(memberIdx);
 		
+		// 7) 내가 가입한 크루 보여주기
+		List<Crew> myCrewList = crewListService.getMyCrewList(memberIdx);
+		
+		
 		
 		//model에 객체 전달
 		model.addAttribute("member",member);
@@ -109,21 +118,22 @@ public class UserFeedController {
 		model.addAttribute("followRelation", followRelation);
 		model.addAttribute("feedGallery",feedGallery);
 		model.addAttribute("feedLikeGallery",feedLikeGallery);
+		model.addAttribute("myCrewList",myCrewList);
 		
 		
 		return "feed/userFeed";
 	}
 
 	//피드올리기
-	@RequestMapping("/feed/createFeed")
-	public String getCreateFeed() {
-		return "feed/createFeed";
-	}
-
-	//피드상세보기
-	@RequestMapping("/feed/feedview")
-	public String gerFeedView() {
-		return "feed/feedview";
-	}
+//	@RequestMapping("/feed/createFeed")
+//	public String getCreateFeed() {
+//		return "feed/createFeed";
+//	}
+//
+//	//피드상세보기
+//	@RequestMapping("/feed/feedview")
+//	public String gerFeedView() {
+//		return "feed/feedview";
+//	}
 
 }

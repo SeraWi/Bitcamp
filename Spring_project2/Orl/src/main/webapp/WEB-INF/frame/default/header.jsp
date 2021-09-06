@@ -25,7 +25,7 @@
 					<li><a href="<c:url value='/'/>">MAIN</a></li>
 					<li><a href="<c:url value='/'/>">HIKING</a></li>
 					<li><a href="<c:url value='/crew/list'/>">CREW</a></li>
-					<li><a href="<c:url value='/'/>">COMMUNITY</a></li>
+					<li><a href="<c:url value='/feed/feedmain'/>">COMMUNITY</a></li>
 					<li><div class="icon" onclick="menuToggle();">
 							<a href="#"><i class="far fa-user"></i></a>
 						</div></li>

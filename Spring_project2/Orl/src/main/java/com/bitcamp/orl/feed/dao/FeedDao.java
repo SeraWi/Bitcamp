@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.bitcamp.orl.feed.domain.Feed;
 import com.bitcamp.orl.feed.domain.FeedGallery;
 import com.bitcamp.orl.feed.domain.FeedLikeGallery;
 import com.bitcamp.orl.feed.domain.FollowList;
@@ -52,7 +53,8 @@ public interface FeedDao {
 	// 내 피드 좋아요 정렬 가져오기
 	List<FeedLikeGallery> selectFeedLikeGallery(int memberIdx);
 	
-	
+	//피드 작성 (우리언니)
+	int createFeed(Feed feed);
 	
 	
 	

@@ -118,6 +118,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
+	<!--12.  피드 작성 하면 insert -->
+	<insert id="createFeed"
+			parameterType="com.bitcamp.orl.feed.domain.Feed"
+			useGeneratedKeys="true"
+			keyProperty="boardIdx"
+	>
+		insert into photoBoard (boardPhoto, boardDiscription, hashtag, tag, memberIdx)
+			values (#{boardPhoto}, #{boardDiscription}, #{hashtag}, #{tag}, #{memberIdx});
+	</insert>
 	
 	
 	

@@ -189,9 +189,29 @@
         
 
 		<!-- 내크루 가기 영역  swiper 사용 -->
+		<!-- href : crewIdx로 해서 크루 상세보기로 넘어가야한다. -->
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
+             
+              	<c:forEach var ="myCrewList" items="${myCrewList}">
+	              	 <div class="swiper-slide">
+	              		 <a href="<c:url value="/crew/detail/${myCrewList.crewIdx}&1"/>" class="crew">
+		              		<img src="${myCrewList.crewPhoto}">
+		              		<div>${myCrewList.crewName}</div>
+	              		</a>
+	              	</div>
+
+              	</c:forEach>
+              	
               <div class="swiper-slide">
+                <a href="#" class="crew">
+                    <img src="<c:url value="/images/feed/feeds/more.png"/>" alt="">
+                    <div>MORE</div>
+                </a>
+              </div> 
+              	
+
+              	<div class="swiper-slide">
                 <a href="#" class="crew">
                   <img
                     src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
@@ -199,6 +219,7 @@
                   <div>크루이름크루크루크루크루크루</div>
                 </a>
               </div>
+              
               <div class="swiper-slide">
                 <a href="#" class="crew">
                   <img
@@ -207,6 +228,7 @@
                   <div>크크크루루루!</div>
                 </a>
               </div>
+              
               <div class="swiper-slide">
                 <a href="#" class="crew">
                   <img
@@ -274,18 +296,12 @@
                 </a>
               </div>
 
-              <div class="swiper-slide">
-                <a href="#" class="crew">
-                    <img src="<c:url value="/images/feed/feeds/more.png"/>" alt="">
-                    <div>MORE</div>
-                </a>
-              </div>
-
-            </div>
+			
+            </div><!-- swiper-wrapper 끝 -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-pagination"></div>
-          </div>
+          </div> <!-- 내크루 가기 영역 끝 -->
       
           <!-- Swiper JS -->
           <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -321,15 +337,15 @@
         <!--갤러리 네비게이션 영역 끝 -->
 
         <!-- 갤러리영역 : 기본정렬 -->
-        <section class="gallery" id="default-sort-gallery">
+	    <section class="gallery" id="default-sort-gallery">
         	
         		<c:forEach var ="feedGallery" items="${feedGallery}">
 	        		<a href="#" class="item">
 	        			<img src="feedGallery.boardPhoto" alt="기본">
 	        		</a>
         		</c:forEach>
-         </section>
-
+        </section> 
+        
       
         <!-- 사진 피드 영역: 좋아요 영역 display_none으로 안보이는 상태-->
         <section class="gallery display_none" id="like-sort-gallery">
@@ -435,10 +451,11 @@
 
         <div class="follower-members" id="follower-members">
             <div class="member">
+             <!-- 비동기 통신으로 추가되는 영역 --> 
                 <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>">
                 <a href="#">사용자아이디</a>
                 <input type="submit" value="팔로우하기">
-                <!-- 비동기 통신으로 추가되는 영역 -->  
+                
             </div>
         </div>
     </div>
@@ -466,7 +483,7 @@
 					var html ='<div class="member">';
 					html += '	<img src="'+item.memberProfile+'"/>';
 					html += '	<a href="<c:url value="/feed/userFeed/'+item.memberIdx+'"/>">'+item.memberNickname+'</a>';
-					html += '	<input type="submit" value="팔로우하기">';
+					html += '	<input type="submit" value="팔로우 시작하기">';
 					html += '</div>';
 					
 					//div 추가해주기
@@ -484,6 +501,8 @@
 		
 	});
 	/* 팔로우 하기 팔로우 끊기 비동기 통신 여기서 처리!! */
+	
+	
 	</script>
 	<!--팔로워 리스트  영역 js 끝  -->
 	
@@ -523,7 +542,7 @@
 					var html ='<div class="member">';
 					html += '	<img src="'+item.memberProfile+'"/>';
 					html += '	<a href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
-					html += '	<input type="submit" value="팔로우끊기">';
+					html += '	<input type="submit" id="follow-button-in-list" value="팔로우 그만하기">';
 					html += '</div>';
 					
 					//div 추가해주기
@@ -540,6 +559,52 @@
 		
 	});
 	
+	// 비동기 통신으로 팔로잉 리스트 속 버튼을 클릭했을 때
+	$('#follow-button-in-list').click(function(){
+		
+		var followStatus = $('#follow-button').val(); // 팔로우 시작하기 혹은 그만하기 인지 확인
+		console.log(followStatus);
+		
+		if(followStatus == '팔로우 그만하기'){
+			//팔로우 그만하기
+			//followStatus = -1
+			$.ajax({
+    			url:'<c:url value="/feed/followButtonClick"/>',
+    			type:'POST',
+    			data:{
+    				followStatus : '-1',
+    				memberIdx : '${member.memberIdx}'
+    			},
+    			success: function(data){
+    				//data == 1 또는 0
+    				if(data==1){
+    					// 결과 데이터 1 : 리턴값 1 == 팔로우 그만하기 성공
+    					// 1) 팔로우 그만하기 성공 ->글자 시작하기로 바꾸기
+    					 $('#follow-button').val('팔로우 시작하기');
+    					
+    					// 2) 배경색 노란색으로 바꿔주기 
+    					 $('#follow-button').css('background','#fdef7b');
+    					
+    					// 3) 팔로워 수 갱신 시키기 -> 남 피드 팔로워 수 -1시키기
+    					
+    					//int로 변환해줘야 더하면 값이 int
+    					var followerCount = parseInt($('#followerCount').text());
+     					var newFollowerCount = followerCount -1;
+     					
+     					// 캐스팅하고 값을 바꿔주기ㄴ
+     					$('#followerCount').text(newFollowerCount);
+     					console.log(newFollowerCount);
+    					
+    					
+    				}else{
+    					//팔로우 그만하기 실패
+    				}
+    			}
+		
+		
+		
+		
+	});
 	
 	
 	</script>

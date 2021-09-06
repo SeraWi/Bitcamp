@@ -21,8 +21,6 @@ import com.bitcamp.orl.member.domain.Member;
 public class FollowController {
 	//비동기 통신 처리
 	
-//	@Autowired
-//	UserFeedService feedService;
 	
 	@Autowired
 	FollowService followService;

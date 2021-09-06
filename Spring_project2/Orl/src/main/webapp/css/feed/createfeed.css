@@ -15,38 +15,35 @@ button, input {
 button:hover {
     cursor: pointer;
 }
-
-/* 추가!!08.30 */
-body{
-	position:relative;
-}
-
-
 .container {
     display: flex;
     width: 1000px;
     height: 650px;
 }
-.nickname {
+
+/* close button */
+.container>button {
+    position: absolute;
+    top: 7px;
+    right: 0;
+    z-index: 1;
+}
+.container>button>img {
+    width: 20px;
+}
+
+.c_name {
     font-weight: bold;
 }
 
 
-.container>button>img { /* 닫기 버튼 */
-    position: absolute;
-    margin: 10px;
-    right: 0;
-    top: 0;
-    width: 20px;
-}
 
 
-
-.leftbox { /* 사진 영역 */
+.c_leftbox { /* 사진 영역 */
     width: 55%;
     background-color: ghostwhite;
 }
-    .leftbox>img { /* 사진 채우기 */
+    .c_leftbox>img { /* 사진 채우기 */
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -54,24 +51,24 @@ body{
 
 
 
-.rightbox {
+.c_rightbox {
     width: 45%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-    .profile { /* 프로필 영역 */
+    .c_profile { /* 프로필 영역 */
         position: relative;
         height: 100px;
         border-bottom: 1px solid gainsboro;
     }
-        .photo {
+        .c_photo {
             width: 60px;
             height: 60px;
             border-radius: 50%;
         }
-        .profile img { /* 프로필 사진 */
+        .c_profile img { /* 프로필 사진 */
             margin: 30%;
             width: 100%;
             height: 100%;
@@ -80,22 +77,34 @@ body{
             padding: 3px;
             border: 1px solid #C9C0AE;
         }
-        .profile>a { /* 닉네임 */
+        .c_profile>a { /* 닉네임 */
             position: absolute;
             left: 110px;
             top: 40px;
         }
-        .profile>button { /* 사진 선택 버튼 */
-            position: absolute;
-            left: 340px;
+        .filebox label { /* 사진 선택 */
+         	position: absolute;
+        	left: 300px;
             top: 35px;
-
-            font-size: 13px;
-            border: 1px solid gray;
-            border-radius: 6px;
-            padding: 6px 12px;
-            background-color: #FDEF7B;
+			padding: 7px 30px;
+			font-size: 13px;
+			background-color: #FDEF7B;
+			cursor: pointer;
+			
+			border: 1px solid grey;
+			border-bottom-color: grey;
+			border-radius: 5px;
         }
+        .filebox>input {
+	        position: absolute;
+	        width: 10px;
+	        height: 10px;
+	        padding: 0;
+	        margin: -1px;
+	        overflow: hidden;
+	        clip:rect(0,0,0,0);
+	        border: 0;
+		}
     
 
 
@@ -181,7 +190,7 @@ body{
         height: 90px;
         position: relative;
     }
-        .submit>button { /* 게시버튼 */
+        .submit>input { /* 게시버튼 */
             position: absolute;
             transform: translate(-50%, -50%);
             left: 50%;

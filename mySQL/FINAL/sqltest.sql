@@ -101,25 +101,27 @@ select *
 from final.member natural join final.crew;
 
 -- 크루 가입하기
-select * from final.crewReg;
+select * from final.crewreg;
 
--- sera 가 1번 크루에 가입
-insert into final.crewReg
-(memberIdx,crewIdx)
-values(3,1);
-insert into final.crewReg
-(memberIdx,crewIdx)
-values(3,2);
 
-insert into final.crewReg
+
+-- memberIdx가 1번 크루에 가입
+insert into final.crewreg
+(memberIdx,crewIdx)
+values(2,1);
+insert into final.crewreg
+(memberIdx,crewIdx)
+values(2,2);
+
+insert into final.crewreg
 (memberIdx,crewIdx)
 values(1,1);
 
-insert into final.crewReg
+insert into final.crewreg
 (memberIdx,crewIdx)
 values(4,2);
 
-insert into final.crewReg
+insert into final.crewreg
 (memberIdx,crewIdx)
 values(4,1);
 
@@ -135,7 +137,7 @@ where memberIdx =3;
 -- crwidx에 해당하는 정보를 찾음
 select * 
 from final.crew
-where crewIdx in ( select crewIdx from final.member natural join final.crewReg where memberIdx = 4);
+where crewIdx in ( select crewIdx from final.member natural join final.crewreg where memberIdx = 1);
 
 
 -- 좋아요 table
