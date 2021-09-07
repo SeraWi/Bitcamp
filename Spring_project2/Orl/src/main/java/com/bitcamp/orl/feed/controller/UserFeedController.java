@@ -79,7 +79,7 @@ public class UserFeedController {
 		// 세션에 저장된 나의 memberIdx 
 		int myIdx = ((Member) request.getSession().getAttribute("member")).getMemberIdx();
 		
-		//memberIdx에 해당하는 member객체 가져오기
+		// memberIdx에 해당하는 member객체 가져오기
 		// 내가 내 피드로 들어가면 member = 나
 		// 내가 남 피드로 들어가면 member = 남
 		Member member = feedService.getOneMember(memberIdx);
@@ -107,7 +107,6 @@ public class UserFeedController {
 		
 		// 7) 내가 가입한 크루 보여주기
 		List<Crew> myCrewList = crewListService.getMyCrewList(memberIdx);
-		
 		
 		
 		//model에 객체 전달
