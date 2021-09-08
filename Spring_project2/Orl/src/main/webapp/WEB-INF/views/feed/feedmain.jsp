@@ -8,10 +8,8 @@
 <title>FEED MAIN</title>
 <link rel="stylesheet" href="<c:url value='/css/feed/feedmain.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-
 
 <body>
 
@@ -27,7 +25,7 @@
 		</div>
 	</div>
 	
-	<!-- modal_createfeed -->
+	<!-- <!— modal_createfeed —> -->
 	<div class="modal_createfeed">
 		<div class="modal_content">
 			<section class="container">
@@ -36,32 +34,19 @@
 		</div>
 	</div>
 
-	<!-- feed main -->
+	<!-- <!— feed main —> -->
 	<%@ include file="/WEB-INF/views/feed/feed.jsp"%>
+	
 
-	<!-- footer -->
+	<!-- <!— footer —> -->
 	<%@ include file="/WEB-INF/frame/default/footer.jsp"%>
 
-	<script>
-		/* modal_feedview */
-		$(function() {
-			$(".modalbtn_feedview").click(function() {
-				$(".modal_feedview").fadeIn();
-			});
-			$(".close").click(function() {
-				$(".modal_feedview").fadeOut();
-			});
-		});
 
-		/* modal_createfeed */
-		$(function() {
-			$(".modalbtn_createfeed").click(function() {
-				$(".modal_createfeed").fadeIn();
-			});
-			$(".close").click(function() {
-				$(".modal_createfeed").fadeOut();
-			});
-		});
+
+	<script>
+	
+		
+		
 	</script>
 
 </body>

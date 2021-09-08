@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>USER FEED</title>
- <!-- 스와이퍼 css -->
+ 	<!-- 스와이퍼 css -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
 
     <!-- bootstrap css -->
@@ -26,7 +26,7 @@
 	<link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
 	<link rel="stylesheet" href="<c:url value='/css/feed/userFeed.css'/>">
 	<link rel="stylesheet" href="<c:url value='/css/feed/follow.css'/>">
-	<link rel="stylesheet" href="<c:url value='/css/feed/createFeed.css'/>">
+	<link rel="stylesheet" href="<c:url value='/css/feed/feedmain.css'/>">
 	
 	<style>
 		.display_none{
@@ -39,9 +39,21 @@
 <body>
 	<!-- 헤더영역 -->
 	<%@ include file="/WEB-INF/frame/default/header.jsp"%>
+	
+	
+	<!-- <!— modal_createfeed 우리언니 0908 추가 —> -->
+	<div class="modal_createfeed">
+		<div class="modal_content">
+			<section class="container">
+				<%@ include file="/WEB-INF/views/feed/createfeed.jsp"%>
+			</section>
+		</div>
+	</div>
+	
+	
 
 
-	 <!-- 메인 피드 영역 -->
+	 <!-- 메인 피드 영역  시작-->
     <div class="container1">
 
         <!-- 프로필 영역 -->
@@ -86,7 +98,9 @@
 	                	</c:when>
 						<c:otherwise>
 		                    <div><a class="buttons-area-yellow" href="<c:url value="/member/mypage"/>">내 정보 수정</a></div>
-		                    <div><a class="buttons-area-yellow" href="/orl/feed/createFeed">피드 올리기</a></div>  						
+		                    <!-- <div><a class="buttons-area-yellow" href="/orl/feed/createFeed">피드 올리기</a></div>   -->
+		                    <!-- 피드 올리기  수정(0908) -->	
+		                    <div><a class="buttons-area-yellow modalbtn_createfeed">피드 올리기</a></div>					
 						</c:otherwise>
 	                </c:choose>
             	</div>
@@ -337,24 +351,38 @@
         <!--갤러리 네비게이션 영역 끝 -->
 
         <!-- 갤러리영역 : 기본정렬 -->
-	    <section class="gallery" id="default-sort-gallery">
-        	
-        		<c:forEach var ="feedGallery" items="${feedGallery}">
-	        		<a href="#" class="item">
-	        			<img src="feedGallery.boardPhoto" alt="기본">
-	        		</a>
+        <form>
+        	<section class="gallery" id="default-sort-gallery">
+	    		<c:forEach var ="feedGallery" items="${feedGallery}">
+        			<a class="item">
+		        		 <img src="<c:url value="/images/feed/feedw/uploadfile/${feedGallery.boardPhoto}"/>" alt="기본">
+		        	</a>
         		</c:forEach>
-        </section> 
-        
+       		</section> 
+        </form>
       
         <!-- 사진 피드 영역: 좋아요 영역 display_none으로 안보이는 상태-->
-        <section class="gallery display_none" id="like-sort-gallery">
-        	<c:forEach var="feedLikeGallery" items="${feedLikeGallery}">
-	        	<a href="#" class="item">
-	        		<img src="feedLikeGallery.boardPhoto" alt="좋아요"> 
+        <form id ="galleryidx" action="/feed/feedview" method="post">
+        	<section class="gallery display_none" id="like-sort-gallery">
+        	  <c:forEach var="feedLikeGallery" items="${feedLikeGallery}">
+	        	<a class="item" >
+	        		<img onclick="feedview(feedLikeGallery.memberIdx2)"  src="<c:url value="/images/feed/feedw/uploadfile/${feedLikeGallery.boardPhoto}"/>"alt="좋아요"> 
 	        	</a>
-        	</c:forEach>
-        </section>
+        	  </c:forEach>
+           </section>
+           <input type="hidden" value="" id="galleryinput">
+        </form>
+        
+        <script>
+        	function feedview(idx){
+        		
+        		$('#galleryinput').val(idx);
+        		$('#galleryidx').attr('action','/feed/feedview/'+'idx');
+        		$('#galleryidx').submit();
+        	};
+        
+        </script>
+
         <!--갤러리 영역 끝 --> 
         
         <!-- 좋아요 갤러리 정렬  js-->
@@ -615,7 +643,7 @@
 						html += '	<a href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
 						html += '</div>';
 						
-						//div 추가해주기
+						//div에 추가해주기
 						$('#following-members').append(html);
 					});  
 				}
@@ -674,8 +702,7 @@
 		
 		//비동기 통신으로 팔로우 그만하기와 시작하기하기!!
 		
-		//보내야 하는 데이터 : 리스트 옆쪽의 memberIdx와
-		//나의 memberIdx
+		//보내야 하는 데이터 : 리스트 옆쪽의 memberIdx
 		//그리고 followStatus
 		
 		console.log("클릭");
@@ -719,7 +746,7 @@
   						
  						btn.val('팔로우 시작하기');
   						btn.css('background','#fdef7b'); 
-  						console.log(btn.val());
+  						//console.log(btn.val());
   						
   						var followingCount = parseInt($('#followingCount').text());
     					var newFollowingCount = followingCount -1;
@@ -759,7 +786,7 @@
  						
 					btn.val('팔로우 그만하기');
  					btn.css('background','#EFEFEF'); 
- 					console.log(btn.val());
+ 					//console.log(btn.val());
  						
  					var followingCount = parseInt($('#followingCount').text());
    					var newFollowingCount = followingCount +1;

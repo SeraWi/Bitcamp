@@ -345,12 +345,13 @@ a:visited{
     width:300px;
     background:#000;
 
-
 }
 
 .item img{
     height:100%;
     width:100%;
+    
+    object-fit:cover;
 }
 
 /* 커서 올리면 불투명 회색으로 바뀜 */

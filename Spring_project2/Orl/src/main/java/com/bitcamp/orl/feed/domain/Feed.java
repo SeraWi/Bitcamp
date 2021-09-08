@@ -28,7 +28,16 @@ public class Feed {
 		this.tag = tag;
 		this.memberIdx = memberIdx;
 	}
-
+	
+	
+	public Feed(int boardIdx, String boardPhoto, String boardDiscription, String hashtag, String tag, int memberIdx) {
+		this.boardIdx = boardIdx;
+		this.boardPhoto = boardPhoto;
+		this.boardDiscription = boardDiscription;
+		this.hashtag = hashtag;
+		this.tag = tag;
+		this.memberIdx = memberIdx;
+	}
 
 
 	public int getBoardIdx() {

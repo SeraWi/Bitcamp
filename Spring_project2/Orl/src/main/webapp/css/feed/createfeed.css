@@ -22,13 +22,13 @@ button:hover {
 }
 
 /* close button */
-.container>button {
+.c_close {
     position: absolute;
     top: 7px;
     right: 0;
     z-index: 1;
 }
-.container>button>img {
+.c_close>img {
     width: 20px;
 }
 

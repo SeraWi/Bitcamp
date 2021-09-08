@@ -8,6 +8,7 @@ import com.bitcamp.orl.feed.domain.Feed;
 import com.bitcamp.orl.feed.domain.FeedGallery;
 import com.bitcamp.orl.feed.domain.FeedLikeGallery;
 import com.bitcamp.orl.feed.domain.FollowList;
+import com.bitcamp.orl.feed.domain.NewFeedList;
 import com.bitcamp.orl.member.domain.Member;
 
 public interface FeedDao {
@@ -53,8 +54,11 @@ public interface FeedDao {
 	// 내 피드 좋아요 정렬 가져오기
 	List<FeedLikeGallery> selectFeedLikeGallery(int memberIdx);
 	
-	//피드 작성 (우리언니)
+	// 피드 작성 (우리언니 추가0908)
 	int createFeed(Feed feed);
+
+	// 전체 피드 리스트 (최신순)  (우리언니 추가0908)
+	List<NewFeedList> selectNewFeed();
 	
 	
 	

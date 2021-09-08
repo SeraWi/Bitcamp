@@ -12,12 +12,13 @@
 <body>
 
 	<section class="container">
-		<button class="close">
+		<button class="v_close">
 			<img src="<c:url value="/images/feed/feedw/close.png"/>">
 		</button>
 
 		<section class="v_leftbox">
-			<img src="<c:url value="/images/feed/feedw/uploadfile/${boardPhoto}"/>"
+			<img
+				src="<c:url value="/images/feed/feedw/uploadfile/${boardPhoto}"/>"
 				alt="feed-img">
 			<button>
 				<img src="<c:url value="/images/feed/feedw/icon-05.png"/>">
@@ -32,7 +33,7 @@
 							alt="profile-img">
 					</button>
 				</div>
-				<a href="#" class="v_nickname">${member.memberNickname}</a>
+				<a href="#" class="v_nickname">${member.memberIdx}</a>
 				<button>팔로우</button>
 
 				<div class="contents">
@@ -80,8 +81,8 @@
 						</div>
 						<div class="comment">
 							<p>
-								<a href="#" class="v_nicknam">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다 댓글입니다
-								댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다
+								<a href="#" class="v_nicknam">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다
+								댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다 댓글입니다
 							</p>
 						</div>
 					</div>
@@ -107,8 +108,8 @@
 						</div>
 						<div class="comment">
 							<p>
-								<a href="#" class="v_nicknam">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다 댓글입니다
-								댓글입니다 댓글입니다
+								<a href="#" class="v_nicknam">NICKNAME</a>댓글입니다 댓글입니다 댓글입니다
+								댓글입니다 댓글입니다 댓글입니다
 							</p>
 						</div>
 					</div>
@@ -118,6 +119,7 @@
 			<section class="commentingbox">
 				<div class="buttonline">
 					<div>
+						<!--  좋아요 버튼 -->
 						<button class="like">
 							<img src="<c:url value="/images/feed/feedw/like-black.png"/>"
 								class="nolike" alt="like-img">
@@ -154,10 +156,29 @@
 
 
 	<script>
-	
+		/* modal_feedview */
+		$(function() {
+			/* modal open */
+			$(".modalbtn_feedview").click(function() {
+				$(".modal_feedview").fadeIn();
+				/* body - not scroll */
+				$("html, body").addClass("not_scroll");
+			});
+
+			/* modal close */
+			$(".v_close").click(function() {
+				$(".modal_feedview").fadeOut();
+				/* body - scroll */
+				$("html, body").removeClass("not_scroll");
+			});
+		});
+		
+		
+		
+		
 	</script>
-	
-	
+
+
 
 </body>
 </html>
