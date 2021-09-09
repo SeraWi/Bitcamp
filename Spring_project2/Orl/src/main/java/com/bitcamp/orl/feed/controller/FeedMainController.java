@@ -30,14 +30,11 @@ public class FeedMainController {
 		List<NewFeedList> newFeedList = listservice.selectNewFeed();
 		model.addAttribute("selectNewFeed", listservice.selectNewFeed());
 		
-		// 좋아요 결과 보여주기
-		
 		return "feed/feedmain";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String upload(
-			@ModelAttribute("feedrequest") FeedCreateRequest feedrequest, Model model, HttpServletRequest request)
+	public String upload(FeedCreateRequest feedrequest, Model model, HttpServletRequest request)
 			throws IllegalStateException, IOException {
 		
 		//피드 기본 정렬
@@ -55,7 +52,5 @@ public class FeedMainController {
 
 		return "feed/feedmain";
 	}
-	
-	
 
 }

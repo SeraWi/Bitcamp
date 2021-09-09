@@ -4,8 +4,9 @@
 	padding: 0;
 	margin: 0;
 }
+
 body {
-	background-color:#f8f8f8;
+	background-color: #f8f8f8;
 }
 
 a {
@@ -14,25 +15,38 @@ a {
 }
 
 button {
-    border: 0;
-    background-color: #00ff0000;
+	border: 0;
+	background-color: #00ff0000;
 }
 
+.top {
+	display: flex;
+	justify-content: space-between;
+}
 
+.h1box {
+	width: 1000px;
+	display:flex;
+}
+
+.h1box h1 {
+	font-size: 3.5rem;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	padding-top: 250px;
+}
 
 /* body not scroll */
-.not_scroll{
-    position: fixed;
-    overflow: hidden;
-    width: 100%;
-    height: 100%
+.not_scroll {
+	position: fixed;
+	overflow: hidden;
+	width: 100%;
+	height: 100%
 }
+
 .not_scroll .cont {
-    position: relative;
-    top: 0;
+	position: relative;
+	top: 0;
 }
-
-
 
 /* modal */
 .modalbox {
@@ -47,22 +61,41 @@ button {
 
 /* modal_create feed */
 .div_createfeed {
-    height: 40px;
+	height: 40px;
 }
+
 .div_createfeed>div {
-	position: absolute;
-    right: 545px;
-    width: 40px;
-    height: 40px;
-    padding-bottom: 5px;
+/* 	position: absolute;
+	right: 570px;
+	width: 40px;
+	height: 40px;
+	padding-bottom: 5px; */
+	padding-left: 600px;
 }
-.modalbtn_createfeed {
+/* .modalbtn_createfeed {
 	cursor: pointer;
 	width: 100%;
 	height: 100%;
+} */
+.modalbtn_createfeed {
+	display: block;
+	width: 140px;
+	line-height: 28px;
+	text-align: center;
+	font-size: 13px;
+	color: #545454;
+	cursor: pointer;
+	/* 0901수정 -> 기존에 div 영역에서 하던 설정을 여기에서 하는걸로! */
+	border: 1px solid grey;
+	border-radius: 5px;
+/* 	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1); */
+	/* 0901 버튼 색 테스트  회색*/
+	/* background-color:#f8f8f8; */
+	background-color: #fdef7b;
 }
+
 .div_createfeed img {
-    width: 30px;
+	width: 30px;
 }
 
 /* 여백 */
@@ -83,8 +116,9 @@ button {
 	width: 320px;
 	height: 320px;
 }
+
 .feedview_space {
-    height: 72px;
+	height: 72px;
 }
 
 .modalbtn_feedview { /* 모달버튼 */
@@ -105,7 +139,18 @@ button {
 	z-index: 10;
 }
 
-.modal_content { /* 모달-내용 */
+.modal_content_view { /* 모달-내용 */
+	width: 1010px;
+	height: 650px;
+	background: #fff;
+	position: relative;
+	top: 55%;
+	left: 50%; /* 모달창 위치 */
+	transform: translate(-50%, -50%);
+	z-index: 1;
+}
+
+.modal_content_create { /* 모달-내용 */
 	width: 1010px;
 	height: 650px;
 	background: #fff;
@@ -197,8 +242,8 @@ button {
 .feedbox {
 	width: 1000px;
 	padding-top: 30px;
-	display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
 }
 
 .feed {
@@ -235,7 +280,7 @@ button {
 }
 
 .likediv {
-
+	
 }
 
 .nolikeimg {

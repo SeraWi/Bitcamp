@@ -118,21 +118,73 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
-
+	
+	<!-- 12. 좋아요 누른 상태인지 아닌지  -->
+	<select id="selectLikeStatus"
+			resultType="int"
+	>
+	select count(*)
+	from final.like
+	where memberIdx = #{myIdx} and boardIdx = #{boardIdx};
+	</select>
+	
+	
+	<!-- 13. 좋아요 누르기 -->
+	<insert id="insertLike"
+	>
+	insert into final.like
+	(memberIdx,boardIdx)
+	values (#{memberIdx}, #{boardIdx});
+	</insert>	
+	
+	
+	<!-- 14. 좋아요 취소 -->
+	<delete	id="deleteLike"
+	>
+	delete from final.like
+	where memberIdx=#{memberIdx} and boardIdx =#{boardIdx};
+	</delete>
+	
+	
+	<!--  우리언니  -->
+	<!-- 피드 작성 -->
 	<insert id="createFeed"
 			parameterType="com.bitcamp.orl.feed.domain.Feed"
 			useGeneratedKeys="true" keyProperty="boardIdx">
-		insert into photoBoard (boardPhoto, boardDiscription, hashtag, tag, memberIdx)
-		values (#{boardPhoto}, #{boardDiscription}, #{hashtag}, #{tag}, #{memberIdx});
+		insert into photoBoard (boardPhoto, boardDiscription, hashtag, tag, memberIdx, memberNickname)
+		values (#{boardPhoto}, #{boardDiscription}, #{hashtag}, #{tag}, #{memberIdx}, #{memberNickname});
 	</insert>
-
-
-	<select id="selectNewFeed"
-			resultType="com.bitcamp.orl.feed.domain.NewFeedList">
-		select boardIdx, boardPhoto, memberIdx from photoBoard order by boardIdx DESC;
+	
+	<!-- 피드 삭제 -->
+	<delete id="deleteFeed">
+		<!-- delete from boardPhoto where boardIdx = #{boardIdx}; -->
+	</delete>
+	
+	<!-- 피드 수정 -->
+	
+	<!-- 피드 상세보기 -->
+	<select id="selectFeedView"
+			resultType="com.bitcamp.orl.feed.domain.FeedView">
+		select B.boardIdx, B.boardPhoto, M.memberIdx, M.memberNickname, M.memberProfile
+		from final.photoBoard as B natural join final.member as M
+		where B.boardIdx = #{boardIdx};
 	</select>
 
+	<!-- 전체 피드 리스트 (최신순) -->
+	<select id="selectNewFeed"
+			resultType="com.bitcamp.orl.feed.domain.NewFeedList">
+			select B.boardIdx, B.boardPhoto, B.boardDate, M.memberIdx, M.memberNickname
+			from final.photoBoard as B natural join final.member as M
+			order by B.boardIdx DESC;
+	</select>
 	
+	<!-- <!— 전체 피드 리스트 (인기순) —> -->
+<!-- <!— 	<select id="selectHotFeed"
+			resultType="com.bitcamp.orl.feed.domain.HotFeedList">
+			select count(likeIdx), B.boardIdx, B.boardPhoto, M.memberIdx, M.memberNickname, M.memberProfile
+			from final.like as L natural join final.photoBoard as B natural join final.member as M
+			where B.boardIdx = #{boardIdx};
+	</select> —> -->
 	
 	
 

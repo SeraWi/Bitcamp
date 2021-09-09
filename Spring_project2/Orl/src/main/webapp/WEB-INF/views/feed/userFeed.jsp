@@ -43,14 +43,12 @@
 	
 	<!-- <!— modal_createfeed 우리언니 0908 추가 —> -->
 	<div class="modal_createfeed">
-		<div class="modal_content">
-			<section class="container">
+		<div class="modal_content_create">
+			<section class="container_create">
 				<%@ include file="/WEB-INF/views/feed/createfeed.jsp"%>
 			</section>
 		</div>
 	</div>
-	
-	
 
 
 	 <!-- 메인 피드 영역  시작-->
@@ -87,15 +85,15 @@
                 <!-- 버튼 영역 팔로우하기, 팔로우 끊기, 내정보 수정하기, 피드 올리기  -->
                 <div class="buttons" >
 	                <c:choose>
-	                	<c:when test="${sessionScope.member.memberIdx ne member.memberIdx}">
+	                	<c:when test="${sessionScope.memberVo.memberIdx ne member.memberIdx}">
 	            			<!-- <div><a class="buttons-area" href="#">팔로우하기</a></div> -->
 	            			<!-- 09.01 기존 a태그에서 서버 통신 위해 button으로 바꿈  -->
 	            			<!-- <div id="followButton"><input type="button" class="buttons-area" value="팔로우하기"></div> -->
 	                		<div id="follow-button-div">
 	                		<input type="button" id="follow-button" class="${followRelation==0? 'buttons-area-yellow':'buttons-area-gray'}" value="${followRelation==0? '팔로우 시작하기': '팔로우 그만하기'}">
 	                		</div>
-	                		
 	                	</c:when>
+
 						<c:otherwise>
 		                    <div><a class="buttons-area-yellow" href="<c:url value="/member/mypage"/>">내 정보 수정</a></div>
 		                    <!-- <div><a class="buttons-area-yellow" href="/orl/feed/createFeed">피드 올리기</a></div>   -->
@@ -355,33 +353,31 @@
         	<section class="gallery" id="default-sort-gallery">
 	    		<c:forEach var ="feedGallery" items="${feedGallery}">
         			<a class="item">
-		        		 <img src="<c:url value="/images/feed/feedw/uploadfile/${feedGallery.boardPhoto}"/>" alt="기본">
+		        		 <img onclick="location.href='${pageContext.request.contextPath}/feed/feedview/${member.memberIdx}&${feedGallery.boardIdx}'" src="<c:url value="/images/feed/feedw/uploadfile/${feedGallery.boardPhoto}"/>" alt="기본">
 		        	</a>
         		</c:forEach>
        		</section> 
         </form>
       
         <!-- 사진 피드 영역: 좋아요 영역 display_none으로 안보이는 상태-->
-        <form id ="galleryidx" action="/feed/feedview" method="post">
-        	<section class="gallery display_none" id="like-sort-gallery">
+        <section class="gallery display_none" id="like-sort-gallery">
         	  <c:forEach var="feedLikeGallery" items="${feedLikeGallery}">
 	        	<a class="item" >
-	        		<img onclick="feedview(feedLikeGallery.memberIdx2)"  src="<c:url value="/images/feed/feedw/uploadfile/${feedLikeGallery.boardPhoto}"/>"alt="좋아요"> 
+	        		<img onclick="location.href='${pageContext.request.contextPath}/feed/feedview/${feedLikeGallery.memberIdx}&${feedLikeGallery.boardIdx}'"  src="<c:url value="/images/feed/feedw/uploadfile/${feedLikeGallery.boardPhoto}"/>"alt="좋아요"> 
 	        	</a>
         	  </c:forEach>
-           </section>
-           <input type="hidden" value="" id="galleryinput">
-        </form>
+        </section>
         
-        <script>
-        	function feedview(idx){
+<!--         <script>
+        	function feedview(memberIdx,boardIdx){
         		
-        		$('#galleryinput').val(idx);
-        		$('#galleryidx').attr('action','/feed/feedview/'+'idx');
-        		$('#galleryidx').submit();
+        		/* $('#like-Hidden-memberIdx2').val(memberIdx);
+        		$('#like-hidden-boardIdx').val(boardIdx); */
+        		$('#likeGalleryForm').attr('action','${pageContext.request.contextPath}/feed/feedview/'+memberIdx+'&'+boardIdx);
+        		$('#likeGalleryForm').submit();
         	};
         
-        </script>
+        </script> -->
 
         <!--갤러리 영역 끝 --> 
         
@@ -510,7 +506,7 @@
 					console.log(index,item);
 					
 					var html ='<div class="member">';
-					html += '	<img src="'+item.memberProfile+'"/>';
+					html += '	<img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>"/>';
 					html += '	<a href="<c:url value="/feed/userFeed/'+item.memberIdx+'"/>">'+item.memberNickname+'</a>';
 					html += '	<input type="submit" class="button-yellow-inList" value="팔로우 시작하기">';
 					html += '</div>';
@@ -616,7 +612,7 @@
 		// 내 피드 이면 팔로잉 리스트 + 팔로우 시작하기 or 그만하기 버튼 생기게
 		// 남 피드 이면 팔로잉 리스트만 존재
 		
-		if(${sessionScope.member.memberIdx ne member.memberIdx}){
+		if(${sessionScope.memberVo.memberIdx ne member.memberIdx}){
 			// 세션에 있는 memberIdx    !=  model에 저장된 memberIdx
 			
 			console.log("남 피드 입니다.")
@@ -639,7 +635,7 @@
 						console.log(index,item);
 						
 						var html ='<div class="member">';
-						html += '	<img src="'+item.memberProfile+'"/>';
+						html += '	<img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>"/>';
 						html += '	<a href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
 						html += '</div>';
 						
@@ -670,7 +666,7 @@
 						console.log(index,item);
 						
 						var html ='<div class="member">';
-						html += '	<img src="'+item.memberProfile+'"/>';
+						html += '	<img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>"/>';
 						html += '	<a href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
 						html += '	<input type="hidden" value="'+item.memberIdx2+'">';
 						html += '	<input type="button" class="button-gray-inList" value="팔로우 그만하기">';

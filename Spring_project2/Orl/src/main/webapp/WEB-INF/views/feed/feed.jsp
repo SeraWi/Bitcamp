@@ -13,7 +13,21 @@
 
 	<div>
 		<div class="feedmain">
-			<div class="top"></div>
+			<div class="top">
+				<div></div>
+				<div class="h1box">
+					<div>
+						<h1>FEED</h1>
+					</div>
+					<!-- 최신순일땐 NEW FEED / 인기순일땐 POPULAR FEED -->
+					<!-- div class="div_createfeed">
+						<div>
+							<button class="modalbtn_createfeed">피드 올리기</button>
+						</div>
+					</div> -->
+				</div>
+				<div></div>
+			</div>
 			<div class="main">
 				<div class="leftbox"></div>
 				<div class="mainbox">
@@ -35,9 +49,7 @@
 						<!-- 피드 작성 버튼 -->
 						<div class="div_createfeed">
 							<div>
-								<button class="modalbtn_createfeed">
-									<img src="<c:url value="/images/feed/feeds/more.png"/>">
-								</button>
+								<button class="modalbtn_createfeed">피드 올리기</button>
 							</div>
 						</div>
 
@@ -55,32 +67,35 @@
 
 					<!-- 피드 영역 시작 -->
 					<div class="feedbox">
-					
-					<c:forEach var="selectNewFeed" items="${selectNewFeed}">
-						<div class="feed">
-							<div class="feedsize">
-								<button class="modalbtn_feedview">
-									<img src="<c:url value="/images/feed/feedw/uploadfile/${selectNewFeed.boardPhoto}"/>"
-										class="feedimg" alt="feedimg">
-								</button>
-							</div>
-							<div class="feedinfo">
-								<div class="nickname">
-									<a href="#" class="nickname2">${selectNewFeed.memberIdx}</a>
-								</div>
-								<div>
-									<button>
-										<img src="<c:url value="/images/feed/feedw/nolike.png"/>"
-											class="nolikeimg">
+
+						<c:forEach var="selectNewFeed" items="${selectNewFeed}">
+
+							<div class="feed">
+								<div class="feedsize">
+									<button class="modalbtn_feedview" type="button"
+										onclick="location.href='feedview/${selectNewFeed.memberIdx}&${selectNewFeed.boardIdx}'">
+										<img
+											src="<c:url value="/images/feed/feedw/uploadfile/${selectNewFeed.boardPhoto}"/>"
+											class="feedimg" alt="feedimg">
 									</button>
 								</div>
+								<div class="feedinfo">
+									<div class="nickname">
+										<a href="#" class="nickname2">${selectNewFeed.memberNickname}</a>
+									</div>
+									<div>
+										<button>
+											<img src="<c:url value="/images/feed/feedw/nolike.png"/>"
+												class="nolikeimg">
+										</button>
+									</div>
+								</div>
 							</div>
-						</div>
-					</c:forEach>
 
-						
+						</c:forEach>
+
 					</div>
-					<!-- 피드 영역 끝 --> 
+					<!-- 피드 영역 끝 -->
 
 
 				</div>

@@ -2,12 +2,10 @@ package com.bitcamp.orl.feed.domain;
 
 import java.sql.*;
 
-import org.springframework.web.multipart.*;
-
 import com.fasterxml.jackson.annotation.*;
 
 public class Feed {
-	
+
 	private int boardIdx;
 	private String boardPhoto;
 	private String boardDiscription;
@@ -16,10 +14,16 @@ public class Feed {
 	private String hashtag;
 	private String tag;
 	private int memberIdx;
-	
-	public Feed(){}
+	private String memberNickname;
 
-	public Feed(int boardIdx, String boardPhoto, String boardDiscription, Timestamp boardDate, String hashtag, String tag, int memberIdx) {
+	public Feed() {
+	}
+	
+	
+
+	public Feed(int boardIdx, String boardPhoto, String boardDiscription, Timestamp boardDate, String hashtag,
+			String tag, int memberIdx, String memberNickname) {
+		super();
 		this.boardIdx = boardIdx;
 		this.boardPhoto = boardPhoto;
 		this.boardDiscription = boardDiscription;
@@ -27,17 +31,9 @@ public class Feed {
 		this.hashtag = hashtag;
 		this.tag = tag;
 		this.memberIdx = memberIdx;
+		this.memberNickname = memberNickname;
 	}
-	
-	
-	public Feed(int boardIdx, String boardPhoto, String boardDiscription, String hashtag, String tag, int memberIdx) {
-		this.boardIdx = boardIdx;
-		this.boardPhoto = boardPhoto;
-		this.boardDiscription = boardDiscription;
-		this.hashtag = hashtag;
-		this.tag = tag;
-		this.memberIdx = memberIdx;
-	}
+
 
 
 	public int getBoardIdx() {
@@ -79,28 +75,41 @@ public class Feed {
 	public void setHashtag(String hashtag) {
 		this.hashtag = hashtag;
 	}
-	
+
 	public String getTag() {
 		return tag;
 	}
-	
+
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
-	
+
 	public int getMemberIdx() {
 		return memberIdx;
 	}
-	
+
 	public void setMemberIdx(int memberIdx) {
 		this.memberIdx = memberIdx;
 	}
+
+	public String getMemberNickname() {
+		return memberNickname;
+	}
+
+	public void setMemberNickname(String memberNickname) {
+		this.memberNickname = memberNickname;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "Feed [boardIdx=" + boardIdx + ", boardPhoto=" + boardPhoto + ", boardDiscription=" + boardDiscription
 				+ ", boardDate=" + boardDate + ", hashtag=" + hashtag + ", tag=" + tag + ", memberIdx=" + memberIdx
-				+ "]";
+				+ ", memberNickname=" + memberNickname + "]";
 	}
 	
+	
+
+
 }

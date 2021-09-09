@@ -16,7 +16,7 @@
 
 	<form method="post" enctype="multipart/form-data">
 
-		<section class="container">
+		<section class="container_create">
 			<button type="button" class="c_close">
 				<img src="<c:url value="/images/feed/feedw/close.png"/>">
 			</button>
@@ -33,7 +33,7 @@
 								alt="profile-img">
 						</button>
 					</div>
-					<a href="#" class="c_nickname">${member.memberNickname}</a>
+					<a href="#" class="c_nickname">${sessionScope.memberVo.memberNickname}</a>
 
 
 					<div class="filebox">

@@ -24,6 +24,7 @@ import com.bitcamp.orl.feed.service.FeedGalleryService;
 import com.bitcamp.orl.feed.service.FeedListService;
 import com.bitcamp.orl.feed.service.UserFeedService;
 import com.bitcamp.orl.member.domain.Member;
+import com.bitcamp.orl.member.domain.MemberVo;
 
 @Controller
 public class UserFeedController {
@@ -51,7 +52,7 @@ public class UserFeedController {
 		System.out.println("요청 받음");
 		
 		// 세션에 저장된 나의 memberIdx 
-		int myIdx = ((Member) request.getSession().getAttribute("member")).getMemberIdx();
+		int myIdx = ((MemberVo) request.getSession().getAttribute("memberVo")).getMemberIdx();
 		
 		// memberIdx에 해당하는 member객체 가져오기
 		// 내가 내 피드로 들어가면 member = 나
@@ -110,7 +111,7 @@ public class UserFeedController {
 		createService.insert(feedrequest, request);
 		
 		// 세션에 저장된 나의 memberIdx 
-		int myIdx = ((Member) request.getSession().getAttribute("member")).getMemberIdx();
+		int myIdx = ((MemberVo) request.getSession().getAttribute("memberVo")).getMemberIdx();
 		
 		// memberIdx에 해당하는 member객체 가져오기
 		// 내가 내 피드로 들어가면 member = 나

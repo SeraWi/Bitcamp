@@ -19,22 +19,33 @@ button:hover, input:hover, a:hover {
 	cursor: pointer;
 }
 
+.background {
+	height: 1100px;
+	background-color:#f8f8f8;
+}
+
 /* 전체 영역 */
-.container {
+.container_view {
+	background-color:white;
 	display: flex;
 	position: relative;
 	width: 1000px;
 	height: 650px;
+	top: 550px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
 }
 
 /* close button */
-.container>button {
+.container_view>button {
     position: absolute;
-    top: 7px;
-    right: 0;
+    top: 40px;
+    right: 25px;
     z-index: 1;
 }
-.container>button>img {
+.container_view>button>img {
     width: 20px;
 }
 

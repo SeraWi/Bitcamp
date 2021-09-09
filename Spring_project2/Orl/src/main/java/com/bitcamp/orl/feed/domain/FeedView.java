@@ -1,26 +1,24 @@
 package com.bitcamp.orl.feed.domain;
 
-import java.sql.*;
-
-public class NewFeedList {
-
-	// 피드정렬 : 최신순 (기본정렬)
-
+public class FeedView {
+	
+	//피드 상세보기
+	
 	private int boardIdx;
 	private String boardPhoto;
-	private Timestamp boardDate;
 	private int memberIdx;
 	private String memberNickname;
+	private String memberProfile;
+	
+	public FeedView(){}
 
-	public NewFeedList() {
-	}
-
-	public NewFeedList(int boardIdx, String boardPhoto, Timestamp boardDate, int memberIdx, String memberNickname) {
+	public FeedView(int boardIdx, String boardPhoto, int memberIdx, String memberNickname, String memberProfile) {
+		super();
 		this.boardIdx = boardIdx;
 		this.boardPhoto = boardPhoto;
-		this.boardDate = boardDate;
 		this.memberIdx = memberIdx;
 		this.memberNickname = memberNickname;
+		this.memberProfile = memberProfile;
 	}
 
 	public int getBoardIdx() {
@@ -39,14 +37,6 @@ public class NewFeedList {
 		this.boardPhoto = boardPhoto;
 	}
 
-	public Timestamp getBoardDate() {
-		return boardDate;
-	}
-
-	public void setBoardDate(Timestamp boardDate) {
-		this.boardDate = boardDate;
-	}
-
 	public int getMemberIdx() {
 		return memberIdx;
 	}
@@ -63,10 +53,18 @@ public class NewFeedList {
 		this.memberNickname = memberNickname;
 	}
 
+	public String getMemberProfile() {
+		return memberProfile;
+	}
+
+	public void setMemberProfile(String memberProfile) {
+		this.memberProfile = memberProfile;
+	}
+
 	@Override
 	public String toString() {
-		return "NewFeedList [boardIdx=" + boardIdx + ", boardPhoto=" + boardPhoto + ", boardDate=" + boardDate
-				+ ", memberIdx=" + memberIdx + ", memberNickname=" + memberNickname + "]";
-	};	
+		return "FeedView [boardIdx=" + boardIdx + ", boardPhoto=" + boardPhoto + ", memberIdx=" + memberIdx
+				+ ", memberNickname=" + memberNickname + ", memberProfile=" + memberProfile + "]";
+	}
 
 }
