@@ -145,14 +145,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where memberIdx=#{memberIdx} and boardIdx =#{boardIdx};
 	</delete>
 	
+	<!-- 15. 좋아요 갯수 0910-->
+	<select id="selectTotalLikeCount"
+			resultType="int"
+	>
+	select count(*)
+	from final.like
+	where boardIdx = #{boardIdx};
+	</select>
+	
+	<!-- 16. 피드 인기순 정렬 0910 -->
+	<select id="selectFeedOrderByLike"
+			resultType="com.bitcamp.orl.feed.domain.NewFeedList"
+	>
+	select P.boardIdx, P.boardPhoto,P.boardDate, P.memberIdx, M.memberNickname
+	from final.like as L inner join final.photoBoard as P inner join final.member as M
+	on L.boardIdx = P.boardIdx and P.memberIdx = M.memberIdx
+	group by P.boardIdx
+	order by count(*) DESC,boardIdx DESC; 
+	</select>
+	
+	<!-- 17. 피드 검색  - 해시태그로 검색-->
+	<select id= "selectByHashtag"
+			resultType="com.bitcamp.orl.feed.domain.NewFeedList"
+	>
+	select P.boardIdx, P.boardPhoto, P.boardDate, M.memberIdx, M.memberNickname
+	from final.photoBoard as P natural join final.member as M
+	where P.hashtag regexp #{hashtag};
+	</select>
+	
+	<!-- 18. 피드 검색  - 닉네임으로 검색-->
+	
+	
 	
 	<!--  우리언니  -->
 	<!-- 피드 작성 -->
+<!-- <!— 피드 작성 —> -->
 	<insert id="createFeed"
 			parameterType="com.bitcamp.orl.feed.domain.Feed"
 			useGeneratedKeys="true" keyProperty="boardIdx">
-		insert into photoBoard (boardPhoto, boardDiscription, hashtag, tag, memberIdx, memberNickname)
-		values (#{boardPhoto}, #{boardDiscription}, #{hashtag}, #{tag}, #{memberIdx}, #{memberNickname});
+		INSERT INTO photoBoard (boardPhoto, boardDiscription, hashtag, tag, memberIdx)
+		VALUES (#{boardPhoto}, #{boardDiscription}, #{hashtag}, #{tag}, #{memberIdx});
 	</insert>
 	
 	<!-- 피드 삭제 -->

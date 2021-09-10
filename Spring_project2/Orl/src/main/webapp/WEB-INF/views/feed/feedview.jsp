@@ -38,7 +38,7 @@
 								alt="profile-img">
 						</button>
 					</div>
-					<a href="#" class="v_nickname">${selectFeedView.memberNickname}</a>
+					<a href="<c:url value="/feed/userFeed/${selectFeedView.memberIdx}"/>" class="v_nickname">${selectFeedView.memberNickname}</a>
 					<!-- <button>팔로우</button> -->
 
 					<div class="contents">
@@ -146,7 +146,7 @@
 							</button>
 						</div>
 						<div class="likeline">
-							<p>좋아요 1,000개</p>
+							<p>좋아요 <span id="totaLikeCount">${totalLikeCount}</span>개</p>
 						</div>
 					</div>
 
@@ -194,17 +194,20 @@
 							$('#likeButton').html(html);
 							
 							// 비동기 통신으로 좋아요 개수 +1 시키기
+							var currentLikeCount = parseInt($('#totaLikeCount').text());
+							
+							var newLikeCount = currentLikeCount+1;
+							
+							$('#totaLikeCount').text(newLikeCount);
+							
+							
 							// 피드로 돌아가면 좋아요 정렬 다시 업데이트 하기
-	
 							
 						}/*if 끝  */
 						
 					}/* success 끝 */
 					
-					
 				});/* ajax 끝*/
-				
-				
 			}else{
 				// click == 'delete'
 				
@@ -227,16 +230,17 @@
 							
 							// 비동기 통신으로 좋아요 개수 -1시키기
 							// 피드로 돌아가면 좋아요 정렬 다시 업데이트 하기 or 닫기 버튼 누르면 그전 페이지로 요청 주기 /feed/userFeed/{memberIdx}
+							var currentLikeCount = parseInt($('#totaLikeCount').text());
 							
+							var newLikeCount = currentLikeCount-1;
+							
+							$('#totaLikeCount').text(newLikeCount);
 							
 							
 						}/*if 끝  */
 						
 					}/* success 끝 */
-					
-					
 				});/* ajax 끝 */
-				
 			}
 		};
 	

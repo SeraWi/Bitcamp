@@ -30,4 +30,18 @@ public class FeedListService {
 		return newFeedList;
 	}
 	
+	// 피드 리스트(인기순)
+	public List<NewFeedList> selectFeedOrderByLike() {
+		
+		List<NewFeedList> feedOrderByLike = null;
+		
+		dao= template.getMapper(FeedDao.class);
+		feedOrderByLike = dao.selectFeedOrderByLike();
+		
+		
+		
+		return feedOrderByLike;
+	}
+	
+	
 }

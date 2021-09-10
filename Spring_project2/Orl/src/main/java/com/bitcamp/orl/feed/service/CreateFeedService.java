@@ -49,6 +49,7 @@ public class CreateFeedService {
 
 			if (memberVo != null) {
 				feed.setMemberIdx(memberVo.getMemberIdx());
+				//feed.setMemberNickname(memberVo.getMemberNickname());
 			}
 
 			// 2. dao 저장

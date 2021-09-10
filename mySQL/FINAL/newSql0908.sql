@@ -105,3 +105,15 @@ constraint fk_myMemberIdx_to_like foreign key (memberIdx) references final.membe
 constraint fk_boardIdx foreign key (boardIdx) references final.photoBoard(boardIdx) ON DELETE CASCADE
 );
 
+
+
+drop table final.crew;
+drop table final.crewreg;
+drop table final.crewComment;
+
+DROP TABLE IF EXISTS final.photoBoard;
+DROP TABLE IF EXISTS final.photoBoardComment;
+
+DROP TABLE IF EXISTS final.follow;
+DROP TABLE IF EXISTS final.like;
+

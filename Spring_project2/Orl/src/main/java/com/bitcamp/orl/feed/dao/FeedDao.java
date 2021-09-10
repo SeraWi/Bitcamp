@@ -67,9 +67,15 @@ public interface FeedDao {
 	int deleteLike(@Param("memberIdx")int memberIdx, @Param("boardIdx") int boardIdx);
 	
 	
+	// 15. 피드 상세 보기에 좋아요 갯수(0910)
+	int selectTotalLikeCount(@Param("boardIdx") int boardIdx);
 	
+	// 16. 피드 인기순 정렬(0910)
+	List<NewFeedList> selectFeedOrderByLike();
 	
-	
+	// 17. 해시태그 검색 결과
+	List<NewFeedList> selectByHashtag(String hashtagSearch);
+
 	
 	
 	
@@ -90,6 +96,11 @@ public interface FeedDao {
 
 	// 전체 피드 리스트 (최신순)
 	List<NewFeedList> selectNewFeed();
+
+
+	
+
+
 
 
 	

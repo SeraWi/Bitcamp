@@ -14,6 +14,8 @@ import com.bitcamp.orl.member.domain.MemberVo;
 @Controller
 @RequestMapping("/feed/feedview/{memberIdx}&{boardIdx}")
 public class FeedViewController {
+	
+	// 피드 상세보기 컨트롤러
 
 	@Autowired
 	FeedViewService viewService;
@@ -38,6 +40,14 @@ public class FeedViewController {
 	     int likeStatus = viewService.getLikeStatus(myIdx,boardIdx);
 	    //모델에 저장
 	    model.addAttribute("likeStatus",likeStatus);
+	    
+	    
+	    // 2. 첫 요청에 좋아요 갯수를 보여준다.
+	    int totalLikeCount = viewService.getTotalLikeCount(boardIdx);
+	    // 모델에 저장
+	    model.addAttribute("totalLikeCount",totalLikeCount);
+	    
+	    
 		
 
 		return "/feed/feedview";

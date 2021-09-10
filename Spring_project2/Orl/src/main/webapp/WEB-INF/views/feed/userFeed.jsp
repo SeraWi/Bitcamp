@@ -223,7 +223,7 @@
               </div> 
               	
 
-              	<div class="swiper-slide">
+<!--               	<div class="swiper-slide">
                 <a href="#" class="crew">
                   <img
                     src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
@@ -306,7 +306,7 @@
                     alt=""/>
                   <div>크루이름</div>
                 </a>
-              </div>
+              </div> -->
 
 			
             </div><!-- swiper-wrapper 끝 -->
@@ -508,7 +508,7 @@
 					var html ='<div class="member">';
 					html += '	<img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>"/>';
 					html += '	<a href="<c:url value="/feed/userFeed/'+item.memberIdx+'"/>">'+item.memberNickname+'</a>';
-					html += '	<input type="submit" class="button-yellow-inList" value="팔로우 시작하기">';
+					/* html += '	<input type="submit" class="button-yellow-inList" value="팔로우 시작하기">'; */
 					html += '</div>';
 					
 					//div 추가해주기

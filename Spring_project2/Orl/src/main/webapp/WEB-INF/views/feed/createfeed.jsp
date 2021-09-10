@@ -33,7 +33,7 @@
 								alt="profile-img">
 						</button>
 					</div>
-					<a href="#" class="c_nickname">${sessionScope.memberVo.memberNickname}</a>
+					<a href="#" name="memberNickname" class="c_nickname">${sessionScope.memberVo.memberNickname}</a>
 
 
 					<div class="filebox">

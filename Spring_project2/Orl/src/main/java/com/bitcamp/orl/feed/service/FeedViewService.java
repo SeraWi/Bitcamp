@@ -40,5 +40,16 @@ public class FeedViewService {
 		
 		return likeStatus;
 	}
+
+	// 좋아요 갯수 가져오기
+	public int getTotalLikeCount(int boardIdx) {
+		
+		int totalLikeCount = 0;
+		
+		dao = template.getMapper(FeedDao.class);
+		totalLikeCount = dao.selectTotalLikeCount(boardIdx);
+		
+		return totalLikeCount;
+	}
 	
 }

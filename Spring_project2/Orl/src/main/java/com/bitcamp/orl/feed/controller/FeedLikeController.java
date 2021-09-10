@@ -38,10 +38,9 @@ public class FeedLikeController {
 			
 			likeResult = likeService.deleteLike(myIdx,boardIdx);
 		}
-		
-		
 		return likeResult;
 	}
+	
 	
 	
 	
