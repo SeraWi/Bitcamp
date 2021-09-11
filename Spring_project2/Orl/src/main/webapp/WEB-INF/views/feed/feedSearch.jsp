@@ -53,7 +53,7 @@
 				            <div class="item">
 				            <!--프로필 사진  -->
 				               <a href="<c:url value="/feed/userFeed/${list.memberIdx}"/>">
-				                   <img class="img" src="<c:url value="/images/feed/feedw/uploadfile/${list.memberProfile}"/>" alt="" width="200px" height="200px">
+				                   <img class="ProfileImg" src="<c:url value="/images/feed/feedw/uploadfile/${list.memberProfile}"/>" alt="" width="160px" height="160px">
 				               </a>
 				               
 				               <!-- 닉네임 -->
@@ -77,7 +77,7 @@
 			                <div class="item">
 			                	<!-- 사진 -->
 			                    <a href="<c:url value="/feed/feedview/${list.memberIdx}&${list.boardIdx}"/>">
-			                       <img class="img" src="<c:url value="/images/feed/feedw/uploadfile/${list.boardPhoto}"/>" alt="" width="300px" height="300px">
+			                       <img class="img" src="<c:url value="/images/feed/feedw/uploadfile/${list.boardPhoto}"/>" alt="" width="288px" height="288px">
 			                    </a>
 			                     <!--닉네임  -->
 			                    <a href="<c:url value="/feed/userFeed/${list.memberIdx}"/>">
