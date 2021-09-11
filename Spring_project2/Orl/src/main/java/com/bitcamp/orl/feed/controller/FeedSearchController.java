@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bitcamp.orl.feed.domain.FeedSearchByNickname;
 import com.bitcamp.orl.feed.domain.NewFeedList;
 import com.bitcamp.orl.feed.service.FeedSearchService;
 
@@ -17,7 +19,15 @@ public class FeedSearchController {
 	@Autowired
 	FeedSearchService searchService;
 	
-	@RequestMapping("/feed/feedSearch")
+	
+	@RequestMapping(value="/feed/feedSearch", method=RequestMethod.GET)
+	public String getFeedSearch() {
+		
+		
+		return "feed/feedSearch";
+	}
+	
+	@RequestMapping(value="/feed/feedSearch", method=RequestMethod.POST)
 	public String getFeedSearch(
 			@RequestParam("mySearch") String mySearch,
 			Model model
@@ -25,8 +35,8 @@ public class FeedSearchController {
 		
 		// 검색 결과를 가져오기
 		
-		// 닉네임으로 찾기 + 해시태그로 검색
-		// 닉네임으로 찾기 -> 닉네임, 프로필 사진 가져오기, memberIdx
+		// 닉네임으로 찾기 -> 닉네임, 프로필 사진 가져오기, memberIdx 
+		List<FeedSearchByNickname> searchByNickname = searchService.getSearchByNickname(mySearch);
 		
 		
 		// 해시태그로 검색 하면
@@ -37,7 +47,7 @@ public class FeedSearchController {
 		
 		//모델에 저장
 		model.addAttribute("searchByHashtag",searchByHashtag);
-		
+		model.addAttribute("searchByNickname",searchByNickname);
 		
 		
 		return "feed/feedSearch";

@@ -60,11 +60,11 @@
 							</div>
 						</div>
 
-						<!-- 피드 검색 -->
-						<form action="<c:url value="/feed/feedSearch"/>">
+						<!-- 피드 검색 후 jsp넘기기위해 form 추가 -->
+						<form action="<c:url value="/feed/feedSearch"/>" method="post">
 							<div class="search">
-								<input type="text" placeholder="search">
-								<button type="submit" name="mySearch">
+								<input type="text" placeholder="search" name="mySearch">
+								<button type="submit">
 									<img src="<c:url value="/images/feed/feedw/search.png"/>"
 										alt="search">
 								</button>
@@ -90,7 +90,7 @@
 								</div>
 								<div class="feedinfo">
 									<div class="nickname">
-										<a href="#" class="nickname2">${selectNewFeed.memberNickname}</a>
+										<a href="<c:url value="/feed/userFeed/${selectNewFeed.memberIdx}"/>" class="nickname2">${selectNewFeed.memberNickname}</a>
 									</div>
 									<div>
 										<button>

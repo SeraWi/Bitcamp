@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.orl.feed.dao.FeedDao;
+import com.bitcamp.orl.feed.domain.FeedSearchByNickname;
 import com.bitcamp.orl.feed.domain.NewFeedList;
 
 @Service
@@ -17,15 +18,26 @@ public class FeedSearchService {
 	@Autowired
 	SqlSessionTemplate template;
 	
-	public List<NewFeedList> getSearchByHashtag(String hashtagSearch) {
+	public List<NewFeedList> getSearchByHashtag(String hashtag) {
 		
 		List<NewFeedList> searchByHashtag = null;
 		
 		
 		dao =template.getMapper(FeedDao.class);
-		searchByHashtag = dao.selectByHashtag(hashtagSearch);
+		searchByHashtag = dao.selectByHashtag(hashtag);
 		
 		return searchByHashtag;
+	}
+
+	public List<FeedSearchByNickname> getSearchByNickname(String nickname) {
+		
+		List<FeedSearchByNickname> searchByNickname = null;
+		
+		dao =template.getMapper(FeedDao.class);
+		searchByNickname = dao.selectByNickname(nickname);
+		
+		
+		return searchByNickname;
 	}
 	
 	

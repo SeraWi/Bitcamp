@@ -5,6 +5,8 @@ import java.sql.*;
 public class NewFeedList {
 
 	// 피드정렬 : 최신순 (기본정렬)
+	// 인기순에도 사용
+	// 검색에도 사용
 
 	private int boardIdx;
 	private String boardPhoto;

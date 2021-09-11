@@ -23,7 +23,7 @@
                 <h2>SEARCH</h2>
             </div>
             
-         <form id="frm">
+         <form id="frm" action="<c:url value="/feed/feedSearch"/>" method="post">
             <div class="boxContainer">
                 <table class="elementsContainer">
                     <tr>
@@ -43,22 +43,26 @@
             </form>
 		          
 		          <!--  닉네임 검색결과 --> 
-		         <c:if test="">            
+		         <c:if test="${not empty searchByNickname}">            
 		          <h3 class="selectArea">닉네임 검색 결과</h3>
 		          </c:if>
 		          
 		          
-		           <%--  <div id="selectList">
-				            <c:forEach items="" var="">
-				                <div class="item">
-				                       <a href="">
-				                       <img class="img" src="" alt="" width="200px" height="200px">
-				                       </a>
-				                    <span>#${list.mountainName}</span>
-				                </div>
-				          </c:forEach>
-		            </div>  --%>
-		            
+		          <div id="selectList">
+				        <c:forEach items="${searchByNickname}" var="list">
+				            <div class="item">
+				            <!--프로필 사진  -->
+				               <a href="<c:url value="/feed/userFeed/${list.memberIdx}"/>">
+				                   <img class="img" src="<c:url value="/images/feed/feedw/uploadfile/${list.memberProfile}"/>" alt="" width="200px" height="200px">
+				               </a>
+				               
+				               <!-- 닉네임 -->
+				               <a href="<c:url value="/feed/userFeed/${list.memberIdx}"/>">
+				               <span>${list.memberNickname}</span>
+				               </a>
+				             </div>
+				        </c:forEach>
+		           </div>
 		          <!--  닉네임 검색결과 끝 --> 
             
             
@@ -71,10 +75,14 @@
 		          <div id="selectList">
 			          <c:forEach items="${searchByHashtag}" var="list">
 			                <div class="item">
-			                       <a href="<c:url value="/feed/userFeed/${list.memberIdx}"/>">
+			                	<!-- 사진 -->
+			                    <a href="<c:url value="/feed/feedview/${list.memberIdx}&${list.boardIdx}"/>">
 			                       <img class="img" src="<c:url value="/images/feed/feedw/uploadfile/${list.boardPhoto}"/>" alt="" width="300px" height="300px">
-			                       </a>
-			                    <span>#${list.memberNickname}</span>
+			                    </a>
+			                     <!--닉네임  -->
+			                    <a href="<c:url value="/feed/userFeed/${list.memberIdx}"/>">
+			                       	<span>${list.memberNickname}</span>
+			                    </a>
 			                </div>
 			          </c:forEach>
 		          </div>

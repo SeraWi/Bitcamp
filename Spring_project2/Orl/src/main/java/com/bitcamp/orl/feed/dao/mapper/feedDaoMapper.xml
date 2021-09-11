@@ -171,10 +171,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	>
 	select P.boardIdx, P.boardPhoto, P.boardDate, M.memberIdx, M.memberNickname
 	from final.photoBoard as P natural join final.member as M
-	where P.hashtag regexp #{hashtag};
+	where P.hashtag regexp #{hashtag}
+	order by P.boardIdx DESC;
 	</select>
 	
 	<!-- 18. 피드 검색  - 닉네임으로 검색-->
+	<select id="selectByNickname"
+			resultType="com.bitcamp.orl.feed.domain.FeedSearchByNickname"
+	>
+	select memberIdx, memberNickname, memberProfile
+	from final.member
+	where memberNickname regexp #{nickname};
+	</select>
 	
 	
 	

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.bitcamp.orl.feed.domain.Feed;
 import com.bitcamp.orl.feed.domain.FeedGallery;
 import com.bitcamp.orl.feed.domain.FeedLikeGallery;
+import com.bitcamp.orl.feed.domain.FeedSearchByNickname;
 import com.bitcamp.orl.feed.domain.FeedView;
 import com.bitcamp.orl.feed.domain.FollowList;
 import com.bitcamp.orl.feed.domain.NewFeedList;
@@ -74,7 +75,10 @@ public interface FeedDao {
 	List<NewFeedList> selectFeedOrderByLike();
 	
 	// 17. 해시태그 검색 결과
-	List<NewFeedList> selectByHashtag(String hashtagSearch);
+	List<NewFeedList> selectByHashtag(String hashtag);
+
+	// 18. 닉네임 검색 결과
+	List<FeedSearchByNickname> selectByNickname(String nickname);
 
 	
 	
@@ -96,6 +100,8 @@ public interface FeedDao {
 
 	// 전체 피드 리스트 (최신순)
 	List<NewFeedList> selectNewFeed();
+
+
 
 
 	
