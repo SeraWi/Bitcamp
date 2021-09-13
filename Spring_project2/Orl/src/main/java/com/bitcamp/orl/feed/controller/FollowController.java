@@ -48,6 +48,8 @@ public class FollowController {
 		//팔로잉 리스트 가져오기
 		List<FollowList> followingList =followService.getFollowingList(memberIdx);
 		System.out.println(followingList); 
+		
+		// membernickname...
 
 
 		//비동기 통신의 결과 데이터 json
@@ -80,7 +82,6 @@ public class FollowController {
 		//결과 json
 		return followResult;
 	}
-
 
 
 

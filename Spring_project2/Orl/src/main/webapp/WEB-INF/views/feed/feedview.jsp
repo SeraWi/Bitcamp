@@ -140,10 +140,13 @@
 								<img src="<c:url value="/images/feed/feedw/comment.png"/>"
 									alt="comment-img">
 							</button>
-							<button class="share">
-								<img src="<c:url value="/images/feed/feedw/share.png"/>"
-									alt="share-img">
-							</button>
+							<!-- 카톡으로 공유하기 -->
+							<a id="kakao-link-btn" href="javascript:sendLink()">
+							  <img
+							    src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
+							  />
+							</a>					
+							
 						</div>
 						<div class="likeline">
 							<p>좋아요 <span id="totaLikeCount">${totalLikeCount}</span>개</p>
@@ -244,10 +247,53 @@
 			}
 		};
 	
-	
-	
-	
 	</script>
+	
+	<!--  카카오톡으로 공유하기  -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script type="text/javascript">
+	 var img ="http://localhost:8080/orl/images/feed/feedw/profile.jpg";
+	 
+	 
+	  function sendLink() {
+		Kakao.init("daeecdc3ce37abac4a9a3f8ad3e05b0a");
+		
+	    Kakao.Link.sendDefault({
+	      objectType: 'feed',
+	      content: {
+	        title: '오를래 사진을 공유합니다.',
+	        description: '오를래',
+	        imageUrl:'http://localhost:8080/orl/images/feed/feedw/profile.jpg',
+	        link: {
+	          mobileWebUrl: 'http://localhost:8080/orl/feed/feedmain',
+	          webUrl: 'http://localhost:8080/orl/feed/feedmain',
+	        },
+	      },
+	      social: {
+	        likeCount:${totalLikeCount},
+	        /* commentCount: 45,
+	        sharedCount: 845, */
+	      },
+	      buttons: [
+	        {
+	          title: '웹으로 보기',
+	          link: {
+	            mobileWebUrl: 'http://localhost:8080/orl/',
+	            webUrl: 'http://localhost:8080/orl/feed/feedmain',
+	          },
+	        }
+	        /* {
+	          title: '앱으로 보기',
+	          link: {
+	            mobileWebUrl: 'https://developers.kakao.com',
+	            webUrl: 'https://developers.kakao.com',
+	          },
+	        }, */
+	      ],
+	    })
+	  }
+	</script>
+	
 
 	<!-- footer -->
 	<%@ include file="/WEB-INF/frame/default/footer.jsp"%>
