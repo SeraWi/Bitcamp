@@ -626,7 +626,7 @@
 				/* url:'<c:url value="/feed/followingList"/>', */
 				/* 09.01 수정 */
 				url:'<c:url value="/feed/followingList/${member.memberIdx}"/>',
-				type:'GET',
+				type:'POST',
 				success: function(data){
 					console.log(data); 
 				
@@ -658,7 +658,7 @@
 			//팔로잉 버튼 눌렀을 때 명단 가져오기 ->비동기 통신으로
 			$.ajax({
 				url:'<c:url value="/feed/followingList/${member.memberIdx}"/>',
-				type:'GET',
+				type:'POST',
 				success: function(data){
 					console.log(data); 
 					

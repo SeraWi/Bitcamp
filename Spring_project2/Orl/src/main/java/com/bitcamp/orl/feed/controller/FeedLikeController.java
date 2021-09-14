@@ -16,13 +16,12 @@ public class FeedLikeController {
 	@Autowired
 	private LikeService likeService;
 	
-	
+	//비동기통신으로 좋아요 누르고 취소하기 처리
 	@PostMapping("/feed/likeButtonClick")
 	public int insertLike(
 			@RequestParam("boardIdx") int boardIdx,
 			@RequestParam("likeChange") int likeChange,
 			HttpServletRequest request
-			
 			) {
 		
 		// 세션에 있는 나의 idx

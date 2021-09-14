@@ -25,7 +25,7 @@
 					src="<c:url value="/images/feed/feedw/uploadfile/${selectFeedView.boardPhoto}"/>"
 					alt="feed-img">
 				<button>
-					<!-- 프로필 사진 받아오기 -->
+					<!-- 사람 태그! -->
 					<img src="<c:url value="/images/feed/feedw/icon-05.png"/>">
 				</button>
 			</section>
@@ -140,8 +140,8 @@
 								<img src="<c:url value="/images/feed/feedw/comment.png"/>"
 									alt="comment-img">
 							</button>
-							<!-- 카톡으로 공유하기 -->
-							<a id="kakao-link-btn" href="javascript:sendLink()">
+							<!-- 카톡으로 공유하기 추가0913-->
+							<a id="kakao-link-btn" href="javascript:sendLink(${selectFeedView.memberIdx},${selectFeedView.boardIdx},${totalLikeCount})">
 							  <img
 							    src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
 							  />
@@ -249,13 +249,11 @@
 	
 	</script>
 	
-	<!--  카카오톡으로 공유하기  -->
+	<!--  카카오톡으로 공유하기   ㅡ0914추가-->
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script type="text/javascript">
-	 var img ="http://localhost:8080/orl/images/feed/feedw/profile.jpg";
-	 
-	 
-	  function sendLink() {
+	  function sendLink(memberIdx,boardIdx,totalLikeCount) {
+		  /* hashtag도 파라미터로 받기 */
 		Kakao.init("daeecdc3ce37abac4a9a3f8ad3e05b0a");
 		
 	    Kakao.Link.sendDefault({
@@ -263,14 +261,14 @@
 	      content: {
 	        title: '오를래 사진을 공유합니다.',
 	        description: '오를래',
-	        imageUrl:'http://localhost:8080/orl/images/feed/feedw/profile.jpg',
+	        imageUrl:'https://ifh.cc/g/Mtgj7e.jpg',
 	        link: {
-	          mobileWebUrl: 'http://localhost:8080/orl/feed/feedmain',
-	          webUrl: 'http://localhost:8080/orl/feed/feedmain',
+	          mobileWebUrl: 'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
+	          webUrl: 'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
 	        },
 	      },
 	      social: {
-	        likeCount:${totalLikeCount},
+	        likeCount:totalLikeCount,
 	        /* commentCount: 45,
 	        sharedCount: 845, */
 	      },
@@ -278,17 +276,10 @@
 	        {
 	          title: '웹으로 보기',
 	          link: {
-	            mobileWebUrl: 'http://localhost:8080/orl/',
-	            webUrl: 'http://localhost:8080/orl/feed/feedmain',
+	            mobileWebUrl: 'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
+	            webUrl: 'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
 	          },
 	        }
-	        /* {
-	          title: '앱으로 보기',
-	          link: {
-	            mobileWebUrl: 'https://developers.kakao.com',
-	            webUrl: 'https://developers.kakao.com',
-	          },
-	        }, */
 	      ],
 	    })
 	  }

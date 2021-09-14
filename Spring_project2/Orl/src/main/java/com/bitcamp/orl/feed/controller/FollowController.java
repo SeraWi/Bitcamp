@@ -23,8 +23,9 @@ public class FollowController {
 
 	@Autowired
 	private FollowService followService;
-
-	@RequestMapping("/feed/followerList/{memberIdx}")
+	
+	// 비동기 통신 팔로워 리스트 출력
+	@PostMapping("/feed/followerList/{memberIdx}")
 	public List<FollowList> getFollowerList(
 			@PathVariable("memberIdx") int memberIdx,
 			Model model
@@ -39,7 +40,7 @@ public class FollowController {
 
 
 	//팔로잉 리스트 출력: 내 피드 이던 남 피드 이던 memberIdx로 팔로잉 리스트 찾기
-	@RequestMapping("/feed/followingList/{memberIdx}")
+	@PostMapping("/feed/followingList/{memberIdx}")
 	public List<FollowList> getFollowingList(
 			@PathVariable("memberIdx") int memberIdx,
 			Model model

@@ -16,45 +16,45 @@ import com.bitcamp.orl.member.domain.Member;
 public interface FeedDao {
 	
 	//1. follower수 가져오기
-	int selectFollowerCount(int MemberIdx);
+	int selectFollowerCount(@Param("memberIdx")int memberIdx);
 	
 	
 	//2. following 수 가져오기
-	int selectFollowingCount(int MemberIdx);
+	int selectFollowingCount(@Param("memberIdx")int memberIdx);
 	
 	
 	//3. follower 리스트 가져오기
-	List<FollowList> selectFollowerList(int MemberIdx);
+	List<FollowList> selectFollowerList(@Param("memberIdx")int memberIdx);
 
 	
 	//4. follwing 리스트 가져오기
-	List<FollowList> selectFollowingList(int memberIdx);
+	List<FollowList> selectFollowingList(@Param("memberIdx")int memberIdx);
 
 	//5. 게시물 갯수 가져오기
-	int selectFeedCount(int memberIdx);
+	int selectFeedCount(@Param("memberIdx")int memberIdx);
 	
 	
 	//6. 남피드 출력 위해 필요한 member 객체 가져오기(한행)
-	Member selectOneMember(int memberIdx);
+	Member selectOneMember(@Param("memberIdx")int memberIdx);
 	
 	
 	//7. 팔로우하기와 팔로우 끊기 버튼을 위해 나와 남이 팔로우 상태인지 체크하기
-	int selectFollowRelation(int myIdx, int yourIdx);
+	int selectFollowRelation(@Param("myIdx")int myIdx, @Param("yourIdx") int yourIdx);
 
 	
 	//8. 팔로우 시작하기
-	int insertFollowMember(int myIdx, int yourIdx);
+	int insertFollowMember(@Param("myIdx")int myIdx, @Param("yourIdx") int yourIdx);
 	
 	
 	//9. 팔로우 그만하기
-	int deleteFollowMember(int myIdx, int yourIdx);
+	int deleteFollowMember(@Param("myIdx")int myIdx, @Param("yourIdx") int yourIdx);
 
 	
 	//10. 내 피드 기본 정렬 가져오기
 	List<FeedGallery> selectFeedGallery(@Param("memberIdx")int memberIdx);
 
 	//11. 내 피드 좋아요 정렬 가져오기
-	List<FeedLikeGallery> selectFeedLikeGallery(int memberIdx);
+	List<FeedLikeGallery> selectFeedLikeGallery(@Param("memberIdx")int memberIdx);
 	
 	
 	//12. 좋아요 누른 상태인지 아닌지 
@@ -74,11 +74,11 @@ public interface FeedDao {
 	// 16. 피드 인기순 정렬(0910)
 	List<NewFeedList> selectFeedOrderByLike();
 	
-	// 17. 해시태그 검색 결과
-	List<NewFeedList> selectByHashtag(String hashtag);
+	// 17. 해시태그 검색 결과 (0911)
+	List<NewFeedList> selectByHashtag(@Param("hashtag") String hashtag);
 
-	// 18. 닉네임 검색 결과
-	List<FeedSearchByNickname> selectByNickname(String nickname);
+	// 18. 닉네임 검색 결과 (0911)
+	List<FeedSearchByNickname> selectByNickname(@Param("nickname") String nickname);
 
 	
 	

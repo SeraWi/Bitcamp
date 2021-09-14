@@ -75,7 +75,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	>
 	select count(*)
 	from final.follow
-	where memberIdx = #{param1} and memberIdx2 = #{param2};	
+	where memberIdx = #{myIdx} and memberIdx2 = #{yourIdx};	
 	</select>
 	
 	
@@ -84,7 +84,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	>
 	insert into final.follow
 	(memberIdx, memberIdx2)
-	values(#{param1},#{param2});	
+	values(#{myIdx},#{yourIdx});	
 	</insert>
 	
 	<!-- 9. 팔로우 그만하기(비동기통신) -->
@@ -92,7 +92,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteFollowMember">
 	delete 
 	from final.follow
-	where memberIdx =#{param1} and memberIdx2 = #{param2};
+	where memberIdx =#{myIdx} and memberIdx2 = #{yourIdx};
 		
 	</delete>
 	
