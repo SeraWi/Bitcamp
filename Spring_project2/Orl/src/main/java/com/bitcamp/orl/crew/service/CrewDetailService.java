@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bitcamp.orl.crew.dao.CrewDao;
+import com.bitcamp.orl.crew.dao.Dao;
 import com.bitcamp.orl.crew.domain.Crew;
 import com.bitcamp.orl.crew.domain.CrewInfo;
 import com.bitcamp.orl.member.domain.Member;
@@ -15,7 +15,7 @@ import com.bitcamp.orl.member.domain.Member;
 @Service
 public class CrewDetailService {
 	
-	private CrewDao dao;
+	private Dao dao;
 	
 	@Autowired
 	private SqlSessionTemplate template;
@@ -77,21 +77,21 @@ public class CrewDetailService {
 	
 	//크루 하나의 정보 가져오기
 	public Crew getCrew(int crewIdx) {
-		dao = template.getMapper(CrewDao.class);
+		dao = template.getMapper(Dao.class);
 		Crew crew = dao.selectCrew(crewIdx);
 		return crew;
 	}
 	
 	//크루원들의 수 가져오기
 	public int getCrewMemberNum(int crewIdx) {
-		dao = template.getMapper(CrewDao.class);
+		dao = template.getMapper(Dao.class);
 		int crewMemberNum = dao.selectCrewMemberNum(crewIdx);
 		return crewMemberNum;
 	}
 	
 	// 크루 상세보기 댓글 전체 갯수
 	public int getCrewCommentNum(int crewIdx) {
-		dao = template.getMapper(CrewDao.class);
+		dao = template.getMapper(Dao.class);
 		int crewCommentNum = dao.selectCrewCommentNum(crewIdx);
 		return crewCommentNum;
 	}
@@ -99,7 +99,7 @@ public class CrewDetailService {
 	// 내가 크루 멤버인지아닌지
 	public boolean getIsCrewMember(int memberIdx, int crewIdx) {
 		boolean chk = false;
-		dao = template.getMapper(CrewDao.class);
+		dao = template.getMapper(Dao.class);
 		int chkInt = dao.selectCountMemberToRegCrew(memberIdx, crewIdx);
 		if(chkInt != 0) {
 			chk = true;

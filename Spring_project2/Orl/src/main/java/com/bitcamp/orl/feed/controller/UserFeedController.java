@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitcamp.orl.crew.domain.Crew;
 import com.bitcamp.orl.crew.service.CrewListViewService;
@@ -97,7 +98,9 @@ public class UserFeedController {
 		
 		return "feed/userFeed";
 	}
-
+	
+	
+	// 피드 올리기 후에!
 	@RequestMapping(value="/feed/userFeed/{memberIdx}", method = RequestMethod.POST)
 	public String upload(
 			@ModelAttribute("feedrequest") FeedCreateRequest feedrequest, 
@@ -135,7 +138,6 @@ public class UserFeedController {
 		// 5) 사진 갤러리 기본 정렬 보여주기 
 		List<FeedGallery> feedGallery = galleryService.getFeedGallery(memberIdx);
 		
-		
 		// 6) 사진 갤러리 좋아요 정렬 보여주기
 		List<FeedLikeGallery> feedLikeGallery = galleryService.getFeedLikeGallery(memberIdx);
 		
@@ -152,8 +154,9 @@ public class UserFeedController {
 		model.addAttribute("feedGallery",feedGallery);
 		model.addAttribute("feedLikeGallery",feedLikeGallery);
 		model.addAttribute("myCrewList",myCrewList);
-
-		return "feed/userFeed";
+		
+		//0915 수정 insert중복되는 거 막기 위해 get방식으로 redirect 시키기
+		return "redirect:/feed/userFeed/"+memberIdx;
 	}
 	
 	//가장 첫번째 요청: 피드 보여주기 (세션에 저장된 idx 필요)

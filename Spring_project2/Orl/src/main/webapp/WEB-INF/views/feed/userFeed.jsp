@@ -41,7 +41,7 @@
 	<%@ include file="/WEB-INF/frame/default/header.jsp"%>
 	
 	
-	<!-- <!— modal_createfeed 우리언니 0908 추가 —> -->
+	<!-- modal_createfeed 우리언니 0908 추가  -->
 	<div class="modal_createfeed">
 		<div class="modal_content_create">
 			<section class="container_create">
@@ -57,16 +57,18 @@
         <!-- 프로필 영역 -->
         <section class="bio">
             <!-- 사진 영역 -->
-            <div class="profile-photo">
-                <img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>" alt="profile-photo">
-            </div>
+            <a href="<c:url value="/feed/userFeed/${member.memberIdx}"/>">
+	            <div class="profile-photo">
+	                <img src="<c:url value="/images/member/profile/default.jpg"/>" alt="profile-photo">
+	            </div>
+            </a>
 
             <!-- 사용자 정보 영역: username, follow-infos, user-post,buttons -->
             <div class="profile-info">
 
                 <!-- 사용자 id -->
                 <div class="username">
-                    <a href="#">${member.memberNickname}</a>
+                    <a href="<c:url value="/feed/userFeed/${member.memberIdx}"/>">${member.memberNickname}</a>
                 </div>
 
 
@@ -74,11 +76,11 @@
                     <li>게시물 ${feedCount}</li>
                     
                     <li class="follows" id="follower">
-                    	<a href="#" >팔로워 <span id="followerCount"> ${followerCount}</span></a>
+                    	<a>팔로워 <span id="followerCount"> ${followerCount}</span></a>
                     </li>
                     
                     <li class="follows" id="following">
-                    	<a href="#">팔로잉 <span id="followingCount">${followingCount}</span></a>
+                    	<a>팔로잉 <span id="followingCount">${followingCount}</span></a>
                     </li>
                 </ul>
 
@@ -86,23 +88,17 @@
                 <div class="buttons" >
 	                <c:choose>
 	                	<c:when test="${sessionScope.memberVo.memberIdx ne member.memberIdx}">
-	            			<!-- <div><a class="buttons-area" href="#">팔로우하기</a></div> -->
-	            			<!-- 09.01 기존 a태그에서 서버 통신 위해 button으로 바꿈  -->
-	            			<!-- <div id="followButton"><input type="button" class="buttons-area" value="팔로우하기"></div> -->
 	                		<div id="follow-button-div">
-	                		<input type="button" id="follow-button" class="${followRelation==0? 'buttons-area-yellow':'buttons-area-gray'}" value="${followRelation==0? '팔로우 시작하기': '팔로우 그만하기'}">
+	                			<input type="button" id="follow-button" class="${followRelation==0? 'buttons-area-yellow':'buttons-area-gray'}" value="${followRelation==0? '팔로우 시작하기': '팔로우 그만하기'}">
 	                		</div>
 	                	</c:when>
 
 						<c:otherwise>
 		                    <div><a class="buttons-area-yellow" href="<c:url value="/member/mypage"/>">내 정보 수정</a></div>
-		                    <!-- <div><a class="buttons-area-yellow" href="/orl/feed/createFeed">피드 올리기</a></div>   -->
-		                    <!-- 피드 올리기  수정(0908) -->	
 		                    <div><a class="buttons-area-yellow modalbtn_createfeed">피드 올리기</a></div>					
 						</c:otherwise>
 	                </c:choose>
             	</div>
-            	
             </div>
 
 
@@ -202,9 +198,11 @@
 
 		<!-- 내크루 가기 영역  swiper 사용 -->
 		<!-- href : crewIdx로 해서 크루 상세보기로 넘어가야한다. -->
+		<!-- 크루 사진 경로 맞춰야함 -->
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
              
+             <!--  내가 가입한 크루 리스트-->
               	<c:forEach var ="myCrewList" items="${myCrewList}">
 	              	 <div class="swiper-slide">
 	              		 <a href="<c:url value="/crew/detail/${myCrewList.crewIdx}&1"/>" class="crew">
@@ -212,9 +210,10 @@
 		              		<div>${myCrewList.crewName}</div>
 	              		</a>
 	              	</div>
-
               	</c:forEach>
-              	
+              
+              <!-- 마지막에 more -->
+              <!-- href : 크루 페이지 경로 넣어주기 -->
               <div class="swiper-slide">
                 <a href="#" class="crew">
                     <img src="<c:url value="/images/feed/feeds/more.png"/>" alt="">
@@ -223,97 +222,19 @@
               </div> 
               	
 
-<!--               	<div class="swiper-slide">
-                <a href="#" class="crew">
-                  <img
-                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                    alt=""/>
-                  <div>크루이름크루크루크루크루크루</div>
-                </a>
-              </div>
-              
-              <div class="swiper-slide">
-                <a href="#" class="crew">
-                  <img
-                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                    alt=""/>
-                  <div>크크크루루루!</div>
-                </a>
-              </div>
-              
-              <div class="swiper-slide">
-                <a href="#" class="crew">
-                  <img
-                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                    alt=""/>
-                  <div>크루이름</div>
-                </a>
-              </div>
-
-              <div class="swiper-slide">
-                <a href="#" class="crew">
-                  <img
-                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                    alt=""/>
-                  <div>크루이름10글자까지</div>
-                </a>
-              </div>
-              
-              <div class="swiper-slide">
-                <a href="#" class="crew">
-                  <img
-                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                    alt=""/>
-                  <div>넘어가면잘린다..</div>
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="#" class="crew">
-                  <img
-                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                    alt=""/>
-                  <div>clickclick</div>
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="#" class="crew">
-                  <img
-                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                    alt=""/>
-                  <div>크루이름</div>
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="#" class="crew">
-                  <img
-                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                    alt=""/>
-                  <div>크루이름</div>
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="#" class="crew">
-                  <img
-                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                    alt=""/>
-                  <div>크루이름</div>
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="#" class="crew">
-                  <img
-                    src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                    alt=""/>
-                  <div>크루이름</div>
-                </a>
-              </div> -->
-
-			
-            </div><!-- swiper-wrapper 끝 -->
+            </div>
+            <!-- swiper-wrapper 끝 -->
+            
+            
+            <!-- 옆으로 가기 버튼 영역 시작  -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-pagination"></div>
-          </div> <!-- 내크루 가기 영역 끝 -->
+            <!-- 버튼 영역 끝 -->
+            
+          </div> 
+          <!-- 크루 가기 영역 끝 -->
+      
       
           <!-- Swiper JS -->
           <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -336,7 +257,7 @@
               }
             });
           </script>
-         <!-- 내 크루 영역 끝 --> 
+         <!--크루 영역 JS 끝 --> 
           
 
         <!-- 갤러리 네비게이션 영역 : 피드보기랑 좋아요 보기 -->
@@ -359,7 +280,7 @@
        		</section> 
         </form>
       
-        <!-- 사진 피드 영역: 좋아요 영역 display_none으로 안보이는 상태-->
+        <!-- 갤러리 영역: 좋아요 영역 display_none으로 안보이는 상태-->
         <section class="gallery display_none" id="like-sort-gallery">
         	  <c:forEach var="feedLikeGallery" items="${feedLikeGallery}">
 	        	<a class="item" >
@@ -368,20 +289,7 @@
         	  </c:forEach>
         </section>
         
-<!--         <script>
-        	function feedview(memberIdx,boardIdx){
-        		
-        		/* $('#like-Hidden-memberIdx2').val(memberIdx);
-        		$('#like-hidden-boardIdx').val(boardIdx); */
-        		$('#likeGalleryForm').attr('action','${pageContext.request.contextPath}/feed/feedview/'+memberIdx+'&'+boardIdx);
-        		$('#likeGalleryForm').submit();
-        	};
-        
-        </script> -->
-
-        <!--갤러리 영역 끝 --> 
-        
-        <!-- 좋아요 갤러리 정렬  js-->
+        <!-- 갤러리 정렬  JS 시작-->
 	    <script>
         
    		// 좋아요 아이콘 클릭하면 좋아요 정렬로 보여주기
@@ -402,58 +310,7 @@
 	        }); 
         
         </script>
- <!-- 
-            <a href="#" class="item">
-              <img src="https://images.pexels.com/photos/2829336/pexels-photo-2829336.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-            </a>
-            <a href="#"class="item">
-              <img src="https://images.pexels.com/photos/3598706/pexels-photo-3598706.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-            </a>
-            <a href="#" class="item">
-                <img src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
-            </a>
-            <a href="#" class="item">
-                <img src="https://images.pexels.com/photos/3598706/pexels-photo-3598706.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-            </a>
-            <a href="#" class="item">
-                <img src="https://images.pexels.com/photos/2829336/pexels-photo-2829336.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-            </a>
-            <a href="#" class="item">
-                <img src="https://images.pexels.com/photos/2739505/pexels-photo-2739505.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-            </a>
-            <a href="#" class="item">
-                <img src="https://images.pexels.com/photos/6051221/pexels-photo-6051221.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-            </a>
-            <a href="#" class="item">
-                <img src="https://images.pexels.com/photos/4652275/pexels-photo-4652275.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
-            </a>
-            <a href="#" class="item">
-                <img src="https://images.pexels.com/photos/3598706/pexels-photo-3598706.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-            </a> -->
-		
-		<!-- 페이징 영역 -->
-       <!--  <nav aria-label="Page navigation example ">
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
-                  </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">5</a></li>
-              <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                </li>
-            </ul>
-    	</nav> -->
-    	<!-- 페이징 영역 끝 -->
-       
+        <!-- 갤러리 정렬  JS 끝-->
 
     </div>
 <!-- 메인 피드 영역  끝-->
@@ -463,7 +320,7 @@
 <%@ include file="/WEB-INF/frame/default/footer.jsp"%>
 <!-- footer 영역 끝 -->
 
-
+<!-- 비동기 통신으로 보여지는 영역 시작 -->
 
 	<!--팔로워 리스트 영역 -->
 	 <div class="container-follow display_none" id="container-follower">
@@ -485,7 +342,7 @@
     </div>
     <!-- 팔로워 리스트 영역 끝  -->
 	
-	<!-- 팔로워 눌렀을 때  리스트 보여주기 JS-->
+	<!-- 팔로워 리스트 비동기통신 영역 시작-->
 	<script>
 	$('#follower').click(function(){
 		//팔로워 보여주기
@@ -496,8 +353,11 @@
 		
 		//비동기 통신
 		$.ajax({
-			url:'<c:url value="/feed/followerList/${member.memberIdx}"/>',
+			url:'<c:url value="/feed/followerList"/>',
 			type:'POST',
+			data:{
+				memberIdx:'${member.memberIdx}'
+			},
 			success: function(data){
 				
 				console.log(data); 
@@ -506,8 +366,10 @@
 					console.log(index,item);
 					
 					var html ='<div class="member">';
-					html += '	<img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>"/>';
-					html += '	<a href="<c:url value="/feed/userFeed/'+item.memberIdx+'"/>">'+item.memberNickname+'</a>';
+					html += '   <a href="<c:url value="/feed/userFeed/'+item.memberIdx+'"/>">';
+					html += '		<img src="<c:url value="/images/member/profile/default.jpg"/>"/>';
+					html += '	</a>';
+					html += '	<a class="nickname-area" href="<c:url value="/feed/userFeed/'+item.memberIdx+'"/>">'+item.memberNickname+'</a>';
 					/* html += '	<input type="submit" class="button-yellow-inList" value="팔로우 시작하기">'; */
 					html += '</div>';
 					
@@ -525,7 +387,6 @@
 		$('#container-follower').addClass('display_none');
 		
 	});
-	/* 팔로우 하기 팔로우 끊기 비동기 통신 여기서 처리!! */
 	
 	
 	</script>
@@ -543,66 +404,9 @@
 			<!-- 비동기 통신으로 추가되는 영역 -->            
         </div>
     </div>
+    <!--팔로잉  리스트 영역  끝-->
     
-    <!-- 팔로잉 리스트 JS -->
-	<!-- <script>
-	$('#following').click(function(){
-		$('#container-following').removeClass('display_none');
-		
-		
-		if(${sessionScope.member.memberIdx ne member.memberIdx}){
-			console.log("남 피드 입니다.")
-		}else{
-			console.log("내 피드 입니다.")
-		}
-		
-		//명단 초기화 해준다음에 추가!
-		$('#following-members').html('');
-		
-		//팔로잉 버튼 눌렀을 때 명단 가져오기 ->비동기 통신으로
-		$.ajax({
-			/* url:'<c:url value="/feed/followingList"/>', */
-			/* 09.01 수정 */
-			url:'<c:url value="/feed/followingList/${member.memberIdx}"/>',
-			type:'GET',
-			success: function(data){
-				console.log(data); 
-			
-				
- 			$.each(data,function(index,item){
-					console.log(index,item);
-					
-					var html ='<div class="member">';
-					html += '	<img src="'+item.memberProfile+'"/>';
-					html += '	<a href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
-					html += '	<input type="submit" id="follow-button-in-list" value="팔로우 그만하기">';
-					html += '</div>';
-					
-					//div 추가해주기
-					$('#following-members').append(html);
-				});  
-			}
-		});
-		
-	});
-	
-	// 닫기 버튼 눌렀을 때 
-	$('.form-close').click(function(){
-		$('#container-following').addClass('display_none');
-		
-	});
-	
-	
-	
-	// 팔로우 그만하기 부분 -> 내피드에서만 보이도록하고 남피드에서 남의 리스트로 보일때는 아예 버튼 보이지 않드록 하자
-	
-	
-	
-	
-	
-	
-	</script> -->
-	
+    <!-- 팔로잉 리스트 영역 비동기 통신 영역 시작 -->
 	<!-- 내피드에서 팔로잉 리스트에서 버튼, 남피드 팔로잉 리스트에서는 버튼 안보이게  -->
 	<script>
 	$('#following').click(function(){
@@ -623,20 +427,22 @@
 			
 			//팔로잉 버튼 눌렀을 때 명단 가져오기 ->비동기 통신으로
 			$.ajax({
-				/* url:'<c:url value="/feed/followingList"/>', */
-				/* 09.01 수정 */
-				url:'<c:url value="/feed/followingList/${member.memberIdx}"/>',
+				url:'<c:url value="/feed/followingList"/>',
 				type:'POST',
+				data:{
+					memberIdx:'${member.memberIdx}'
+				},
 				success: function(data){
 					console.log(data); 
 				
-					
 	 			$.each(data,function(index,item){
 						console.log(index,item);
 						
 						var html ='<div class="member">';
-						html += '	<img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>"/>';
-						html += '	<a href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
+						html += '   <a href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">';
+						html += '		<img src="<c:url value="/images/member/profile/default.jpg"/>"/>';
+						html += '	</a>';
+						html += '	<a class="nickname-area" href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
 						html += '</div>';
 						
 						//div에 추가해주기
@@ -644,9 +450,7 @@
 					});  
 				}
 			});/* ajax끝 */
-			
-			
-			
+		
 		}else{
 			console.log("내 피드 입니다.")
 			// 내 피드에서는 팔로잉 리스트에 버튼 보이도록
@@ -656,9 +460,13 @@
 			$('#following-members').html('');
 			
 			//팔로잉 버튼 눌렀을 때 명단 가져오기 ->비동기 통신으로
+			// post방식으로 바꿈
 			$.ajax({
-				url:'<c:url value="/feed/followingList/${member.memberIdx}"/>',
+				url:'<c:url value="/feed/followingList"/>',
 				type:'POST',
+				data:{
+					memberIdx:'${member.memberIdx}'
+				},
 				success: function(data){
 					console.log(data); 
 					
@@ -666,8 +474,10 @@
 						console.log(index,item);
 						
 						var html ='<div class="member">';
-						html += '	<img src="<c:url value="/images/feed/feeds/defaultPhoto.jpg"/>"/>';
-						html += '	<a href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
+						html += '   <a href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">';
+						html += '		<img src="<c:url value="/images/member/profile/default.jpg"/>"/>';
+						html += '	</a>';
+						html += '	<a class="nickname-area" href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
 						html += '	<input type="hidden" value="'+item.memberIdx2+'">';
 						html += '	<input type="button" class="button-gray-inList" value="팔로우 그만하기">';
 						html += '</div>';

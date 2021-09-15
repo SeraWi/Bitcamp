@@ -36,9 +36,6 @@ button:hover {
     font-weight: bold;
 }
 
-
-
-
 .c_leftbox { /* 사진 영역 */
     width: 55%;
     background-color: ghostwhite;
@@ -135,15 +132,15 @@ button:hover {
 
 
 
-    .hashtabbox { /* 해시태그 영역 */
+    .hashtagbox { /* 해시태그 영역 */
         height: 50px;
         position: relative;
     }
-        .hashtabbox>p {
+        .hashtagbox>p {
             position: absolute;
             left: 18px;
         }
-        .hashtabbox>input { /* 입력 상자 */
+        .hashtagbox>input { /* 입력 상자 */
             position: absolute;
             left: 90px;
             bottom: 20px;

@@ -15,8 +15,10 @@ import com.bitcamp.orl.member.domain.*;
 
 @Service
 public class CreateFeedService {
-
-	FeedDao dao;
+	
+	// 피드 게시 : insert
+	
+	private FeedDao dao;
 
 	@Autowired
 	private SqlSessionTemplate template;

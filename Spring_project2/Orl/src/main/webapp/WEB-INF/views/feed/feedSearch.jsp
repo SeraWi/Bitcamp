@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>검색결과보기</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" href="<c:url value='/css/mountain/search.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/feed/search.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
 </head>
 

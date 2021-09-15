@@ -8,17 +8,14 @@ import com.bitcamp.orl.feed.dao.FeedDao;
 
 @Service
 public class LikeService {
-	
-	
-	//비동기 통신 처리
-	//좋아요 버튼 누르기, 취소하기 처리하기
+	// 비동기 통신으로 좋아요 버튼 누르기, 취소하기 처리하기
 	
 	private FeedDao dao;
 	
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	// 좋아요
+	// 1) 좋아요 누르기 -->insert
 	public int insertLike(int memberIdx, int boardIdx) {
 		
 		int likeResult =0;
@@ -31,7 +28,7 @@ public class LikeService {
 		
 	}
 
-	// 좋아요 취소
+	// 2) 좋아요 취소하기 --> delete
 	public int deleteLike(int memberIdx,int boardIdx) {
 		
 		int likeResult = 0;
@@ -41,8 +38,5 @@ public class LikeService {
 		
 		return likeResult;
 	}
-
-	
-	
 	
 }

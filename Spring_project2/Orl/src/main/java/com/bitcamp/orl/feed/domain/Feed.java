@@ -14,16 +14,12 @@ public class Feed {
 	private String hashtag;
 	private String tag;
 	private int memberIdx;
-	private String memberNickname;
 
 	public Feed() {
 	}
 	
-	
-
 	public Feed(int boardIdx, String boardPhoto, String boardDiscription, Timestamp boardDate, String hashtag,
-			String tag, int memberIdx, String memberNickname) {
-		super();
+			String tag, int memberIdx) {
 		this.boardIdx = boardIdx;
 		this.boardPhoto = boardPhoto;
 		this.boardDiscription = boardDiscription;
@@ -31,7 +27,6 @@ public class Feed {
 		this.hashtag = hashtag;
 		this.tag = tag;
 		this.memberIdx = memberIdx;
-		this.memberNickname = memberNickname;
 	}
 
 
@@ -91,22 +86,11 @@ public class Feed {
 	public void setMemberIdx(int memberIdx) {
 		this.memberIdx = memberIdx;
 	}
-
-	public String getMemberNickname() {
-		return memberNickname;
-	}
-
-	public void setMemberNickname(String memberNickname) {
-		this.memberNickname = memberNickname;
-	}
-
-
-
+	
 	@Override
 	public String toString() {
 		return "Feed [boardIdx=" + boardIdx + ", boardPhoto=" + boardPhoto + ", boardDiscription=" + boardDiscription
-				+ ", boardDate=" + boardDate + ", hashtag=" + hashtag + ", tag=" + tag + ", memberIdx=" + memberIdx
-				+ ", memberNickname=" + memberNickname + "]";
+				+ ", boardDate=" + boardDate + ", hashtag=" + hashtag + ", tag=" + tag + ", memberIdx=" + memberIdx + "]";
 	}
 	
 	

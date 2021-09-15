@@ -29,12 +29,12 @@ CONSTRAINT FK_memberIdx_to_board FOREIGN KEY (memberIdx) REFERENCES final.member
 
 -- 사진게시판-댓글
 CREATE TABLE final.photoBoardComment (
-boardCommnetIdx INTEGER NOT NULL AUTO_INCREMENT ,
+boardCommentIdx INTEGER NOT NULL AUTO_INCREMENT ,
 comment text NOT NULL,
 commentDate TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
 boardIdx INTEGER NOT NULL,
 memberIdx INTEGER NOT NULL,
-PRIMARY KEY (boardCommnetIdx),
+PRIMARY KEY (boardCommentIdx),
 CONSTRAINT FK_boardIdx_to_boardComment FOREIGN KEY (boardIdx) REFERENCES final.photoBoard(boardIdx) ON DELETE CASCADE,
 CONSTRAINT FK_memberIdx_to_boardComment FOREIGN KEY (memberIdx) REFERENCES final.member(memberIdx) ON DELETE CASCADE
 );

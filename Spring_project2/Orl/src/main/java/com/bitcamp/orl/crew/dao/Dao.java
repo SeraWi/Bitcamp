@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.bitcamp.orl.crew.domain.Crew;
 
-public interface CrewDao {
+public interface Dao {
 	
 	// 내가 가입한 크루(민주)
 	List<Crew> selectMyCrewList(@Param("memberIdx")int memberIdx);

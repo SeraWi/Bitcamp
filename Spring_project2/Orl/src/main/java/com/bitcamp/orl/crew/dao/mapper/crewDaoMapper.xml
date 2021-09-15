@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="com.bitcamp.orl.crew.dao.CrewDao">
+<mapper namespace="com.bitcamp.orl.crew.dao.Dao">
 	<!-- Select 의 결과를 매핑하는 설정 -->
 	<resultMap id="crewListResult"
 		type="com.bitcamp.orl.crew.domain.Crew">
