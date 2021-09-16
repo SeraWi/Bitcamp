@@ -59,7 +59,7 @@
             <!-- 사진 영역 -->
             <a href="<c:url value="/feed/userFeed/${member.memberIdx}"/>">
 	            <div class="profile-photo">
-	                <img src="<c:url value="/images/member/profile/default.jpg"/>" alt="profile-photo">
+	                <img src="<c:url value="/images/member/profile/${member.memberProfile}"/>" alt="profile-photo">
 	            </div>
             </a>
 
@@ -367,7 +367,7 @@
 					
 					var html ='<div class="member">';
 					html += '   <a href="<c:url value="/feed/userFeed/'+item.memberIdx+'"/>">';
-					html += '		<img src="<c:url value="/images/member/profile/default.jpg"/>"/>';
+					html += '		<img src="<c:url value="/images/member/profile/'+item.memberProfile+'"/>"/>';
 					html += '	</a>';
 					html += '	<a class="nickname-area" href="<c:url value="/feed/userFeed/'+item.memberIdx+'"/>">'+item.memberNickname+'</a>';
 					/* html += '	<input type="submit" class="button-yellow-inList" value="팔로우 시작하기">'; */
@@ -440,7 +440,7 @@
 						
 						var html ='<div class="member">';
 						html += '   <a href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">';
-						html += '		<img src="<c:url value="/images/member/profile/default.jpg"/>"/>';
+						html += '		<img src="<c:url value="/images/member/profile/'+item.memberProfile+'"/>"/>';
 						html += '	</a>';
 						html += '	<a class="nickname-area" href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
 						html += '</div>';
@@ -475,7 +475,7 @@
 						
 						var html ='<div class="member">';
 						html += '   <a href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">';
-						html += '		<img src="<c:url value="/images/member/profile/default.jpg"/>"/>';
+						html += '		<img src="<c:url value="/images/member/profile/'+item.memberProfile+'"/>"/>';
 						html += '	</a>';
 						html += '	<a class="nickname-area" href="<c:url value="/feed/userFeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
 						html += '	<input type="hidden" value="'+item.memberIdx2+'">';

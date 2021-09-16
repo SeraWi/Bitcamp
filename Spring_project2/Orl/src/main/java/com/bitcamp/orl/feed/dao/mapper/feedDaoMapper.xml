@@ -165,7 +165,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	order by count(*) DESC,boardIdx DESC; 
 	</select> -->
 	
-	<!-- 16. 피드 인기순 정렬 수정 0915-->
+	<!-- 16. 피드 인기순 정렬 수정 0915, 좋아요 갯수 0도 출력(view 만들어서 사용)-->
 	<select id="selectFeedOrderByLike"
 			resultType="com.bitcamp.orl.feed.domain.NewFeedList"
 	>
@@ -270,14 +270,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<!--관리자용 추가0915  -->
-   <!-- 모든 항목가져오는 전체 피드 리스트 -->
+   <!-- 1) 모든 항목가져오는 전체 피드 리스트 -->
    <select  id="selectAllFeed"
          resultType="com.bitcamp.orl.feed.domain.FeedView">
          SELECT B.boardIdx, B.boardPhoto, B.boardDiscription, B.hashtag, B.tag, M.memberIdx, M.memberNickname, M.memberProfile
       FROM final.photoBoard AS B NATURAL JOIN final.member AS M ORDER BY B.boardIdx DESC;
    </select>
    
-   <!-- 피드 삭제 -->
+   <!-- 2) 피드 삭제 -->
    <delete id="deleteFeedByAdmin">
       DELETE FROM final.photoBoard WHERE boardIdx = #{boardIdx};
    </delete>

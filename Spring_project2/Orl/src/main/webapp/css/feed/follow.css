@@ -195,7 +195,7 @@ a:visited{
     cursor:pointer;
 
 	/* 백그라운드 컬러 회색 */
-    bbackground-color:#EFEFEF;
+    bbackground-color:#EFEFEF !important;
     
     
     border-radius: 10px;
