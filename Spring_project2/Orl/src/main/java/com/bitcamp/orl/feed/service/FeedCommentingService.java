@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.bitcamp.orl.feed.dao.FeedDao;
 import com.bitcamp.orl.feed.domain.FeedComment;
 import com.bitcamp.orl.feed.domain.FeedCommentRequest;
-import com.bitcamp.orl.member.domain.MemberVo;
+import com.bitcamp.orl.member.domain.MemberDto;
 
 @Service
 public class FeedCommentingService {
@@ -28,7 +28,7 @@ public class FeedCommentingService {
 			
 			FeedComment feedComment = commentRequest.toFeedComment();
 			
-			MemberVo memberVo = (MemberVo)(request.getSession().getAttribute("memberVo"));
+			MemberDto memberVo = (MemberDto)(request.getSession().getAttribute("memberVo"));
 			
 			if(memberVo != null) {
 				feedComment.setMemberIdx(memberVo.getMemberIdx());

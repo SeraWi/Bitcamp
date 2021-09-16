@@ -47,7 +47,7 @@ public class CreateFeedService {
 				System.out.println("파일 저장");
 			}
 
-			MemberVo memberVo = (MemberVo) (request.getSession().getAttribute("memberVo")); // 현재 세션의 member 객체 가져옴
+			MemberDto memberVo = (MemberDto) (request.getSession().getAttribute("memberVo")); // 현재 세션의 member 객체 가져옴
 
 			if (memberVo != null) {
 				feed.setMemberIdx(memberVo.getMemberIdx());

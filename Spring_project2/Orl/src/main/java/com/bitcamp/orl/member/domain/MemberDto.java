@@ -1,12 +1,12 @@
 package com.bitcamp.orl.member.domain;
 
-public class MemberVo {
+public class MemberDto {
 
     private int memberIdx;
     private String memberNickname;
     
 
-	public MemberVo(int memberIdx, String memberNickname) {
+	public MemberDto(int memberIdx, String memberNickname) {
 		super();
 		this.memberIdx = memberIdx;
 		this.memberNickname = memberNickname;

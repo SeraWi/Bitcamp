@@ -109,8 +109,8 @@ public class Member {
 	   }
 	   
 	   
-	   public MemberVo memberToMemberVo(){
-		      return new MemberVo(memberIdx, memberNickname);
+	   public MemberDto memberToMemberVo(){
+		      return new MemberDto(memberIdx, memberNickname);
 		   }
 	   
 	}

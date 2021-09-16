@@ -34,4 +34,13 @@
 		p:defaultEncoding="utf-8" p:maxUploadSize="10000000">
 	</beans:bean>
 	
+	<!-- 로그인 체크 인터셉터 등록 0915-->
+	<interceptors>
+		<interceptor>
+			<mapping path="/feed/userFeed/**"/>
+			<mapping path="/feed/feedview/**"/>
+			<beans:bean class="com.bitcamp.orl.interceptor.LoginCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>

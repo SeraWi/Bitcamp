@@ -34,7 +34,7 @@ public class FeedRestController {
 		
 		int result = 0;
 
-		int myIdx = ((MemberVo) request.getSession().getAttribute("memberVo")).getMemberIdx();
+		int myIdx = ((MemberDto) request.getSession().getAttribute("memberVo")).getMemberIdx();
 
 		if(memberIdx == myIdx) {
 			result = manageService.deleteFeed(memberIdx, boardIdx);	//1 or 0

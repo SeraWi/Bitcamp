@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bitcamp.orl.feed.service.LikeService;
-import com.bitcamp.orl.member.domain.MemberVo;
+import com.bitcamp.orl.member.domain.MemberDto;
 
 @RestController
 public class FeedLikeController {
@@ -25,7 +25,7 @@ public class FeedLikeController {
 			) {
 		
 		// 세션에 있는 나의 idx
-		int myIdx =((MemberVo)request.getSession().getAttribute("memberVo")).getMemberIdx();
+		int myIdx =((MemberDto)request.getSession().getAttribute("memberVo")).getMemberIdx();
 		
 		int likeResult =0;
 		

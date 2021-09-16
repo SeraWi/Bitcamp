@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.bitcamp.orl.feed.domain.*;
 import com.bitcamp.orl.feed.service.*;
-import com.bitcamp.orl.member.domain.MemberVo;
+import com.bitcamp.orl.member.domain.MemberDto;
 
 @Controller
 @RequestMapping("/feed/feedview/{memberIdx}&{boardIdx}")
@@ -47,7 +47,7 @@ public class FeedViewController {
 		System.out.println("feedview controller => "+feedview);
 
 		// session에 있는 나의 memberIdx 필요
-		int myIdx = ((MemberVo) request.getSession().getAttribute("memberVo")).getMemberIdx();
+		int myIdx = ((MemberDto) request.getSession().getAttribute("memberVo")).getMemberIdx();
 
 		//2) 첫 요청에 하트의 결과를  보여줘야한다. 내가 이 게시물을 좋아요 하는지 안 하는지!
 		int likeStatus = viewService.getLikeStatus(myIdx,boardIdx);
@@ -87,7 +87,7 @@ public class FeedViewController {
 
 		// 추가
 		// session에 있는 나의 memberIdx 필요
-		int myIdx = ((MemberVo) request.getSession().getAttribute("memberVo")).getMemberIdx();
+		int myIdx = ((MemberDto) request.getSession().getAttribute("memberVo")).getMemberIdx();
 
 
 		// 하트 상태

@@ -33,7 +33,7 @@ public class FeedEditController {
 		System.out.println("feedview controller => " + feedview);
 
 		// session에 있는 나의 memberIdx 필요
-		MemberVo memberVo = (MemberVo) request.getSession().getAttribute("memberVo");
+		MemberDto memberVo = (MemberDto) request.getSession().getAttribute("memberVo");
 		int myIdx = memberVo.getMemberIdx();
 		// 1. 첫 요청에 하트의 결과를 보여줘야한다. 내가 이 게시물을 좋아요 하는지 안 하는지!
 		int likeStatus = viewService.getLikeStatus(myIdx, boardIdx);

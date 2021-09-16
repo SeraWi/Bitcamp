@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bitcamp.orl.feed.domain.FollowList;
 import com.bitcamp.orl.feed.service.FollowService;
-import com.bitcamp.orl.member.domain.MemberVo;
+import com.bitcamp.orl.member.domain.MemberDto;
 
 @RestController
 public class FollowController {
@@ -70,7 +70,7 @@ public class FollowController {
 		int followResult = 0;
 
 		// session에 저장된 myIdx 가져오기
-		int myIdx = ((MemberVo) request.getSession().getAttribute("memberVo")).getMemberIdx();
+		int myIdx = ((MemberDto) request.getSession().getAttribute("memberVo")).getMemberIdx();
 
 		if(followStatus == -1) {
 			// -1: 팔로우 그만하기를 눌렀다. -->delete
