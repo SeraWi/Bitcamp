@@ -2,8 +2,6 @@ package com.bitcamp.orl.member.service;
 
 import java.text.ParseException;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,33 +18,43 @@ public class RegService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	public int reg(
-			MemberRequest memberRequest
-			){
-		int resultCnt = 0;
+	public int reg(MemberRequest memberRequest) {
 		
+		int resultCnt=0;
 		
-        try {
-        	Member member = new Member();
-        	
-        	member.setMemberId(memberRequest.getMemberId());
-            member.setMemberPw(memberRequest.getMemberPw());
-            member.setMemberName(memberRequest.getMemberName());
-            member.setMemberEmail(memberRequest.getMemberEmail());
-            member.setMemberNickname(memberRequest.getMemberNickname());
+		Member member= new Member();
+		
+		try {
+			member.setMemberId(memberRequest.getMemberId());
+	        member.setMemberPw(memberRequest.getMemberPw());
+	        member.setMemberName(memberRequest.getMemberName());
+	        member.setMemberEmail(memberRequest.getMemberEmail());
+	        member.setMemberNickname(memberRequest.getMemberNickname());
 			member.setMemberBirth(memberRequest.getMemberBirth());
 			
-			
 			dao = template.getMapper(Dao.class);
-			resultCnt = dao.insertMember(member);
+			
+			resultCnt=dao.insertMember(member);
 			
 			
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch(Exception e) {
+		
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
+		
+		return resultCnt;
+	}
+	
+	public int regNaver(Member member) {
+		
+		int resultCnt=0;
+		
+		dao = template.getMapper(Dao.class);
+			
+		resultCnt=dao.insertMember(member);
+			
 		
 		return resultCnt;
 	}

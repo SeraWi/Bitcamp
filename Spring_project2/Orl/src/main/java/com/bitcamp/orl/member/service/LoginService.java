@@ -22,7 +22,7 @@ public class LoginService {
    @Autowired
    private SqlSessionTemplate template;
    
-   boolean loginChk = false;
+   boolean loginChk;
 
    public boolean login(
          HttpServletRequest request, 
@@ -33,12 +33,12 @@ public class LoginService {
          ) {
       
       cookieChk(response, reid, memberId);
-      
+      loginChk=false;
       
       dao = template.getMapper(Dao.class);
-      
+      Member member=null;
       if (memberId != null && memberPw != null && memberId.trim().length() > 2 && memberPw.trim().length() > 2) {
-         Member member = dao.selectByIdPw(memberId, memberPw);
+         member = dao.selectByIdPw(memberId, memberPw);
          if (member != null) {
             MemberDto  memberVo= member.memberToMemberVo();
             request.getSession().setAttribute("memberVo", memberVo);
@@ -47,6 +47,28 @@ public class LoginService {
       }
       return loginChk;
    }
+   
+   public boolean naverLogin(
+	         HttpServletRequest request, 
+	         String memberId,
+	         String memberPw
+	         ) {
+	      
+	      loginChk=false;
+	      
+	      dao = template.getMapper(Dao.class);
+	      Member member=null;
+	      if (memberId != null && memberPw != null && memberId.trim().length() > 2 && memberPw.trim().length() > 2) {
+	         member = dao.selectByIdPw(memberId, memberPw);
+	         if (member != null) {
+	            MemberDto  memberVo= member.memberToMemberVo();
+	            request.getSession().setAttribute("memberVo", memberVo);
+	            loginChk = true;
+	         }
+	      }
+	      return loginChk;
+	   }
+   
    
    
    public void cookieChk(HttpServletResponse response, String reid, String id) {
@@ -70,8 +92,7 @@ public class LoginService {
 
    public boolean chkURI(String uri) {
       boolean chk = true;
-
-      if (!uri.startsWith("/orl/member/login")) {
+      if (uri.startsWith("/orl/member/login")) {
          chk = false;
       }
       return chk;

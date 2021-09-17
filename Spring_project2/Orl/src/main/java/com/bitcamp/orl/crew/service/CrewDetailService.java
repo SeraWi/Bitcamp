@@ -10,7 +10,7 @@ import com.bitcamp.orl.crew.dao.Dao;
 import com.bitcamp.orl.crew.domain.Crew;
 import com.bitcamp.orl.crew.domain.CrewInfo;
 import com.bitcamp.orl.member.domain.Member;
-
+import com.bitcamp.orl.member.domain.MemberDto;
 
 @Service
 public class CrewDetailService {
@@ -20,26 +20,22 @@ public class CrewDetailService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	//민주 -> CrewInfo 가져옴
+	//크루 정보가져오기
 	public CrewInfo getCrewInfo(
 			HttpSession session, 
 			int crewIdx
 			) {
 		
 		CrewInfo crewinfo = getCrew(crewIdx).crewToCrewInfo();
-		Member member = (Member)session.getAttribute("member");
+		MemberDto dto = (MemberDto)session.getAttribute("memberVo");
+		Member crewCap = dao.selectMemberByMemberIdx(crewinfo.getMemberIdx());
 		
-		//비어있는 세가지 채우기
-		
-		//크루원 수 
+		crewinfo.setMemberProfile(crewCap.getMemberProfile());
 		crewinfo.setCrewMemberNum(getCrewMemberNum(crewIdx));
-		
-		//댓글 전체 갯수
 		crewinfo.setCrewCommentNum(getCrewCommentNum(crewIdx));
 		
-		if(member != null) {
-			//크루원인지....
-			crewinfo.setIsReg(getIsCrewMember(member.getMemberIdx(), crewIdx));
+		if(dto != null) {
+			crewinfo.setIsReg(getIsCrewMember(dto.getMemberIdx(), crewIdx));
 		} else {
 			crewinfo.setIsReg(false);
 		}
@@ -47,56 +43,28 @@ public class CrewDetailService {
 		return crewinfo;
 	}
 	
-	
-	// 세라 오버로딩
-//	public CrewInfo getCrewInfo(
-//			int memberIdx,
-//			int crewIdx
-//			) {
-//		
-//		CrewInfo crewinfo = getCrew(crewIdx).crewToCrewInfo();
-////		Member member = (Member)session.getAttribute("member");
-//		
-//		//크루원들의 수 ?
-//		crewinfo.setCrewMemberNum(getCrewMemberNum(crewIdx));
-//		
-//		//크루 코멘트 갯수?
-//		crewinfo.setCrewCommentNum(getCrewCommentNum(crewIdx));
-//		
-//		//크루 멤버인지 확인
-//		crewinfo.setIsReg(getIsCrewMember(memberIdx, crewIdx));
-//		
-////		if(member != null) {
-////			crewinfo.setIsReg(getIsCrewMember(member.getMemberIdx(), crewIdx));
-////		} else {
-////			crewinfo.setIsReg(false);
-////		}
-//		
-//		return crewinfo;
-//	}
-	
-	//크루 하나의 정보 가져오기
+	//crewIdx로 한 크루 선택
 	public Crew getCrew(int crewIdx) {
 		dao = template.getMapper(Dao.class);
 		Crew crew = dao.selectCrew(crewIdx);
 		return crew;
 	}
 	
-	//크루원들의 수 가져오기
+	//해당 크루의 크루원 수 계산
 	public int getCrewMemberNum(int crewIdx) {
 		dao = template.getMapper(Dao.class);
 		int crewMemberNum = dao.selectCrewMemberNum(crewIdx);
 		return crewMemberNum;
 	}
 	
-	// 크루 상세보기 댓글 전체 갯수
+	//해당 크루의 댓글 수 계산
 	public int getCrewCommentNum(int crewIdx) {
 		dao = template.getMapper(Dao.class);
 		int crewCommentNum = dao.selectCrewCommentNum(crewIdx);
 		return crewCommentNum;
 	}
 	
-	// 내가 크루 멤버인지아닌지
+	//접속한사람(세션 값)이 해당 크루의 크루원인지 여부 체크
 	public boolean getIsCrewMember(int memberIdx, int crewIdx) {
 		boolean chk = false;
 		dao = template.getMapper(Dao.class);

@@ -12,7 +12,7 @@
 <style>
 </style>
 <script>
-	alert('로그아웃되었습니다.');
+	
 	location.href = '<c:url value="/index"/>';
 </script>
 </head>

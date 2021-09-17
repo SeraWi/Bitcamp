@@ -113,18 +113,15 @@ public class MemberRequest {
       this.date = date;
    }
 
-   public Timestamp getMemberBirth() throws ParseException {
-	   
-	   if(month.length()==1) {
-	        month = "0"+month;
-	   } if(date.length()==1) {
-	        date = "0"+date;
+   public String getMemberBirth() throws ParseException {
+	      
+	      if(month.length()==1) {
+	         month = "0"+month;
+	      } if(date.length()==1) {
+	         date = "0"+date;
+	      }
+	      
+	      String dataFormatString = year+month+date;
+	      return dataFormatString;
 	   }
-      String dataFormatString = year+month+date;
-      SimpleDateFormat format =new SimpleDateFormat("yyyyMMdd");
-      Date d = format.parse(dataFormatString);
-      Timestamp memberBirth = new Timestamp(d.getTime());
-      return memberBirth;
-   }
-
 }

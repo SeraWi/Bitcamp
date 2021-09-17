@@ -16,8 +16,6 @@ import com.bitcamp.orl.member.domain.*;
 @RestController
 public class FeedRestController {
 	
-	//0915 우리 언니 추가
-	
 	@Autowired
 	FeedManageService manageService;
 	
@@ -33,7 +31,6 @@ public class FeedRestController {
 		) {
 		
 		int result = 0;
-
 		int myIdx = ((MemberDto) request.getSession().getAttribute("memberVo")).getMemberIdx();
 
 		if(memberIdx == myIdx) {

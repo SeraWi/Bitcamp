@@ -8,33 +8,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bitcamp.orl.crew.domain.Crew;
 import com.bitcamp.orl.crew.service.CrewListViewService;
 
 @Controller
-@RequestMapping("/crew/list")
 public class CrewListViewController {
 	
 	@Autowired
 	CrewListViewService service;
 	
-	@RequestMapping(method = RequestMethod.GET)
+	//Crew List view 주는 Controller
+	@RequestMapping("/crew/list")
 	public String getCrewList(
 			HttpServletRequest request,
-			Model model
+			Model model,
+			@RequestParam(value="searchType", required = false)String searchType,
+			@RequestParam(value="keyword", required = false)String keyword,
+			@RequestParam(value="page", required = false, defaultValue = "1")int page
 			) {
 		
-		//내 크루 리스트 처리//
+		//내 크루 리스트 처리
 		List<Crew> myCrewList = null;
 		myCrewList = service.getMyCrewList(request);
-		model.addAttribute("myCrewList", myCrewList);
 		
-//		//전체 크루 리스트 처리//
-//		List<Crew> crewListAll = null;
-//		crewListAll = service.getCrewListAll();
-//		model.addAttribute("crewListAll", crewListAll);
+		model.addAttribute("myCrewList", myCrewList);
+		model.addAttribute("searchType", searchType);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("page", page);
 		
 		return "crew/list";
 	}
