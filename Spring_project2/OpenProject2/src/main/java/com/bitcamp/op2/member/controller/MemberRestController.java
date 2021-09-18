@@ -25,8 +25,8 @@ import com.bitcamp.op2.member.domain.MemberRegRequest;
 import com.bitcamp.op2.member.service.MemberRegService;
 import com.bitcamp.op2.member.service.MemberRestService;
 
-//@Controller
-@RestController
+//@Controller ->reponsebody써줘야한다!
+@RestController //--> reponseBody 안써도 된다.
 public class MemberRestController {
 	
 

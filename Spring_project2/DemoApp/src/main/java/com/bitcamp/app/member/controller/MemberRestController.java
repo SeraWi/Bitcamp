@@ -30,6 +30,8 @@ public class MemberRestController {
 	@Autowired
 	private MemberRegService regService;
 	
+	
+	// id로 member 반환
 	@RequestMapping("/members/{id}")
 	@CrossOrigin
 	public Member getMember(
@@ -40,6 +42,7 @@ public class MemberRestController {
 		return member;
 	}
 	
+	// member 전체 리스트 반환
 	@GetMapping("/members")
 	@CrossOrigin
 	public List<Member> getMembers(){
