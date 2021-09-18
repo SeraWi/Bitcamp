@@ -367,13 +367,16 @@
          if(click == 'insert'){
             //비동기 통신 시작
             
-            
+            // myIdx 파라미터로 추가0918, url 수정
+            // url경로 boot 로 수정
             $.ajax({
-               url:'<c:url value="/feed/likeButtonClick"/>',
-                 type:'POST',
+               //url:'<c:url value="/feed/likeButtonClick"/>',
+               url:'http://localhost:8083/feed/likeButtonClick',
+               type:'POST',
                data:{
                   likeChange:'1',
-                  boardIdx:'${selectFeedView.boardIdx}'
+                  boardIdx:'${selectFeedView.boardIdx}',
+                  myIdx:'${sessionScope.memberVo.memberIdx}'
                },
                success:function(data){
                   //좋아요 누르기 성공
@@ -403,13 +406,15 @@
             });/* ajax 끝*/
          }else{
             // click == 'delete'
-            
+            // 내 idx 파라미터로 추가
             $.ajax({
-               url:'<c:url value="/feed/likeButtonClick"/>',
-                 type:'POST',
+               //url:'<c:url value="/feed/likeButtonClick"/>',
+               url:'http://localhost:8083/feed/likeButtonClick',
+               type:'POST',
                data:{
                   likeChange:'-1',
-                  boardIdx:'${selectFeedView.boardIdx}'
+                  boardIdx:'${selectFeedView.boardIdx}',
+                  myIdx:'${sessionScope.memberVo.memberIdx}'
                },
                success:function(data){
                   //좋아요 취소하기 성공
