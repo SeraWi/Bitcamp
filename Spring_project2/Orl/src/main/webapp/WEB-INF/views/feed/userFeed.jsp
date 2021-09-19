@@ -127,7 +127,7 @@
                      type:'POST',
                      data:{
                         followStatus : '-1',
-                        memberIdx : '${member.memberIdx}',
+                        yourIdx : '${member.memberIdx}',
                         myIdx:'${sessionScope.memberVo.memberIdx}'
                      },
                      success: function(data){
@@ -168,7 +168,7 @@
                      type:'POST',
                      data:{
                         followStatus :'1',
-                        memberIdx : '${member.memberIdx}',
+                        yourIdx : '${member.memberIdx}',
                         myIdx:'${sessionScope.memberVo.memberIdx}'
                      },
                      success:function(data){
@@ -545,7 +545,7 @@
              type:'POST',
              data:{
                 followStatus : '-1',
-                memberIdx : memberIdx2,
+                yourIdx : memberIdx2,
                 myIdx:'${member.memberIdx}'
              },
              
@@ -587,7 +587,7 @@
             type:'POST',
             data:{
                followStatus : '1',
-               memberIdx : memberIdx2,
+               yourIdx : memberIdx2,
                myIdx:'${member.memberIdx}'
             },
             

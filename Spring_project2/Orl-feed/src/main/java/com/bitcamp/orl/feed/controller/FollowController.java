@@ -60,7 +60,7 @@ public class FollowController {
 	@PostMapping("/feed/followButtonClick")
 	@CrossOrigin
 	public int startFollow(
-			@RequestParam("memberIdx") int yourIdx,
+			@RequestParam("yourIdx") int yourIdx,
 			@RequestParam("followStatus") int followStatus,
 			@RequestParam("myIdx") int myIdx
 			//HttpServletRequest request
