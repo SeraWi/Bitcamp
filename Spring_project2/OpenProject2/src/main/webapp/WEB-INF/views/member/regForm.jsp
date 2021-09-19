@@ -144,7 +144,12 @@ S
 				var photoFile = $('#photo');
 				var file1 = photoFile[0].files[0];
 				//console.log(file1);
+				
+				//formData 라는 객체 만들기
 				var formData = new FormData();
+				// memberRegRequest class 의 변수 이름과 동일하게
+				// formData에 내용 넣어주기
+				// 비동기 통신으로 data 보낼 때 formData 통으로 보내기
 				formData.append("memberid", $('#memberid').val());
 				formData.append("password", $('#password').val());
 				formData.append("membername", $('#membername').val());
