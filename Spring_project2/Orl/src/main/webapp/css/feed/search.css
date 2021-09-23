@@ -117,11 +117,11 @@ h3{
 /* 0921 추가 */
 /* 스크롤 배경 */
 ::-webkit-scrollbar {
-	background-color: white;
+   background-color: white;
 }
 /* 스크롤 막대 */
 ::-webkit-scrollbar-thumb {
-	height: 30px;
-	border-radius: 10px;
-	background-color: #fdef7b;
+   height: 30px;
+   border-radius: 10px;
+   background-color: #fdef7b;
 }

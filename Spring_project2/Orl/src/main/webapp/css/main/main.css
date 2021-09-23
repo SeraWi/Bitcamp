@@ -133,7 +133,7 @@
 
 p {
     padding-bottom: 30px;
-    margin-left: -10%;
+    margin-left: -5%;
 }
 
 a {
@@ -172,13 +172,10 @@ h1 {
 }
 
 #home_2 .card img {
-    width: 45%;
-    margin-top:-30px;
+    width: 50%;
 
 }
-#home_3 .card img {
-    height: 100%;
-}
+
 .home_2_text h1 {
     padding-left: 10%;
 }
@@ -214,8 +211,9 @@ h1 {
 }
 
 .home_3_text {
-    margin-top: 380px;
-    padding-left: 180px;
+    padding-top: 23%;
+    padding-left: 62%;
+    position: absolute;
 }
 
 .text {
@@ -253,7 +251,7 @@ button {
     border: 1px solid #aaa;
     background-color: transparent;
     border-radius: 10px;
-    margin-right: 29%;
+    margin-right: 24%;
     font-weight: bold;
     font-size: 18px;
 }
@@ -273,13 +271,13 @@ button {
 }
 
 #home_4 {
-   width:90%;
-   height:100vh;
-    background-image: url(../../images/crew/main4.png);
-   margin:0 auto;
+	width:90%;
+	height:100vh;
+    background-image: url(../../images/crew/메인4.png);
+	margin:0 auto;
 }
 #last{
-   background-color:var(--yello-color);
+	background-color:var(--yello-color);
 }
 
 .home_4_mini {
@@ -293,7 +291,7 @@ button {
   
 }
 .lastImg{
-   position: absolute;
+	position: absolute;
     top: 22%;
     text-align: center;
 }

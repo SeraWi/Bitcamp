@@ -1,15 +1,13 @@
 package com.bitcamp.orl.admin.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+import org.springframework.ui.*;
+import org.springframework.web.bind.annotation.*;
 
-import com.bitcamp.orl.admin.service.AdminCrewService;
-import com.bitcamp.orl.admin.service.AdminFeedService;
-import com.bitcamp.orl.feed.service.FeedManageService;
+import com.bitcamp.orl.admin.service.*;
 
 @Controller
 public class AdminFeedDeleteController {

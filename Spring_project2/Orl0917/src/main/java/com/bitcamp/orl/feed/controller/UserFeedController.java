@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.bitcamp.orl.crew.domain.Crew;
 import com.bitcamp.orl.crew.service.CrewListViewService;
@@ -122,7 +123,6 @@ public class UserFeedController {
 	}
 	
 	
-
 	@ExceptionHandler(NullPointerException.class)
 	public String handleNullPointerException(NullPointerException e) {
 		

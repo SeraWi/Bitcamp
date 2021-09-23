@@ -102,19 +102,16 @@ public class Crew {
 	public CrewInfo crewToCrewInfo() {
 		CrewInfo crewinfo = new CrewInfo(crewIdx, crewName, 
 				crewPhoto, crewDiscription, crewCreatedate, 
-				crewTag, memberIdx, memberNickName, null,
+				crewTag, memberIdx, memberNickName, 
 				0, 0, false);
 		return crewinfo;
 	}
 	
 	public CrewInfo crewToCrewInfo(
-			String memberProfile,
-			int crewMemberNum, 
-			int crewCommentNum,
-			boolean isReg) {
+			int crewMemberNum, int crewCommentNum, boolean isReg) {
 		CrewInfo crewinfo = new CrewInfo(crewIdx, crewName,
 				crewPhoto, crewDiscription, crewCreatedate,
-				crewTag, memberIdx, memberNickName, memberProfile,
+				crewTag, memberIdx, memberNickName,
 				crewMemberNum, crewCommentNum, isReg);
 		return crewinfo;
 				

@@ -1,6 +1,7 @@
 package com.bitcamp.orl.feed.domain;
 
 import java.sql.*;
+import com.fasterxml.jackson.annotation.*;
 
 public class NewFeedList {
 
@@ -8,7 +9,9 @@ public class NewFeedList {
 
 	private int boardIdx;
 	private String boardPhoto;
+	@JsonFormat(pattern = "yyyy.MM.dd")
 	private Timestamp boardDate;
+	private String hashtag;
 	private int memberIdx;
 	private String memberNickname;
 
@@ -16,10 +19,11 @@ public class NewFeedList {
 		
 	}
 
-	public NewFeedList(int boardIdx, String boardPhoto, Timestamp boardDate, int memberIdx, String memberNickname) {
+	public NewFeedList(int boardIdx, String boardPhoto, Timestamp boardDate, String hashtag, int memberIdx, String memberNickname) {
 		this.boardIdx = boardIdx;
 		this.boardPhoto = boardPhoto;
 		this.boardDate = boardDate;
+		this.hashtag = hashtag;
 		this.memberIdx = memberIdx;
 		this.memberNickname = memberNickname;
 	}
@@ -47,6 +51,14 @@ public class NewFeedList {
 	public void setBoardDate(Timestamp boardDate) {
 		this.boardDate = boardDate;
 	}
+	
+	public String getHashtag() {
+		return hashtag;
+	}
+	
+	public void setHashtag(String hashtag) {
+		this.hashtag = hashtag;
+	}
 
 	public int getMemberIdx() {
 		return memberIdx;
@@ -67,7 +79,7 @@ public class NewFeedList {
 	@Override
 	public String toString() {
 		return "NewFeedList [boardIdx=" + boardIdx + ", boardPhoto=" + boardPhoto + ", boardDate=" + boardDate
-				+ ", memberIdx=" + memberIdx + ", memberNickname=" + memberNickname + "]";
+				+ ", hashtag=" + hashtag + ", memberIdx=" + memberIdx + ", memberNickname=" + memberNickname + "]";
 	};	
 
 }

@@ -118,7 +118,7 @@ function editComment(parameter){
         type: 'GET',
         data: {crewCommentIdx : parameter},
         success: function(data){
-            var html = '<td><img id="profile" src="'+url+'/images/member/profile/'+data.memberProfile+'"></td>';
+            var html = '<td><img id="profile" src="'+url+'/images/default.jpg"></td>';
             html += '<td><p id="nickname">'+data.memberNickName+'</p>';
             html += '<input class="form-control" id="newCrewComment" type="text" value="'+data.crewComment+'"></td>';
             html += '<td><p><br></p><a href="javascript:commentList()" class="tag-item">취소</a>';
@@ -182,17 +182,8 @@ function commentList(parameter){
 				
 			// 있는 경우 Comment 정보 반복문으로 처리
 			$.each(data.infoList, function(index, item){
-				html += '<tr id="'+item.crewCommentIdx+'">';
-				html += '<td>';
-				if(memberIdx != '') {
-					html += '<a href="'+url+'/feed/userfeed/'+item.memberIdx+'">';
-				}
-				html += '<img id="profile" src="'+url+'/images/member/profile/'+item.memberProfile+'"></a></td>';
-				html +=	'<td>';
-				if(memberIdx != '') {
-					html += '<a href="'+url+'/feed/userfeed/'+item.memberIdx+'">';
-				}
-				html += '<p id="nickname">'+item.memberNickName+'</p></a>';
+				html += '<tr id="'+item.crewCommentIdx+'"><td><img id="profile" src="'+url+'/images/default.jpg"></td>';
+				html +=	'<td><p id="nickname">'+item.memberNickName+'</p>';
 				html += '<p class="content">'+item.crewComment+'</p>';
 				html += '<p class="date">'+item.crewCommentDate+'</p></td>';
 				html += '<td>';

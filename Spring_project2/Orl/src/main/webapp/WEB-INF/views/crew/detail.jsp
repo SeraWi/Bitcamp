@@ -56,14 +56,8 @@ const url = '${pageContext.request.contextPath}';
 						
 						<div class="crew_information">
 							<span class="crew_captain">
-								<c:if test="${memberVo ne null}">
-									<a href="<c:url value='/feed/userfeed/${crew.memberIdx}'/>">
-								</c:if>
-									<p class="text_bold">${crew.memberNickName}</p> 
-								<img id="profile" src="<c:url value='/images/member/profile/${crew.memberProfile}'/>">
-								<c:if test="${memberVo ne null}">
-									</a>
-								</c:if>
+								<p class="text_bold">${crew.memberNickName}</p> 
+								<img id="profile" src="<c:url value='/images/default.jpg'/>">
 							</span>
 							<span class="crew_number">
 								<p class="text_bold">크루원</p>

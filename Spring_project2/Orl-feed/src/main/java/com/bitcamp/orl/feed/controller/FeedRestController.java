@@ -2,8 +2,6 @@ package com.bitcamp.orl.feed.controller;
 
 import java.util.*;
 
-import javax.servlet.http.*;
-
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,8 +19,7 @@ public class FeedRestController {
 	@CrossOrigin
 	public int deleteFeed(
 		@PathVariable("memberIdx") int memberIdx,
-		@PathVariable("boardIdx") int boardIdx,
-		HttpServletRequest request
+		@PathVariable("boardIdx") int boardIdx
 		) {
 		
 		int result = 0;
@@ -38,8 +35,7 @@ public class FeedRestController {
 	@CrossOrigin
 	public List<FeedComment> deleteComment(
 			@PathVariable("boardCommentIdx") int boardCommentIdx,
-			@PathVariable("boardIdx") int boardIdx,
-			HttpServletRequest request
+			@PathVariable("boardIdx") int boardIdx
 			) {
 		
 		manageService.deleteComment(boardCommentIdx);
@@ -64,9 +60,9 @@ public class FeedRestController {
 	//댓글 리스트
 	@GetMapping("/feed/feedview/selectcomment")
 	@CrossOrigin
-	public List<FeedComment> selectComments(HttpServletRequest request) {
-		
-		int boardIdx = Integer.parseInt(request.getParameter("boardIdx"));
+	public List<FeedComment> selectComments(
+			@RequestParam("boardIdx") int boardIdx
+			) {
 		
 		List<FeedComment> feedComment = manageService.selectFeedComment(boardIdx);
 		System.out.println("rest controller => "+feedComment);
@@ -75,6 +71,38 @@ public class FeedRestController {
 		
 	}
 
+	//추가 (09.18.우리)
+	//닉네임 중복 체크
+	@GetMapping("/feed/createfeed/nicknameCheck")
+	@CrossOrigin
+	public String nicknameCheck(
+			@RequestParam("memberNickname") String memberNickname
+			) {
+		
+		String result = null;
+		result = manageService.nicknameCheck(memberNickname);
+		//닉네임 있으면 Y / 없으면 N 반환
+		
+		return result;
+		
+	}
+	
+	//추가 (09.22.우리)
+	//memberNickname으로 memberIdx 찾기
+	@GetMapping("/feed/feedview/memberIdxCheck")
+	@CrossOrigin
+	public int memberIdxCheck(
+			@RequestParam("memberNickname") String memberNickname
+			) {
+		
+		int result = 0;
+		result = manageService.selectIdx(memberNickname);
+		
+		System.out.println("restcontroller in!!!!");
+		
+		return result;
+		
+	}
 	
 	
 }
