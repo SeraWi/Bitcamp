@@ -370,8 +370,8 @@
             // myIdx 파라미터로 추가0918, url 수정
             // url경로 boot 로 수정
             $.ajax({
-               //url:'<c:url value="/feed/likeButtonClick"/>',
-               url:'http://localhost:8083/feed/likeButtonClick',
+               url:'<c:url value="/feed/likeButtonClick"/>',
+               //url:'http://localhost:8083/feed/likeButtonClick',
                type:'POST',
                data:{
                   likeChange:'1',
@@ -408,8 +408,8 @@
             // click == 'delete'
             // 내 idx 파라미터로 추가
             $.ajax({
-               //url:'<c:url value="/feed/likeButtonClick"/>',
-               url:'http://localhost:8083/feed/likeButtonClick',
+               url:'<c:url value="/feed/likeButtonClick"/>',
+               //url:'http://localhost:8083/feed/likeButtonClick',
                type:'POST',
                data:{
                   likeChange:'-1',
