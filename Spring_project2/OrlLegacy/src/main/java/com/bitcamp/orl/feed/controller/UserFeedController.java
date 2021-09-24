@@ -129,7 +129,7 @@ public class UserFeedController {
       //에러 내용 출력
       e.printStackTrace();
       
-      return "feed/error";
+      return "error/pageNotFound";
    }
    
    

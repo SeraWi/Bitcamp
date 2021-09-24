@@ -203,8 +203,6 @@
         
 
       <!-- 내크루 가기 영역  swiper 사용 -->
-      <!-- href : crewIdx로 해서 크루 상세보기로 넘어가야한다. -->
-      <!-- 크루 사진 경로 맞춰야함 -->
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
              
@@ -357,9 +355,8 @@
       
       //비동기 통신
       $.ajax({
-         //url:'<c:url value="/feed/followerList"/>',
          url:'http://localhost:8083/feed/followerList',
-         type:'POST',
+         type:'GET',
          data:{
             memberIdx:'${member.memberIdx}'
          },
@@ -375,7 +372,6 @@
                html += '      <img src="<c:url value="/images/member/profile/'+item.memberProfile+'"/>"/>';
                html += '   </a>';
                html += '   <a class="nickname-area" href="<c:url value="/feed/userfeed/'+item.memberIdx+'"/>">'+item.memberNickname+'</a>';
-               /* html += '   <input type="submit" class="button-yellow-inList" value="팔로우 시작하기">'; */
                html += '</div>';
                
                //div 추가해주기
@@ -414,92 +410,48 @@
     <!-- 팔로잉 리스트 영역 비동기 통신 영역 시작 -->
    <!-- 내피드에서 팔로잉 리스트에서 버튼, 남피드 팔로잉 리스트에서는 버튼 안보이게  -->
    <script>
+   
    $('#following').click(function(){
-      $('#container-following').removeClass('display_none');
-      
-      // 팔로잉 글자를 클릭하면 리스트가 나온다
-      // 내 피드 이면 팔로잉 리스트 + 팔로우 시작하기 or 그만하기 버튼 
-      // 남 피드 이면 팔로잉 리스트만 존재
-      
-      if(${sessionScope.memberVo.memberIdx ne member.memberIdx}){
-         // 세션에 있는 memberIdx    !=  model에 저장된 memberIdx
-         
-         console.log("남 피드 입니다.")
-         
-         // 남 피드에서는 아예 팔로잉 리스트에 버튼 보이지 않도록 처리
-         
-         $('#following-members').html('');
-         
-         //팔로잉 버튼 눌렀을 때 명단 가져오기 ->비동기 통신으로
-         $.ajax({
-            //url:'<c:url value="/feed/followingList"/>',
-            url:'http://localhost:8083/feed/followingList',
-            type:'POST',
-            data:{
-               memberIdx:'${member.memberIdx}'
-            },
-            success: function(data){
-               console.log(data); 
-            
-             $.each(data,function(index,item){
-                  console.log(index,item);
-                  
-                  var html ='<div class="member">';
-                  html += '   <a href="<c:url value="/feed/userfeed/'+item.memberIdx2+'"/>">';
-                  html += '      <img src="<c:url value="/images/member/profile/'+item.memberProfile+'"/>"/>';
-                  html += '   </a>';
-                  html += '   <a class="nickname-area" href="<c:url value="/feed/userfeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
-                  html += '</div>';
-                  
-                  //div에 추가해주기
-                  $('#following-members').append(html);
-               });  
-            }
-         });/* ajax끝 */
-      
-      }else{
-         console.log("내 피드 입니다.")
-         // 내 피드에서는 팔로잉 리스트에 버튼 보이도록
-         // 즉각적으로 팔로우 시작하고 팔로우 끊을 수 있다. 
-         
-         // 명단 초기화 
-         $('#following-members').html('');
-         
-         // 팔로잉 버튼 눌렀을 때 명단 가져오기 ->비동기 통신으로
-         // post방식으로 바꿈
-         $.ajax({
-            //url:'<c:url value="/feed/followingList"/>',
-            url:'http://localhost:8083/feed/followingList',
-            type:'POST',
-            data:{
-               memberIdx:'${member.memberIdx}'
-            },
-            success: function(data){
-               console.log(data); 
-               
-             $.each(data,function(index,item){
-                  console.log(index,item);
-                  
-                  var html ='<div class="member">';
-                  html += '   <a href="<c:url value="/feed/userfeed/'+item.memberIdx2+'"/>">';
-                  html += '      <img src="<c:url value="/images/member/profile/'+item.memberProfile+'"/>"/>';
-                  html += '   </a>';
-                  html += '   <a class="nickname-area" href="<c:url value="/feed/userfeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
-                  html += '   <input type="hidden" value="'+item.memberIdx2+'">';
-                  html += '   <input type="button" class="button-gray-inList" value="팔로우 그만하기">';
-                  html += '</div>';
-                  
-                  //div에 추가하기
-                  $('#following-members').append(html);
-               });  
-            }
-         });/* ajax 끝 */
-         
-      }/* else 끝 */
-      
-      
-      
-   });/*click 이벤트 끝  */
+	      $('#container-following').removeClass('display_none');
+	      
+	         // 명단 초기화 
+	         $('#following-members').html('');
+	         
+	         // 팔로잉 버튼 눌렀을 때 명단 가져오기 ->비동기 통신으로
+	         $.ajax({
+	            url:'http://localhost:8083/feed/followingList',
+	            type:'GET',
+	            data:{
+	               memberIdx:'${member.memberIdx}'
+	            },
+	            success: function(data){
+	               console.log(data); 
+	               
+	             $.each(data,function(index,item){
+	                  console.log(index,item);
+	                  
+	                  var html ='<div class="member">';
+	                  html += '   <a href="<c:url value="/feed/userfeed/'+item.memberIdx2+'"/>">';
+	                  html += '      <img src="<c:url value="/images/member/profile/'+item.memberProfile+'"/>"/>';
+	                  html += '   </a>';
+	                  html += '   <a class="nickname-area" href="<c:url value="/feed/userfeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
+	                  
+	                  //세션에 있는 memberIdx == 모델에 저장된 memberIdx -->내 피드일 경우 팔로우버튼 보여주기
+	                  if(${sessionScope.memberVo.memberIdx eq member.memberIdx}){
+	               	  html += '   <input type="hidden" value="'+item.memberIdx2+'">';
+		              html += '   <input type="button" class="button-gray-inList" value="팔로우 그만하기">';  
+	                  }
+	                  
+	                  html += '</div>';
+	                  
+	                  //div에 추가하기
+	                  $('#following-members').append(html);
+	               });  
+	            }/* success 끝 */
+	         });/* ajax 끝 */
+	         
+	   });/*click 이벤트 끝  */
+
    
    // 닫기 버튼 눌렀을 때 
    $('.form-close').click(function(){
@@ -508,23 +460,16 @@
    });/* 닫기끝 */
    
    
-   // 내 팔로잉 리스트 안쪽에 버튼에서 
-   // 팔로우 그만하기 버튼  눌렀을 때 처리하기
-   // 클릭이벤트를 껍데기에 만들어야 한다!! 비동기 통신전에 button의 id값 모른다!
+   // 내 팔로잉 리스트 안쪽에 버튼에서 팔로우 그만하기 버튼  눌렀을 때 처리하기
    $('#following-members').on('click','input[type=button]',function(){
       
       //비동기 통신으로 팔로우 그만하기와 시작하기하기!!
       
-      //보내야 하는 데이터 : 리스트 옆쪽의 memberIdx
-      //그리고 followStatus
+      //보내야 하는 데이터 : 리스트 옆쪽의 memberIdx followStatus
       
       console.log("클릭");
-      
       // 팔로우 시작하기 혹은 그만하기 인지 확인
-      
       /* var followStatus = $('input[type=button]').val();   */
-      /* ---> 오류 원인!! input[type=button]은 전체 버튼 배열이기 때문에 가장 첫번째의 val를 가져온다 */
-      /* 즉 아래에 계속 첫번째 버튼 상태만 출력되는 오류가 발생 */
       var followStatus =$(this).val();
       console.log(followStatus);
       
@@ -540,7 +485,6 @@
          //비동기 통신 시작
          // myIdx 파라미터 추가 0918      
           $.ajax({
-            // url:'<c:url value="/feed/followButtonClick"/>',
              url:'http://localhost:8083/feed/followButtonClick',
              type:'POST',
              data:{
@@ -559,11 +503,11 @@
                     //2)버튼 글자를 팔로우 시작하기로 바꿔준다. 
                     //3)팔로잉 수를 바꿔준다.
                     
-                   btn.val('팔로우 시작하기');
+                    btn.val('팔로우 시작하기');
                     btn.css('background','#fdef7b'); 
                     //console.log(btn.val());
                     
-                    var followingCount = parseInt($('#followingCount').text());
+                   var followingCount = parseInt($('#followingCount').text());
                    var newFollowingCount = followingCount -1;
                    
                    $('#followingCount').text(newFollowingCount);
@@ -580,10 +524,8 @@
       }else{
          //followStatus =='팔로우 시작하기'
       //비동기 통신 시작
-     // myIdx 파라미터 추가 0918      
        $.ajax({
-        // url:'<c:url value="/feed/followButtonClick"/>',
-           url:'http://localhost:8083/feed/followButtonClick',
+    	    url:'http://localhost:8083/feed/followButtonClick',
             type:'POST',
             data:{
                followStatus : '1',

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +23,8 @@ public class FollowController {
    @Autowired
    private FollowService followService;
    
-   // 1) 비동기 통신 팔로워 리스트 출력 기존에 get방식에서 -->post 로 바꿈 0915
-   @PostMapping("/feed/followerList")
+   // 1) 비동기 통신 팔로워 리스트 출력(get방식)
+   @GetMapping("/feed/followerList")
    @CrossOrigin
    public List<FollowList> getFollowerList2(
          @RequestParam("memberIdx") int memberIdx
@@ -38,8 +39,8 @@ public class FollowController {
    }
 
    
-   // 2) 비동기 통신으로 팔로잉 리스트 출력, 기존의 get 방식에서 post로 바꿈 0915
-   @PostMapping("/feed/followingList")
+   // 2) 비동기 통신으로 팔로잉 리스트 출력(GET방식)
+   @GetMapping("/feed/followingList")
    @CrossOrigin
    public List<FollowList> getFollowingList2(
          @RequestParam("memberIdx") int memberIdx
@@ -54,7 +55,7 @@ public class FollowController {
       return followingList;
    }
 
-   // 3) 팔로우 시작하기 혹은 그만하기 버튼 클릭
+   // 3) 팔로우 시작하기 혹은 그만하기 버튼 클릭 (insert, delete->POST방식)
    // 피드에 바로 보여지는 버튼에 사용
    // 내 피드에서 팔로잉 눌럿을 때 리스트와 같이 나오는 버튼에도 사용
    @PostMapping("/feed/followButtonClick")

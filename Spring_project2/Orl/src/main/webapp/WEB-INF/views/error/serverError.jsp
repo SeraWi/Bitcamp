@@ -5,20 +5,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>에러 페이지</title>
+<title>Service Error</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="<c:url value='/css/default/default.css'/>">
-<link rel="stylesheet" href="<c:url value='/css/feed/error.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/error/error.css'/>">
 </head>
 <body>
 <%@ include file="/WEB-INF/frame/default/header.jsp"%>
    <div id="all">
     <section class="content">
-         <h1>서비스 이용에 불편을 드려 죄송합니다.</h1>
+         <h1>Service Error</h1>
         
         <p>
-           요청하신 페이지는 삭제되었거나, 처리중에 오류가 발생했습니다.<br>
-              동일한 문제가 지속적으로 발생하는 경우 고객센터로 문의 부탁드립니다. 
+         	기술적인 문제로 접속이 되지 않았습니다.<br>
+         	이용에 불편을 드려 죄송합니다.
          </p>
     
        <div class="btn-area"> 

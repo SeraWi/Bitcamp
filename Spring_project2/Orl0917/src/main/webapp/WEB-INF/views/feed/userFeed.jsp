@@ -492,6 +492,10 @@
 		
 	});/*click 이벤트 끝  */
 	
+	
+	
+	
+	
 	// 닫기 버튼 눌렀을 때 
 	$('.form-close').click(function(){
 		$('#container-following').addClass('display_none');

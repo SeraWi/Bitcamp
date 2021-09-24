@@ -43,11 +43,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="createFeed"
 		parameterType="com.bitcamp.orl.feed.domain.Feed"
 		useGeneratedKeys="true" keyProperty="boardIdx">
-		INSERT INTO photoBoard
-		(boardPhoto, boardDiscription, hashtag, tag, memberIdx)
-		VALUES
-		(#{boardPhoto}, #{boardDiscription}, #{hashtag}, #{tag},
-		#{memberIdx});
+		INSERT INTO photoBoard (boardPhoto, boardDiscription, hashtag, tag, memberIdx)
+		VALUES (#{boardPhoto}, #{boardDiscription}, #{hashtag}, #{tag}, #{memberIdx});
 	</insert>
 
 	<!-- 피드 상세보기 -->
@@ -55,60 +52,76 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="com.bitcamp.orl.feed.domain.FeedView">
 		SELECT B.boardIdx, B.boardPhoto, B.boardDiscription,
 		B.hashtag, B.tag, M.memberIdx, M.memberNickname, M.memberProfile
-		FROM
-		final.photoBoard AS B NATURAL JOIN final.member AS M
-		WHERE B.boardIdx =
-		#{boardIdx};
+		FROM final.photoBoard AS B NATURAL JOIN final.member AS M
+		WHERE B.boardIdx = #{boardIdx};
 	</select>
 
 	<!-- 피드 수정 -->
 	<update id="editFeed">
-		UPDATE final.photoBoard SET
-		boardDiscription=#{boardDiscription}, hashtag=#{hashtag}, tag=#{tag}
+		UPDATE final.photoBoard
+		SET boardDiscription=#{boardDiscription}, hashtag=#{hashtag}, tag=#{tag}
 		WHERE boardIdx = #{boardIdx};
 	</update>
-
-	<!-- 피드 삭제 (ajax) -->
-	<delete id="deleteFeed">
-		DELETE FROM final.photoBoard WHERE memberIdx
-		=#{memberIdx} and boardIdx = #{boardIdx};
-	</delete>
 
 	<!-- 피드 댓글 작성 -->
 	<insert id="insertFeedComment"
 		parameterType="com.bitcamp.orl.feed.domain.FeedComment"
 		useGeneratedKeys="true" keyProperty="boardCommentIdx">
-		INSERT INTO
-		final.photoBoardComment (comment, boardIdx, memberIdx) VALUES
-		(#{comment}, #{boardIdx}, #{memberIdx});
+		INSERT INTO final.photoBoardComment (comment, boardIdx, memberIdx)
+		VALUES (#{comment}, #{boardIdx}, #{memberIdx});
 	</insert>
-
+	
+	<!-- 피드 삭제 (ajax) -->
+	<delete id="deleteFeed">
+		DELETE FROM final.photoBoard
+		WHERE memberIdx = #{memberIdx} and boardIdx = #{boardIdx};
+	</delete>
+	
 	<!-- 피드 댓글 삭제 (ajax) -->
 	<delete id="deleteComment">
-		DELETE FROM final.photoBoardComment WHERE
-		boardCommentIdx = #{boardCommentIdx};
+		DELETE FROM final.photoBoardComment
+		WHERE boardCommentIdx = #{boardCommentIdx};
 	</delete>
-
+	
+	<!-- 전체 피드 리스트 (최신순) (ajax) -->
+	<select id="selectNewFeed"
+		resultType="com.bitcamp.orl.feed.domain.NewFeedList">
+		SELECT B.boardIdx, B.boardPhoto, B.boardDate, B.hashtag,
+		M.memberIdx, M.memberNickname
+		FROM final.photoBoard AS B NATURAL JOIN final.member AS M
+		ORDER BY B.boardIdx DESC;
+	</select>
+	
 	<!-- 피드 상세 -댓글리스트 (ajax) -->
 	<select id="selectFeedComment"
 		resultType="com.bitcamp.orl.feed.domain.FeedComment">
 		SELECT C.boardCommentIdx, C.comment, C.memberIdx,
 		M.memberNickname, M.memberProfile
-		FROM final.photoBoardComment AS C
-		NATURAL JOIN final.member AS M
+		FROM final.photoBoardComment AS C NATURAL JOIN final.member AS M
 		WHERE boardIdx = #{boardIdx}
-		ORDER BY
-		C.boardCommentIdx DESC;
+		ORDER BY C.boardCommentIdx DESC;
 	</select>
-
-	<!-- 전체 피드 리스트 (최신순) (ajax) -->
-	<select id="selectNewFeed"
-		resultType="com.bitcamp.orl.feed.domain.NewFeedList">
-		SELECT B.boardIdx, B.boardPhoto, B.boardDate, M.memberIdx,
-		M.memberNickname
-		FROM final.photoBoard AS B NATURAL JOIN final.member
-		AS M
-		ORDER BY B.boardIdx DESC;
+	
+	<!-- 추가 (09.18.우리) -->
+	<!-- 피드 선택 -->
+	<select id="selectFeed"
+			resultType="com.bitcamp.orl.feed.domain.Feed">
+		SELECT * FROM final.photoBoard
+		WHERE boardIdx = #{boardIdx}
+	</select>
+	
+	<!-- 추가 (09.18.우리) -->
+	<!-- 닉네임 중복 체크 -->
+	<select id="selectNickname" resultType="int">
+		SELECT count(*) FROM final.member
+		WHERE memberNickname = #{memberNickname}
+	</select>
+	
+	<!-- 추가 (09.22.우리 ) -->
+	<!-- memberNickname으로 memberIdx 찾기 -->
+	<select id="selectMemberIdx" resultType="int">
+		SELECT memberIdx FROM final.member
+		WHERE memberNickname = #{memberNickname}
 	</select>
 
 

@@ -57,9 +57,11 @@ public interface FeedDao {
 	   
 	   
 	   
-	
-	
-	// 산별 피드보기(용민)
-	List<NewFeedList> selectNewFeedByMountain(@Param("mName") String mName);
+		// 전체 피드 리스트
+		List<FeedView> selectAllFeed();
+		// 피드 삭제
+		int deleteFeedByAdmin(@Param("boardIdx") int boardIdx);
+		// 산별 피드보기(용민)
+		List<NewFeedList> selectNewFeedByMountain(@Param("mName") String mName);
 
 }

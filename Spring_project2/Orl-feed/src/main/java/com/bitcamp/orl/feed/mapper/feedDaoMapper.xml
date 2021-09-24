@@ -117,8 +117,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </delete>
    
    
-	
-	
+	<!--관리자용 추가0915 -->
+	<!-- 모든 항목가져오는 전체 피드 리스트 -->
+	<select id="selectAllFeed"
+		resultType="com.bitcamp.orl.feed.domain.FeedView">
+		SELECT B.boardIdx, B.boardPhoto, B.boardDiscription,
+		B.hashtag, B.tag, M.memberIdx, M.memberNickname, M.memberProfile
+		FROM
+		final.photoBoard AS B NATURAL JOIN final.member AS M ORDER BY
+		B.boardIdx DESC;
+	</select>
+
+	<!-- 피드 삭제 -->
+	<delete id="deleteFeedByAdmin">
+		DELETE FROM final.photoBoard WHERE boardIdx =
+		#{boardIdx};
+	</delete>
 	
 	<!-- 용민 -->
 	<!-- 산별 피드보기 -->

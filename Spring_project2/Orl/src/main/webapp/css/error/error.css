@@ -25,11 +25,12 @@
 .content{
     position:relative;
     z-index:2;
+    width:500px;
 }
 
 .content h1{
-    font-size: 32px;
-    font-weight: lighter;
+    font-size: 50px;
+    font-weight: bold;
     color:#FDEF7B;
     text-align:center;
     letter-spacing: 5px;
@@ -57,7 +58,7 @@
    
    
    text-align:center;
-   margin-left:100px;
+   margin-left:60px;
 }
 
 .btn-area a{
