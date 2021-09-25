@@ -23,6 +23,8 @@
 </head>
 <body>
 
+<!-- 09.24. 221, 264 -->
+
 	<!-- header -->
 	<%@ include file="/WEB-INF/frame/default/header.jsp"%>
 
@@ -216,7 +218,13 @@
     /* boardMemberIdx */
 	let boardMemberIdx = '${boardMemberIdx}';
 
-	
+	/* 09.24.추가 */
+	/* 해시태그 search submit */
+	function setParamTag(tag){
+        $("#mySearch").val(tag);
+        console.log(tag);
+        $("#formSearch").submit();
+    }
 	
 	/* document ready START */
     $(document).ready(function(){
@@ -251,25 +259,33 @@
 			$('.tagList').html(html);
 		};
 		
+		
     	
-    	
+		/* 09.24.수정 */
 		/* 해시태그 리스트 */
 		if(hashTag == null) {
 			return;
 		} else {
 			
 			var str = [];
-			var html = "";
 			const hashTagArr = hashTag;
 			
 			str = hashTagArr.split(",");
 			
+			var html = "";
+			
+			html += '<form id="formSearch" action="${pageContext.request.contextPath}/feed/feedSearch" method="POST">';
+			
 			for(var idx=1; idx<str.length; idx++) {
-				html += '<a class="hashtag-item">#' + str[idx] + '</a> ';
+				html += '<h1 onclick="setParamTag(this.title)" class="hashtag-item" title="'+str[idx]+'">#' + str[idx] + '</h1> ';
 			}
+            
+            html += '<input name="mySearch" id="mySearch" type="hidden" value="">';
+            html += '</form>';
 			
 			$('.hashTag').html(html);
 		};
+		
 
 		
 
@@ -518,7 +534,6 @@
    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
    <script type="text/javascript">
      function sendLink(memberIdx,boardIdx,totalLikeCount) {
-        /* hashtag도 파라미터로 받기 */
         
       Kakao.init("daeecdc3ce37abac4a9a3f8ad3e05b0a");
       

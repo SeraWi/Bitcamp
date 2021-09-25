@@ -19,6 +19,8 @@
 
 <body>
 
+<!-- 09.24. 태그 / 해시태그 -->
+
 	<!-- 피드 작성 폼 -->
 	<form method="post" enctype="multipart/form-data" id="feedform">
 		
@@ -121,12 +123,14 @@
 		
 	$(document).ready(function() {
 		
+		
+		
 		/* 폼 내용 서버에 제공 */
 		$('#feedform').on('submit', function (e) {
 			$(this).submit();
 		});
 		
-
+		
 		
 		/* 태그 시작 */
 		
@@ -138,6 +142,8 @@
 				tag[tagCounter] = value;
 				tagCounter++;
 			}
+			
+			
 			
 			/* 태그 입력 */
 			$('#tag').on('keypress', function(e) {
@@ -152,7 +158,7 @@
 					/* 닉네임 체크 ajax */
 					$.ajax({
 						url : bootUrl+'/feed/createfeed/nicknameCheck',
-						type: 'get',
+						type: 'GET',
 						data: {	 //보내는 데이터 : 입력받은 닉네임 보내기
 							memberNickname : tagValue
 						},
@@ -170,9 +176,9 @@
 										return word == tagValue;
 									})
 									
-									//태그 중복 확인
-									if(result.length == 0) {
-										$('#tag-list').append("<li class='tag-item'>@" + tagValue + "<span class='del-btn' idx='" + tagCounter + "'>x" +
+									//태그 중복 확인	
+									if(result.length == 0) {									/* 09.24.수정 : tag-del-btn */
+										$('#tag-list').append("<li class='tag-item'>@" + tagValue + "<span class='tag-del-btn' idx='" + tagCounter + "'> x" +
 						                		"</span><input type='hidden' name='tag' id='rdTag' value=" + tagValue + "></li>");
 										addTag(tagValue);
 										self.val("");
@@ -190,13 +196,20 @@
 					
 					e.preventDefault();
 				}
-			}); /* 태그 입력 끝 */
-			
-			$(document).on("click", ".del-btn", function (e) {
 				
-				var index = $(this).attr("idx");
-				tag[index] = "";
+			}); /* 태그 입력 끝 */
+							/* 09.24.수정 : tag-del-btn */
+			$(document).on("click", ".tag-del-btn", function (e) {
+				
+				var tagIndex = $(this).attr("idx");
+				tag[tagIndex] = "";
 				$(this).parent().remove();
+				
+				tagCounter--;	/* 09.24.추가 */
+				
+ 				if(tagIndex == 0) {	/* 09.24.추가 */
+					$('.noTag').removeClass('hide');	/* 09.24.추가 */					
+				}	/* 09.24.추가 */
 				
 			});
 
@@ -235,8 +248,8 @@
 	
 			            // 해시태그 중복 확인
 			            if (result.length == 0) {
-			            	$("#hashtag-list").append(
-			            			"<li class='tag-item'>#" + hashtagValue + "<span class='del-btn' idx='" + hashtagCounter + "'>x" +
+			            	$("#hashtag-list").append(								/* 09.24.수정 : hashtag-del-btn */
+			            			"<li class='hashtag-item'>#" + hashtagValue + "<span class='hashtag-del-btn' idx='" + hashtagCounter + "'> x" +
 			                		"</span><input type='hidden' name='hashtag' id='rdTag' value=" + hashtagValue + "></li>");
 			            	
 			            	addHashtag(hashtagValue);
@@ -250,11 +263,19 @@
 					}
 					
 				});
-	
-			$(document).on("click", ".del-btn", function (e) {
-				var index = $(this).attr("idx");
-				hashTag[index] = "";
+			
+			/* 09.24.수정 : hashtag-del-btn */
+			$(document).on("click", ".hashtag-del-btn", function (e) {
+				var hashTagIndex = $(this).attr("idx");
+				hashTag[hashTagIndex] = "";
 				$(this).parent().remove();
+				
+				hashtagCounter--;	/* 09.24.추가 */
+				
+ 				if(hashTagIndex == 0) {	/* 09.24.추가 */
+					$('.noHashtag').removeClass('hide');	/* 09.24.추가 */					
+				}	/* 09.24.추가 */
+				
 			});
 	
 		/* 해시태그 끝 */

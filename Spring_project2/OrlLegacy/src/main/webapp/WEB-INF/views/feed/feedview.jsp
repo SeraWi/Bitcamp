@@ -544,8 +544,8 @@
            {
              title: '웹으로 보기',
              link: {
-               mobileWebUrl: '/feed/feedview/'+memberIdx+'&'+boardIdx,
-               webUrl: '/feed/feedview/'+memberIdx+'&'+boardIdx,
+               mobileWebUrl: 'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
+               webUrl: 'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
              },
            }
          ],

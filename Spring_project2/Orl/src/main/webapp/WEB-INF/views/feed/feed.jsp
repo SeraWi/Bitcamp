@@ -153,7 +153,7 @@
 		/* ajax 최신순 피드 리스트 */
 		$.ajax({
 			url : bootUrl+'/feed/feedmain/selectNewFeed',
-			type : 'get',
+			type : 'GET',
 			success : function(data) {
 				
 				var memberIdx = '${sessionScope.memberVo.memberIdx}';

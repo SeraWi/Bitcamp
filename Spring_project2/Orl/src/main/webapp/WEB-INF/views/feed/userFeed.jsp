@@ -122,8 +122,7 @@
                  
                  // data 파라미터 추가 0918 수정
                  $.ajax({
-                     //url:'<c:url value="/feed/followButtonClick"/>',
-                     url:'http://localhost:8083/feed/followButtonClick',
+                     url:'http://3.36.48.110:8083/feed/followButtonClick',
                      type:'POST',
                      data:{
                         followStatus : '-1',
@@ -163,8 +162,7 @@
                  //팔로우 시작하기: followStatus ==1
                  
                  $.ajax({
-                     //url:'<c:url value="/feed/followButtonClick"/>',
-                     url:'http://localhost:8083/feed/followButtonClick',
+                     url:'http://3.36.48.110:8083/feed/followButtonClick',
                      type:'POST',
                      data:{
                         followStatus :'1',
@@ -355,7 +353,7 @@
       
       //비동기 통신
       $.ajax({
-         url:'http://localhost:8083/feed/followerList',
+         url:'http://3.36.48.110:8083/feed/followerList',
          type:'GET',
          data:{
             memberIdx:'${member.memberIdx}'
@@ -412,45 +410,45 @@
    <script>
    
    $('#following').click(function(){
-	      $('#container-following').removeClass('display_none');
-	      
-	         // 명단 초기화 
-	         $('#following-members').html('');
-	         
-	         // 팔로잉 버튼 눌렀을 때 명단 가져오기 ->비동기 통신으로
-	         $.ajax({
-	            url:'http://localhost:8083/feed/followingList',
-	            type:'GET',
-	            data:{
-	               memberIdx:'${member.memberIdx}'
-	            },
-	            success: function(data){
-	               console.log(data); 
-	               
-	             $.each(data,function(index,item){
-	                  console.log(index,item);
-	                  
-	                  var html ='<div class="member">';
-	                  html += '   <a href="<c:url value="/feed/userfeed/'+item.memberIdx2+'"/>">';
-	                  html += '      <img src="<c:url value="/images/member/profile/'+item.memberProfile+'"/>"/>';
-	                  html += '   </a>';
-	                  html += '   <a class="nickname-area" href="<c:url value="/feed/userfeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
-	                  
-	                  //세션에 있는 memberIdx == 모델에 저장된 memberIdx -->내 피드일 경우 팔로우버튼 보여주기
-	                  if(${sessionScope.memberVo.memberIdx eq member.memberIdx}){
-	               	  html += '   <input type="hidden" value="'+item.memberIdx2+'">';
-		              html += '   <input type="button" class="button-gray-inList" value="팔로우 그만하기">';  
-	                  }
-	                  
-	                  html += '</div>';
-	                  
-	                  //div에 추가하기
-	                  $('#following-members').append(html);
-	               });  
-	            }/* success 끝 */
-	         });/* ajax 끝 */
-	         
-	   });/*click 이벤트 끝  */
+         $('#container-following').removeClass('display_none');
+         
+            // 명단 초기화 
+            $('#following-members').html('');
+            
+            // 팔로잉 버튼 눌렀을 때 명단 가져오기 ->비동기 통신으로
+            $.ajax({
+               url:'http://3.36.48.110:8083/feed/followingList',
+               type:'GET',
+               data:{
+                  memberIdx:'${member.memberIdx}'
+               },
+               success: function(data){
+                  console.log(data); 
+                  
+                $.each(data,function(index,item){
+                     console.log(index,item);
+                     
+                     var html ='<div class="member">';
+                     html += '   <a href="<c:url value="/feed/userfeed/'+item.memberIdx2+'"/>">';
+                     html += '      <img src="<c:url value="/images/member/profile/'+item.memberProfile+'"/>"/>';
+                     html += '   </a>';
+                     html += '   <a class="nickname-area" href="<c:url value="/feed/userfeed/'+item.memberIdx2+'"/>">'+item.memberNickname+'</a>';
+                     
+                     //세션에 있는 memberIdx == 모델에 저장된 memberIdx -->내 피드일 경우 팔로우버튼 보여주기
+                     if(${sessionScope.memberVo.memberIdx eq member.memberIdx}){
+                       html += '   <input type="hidden" value="'+item.memberIdx2+'">';
+                       html += '   <input type="button" class="button-gray-inList" value="팔로우 그만하기">';  
+                     }
+                     
+                     html += '</div>';
+                     
+                     //div에 추가하기
+                     $('#following-members').append(html);
+                  });  
+               }/* success 끝 */
+            });/* ajax 끝 */
+            
+      });/*click 이벤트 끝  */
 
    
    // 닫기 버튼 눌렀을 때 
@@ -485,7 +483,7 @@
          //비동기 통신 시작
          // myIdx 파라미터 추가 0918      
           $.ajax({
-             url:'http://localhost:8083/feed/followButtonClick',
+             url:'http://3.36.48.110:8083/feed/followButtonClick',
              type:'POST',
              data:{
                 followStatus : '-1',
@@ -525,7 +523,7 @@
          //followStatus =='팔로우 시작하기'
       //비동기 통신 시작
        $.ajax({
-    	    url:'http://localhost:8083/feed/followButtonClick',
+    	    url:'http://3.36.48.110:8083/feed/followButtonClick',
             type:'POST',
             data:{
                followStatus : '1',

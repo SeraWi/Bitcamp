@@ -149,9 +149,13 @@
 	/* 태그 */
 	
 		/* 저장된 태그 리스트 */
-		if(tag == null) {
+		if(tag == null && tag[0]=="") {
 			return;
 		} else {
+			
+			console.log(tag);
+			
+			$('.noTag').addClass('hide');
 			
 			var str = [];
 			var html = "";
@@ -160,9 +164,9 @@
 			str = tagArr.split(",");
 			
 			for(var idx=1; idx<str.length; idx++) {
-				
-				html += "<li class='tag-item'>@" + str[idx] + "<span class='del-btn' idx='" + tagCounter + "'>x" +
-				"</span><input type='hidden' name='hashtag' id='rdTag' value=" + str[idx] + "></li>";
+																			/* 09.24.수정 */
+				html += "<li class='tag-item'>@" + str[idx] + "<span class='tag-del-btn' idx='" + tagCounter + "'> x" +
+				"</span><input type='hidden' name='tag' id='rdTag' value=" + str[idx] + "></li>";
 			}
 			$('#tag-list').html(html);
 		}
@@ -188,7 +192,7 @@
 				/* 닉네임 체크 ajax */
 				$.ajax({
 					url : bootUrl+'/feed/createfeed/nicknameCheck',
-					type: 'get',
+					type: 'GET',
 					data: {
 						memberNickname : tagValue
 					},
@@ -199,7 +203,6 @@
 							
 							if(tagValue !== "") {
 								
-								/* noTag 삭제 */
 								$('.noTag').addClass('hide');
 								
 								var result = Object.values(addTag).filter(function (word) {
@@ -207,8 +210,8 @@
 								})
 								
 								//태그 중복 확인
-								if(result.length == 0) {
-									$('#tag-list').append("<li class='tag-item'>@" + tagValue + "<span class='del-btn' idx='" + tagCounter + "'>x" +
+								if(result.length == 0) {													/* 09.24.수정 */
+									$('#tag-list').append("<li class='tag-item'>@" + tagValue + "<span class='tag-del-btn' idx='" + tagCounter + "'> x" +
 					                		"</span><input type='hidden' name='tag' id='rdTag' value=" + tagValue + "></li>");
 									inTag(tagValue);
 									self.val("");
@@ -229,10 +232,16 @@
 				
 		});/* 추가 태그 입력 끝 */
 			
-		$(document).on("click", ".del-btn", function (e) {
-			var index = $(this).attr("idx");
-			addTag[index] = "";
+		$(document).on("click", ".tag-del-btn", function (e) {
+			var tagIndex = $(this).attr("idx");
+			addTag[tagIndex] = "";
 			$(this).parent().remove();
+			tagCounter--;	/* 09.24.추가 */
+			
+			if(tagIndex == 0) {	/* 09.24.추가 */
+				$('.noTag').removeClass('hide');	/* 09.24.추가 */					
+			}	/* 09.24.추가 */
+			
 		});
 		
 	/* 태그 끝 */
@@ -246,6 +255,8 @@
 			return;
 		} else {
 			
+			$('.noHashtag').addClass('hide');
+			
 			var str = [];
 			var html = "";
 			const hashTagArr = hashTag;
@@ -253,8 +264,8 @@
 			str = hashTagArr.split(",");
 			
 			for(var idx=1; idx<str.length; idx++) {
-				
-				html += "<li class='tag-item'>#" + str[idx] + "<span class='del-btn' idx='" + hashtagCounter + "'>x" +
+																				/* 09.24.수정 */
+				html += "<li class='hashtag-item'>#" + str[idx] + "<span class='hashtag-del-btn' idx='" + hashtagCounter + "'> x" +
 				"</span><input type='hidden' name='hashtag' id='rdTag' value=" + str[idx] + "></li>";
 			
 			}
@@ -278,23 +289,23 @@
 				
 			/* 엔터키나 스페이스바 눌렀을 때 실행 */
 			if(e.key == "Enter" || e.keyCode == 32) {
-				var tagValue = self.val();	//값 가져오기
+				var hashtagValue = self.val();	//값 가져오기
 							
-				if(tagValue !== "") {
+				if(hashtagValue !== "") {
 					
 					$('.noHashtag').addClass('hide');
 					
 					var result = Object.values(addHashTag).filter(function (word) {
-		            	return word == tagValue;
+		            	return word == hashtagValue;
 		            })
 
 		            // 해시태그 중복 확인
 		            if (result.length == 0) {
 		            	$("#hashtag-list").append(
-		            			"<li class='tag-item'>#" + tagValue + "<span class='del-btn' idx='" + hashtagCounter + "'>x" +
-		                		"</span><input type='hidden' name='hashtag' id='rdTag' value=" + tagValue + "></li>");
+		            			"<li class='hashtag-item'>#" + hashtagValue + "<span class='hashtag-del-btn' idx='" + hashtagCounter + "'> x" +
+		                		"</span><input type='hidden' name='hashtag' id='rdTag' value=" + hashtagValue + "></li>");
 		            	
-		            	inHashTag(tagValue);
+		            	inHashTag(hashtagValue);
 		                self.val("");
 		                
 					} else {
@@ -306,10 +317,16 @@
 				
 			});
 			
-		$(document).on("click", ".del-btn", function (e) {
-			var index = $(this).attr("idx");
-			addHashTag[index] = "";
+		$(document).on("click", ".hashtag-del-btn", function (e) {
+			var hashTagIndex = $(this).attr("idx");
+			addHashTag[hashTagIndex] = "";
 			$(this).parent().remove();
+			hashtagCounter--;	/* 09.24.추가 */
+			
+			if(hashTagIndex == 0) {	/* 09.24.추가 */
+				$('.noHashtag').removeClass('hide');	/* 09.24.추가 */					
+			}	/* 09.24.추가 */
+			
 		});
 		
 	/* 해시태그 끝 */

@@ -29,10 +29,10 @@ public class FeedViewController {
 		model.addAttribute("selectFeedView", viewService.getFeedView(boardIdx));
 		
 		//memberIdx
+		int myIdx = ((MemberDto) request.getSession().getAttribute("memberVo")).getMemberIdx();
 		model.addAttribute("boardMemberIdx", memberIdx);
 		
 		//좋아요
-		int myIdx = ((MemberDto) request.getSession().getAttribute("memberVo")).getMemberIdx();
 		int likeStatus = viewService.getLikeStatus(myIdx, boardIdx);
 		int totalLikeCount = viewService.getTotalLikeCount(boardIdx);
 		model.addAttribute("totalLikeCount", totalLikeCount);
