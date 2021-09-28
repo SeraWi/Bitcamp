@@ -221,10 +221,6 @@ textarea::placeholder {
 .hashtagShow::-webkit-scrollbar, .tagShow::-webkit-scrollbar{
 	display: none;
 }
-#tag-list {
-  border: none;
-  display: flex;
-}
 
 .tag-item, .hashtag-item {
   overflow: hidden;

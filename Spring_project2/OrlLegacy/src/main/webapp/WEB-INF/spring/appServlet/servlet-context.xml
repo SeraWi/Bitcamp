@@ -31,6 +31,30 @@
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		p:defaultEncoding="utf-8" p:maxUploadSize="10000000">
 	</beans:bean>
+
+
+	<!-- 메일 -->
+	<beans:bean id="mailSender"
+				class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<beans:property name="host" value="smtp.naver.com" />
+		<beans:property name="port" value="465" /><!-- 587 or 25-->
+		<beans:property name="username" value="설정 유저네임" />
+		<beans:property name="password" value="설정 패스워드" />
+		<beans:property name="defaultEncoding" value="utf-8" />
+		<beans:property name="javaMailProperties">
+			<beans:props>
+				<beans:prop key="mail.debug">true</beans:prop>
+				<beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+				<beans:prop key="mail.smtps.ssl.checkserveridentity">true</beans:prop>
+				<beans:prop key="mail.smtp.auth">true</beans:prop>
+				<beans:prop key="mail.smtps.ssl.trust">*</beans:prop>
+				<beans:prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</beans:prop>
+				<beans:prop key="mail.transport.protocol">smtp</beans:prop>
+				<beans:prop key="mail.smtp.ssl.enable">true</beans:prop>
+				<beans:prop key="mail.smtp.ssl.protocols">TLSv1.2</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
 	
 	<!-- 로그인 체크 인터셉터 등록-->
 	<interceptors>
@@ -38,7 +62,8 @@
 			<mapping path="/crew/insert/**" />
 			<mapping path="/crew/memberReg/**" />
 			<mapping path="/member/mypage/**" />
-			<mapping path="/feed/userfeed/**"/>
+			<mapping path="/feed/userFeed/**"/>
+			<mapping path="/admin/**"/>
       <mapping path="/feed/feedview/**"/>
 			<beans:bean
 				class="com.bitcamp.orl.interceptor.LoginCheckInterceptor" />

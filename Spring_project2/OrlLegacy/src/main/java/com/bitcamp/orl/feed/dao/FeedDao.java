@@ -116,6 +116,10 @@ public interface FeedDao {
 	// 추가 (09.22.우리)
 	// 닉네임으로 memberIdx 찾기
 	int selectMemberIdx(@Param("memberNickname") String memberNickname);
+	
+	// 추가 (09.25.우리)
+	// 피드 존재 여부 체크
+	int selectFeedChk(@Param("memberIdx") int memberIdx, @Param("boardIdx") int boardIdx);
 		
 
 

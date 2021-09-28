@@ -7,7 +7,7 @@
     align-items: center;
     height:100vh;
     /* no-repeat:배경이미지 반복X */
-     background:url("../../images/member/main.jpg") no-repeat center;
+    background:url("../../images/member/main.jpg") no-repeat center;
     background-size: cover;
 }
 
@@ -18,7 +18,7 @@
     right:0;
     bottom:0;
     left:0;
-    background-color:rgba(0,0,0,0.7); 
+    background-color:rgba(0,0,0,0.7);
 }
 
 /* section 영역 전체 */
@@ -39,11 +39,11 @@
 }
 
 .content p{
-   font-size:15px;
+    font-size:15px;
     font-weight: lighter;
     color:#fff;
     background-color: transparent;
-   text-align:center;
+    text-align:center;
 
 }
 
@@ -51,27 +51,27 @@
     margin-top:40px;
     width:250px;
     height:50px;
-    
+
     border:none;
     border-radius:10px;
-   cursor:pointer;
-   
-   
-   text-align:center;
-   margin-left:60px;
+    cursor:pointer;
+
+
+    text-align:center;
+    margin-left:60px;
 }
 
 .btn-area a{
-  /*   width:70%;
-    height:50px;
-    background:#FDEF7B; */
+    /*   width:70%;
+      height:50px;
+      background:#FDEF7B; */
     display:block;
     width:250px;
     height:50px;
     line-height:50px;
     text-align:center;
     background:#FDEF7B;
-    
+
     font-size:15px;
     font-weight: 600;
     color:black;

@@ -115,6 +115,9 @@
 
 
 	<script>
+	
+	let tag = {};
+	let hashTag = {};
 		
 	$(document).ready(function() {
 		
@@ -127,7 +130,7 @@
 		
 		/* 태그 시작 */
 		
-			var tag = {};
+			
 			var tagCounter = 0;
 			
 			/* 입력 값을 태그로 생성 */
@@ -149,7 +152,7 @@
 					/* 닉네임 체크 ajax */
 					$.ajax({
 						url : '<c:url value="/feed/createfeed/nicknameCheck"/>',
-						type: 'get',
+						type: 'GET',
 						data: {
 							memberNickname : tagValue
 						},
@@ -168,11 +171,14 @@
 									})
 									
 									//태그 중복 확인
-									if(result.length == 0) {
-										$('#tag-list').append("<li class='tag-item'>@" + tagValue + "<span class='del-btn' idx='" + tagCounter + "'>x" +
+									if(result.length == 0) {									/* 09.24.수정 : tag-del-btn */
+										$('#tag-list').append("<li class='tag-item'>@" + tagValue + "<span class='tag-del-btn' idx='" + tagCounter + "'> x" +
 						                		"</span><input type='hidden' name='tag' id='rdTag' value=" + tagValue + "></li>");
 										addTag(tagValue);
 										self.val("");
+										
+										console.log($('#rdTag').val());
+										
 									} else {
 										alert('이미 등록된 닉네임입니다');
 									}
@@ -188,12 +194,18 @@
 					e.preventDefault();
 				}
 			}); /* 태그 입력 끝 */
-			
-			$(document).on("click", ".del-btn", function (e) {
+									/* 09.24.수정 : tag-del-btn */
+			$(document).on("click", ".tag-del-btn", function (e) {
 				
-				var index = $(this).attr("idx");
-				tag[index] = "";
+				var tagIndex = $(this).attr("idx");
+				tag[tagIndex] = "";
 				$(this).parent().remove();
+				
+				tagCounter--;	/* 09.24.추가 */
+				
+ 				if(tagIndex == 0) {	/* 09.24.추가 */
+					$('.noTag').removeClass('hide');	/* 09.24.추가 */					
+				}	/* 09.24.추가 */
 				
 			});
 
@@ -203,7 +215,7 @@
 		
 		/* 해시태그 시작 */
 		
-			var hashTag = {};
+			
 			var hashtagCounter = 0;
 				
 			/* 입력 값을 태그로 생성 */
@@ -232,8 +244,8 @@
 	
 			            // 해시태그 중복 확인
 			            if (result.length == 0) {
-			            	$("#hashtag-list").append(
-			            			"<li class='tag-item'>#" + hashtagValue + "<span class='del-btn' idx='" + hashtagCounter + "'>x" +
+			            	$("#hashtag-list").append(								/* 09.24.수정 : hashtag-del-btn */
+			            			"<li class='hashtag-item'>#" + hashtagValue + "<span class='hashtag-del-btn' idx='" + hashtagCounter + "'> x" +
 			                		"</span><input type='hidden' name='hashtag' id='rdTag' value=" + hashtagValue + "></li>");
 			            	
 			            	addHashtag(hashtagValue);
@@ -248,10 +260,17 @@
 					
 				});
 	
-			$(document).on("click", ".del-btn", function (e) {
-				var index = $(this).attr("idx");
-				hashTag[index] = "";
+			/* 09.24.수정 : hashtag-del-btn */
+			$(document).on("click", ".hashtag-del-btn", function (e) {
+				var hashTagIndex = $(this).attr("idx");
+				hashTag[hashTagIndex] = "";
 				$(this).parent().remove();
+				
+				hashtagCounter--;	/* 09.24.추가 */
+				
+ 				if(hashTagIndex == 0) {	/* 09.24.추가 */
+					$('.noHashtag').removeClass('hide');	/* 09.24.추가 */					
+				}	/* 09.24.추가 */
 			});
 	
 		/* 해시태그 끝 */
@@ -271,14 +290,21 @@
 
 		/* off */
 		$(".c_close").click(function() {
+			
 			$(".modal_createfeed").fadeOut();
 			$("html, body").removeClass("not_scroll");
 			/* 프리뷰 리셋 */
 			$('#preview-img').attr('src', '<c:url value="/images/feed/feedw/noImage.png"/>');
 			/* 태그 리셋 */
-			$('#tag-list').empty();
-			/* 해시태그 리셋 */
-			$("#hashtag-list").empty();
+			$("#hashtag-list").html("");
+			$("#tag-list").html("");
+			tag = {};
+			$('.noTag').removeClass('hide');
+			hashTag = {};
+			$('.noHashtag').removeClass('hide');
+			
+			console.log(hashTag);
+			
 		});
 			
 	});

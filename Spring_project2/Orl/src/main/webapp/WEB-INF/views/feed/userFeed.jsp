@@ -120,7 +120,7 @@
                  //팔로우 그만하기
                  //followStatus = -1
                  
-                 // data 파라미터 추가 0918 수정
+                
                  $.ajax({
                      url:'http://3.36.48.110:8083/feed/followButtonClick',
                      type:'POST',
@@ -208,7 +208,7 @@
                  <c:forEach var ="myCrewList" items="${myCrewList}">
                      <div class="swiper-slide">
                         <a href="<c:url value="/crew/detail?crewIdx=${myCrewList.crewIdx}"/>" class="crew">
-                          <img src="<c:url value="/images/crew/${myCrewList.crewPhoto}"/>">
+                          <img src="https://minju-aws-bucket.s3.ap-northeast-2.amazonaws.com//fileupload/crew${myCrewList.crewPhoto}">
                           <div>${myCrewList.crewName}</div>
                        </a>
                     </div>
@@ -467,7 +467,6 @@
       
       console.log("클릭");
       // 팔로우 시작하기 혹은 그만하기 인지 확인
-      /* var followStatus = $('input[type=button]').val();   */
       var followStatus =$(this).val();
       console.log(followStatus);
       
@@ -481,7 +480,6 @@
        if(followStatus == '팔로우 그만하기'){ 
          
          //비동기 통신 시작
-         // myIdx 파라미터 추가 0918      
           $.ajax({
              url:'http://3.36.48.110:8083/feed/followButtonClick',
              type:'POST',
@@ -509,7 +507,6 @@
                    var newFollowingCount = followingCount -1;
                    
                    $('#followingCount').text(newFollowingCount);
-                   /* console.log(newFollowingCount); */
                     
                  }
                 

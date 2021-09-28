@@ -24,12 +24,12 @@
         <div class="titleArea">
             <h2>SEARCH</h2>
         </div>
-        <form id="frm">
+        <form id="frm" method="post">
             <div class="boxContainer">
                 <table class="elementsContainer">
                     <tr>
                         <td>
-                            <input type="text" placeholder="검색하실 내용을 입력해주세요. " class="search" name="mysearch" required>
+                            <input type="text" autocomplete="off" placeholder="검색하실 내용을 입력해주세요. " class="search" name="mysearch" required>
                         </td>
                         <td>
                             <label for="button">

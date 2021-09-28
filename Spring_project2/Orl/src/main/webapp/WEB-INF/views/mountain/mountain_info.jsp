@@ -92,9 +92,9 @@
             var feedList = [];
 
 
-            // 시작할때 비동기 통신으로 지역별 산 리스트 받아와서 mList에 저장
+            // 시작할때 비동기 통신으로 해당산의 피드 사진 가져오기
             $.ajax({
-                url: '<c:url value="/feed/feedmain/selectNewMountainFeed"/>',
+                url: 'http://3.36.48.110:8083/feed/feedmain/selectNewMountainFeed',
                 type: 'GET',
                 data: {mName: '${mountainLocInfo.mountainName}'},
                 success: function (data) {

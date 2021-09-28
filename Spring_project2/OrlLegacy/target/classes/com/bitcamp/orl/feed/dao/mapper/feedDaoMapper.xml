@@ -123,6 +123,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT memberIdx FROM final.member
 		WHERE memberNickname = #{memberNickname}
 	</select>
+	
+	<!-- 추가 (09.25.우리) -->
+	<!-- 피드 존재 여부 체크 -->
+	<select id="selectFeedChk" resultType="int">
+		SELECT * FROM final.photoBoard
+		WHERE memberIdx = #{memberIdx} and boardIdx = #{boardIdx}
+	</select>
 
 
 

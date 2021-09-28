@@ -16,7 +16,7 @@ button, input {
 	background-color: #00ff0000;
 }
 
-button:hover, span:hover {
+button:hover, span:hover, input:hover {
 	cursor: pointer;
 }
 textarea {
@@ -227,10 +227,6 @@ textarea::placeholder {
 	padding-top: 45px;
 	padding-left: 90px;
 	padding-right: 10px;
-}
-#tag-list {
-  border: none;
-  display: flex;
 }
 
 .tag-item, .hashtag-item {

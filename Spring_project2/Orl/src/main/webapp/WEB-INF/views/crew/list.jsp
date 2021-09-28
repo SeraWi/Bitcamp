@@ -17,10 +17,16 @@
 <link rel="stylesheet" href="<c:url value='/css/crew/crew-list.css'/>">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
-	let cList = [];
-	const searchType = '${searchType}';
-	const keyword = '${keyword}';
-	const url = '${pageContext.request.contextPath}';
+let cList = [];
+const searchType = '${searchType}';
+const keyword = '${keyword}';
+const memberIdx = '${sessionScope.memberVo.memberIdx}';
+/*부트서버*/
+const url = 'http://52.79.178.223:8081';
+/*뷰 서버*/	
+const url2 = '${pageContext.request.contextPath}';
+/*s3 경로*/
+const crewFileUrl = 'https://minju-aws-bucket.s3.ap-northeast-2.amazonaws.com//fileupload/crew';
 </script>
 <script src="<c:url value='/js/crew/list.js'/>"></script>
 </head>
@@ -39,19 +45,8 @@
 				<a href="<c:url value='/crew/insert'/>" class="text-bold">나의 크루
 					만들기</a>
 			</div>
-			<c:if test="${myCrewList ne null and not empty myCrewList}">
-				<c:forEach items="${myCrewList}" var="crew">
-					<div class="article-crew">
-						<div>
-							<a href='<c:url value="/crew/detail?crewIdx=${crew.crewIdx}"/>'>
-								<img src="<c:url value='/images/crew/${crew.crewPhoto}'/>">
-							</a>
-						</div>
-						<p>${crew.crewName}</p>
-					</div>
-				</c:forEach>
-			</c:if>
-
+			<div id="myCrewSection">
+			</div>
 		</div>
 
 		<div class="container">
@@ -64,7 +59,7 @@
 						<button class="curved" id="oldList">오래된 순 보기</button>
 					</div>
 				</div>
-				<form action="" name="frm" id="form">
+				<form method="post" name="frm" id="form">
 					<div class="search-drop">
 						<div class="searchType">
 							<label for="selectbox">크루이름</label> <select name="searchType"
@@ -74,15 +69,14 @@
 								<option value="tag">해시태그</option>
 							</select>
 						</div>
-						<div class="boxSearch">
-							<span class="icon"> <label for="button"> <i
-									id="searchType" class="fas fa-search" aria-hidden="true"></i>
-							</label> <input type="submit" id="button" style="display: none">
-							</span> <input autocomplete="off" id="search" class="search" type="text"
-								name="keyword" placeholder="Type to search">
+							<div class="boxSearch">
+								<span class="icon"> <label for="button"> <i
+										id="searchType" class="fas fa-search" aria-hidden="true"></i>
+								</label> <input type="submit" id="button" style="display: none">
+								</span> <input autocomplete="off" id="search" class="search" type="text"
+									name="keyword" autocomplete="off" placeholder="Type to search">
+							</div>
 						</div>
-
-					</div>
 				</form>
 			</div>
 

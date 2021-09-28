@@ -17,10 +17,11 @@
 <link rel="stylesheet" href="<c:url value='/css/crew/crew-list.css'/>">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
-	let cList = [];
-	const searchType = '${searchType}';
-	const keyword = '${keyword}';
-	const url = '${pageContext.request.contextPath}';
+let cList = [];
+const searchType = '${searchType}';
+const keyword = '${keyword}';
+const memberIdx = '${sessionScope.memberVo.memberIdx}';
+const url = '${pageContext.request.contextPath}';
 </script>
 <script src="<c:url value='/js/crew/list.js'/>"></script>
 </head>
@@ -64,7 +65,7 @@
 						<button class="curved" id="oldList">오래된 순 보기</button>
 					</div>
 				</div>
-				<form action="" name="frm" id="form">
+				<form method="post" name="frm" id="form">
 					<div class="search-drop">
 						<div class="searchType">
 							<label for="selectbox">크루이름</label> <select name="searchType"

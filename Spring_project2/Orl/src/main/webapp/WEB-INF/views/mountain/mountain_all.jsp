@@ -20,13 +20,13 @@
             <div class="search_item_text">
                 어디로 오를래
             </div>
-            <form action="${pageContext.request.contextPath}/mountain/search">
+            <form action="${pageContext.request.contextPath}/mountain/search" method="post">
                 <div class="search_item_search">
                     <input type="text" class="search_input"
                            placeholder="산 또는 지역명을 검색해주세요. ex)서울, 북한산"
                            onfocus="this.placeholder=''"
                            onblur="this.placeholder='산 또는 지역명을 검색해주세요. ex)서울, 북한산'"
-                           name="mysearch" required>
+                           name="mysearch" autocomplete="off" required>
                     <label for="button">
                         <i id="submit" class="fas fa-search"></i>
                     </label>

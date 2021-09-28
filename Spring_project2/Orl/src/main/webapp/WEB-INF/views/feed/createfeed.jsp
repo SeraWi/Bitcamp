@@ -119,7 +119,7 @@
 	<script>
 	
 	/* 부트 서버 */
-	const bootUrl = 'http://localhost:8083';
+	const bootUrl = 'http://3.36.48.110:8083';
 		
 	$(document).ready(function() {
 		

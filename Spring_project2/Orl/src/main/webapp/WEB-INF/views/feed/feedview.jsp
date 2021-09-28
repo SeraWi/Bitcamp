@@ -210,7 +210,7 @@
 	<script>
 	
 	/* 부트 서버 */
-	const bootUrl = 'http://localhost:8083';
+	const bootUrl = 'http://3.36.48.110:8083';
 	/* 태그 */
 	const tag = '${selectFeedView.tag}';
 	/* 해시태그 */
@@ -453,7 +453,6 @@
             // myIdx 파라미터로 추가0918, url 수정
             // url경로 boot 로 수정
             $.ajax({
-               //url:'<c:url value="/feed/likeButtonClick"/>',
                url: bootUrl+'/feed/likeButtonClick',
                type:'POST',
                data:{
@@ -491,7 +490,6 @@
             // click == 'delete'
             // 내 idx 파라미터로 추가
             $.ajax({
-               //url:'<c:url value="/feed/likeButtonClick"/>',
                url: bootUrl+'/feed/likeButtonClick',
                type:'POST',
                data:{
@@ -534,6 +532,7 @@
    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
    <script type="text/javascript">
      function sendLink(memberIdx,boardIdx,totalLikeCount) {
+        /* hashtag도 파라미터로 받기 */
         
       Kakao.init("daeecdc3ce37abac4a9a3f8ad3e05b0a");
       
@@ -544,8 +543,8 @@
            description: '오를래',
            imageUrl:'https://ifh.cc/g/Mtgj7e.jpg',
            link: {
-             mobileWebUrl:'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
-             webUrl: 'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
+             mobileWebUrl:'http://54.180.143.122:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
+             webUrl: 'http://54.180.143.122:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
            },
          },
          social: {
@@ -557,8 +556,8 @@
            {
              title: '웹으로 보기',
              link: {
-               mobileWebUrl: 'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
-               webUrl: 'http://localhost:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
+               mobileWebUrl: 'http://54.180.143.122:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
+               webUrl: 'http://54.180.143.122:8080/orl/feed/feedview/'+memberIdx+'&'+boardIdx,
              },
            }
          ],

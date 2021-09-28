@@ -24,7 +24,7 @@
         <div class="titleArea">
             <h2>SEARCH</h2>
         </div>
-        <form id="frm">
+        <form id="frm" method="post">
             <div class="boxContainer">
                 <table class="elementsContainer">
                     <tr>

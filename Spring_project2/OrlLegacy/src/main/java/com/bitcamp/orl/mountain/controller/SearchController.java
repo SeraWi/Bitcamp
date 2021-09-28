@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bitcamp.orl.mountain.domain.MountainLocInfo;
 import com.bitcamp.orl.mountain.service.MountainLocInfoViewService;
@@ -19,9 +20,14 @@ public class SearchController {
 	@Autowired
 	private MountainLocInfoViewService locService;
 	
+	@RequestMapping(value="/mountain/search",method=RequestMethod.GET)
+	public String getSearch() {
+		return "mountain/search";
+	}
+	
 	
 	// 검색시 검색결과보여주는 컨트롤러
-	@RequestMapping("/mountain/search")
+	@RequestMapping(value="/mountain/search",method=RequestMethod.POST)
 	public String search(HttpServletRequest request,Model model
 		) {
 		

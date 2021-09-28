@@ -154,10 +154,8 @@
 		/* ajax 최신순 피드 리스트 */
 		$.ajax({
 			url : '<c:url value="/feed/feedmain/selectNewFeed"/>',
-			type : 'get',
+			type : 'GET',
 			success : function(data) {
-				
-				console.log('최신순 리스트');
 				
 				var memberIdx = '${sessionScope.memberVo.memberIdx}';
 				showNewFeed(data);

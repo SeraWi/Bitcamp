@@ -21,7 +21,7 @@ public class AdminCrewDeleteController {
 		
 		model.addAttribute("idx",request.getParameter("crewIdx"));
 		int crewIdx=Integer.parseInt(request.getParameter("crewIdx"));
-		int result = service.deleteCrew(crewIdx);
+		int result = service.deleteCrew(crewIdx,request);
 		model.addAttribute("result", result);
 		return "admin/admin_crewDelete";
 	}

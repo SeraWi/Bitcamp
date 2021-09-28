@@ -110,7 +110,8 @@ public class NaverLoginController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
+        System.out.println(memberRequest.getMemberPw());
+		
 		//로그인처리
 		boolean loginChk=longinService.naverLogin(request, memberRequest.getMemberId(), memberRequest.getMemberPw());
 		model.addAttribute("loginChk", loginChk);

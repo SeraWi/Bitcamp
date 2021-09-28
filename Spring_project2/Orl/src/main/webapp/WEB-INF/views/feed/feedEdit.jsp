@@ -125,11 +125,20 @@
 	<script>
 	
 	/* 부트 서버 */
-	const bootUrl = 'http://localhost:8083';
+	const bootUrl = 'http://3.36.48.110:8083';
 	/* 저장된 태그 */
 	const tag = '${selectFeedView.tag}';
 	/* 저장된 해시태그 */
 	const hashTag = '${selectFeedView.hashtag}';
+	
+	/* Feedview back */
+	var view = '${selectFeedView.memberIdx}&${selectFeedView.boardIdx}';
+	
+	/* 뒤로 가기 (피드메인 or 유저 피드) */
+	$('#pageBack').click(function(){
+		location.href = '<c:url value="/feed/feedview/'+view+'"/>';
+	});
+	
 	
 	/* 수정 확인 */
 	function edit_submit(){
