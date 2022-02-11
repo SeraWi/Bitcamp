@@ -45,7 +45,6 @@
 	
 	<script>
 	
-	
 	/* access_keyㅌ, 송금국가 USD 고정 */
 	const access_key='8711282f6324e9bbcaf2ea89273b8953';
 	const source ='USD';
